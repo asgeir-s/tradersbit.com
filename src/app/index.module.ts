@@ -8,7 +8,8 @@ import { GithubContributor } from '../app/services/githubContributor/githubContr
 import { WebDevTecService } from '../app/services/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
-import { tbSideNavLayout } from '../app/components/side-nav-layout/side-nav-layout'
+import { tbSideNavLayout } from '../app/components/side-nav-layout/side-nav-layout';
+import { tbHome } from '../app/comp-top/home/home';
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -17,6 +18,11 @@ module tradersbitCom {
   'use strict';
 
   angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial'])
+    .config(function($mdThemingProvider) {
+      $mdThemingProvider.theme('default')
+        .primaryPalette('cyan')
+        .accentPalette('orange');
+    })
     .constant('malarkey', malarkey)
     .constant('moment', moment)
     .config(config)
@@ -27,5 +33,6 @@ module tradersbitCom {
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('main', main)
-    .directive('tbSideNavLayout', tbSideNavLayout);
+    .directive('tbSideNavLayout', tbSideNavLayout)
+    .directive('tbHome', tbHome);
 }

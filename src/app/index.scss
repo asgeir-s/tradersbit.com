@@ -1,3 +1,14 @@
+/*** Colors ***/
+$primary-color: #00acc1 !default;  //color("materialize-red", "lighten-2") !default;
+$primary-color-light: lighten($primary-color, 15%) !default;
+$primary-color-dark: darken($primary-color, 15%) !default;
+
+$secondary-color: #F5DEB3 !default;
+; //color("teal", "lighten-1") !default;
+$success-color: color("green", "base") !default;
+
+$light-font-color: #fff;
+
 /**
  *  Do not remove the comment below. It's the markers used by wiredep to inject
  *  sass dependencies when defined in the bower.json of your dependencies
@@ -5,7 +16,6 @@
 // bower:scss
 // endbower
 
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,700italic,400italic);
 
 @font-face {
   font-family: 'Material Icons';
@@ -44,51 +54,6 @@
   font-feature-settings: 'liga';
 }
 
-html {
-  font-family: 'Roboto Slab', serif;
-}
-
-[layout=row] {
-  flex-direction: row;
-}
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
-md-toolbar.md-default-theme {
-  background-color: black;
-}
-
-section.jumbotron {
-  margin-bottom: 30px;
-  padding: 1px 30px;
-  background-color: #5aadbb;
-  text-align: center;
-
-  color: white;
-
-  h1 {
-    font-size: 3em;
-  }
-}
-
-.techs {
-  display: flex;
-  flex-flow: row wrap;
-
-  md-card {
-    width: 30%;
-
-    img.pull-right {
-      float: right;
-      width: 100px;
-    }
-  }
-}
 
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject

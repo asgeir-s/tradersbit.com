@@ -3,7 +3,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
   $stateProvider
     .state('home', {
       url: '/',
-      template: '<main></main>'
+      template: '<tb-home></tb-home>'
     });
 
   $urlRouterProvider.otherwise('/');

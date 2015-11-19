@@ -1,5 +1,5 @@
 <section layout="row" flex style="height:100vh;">
-	<md-sidenav class="md-sidenav-left md-whiteframe-z2 tb-side-nav" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2 tb-side-nav show-gt-md" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
 		<md-toolbar>
 			<h1 class="md-toolbar-tools"><a href="/">TradersBit</a></h1>
 		</md-toolbar>
@@ -28,6 +28,32 @@
 			</md-list>
 		</md-content>
 	</md-sidenav>
+	
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2 tb-side-nav-mini hide-gt-md" md-component-id="left" md-is-locked-open="true">
+		<md-toolbar>
+			<h1 class="md-toolbar-tools"><a href="/">TB</a></h1>
+		</md-toolbar>
+		<md-content>
+			<md-list>
+				<md-list-item ng-click="ctrl.chnageState('home')">
+					<md-icon class="material-icons">home</md-icon>
+				</md-list-item>
+				<md-list-item ng-click="ctrl.chnageState('home')">
+					<md-icon class="material-icons">insert_chart</md-icon>
+				</md-list-item>
+				<md-list-item ng-click="ctrl.chnageState('home')">
+					<md-icon class="material-icons">settings_remote</md-icon>
+				</md-list-item>
+				<md-list-item ng-click="ctrl.chnageState('home')">
+					<md-icon class="material-icons">help</md-icon>
+				</md-list-item>
+				<md-list-item ng-click="ctrl.chnageState('home')">
+					<md-icon class="material-icons">business</md-icon>
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</md-sidenav>
+
 	<md-content role="main" layout="column" flex ng-transclude>
 		<!-- route output here -->
 	</md-content>
