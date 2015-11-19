@@ -1,0 +1,29 @@
+<section layout="row" flex style="height:100vh;">
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+		<md-toolbar>
+			<h1 class="md-toolbar-tools"><a href="/">TradersBit</a></h1>
+		</md-toolbar>
+		<md-content>
+			<md-list>
+				<md-list-item>
+					<md-button flex href="/" class="">Home</md-button>
+				</md-list-item>
+				<md-list-item>
+					<md-button flex href="streams" class="">Browse Streams</md-button>
+				</md-list-item>
+				<md-list-item>
+					<md-button flex href="publish" class="">Publish</md-button>
+				</md-list-item>
+				<md-list-item>
+					<md-button flex href="help" class="">Help</md-button>
+				</md-list-item>
+				<md-list-item>
+					<md-button flex href="about" class="">About</md-button>
+				</md-list-item>
+			</md-list>
+		</md-content>
+	</md-sidenav>
+	<md-content role="main" layout="column" flex ng-transclude>
+		<!-- route output here -->
+	</md-content>
+</section>
