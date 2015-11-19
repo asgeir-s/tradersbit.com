@@ -1,7 +1,7 @@
 import { WebDevTecService, ITecThing } from '../../services/webDevTec/webDevTec.service';
 
 /** @ngInject */
-export function main(): ng.IDirective {
+export function main(): angular.IDirective {
 
   return {
     restrict: 'E',
@@ -22,7 +22,7 @@ export class MainController {
   public creationDate: number;
 
   /* @ngInject */
-  constructor ($timeout: ng.ITimeoutService, webDevTec: WebDevTecService) {
+  constructor ($timeout: angular.ITimeoutService, webDevTec: WebDevTecService) {
     this.awesomeThings = new Array();
     this.webDevTec = webDevTec;
     this.classAnimation = '';
@@ -31,7 +31,7 @@ export class MainController {
   }
 
   /** @ngInject */
-  activate($timeout: ng.ITimeoutService) {
+  activate($timeout: angular.ITimeoutService) {
     this.getWebDevTec();
 
     var self = this;
