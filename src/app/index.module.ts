@@ -8,7 +8,7 @@ import { GithubContributor } from '../app/services/githubContributor/githubContr
 import { WebDevTecService } from '../app/services/webDevTec/webDevTec.service';
 import { acmeNavbar } from '../app/components/navbar/navbar.directive';
 import { acmeMalarkey } from '../app/components/malarkey/malarkey.directive';
-import { sideNavLayout } from '../app/components/side-nav-layout/side-nav-layout'
+import { tbSideNavLayout } from '../app/components/side-nav-layout/side-nav-layout'
 
 declare var malarkey: any;
 declare var moment: moment.MomentStatic;
@@ -27,5 +27,5 @@ module tradersbitCom {
     .directive('acmeNavbar', acmeNavbar)
     .directive('acmeMalarkey', acmeMalarkey)
     .directive('main', main)
-    .directive('sideNavLayout', sideNavLayout);
+    .directive('tbSideNavLayout', tbSideNavLayout);
 }
