@@ -3,7 +3,7 @@ function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('home', {
         url: '/',
-        template: '<main></main>'
+        template: '<tb-home></tb-home>'
     });
     $urlRouterProvider.otherwise('/');
 }

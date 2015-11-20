@@ -1,19 +1,22 @@
-.tb-side-nav {
-		width: 190px !important;
-	min-width: 190px !important;
-	max-width: 304px !important;
-}
+tb-side-nav-layout {
 
-.tb-side-nav-mini {
-		width: 55px !important;
-	min-width: 55px !important;
-	max-width: 55px !important;
-}
+	.tb-side-nav {
+			width: 190px !important;
+		min-width: 190px !important;
+		max-width: 304px !important;
+	}
 
-.side-nav-layout--logo {
-	text-align: center;
-	a {
-    text-decoration: none;
-	color: inherit;
-}
+	.tb-side-nav-mini {
+			width: 55px !important;
+		min-width: 55px !important;
+		max-width: 55px !important;
+	}
+
+	.side-nav-layout--logo {
+		text-align: center;
+		a {
+    		text-decoration: none;
+			color: inherit;
+		}
+	}
 }
