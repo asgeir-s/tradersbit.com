@@ -1,92 +1,63 @@
 <div layout="column" layout-align="center" flex>
-<div class="home--promo-top" flex>
+  <div class="home--promo-top" flex>
 
-  <h1 class="md-display-3">TradersBit</h1>
-  <p>TradersBit is a marketplace for "streams of trading signals".</p>
+    <h1 class="md-display-3">TradersBit</h1>
+    <p>TradersBit is a marketplace for "streams of trading signals".</p>
 
-</div>
-
-<tb-streams-table in-streams="ctrl.inStreams()" in-attributes="ctrl.attributes"></tb-streams-table>
-
-
-<table>
-  <thead>
-    <tr>
-      <th data-field="id">Stream</th>
-      <th data-field="profit">Profit</th>
-      <th data-field="price">Profitable trades</th>
-      <th data-field="price">number of trades</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Alvin</td>
-      <td>30%</td>
-      <td>80%</td>
-      <td>190</td>
-    </tr>
-    <tr>
-      <td>Alan</td>
-      <td>29%</td>
-      <td>70%</td>
-      <td>70</td>
-    </tr>
-    <tr>
-      <td>Jonathan</td>
-      <td>27%</td>
-      <td>67%</td>
-      <td>53</td>
-    </tr>
-  </tbody>
-</table>
-
-
-<div layout="row" layout-align="center center" layout-padding class="home--features-row">
-  <div class="home--features-row--item" flex>
-    <i class="material-icons">settings_remote</i>
-    <p>Publish streams and sell subscriptions to your streams.</p>
   </div>
-  <div class="home--features-row--item" flex>
-    <i class="material-icons">settings_input_antenna</i>
-    <p>You can subscribe to others signals streams. Get signals by email or <a href="/">Autotrader</a>.</p>
+
+  <tb-streams-table in-streams="ctrl.inStreams()" in-attributes="ctrl.attributes"></tb-streams-table>
+
+
+  <div layout="row" layout-sm="column" layout-align="center center" layout-padding layout-margin class="home--features-row">
+    <div class="home--features-row--item" flex flex-gt-lg="25">
+      <md-icon class="material-icons">settings_remote</md-icon>
+      <p>Publish streams and sell subscriptions to your streams.</p>
+    </div>
+    <div class="home--features-row--item" flex flex-gt-lg="25">
+      <md-icon class="material-icons">settings_input_antenna</md-icon>
+      <p>You can subscribe to others signals streams. Get signals by email or <a href="/">Autotrader</a>.</p>
+    </div>
+    <div class="home--features-row--item" flex flex-gt-lg="25">
+      <md-icon class="material-icons">trending_up</md-icon>
+      <p>Streams can be sorted by profit, average monthly return and more.</p>
+    </div>
   </div>
-  <div class="home--features-row--item" flex>
-    <i class="material-icons">trending_up</i>
-    <p>Streams can be sorted by profit, average monthly return and more.</p>
+
+
+  <div class="home--how-section">
+
+    <h1 class="center">How it works</h1>
+    <p class="center">
+      When a publisher publishes a new trading signal the trade is simulated and saved.
+      <br/> This makes it possible to create detailed statistics for each stream of tradig signals.
+      <br/> And give some indication of performance of the signal stream, if it was traded live.
+      <br/>
+    </p>
+    <div layout="row" layout-sm="column" layout-align="space-around start">
+      <md-card class="md-whiteframe-11dp" flex flex-gt-lg="40">
+        <md-card-content>
+          <h2 class="md-title">Subscribe</h2>
+          <p>
+            If you subscribe to a signal stream you can chouse between: Signals sendt to your email. Signals automaticly executed on
+            a exchange on your behalf.
+          </p>
+        </md-card-content>
+      </md-card>
+
+      <md-card class="md-whiteframe-11dp" flex flex-gt-lg="40">
+        <md-card-content>
+          <h2 class="md-title">Publish</h2>
+          <p>
+            It is free to open a signal stream and publish signals. The publisher desides the subscription fee to their signal stream.
+            When somebody subscribes to your stream, you are imidietly payed 70% of the subscription fee. You can also win
+            compititions, like most profitable the last 30 days. Bitcoin rewards. Signals can be published through the a
+            app (Android and IOS), desctop app, the manual web signaler or through our API.
+          </p>
+        </md-card-content>
+      </md-card>
+
+    </div>
+
   </div>
-</div>
-<div class="home--how-section">
-
-  <h1 class="center">How it works</h1>
-  <p class="center">
-    When a publisher publishes a new trading signal the trade is simulated and saved.
-    <br/> This makes it possible to create detailed statistics for each stream of tradig signals.
-    <br/> And give some indication of performance of the signal stream, if it was traded live.
-    <br/>
-  </p>
-
-  <ul class="home--how-section--row">
-    <li>
-      <i class="material-icons">filter_drama</i>Subscribe
-      <div>
-        <p>
-          If you subscribe to a signal stream you can chouse between: Signals sendt to your email. Signals automaticly executed on
-          a exchange on your behalf.
-        </p>
-      </div>
-    </li>
-    <li>
-   <i class="material-icons">place</i>Publish
-      <div>
-        <p>
-          It is free to open a signal stream and publish signals. The publisher desides the subscription fee to their signal stream.
-          When somebody subscribes to your stream, you are imidietly payed 70% of the subscription fee. You can also win
-          compititions, like most profitable the last 30 days. Bitcoin rewards. Signals can be published through the a app
-          (Android and IOS), desctop app, the manual web signaler or through our API.
-        </p>
-      </div>
-    </li>
-  </ul>
-
-</div>
 </div>

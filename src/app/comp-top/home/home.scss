@@ -1,3 +1,4 @@
+tb-home {
 .home--promo-top {
     padding: 7em;
     padding-top: 10em;
@@ -6,4 +7,19 @@
     text-align: center;
     color: $light-font-color;
     font-weight: 400;
+}
+
+.home--features-row {
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 3em;
+    
+    md-icon {
+        font-size: 4em;
+    }
+}
+
+md-card {
+    min-height: 300px;
+}
 }

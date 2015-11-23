@@ -52,7 +52,46 @@
 		</md-content>
 	</md-sidenav>
 
-	<md-content role="main" layout="column" flex ng-transclude>
+	<md-content role="main" layout="column">
 		<!-- route output here -->
+		<div flex ng-transclude> </div>
+
+		<footer class="footer" role="contentinfo">
+			<div layout="column" layout-align="center center">
+				<div flex layout="row" layout-margin layout-padding layout-align="center">
+					<ul flex>
+						<li>
+							<h3>Content</h3>
+						</li>
+						<li><a href="javascript:void(0)">Price</a></li>
+						<li><a href="javascript:void(0)">Help</a></li>
+						<li><a href="javascript:void(0)">API</a></li>
+						<li><a href="javascript:void(0)">About</a></li>
+					</ul>
+					<ul flex>
+						<li>
+							<h3>Follow Us</h3>
+						</li>
+						<li><a href="javascript:void(0)">Facebook</a></li>
+						<li><a href="javascript:void(0)">Twitter</a></li>
+					</ul>
+					<ul flex>
+						<li>
+							<h3>Legal</h3>
+						</li>
+						<li><a href="javascript:void(0)">Terms and Conditions</a></li>
+						<li><a href="javascript:void(0)">Privacy Policy</a></li>
+					</ul>
+				</div>
+				<div flex layout="row" layout-margin layout-padding layout-align="center">
+					<div flex flex-gt-md="70">
+						<small>Past performance of signal streams, is not necessarily indicative of future results. No representation is made that any account is likely to achieve profits or losses similar to those shown.</small>
+					</div>
+				</div>
+
+			</div>
+
+		</footer>
 	</md-content>
+
 </section>
