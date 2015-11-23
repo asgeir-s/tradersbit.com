@@ -8,6 +8,7 @@ $secondary-color: #F5DEB3 !default;
 ; //color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 
+$dark-font-color: #000;
 $light-font-color: #fff;
 $light-link-color: darken($light-font-color, 15%);
 
@@ -66,6 +67,14 @@ footer {
     color: $light-link-color;
      text-decoration:none;
   }
+  
+  .disclamer {
+    text-align: center;
+  }
+}
+
+md-content {
+  width: 100%
 }
 
 

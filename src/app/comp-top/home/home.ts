@@ -25,6 +25,7 @@ export class tbHomeCtrl {
       name: "Exchange",
       short: "EXC",
       jsonPath: "exchange",
+      on: true,
       getIt: (stream: Stream) => {
         return stream.exchange;
       }
@@ -33,6 +34,7 @@ export class tbHomeCtrl {
       name: "Currency Pair",
       jsonPath: "currencyPair",
       short: "CP",
+      on: true,
       getIt: (stream: Stream) => {
         return stream.currencyPair;
       }
@@ -41,6 +43,7 @@ export class tbHomeCtrl {
       name: "Average Monthly Profit (incl. fees)",
       short: "AMPi",
       jsonPath: "stats.averageMonthlyProfitIncl",
+      on: true,
       getIt: (stream: Stream) => {
         return (stream.stats.averageMonthlyProfitIncl * 100).toFixed(2);
       }
@@ -49,6 +52,7 @@ export class tbHomeCtrl {
       name: "Profit Factor",
       short: "PF",
       jsonPath: "stats.profitFactor",
+      on: true,
       getIt: (stream: Stream) => {
         return (stream.stats.profitFactor * 100).toFixed(2);
       }
@@ -57,6 +61,7 @@ export class tbHomeCtrl {
       name: "Part Winning Trades",
       short: "PWT",
       jsonPath: "stats.partWinningTrades",
+      on: true,
       getIt: (stream: Stream) => {
         return (stream.stats.partWinningTrades * 100).toFixed(2);
       }
@@ -65,6 +70,7 @@ export class tbHomeCtrl {
       name: "Average Trade",
       short: "AT",
       jsonPath: "stats.averageTrade",
+      on: true,
       getIt: (stream: Stream) => {
         return (stream.stats.averageTrade * 100).toFixed(2);
       }
@@ -73,13 +79,14 @@ export class tbHomeCtrl {
       name: "Number of Closed Trads",
       short: "NCT",
       jsonPath: "stats.numberOfClosedTrades",
+      on: true,
       getIt: (stream: Stream) => {
         return stream.stats.numberOfClosedTrades;
       }
     }
   ];
 
- /* @ngInject */
+  /* @ngInject */
   constructor() {
   }
 

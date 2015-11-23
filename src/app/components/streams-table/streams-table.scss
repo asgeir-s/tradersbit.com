@@ -61,6 +61,10 @@ table {
       &:first-child {
         border-left: none;
       }
+      a {
+            text-decoration: none;
+            color: inherit;
+      }
     }
   }
   tbody {

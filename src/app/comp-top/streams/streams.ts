@@ -25,6 +25,7 @@ export class tbStreamsCtrl {
       name: "ID",
       jsonPath: "id",
       short: "ID",
+      on: true,
       getIt: (stream: Stream) => {
         return stream.id;
       }
@@ -33,6 +34,7 @@ export class tbStreamsCtrl {
       name: "Subscription Price (USD)",
       short: "SP$",
       jsonPath: "subscriptionPriceUSD",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.subscriptionPriceUSD;
       }
@@ -41,6 +43,7 @@ export class tbStreamsCtrl {
       name: "Exchange",
       short: "EXC",
       jsonPath: "exchange",
+      on: true,
       getIt: (stream: Stream) => {
         return stream.exchange;
       }
@@ -49,6 +52,7 @@ export class tbStreamsCtrl {
       name: "Currency Pair",
       jsonPath: "currencyPair",
       short: "CP",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.currencyPair;
       }
@@ -57,6 +61,7 @@ export class tbStreamsCtrl {
       name: "Average Monthly Profit (incl. fees)",
       short: "AMPi",
       jsonPath: "stats.averageMonthlyProfitIncl",
+      on: true,
       getIt: (stream: Stream) => {
         return (stream.stats.averageMonthlyProfitIncl * 100).toFixed(2);
       }
@@ -65,6 +70,7 @@ export class tbStreamsCtrl {
       name: "Profit Factor",
       short: "PF",
       jsonPath: "stats.profitFactor",
+      on: false,
       getIt: (stream: Stream) => {
         return (stream.stats.profitFactor * 100).toFixed(2);
       }
@@ -73,6 +79,7 @@ export class tbStreamsCtrl {
       name: "Number of Loosing Trades",
       short: "NLT",
       jsonPath: "stats.numberOfLoosingTrades",
+      on: false,
       getIt: (stream: Stream) => {
         return (stream.stats.numberOfLoosingTrades).toFixed(2);
       }
@@ -81,6 +88,7 @@ export class tbStreamsCtrl {
       name: "Average Winning Trade",
       short: "AWT",
       jsonPath: "stats.averageWinningTrade",
+      on: false,
       getIt: (stream: Stream) => {
         return (stream.stats.averageWinningTrade).toFixed(2);
       }
@@ -89,6 +97,7 @@ export class tbStreamsCtrl {
       name: "Number of Profitable Trades",
       short: "NPT",
       jsonPath: "stats.numberOfProfitableTrades",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.numberOfProfitableTrades;
       }
@@ -97,6 +106,7 @@ export class tbStreamsCtrl {
       name: "Accumulated Loss",
       short: "AL",
       jsonPath: "stats.accumulatedLoss",
+      on: false,
       getIt: (stream: Stream) => {
         return (stream.stats.accumulatedLoss).toFixed(2);
       }
@@ -105,6 +115,7 @@ export class tbStreamsCtrl {
       name: "Average Loosing Trade",
       short: "ALT",
       jsonPath: "stats.averageLoosingTrade",
+      on: false,
       getIt: (stream: Stream) => {
         return (stream.stats.averageLoosingTrade).toFixed(2);
       }
@@ -113,6 +124,7 @@ export class tbStreamsCtrl {
       name: "Part Winning Trades",
       short: "PWT",
       jsonPath: "stats.partWinningTrades",
+      on: false,
       getIt: (stream: Stream) => {
         return (stream.stats.partWinningTrades * 100).toFixed(2);
       }
@@ -121,6 +133,7 @@ export class tbStreamsCtrl {
       name: "Part Loosing Trades",
       short: "PLT",
       jsonPath: "stats.partLoosingTrades",
+      on: false,
       getIt: (stream: Stream) => {
         return (stream.stats.partLoosingTrades * 100).toFixed(2);
       }
@@ -129,6 +142,7 @@ export class tbStreamsCtrl {
       name: "Average Trade",
       short: "AT",
       jsonPath: "stats.averageTrade",
+      on: false,
       getIt: (stream: Stream) => {
         return (stream.stats.averageTrade * 100).toFixed(2);
       }
@@ -137,6 +151,7 @@ export class tbStreamsCtrl {
       name: "Max Draw Down",
       short: "MDD",
       jsonPath: "stats.maxDrawDown",
+      on: false,
       getIt: (stream: Stream) => {
         return (stream.stats.maxDrawDown * 100).toFixed(2);
       }
@@ -145,6 +160,7 @@ export class tbStreamsCtrl {
       name: "Alltime Value Profit (incl. fees)",
       short: "AVPi",
       jsonPath: "stats.allTimeValueIncl",
+      on: false,
       getIt: (stream: Stream) => {
         return ((stream.stats.allTimeValueIncl - 1) * 100).toFixed(2);
       }
@@ -153,6 +169,7 @@ export class tbStreamsCtrl {
       name: "Number of Closed Trads",
       short: "NCT",
       jsonPath: "stats.numberOfClosedTrades",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.numberOfClosedTrades;
       }
@@ -161,6 +178,7 @@ export class tbStreamsCtrl {
       name: "Months of Trading",
       short: "MT",
       jsonPath: "stats.monthsOfTrading",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.monthsOfTrading.toFixed(2);
       }
@@ -169,6 +187,7 @@ export class tbStreamsCtrl {
       name: "Time of Last Signal",
       short: "TLS",
       jsonPath: "stats.timeOfLastSignal",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.timeOfLastSignal;
       }
@@ -177,6 +196,7 @@ export class tbStreamsCtrl {
       name: "Average Monthly Profit Excl",
       short: "AMPx",
       jsonPath: "stats.averageMonthlyProfitExcl",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.averageMonthlyProfitExcl.toFixed(2);
       }
@@ -185,6 +205,7 @@ export class tbStreamsCtrl {
       name: "All Time Value Excl",
       short: "ATVx",
       jsonPath: "stats.allTimeValueExcl",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.allTimeValueExcl.toFixed(2);
       }
@@ -193,6 +214,7 @@ export class tbStreamsCtrl {
       name: "Price on First Trade",
       short: "PFT",
       jsonPath: "stats.firstPrice",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.firstPrice.toFixed(2);
       }
@@ -201,6 +223,7 @@ export class tbStreamsCtrl {
       name: "Buy and Hold Change (first to last trade)",
       short: "BHC",
       jsonPath: "stats.buyAndHoldChange",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.buyAndHoldChange.toFixed(2);
       }
@@ -209,6 +232,7 @@ export class tbStreamsCtrl {
       name: "Accumulated Profit",
       short: "AP",
       jsonPath: "stats.accumulatedProfit",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.accumulatedProfit.toFixed(2);
       }
@@ -217,13 +241,18 @@ export class tbStreamsCtrl {
       name: "Time of First Signal",
       short: "TFS",
       jsonPath: "stats.timeOfFirstSignal",
+      on: false,
       getIt: (stream: Stream) => {
         return stream.stats.timeOfFirstSignal.toFixed(2);
       }
     }
   ];
 
-  constructor() {
+  constructor(private $mdSidenav) {
+  }
+  
+  toggleRightSidebar() {
+    this.$mdSidenav('right').toggle();
   }
 
 }
