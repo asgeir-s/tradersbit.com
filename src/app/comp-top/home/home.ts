@@ -9,15 +9,18 @@ export function tbHome(): angular.IDirective {
     scope: {},
     templateUrl: 'app/comp-top/home/home.html',
     controller: tbHomeCtrl,
-    controllerAs: 'ctrl'
+    controllerAs: 'ctrl',
+    bindToController: {
+      inStreams: '&'
+    },
   };
 
 }
 
 /** @ngInject */
 export class tbHomeCtrl {
-  public streamsObs: any;
-  public attributes: StreamsAttribute[] = [
+  inStreams: () => Array<Stream>;
+  attributes: StreamsAttribute[] = [
     {
       name: "Exchange",
       short: "EXC",
@@ -76,8 +79,8 @@ export class tbHomeCtrl {
     }
   ];
 
-  constructor(publicApiService: PublicApiService) {
-    this.streamsObs = publicApiService.allStreamsObs();
+ /* @ngInject */
+  constructor() {
   }
 
 }

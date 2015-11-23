@@ -2,21 +2,31 @@ import { StreamsAttribute, Stream} from '../../../app/typings/types';
 
 export class PublicApiService {
   private static BASE_URL: string = "https://dc3r5gsogb.execute-api.us-west-2.amazonaws.com/dev";
-  private static streams: any;
-
+  streams: any;
+  
 
   /** @ngInject */
-  constructor(private $http: angular.IHttpService, public rx: any) {
-    console.log('Const run');
-    PublicApiService.streams = this.rx.Observable
-        .fromPromise(this.$http.get(PublicApiService.BASE_URL + '/streams'))
-        .map((response) => { return response.data; });
-
-    PublicApiService.streams.subscribe((item) => console.log('got items from landa: ' + item));
-
+  constructor(private $http: angular.IHttpService, private $q: angular.IQService) {
   }
 
-  allStreamsObs(): any {
-    return PublicApiService.streams;
+  allStreams(): angular.IPromise<Array<Stream>> {
+    var deferred = this.$q.defer();
+    if (this.streams) {
+      console.log('PublicApiService - get already fatched streams: ' + this.streams);
+      deferred.resolve(this.streams);
+    }
+    else {
+      console.log('PublicApiService - fatches streams');
+      this.$http.get(PublicApiService.BASE_URL + '/streams').then(
+        (res) => {
+          this.streams = res.data;
+          deferred.resolve(this.streams);
+        },
+        (err) => {
+          console.error('PublicApiService - Could not get streams. Error: ' + err);
+          deferred.reject('PublicApiService - Could not get streams. Error: ' + err);
+        })
+    }
+    return deferred.promise;
   }
 }

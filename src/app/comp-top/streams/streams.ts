@@ -9,15 +9,18 @@ export function tbStreams(): angular.IDirective {
     scope: {},
     templateUrl: 'app/comp-top/streams/streams.html',
     controller: tbStreamsCtrl,
-    controllerAs: 'ctrl'
+    controllerAs: 'ctrl',
+    bindToController: {
+      inStreams: '&'
+    },
   };
 
 }
 
 /** @ngInject */
 export class tbStreamsCtrl {
-  public streamsObs: any;
-  public attributes: StreamsAttribute[] = [
+  inStreams: () => Array<Stream>;
+  attributes: StreamsAttribute[] = [
     {
       name: "ID",
       jsonPath: "id",
@@ -220,8 +223,7 @@ export class tbStreamsCtrl {
     }
   ];
 
-  constructor(publicApiService: PublicApiService) {
-    this.streamsObs = publicApiService.allStreamsObs();
+  constructor() {
   }
 
 }

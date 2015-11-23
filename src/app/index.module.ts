@@ -19,7 +19,7 @@ import { PublicApiService } from './services/public-api-service/public-api-servi
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'rx'])
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial'])
     .config(config)
     .config(routerConfig)
     .run(runBlock)
