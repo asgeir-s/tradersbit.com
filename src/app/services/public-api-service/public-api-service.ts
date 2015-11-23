@@ -7,15 +7,16 @@ export class PublicApiService {
 
   /** @ngInject */
   constructor(private $http: angular.IHttpService, public rx: any) {
+    console.log('Const run');
     PublicApiService.streams = this.rx.Observable
         .fromPromise(this.$http.get(PublicApiService.BASE_URL + '/streams'))
         .map((response) => { return response.data; });
 
-    PublicApiService.streams.subscribe((item) => console.log(item));
+    PublicApiService.streams.subscribe((item) => console.log('got items from landa: ' + item));
 
   }
 
-  allStreams(): any {
+  allStreamsObs(): any {
     return PublicApiService.streams;
   }
 }

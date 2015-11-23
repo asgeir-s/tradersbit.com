@@ -4,6 +4,10 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     .state('home', {
       url: '/',
       template: '<tb-home></tb-home>'
+    })
+    .state('streams', {
+      url: '/',
+      template: '<tb-streams></tb-streams>'
     });
 
   $urlRouterProvider.otherwise('/');
