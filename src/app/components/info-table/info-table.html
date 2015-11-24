@@ -1,0 +1,16 @@
+<div flex class="stream-stats">
+  <h4 class="md-headline">{{ctrl.inName}}</h4>
+  <table>
+    <tr ng-repeat="attribute in ctrl.inAttributes">
+      <td>
+        <span class="tooltip-item table-header">
+              {{attribute.name}}
+            </span>
+        <md-tooltip ng-if="attribute.description">
+          {{attribute.description}}
+        </md-tooltip>
+      </td>
+      <td>{{attribute.getIt(ctrl.inStream)}}</td>
+    </tr>
+  </table>
+</div>

@@ -1,5 +1,6 @@
-import { PublicApiService } from '../../services/public-api-service/public-api-service'
+import { PublicApi } from '../../services/public-api/public-api'
 import { Stream, StreamsAttribute } from '../../typings/types'
+import { StreamAttributes } from '../../util/stream-attributes'
 
 /** @ngInject */
 export function tbHome(): angular.IDirective {
@@ -20,28 +21,30 @@ export function tbHome(): angular.IDirective {
 /** @ngInject */
 export class tbHomeCtrl {
   inStreams: () => Array<Stream>;
-  attributes: StreamsAttribute[] = [
-    {
+  attributes: Array<StreamsAttribute> = [
+   {
       name: "Exchange",
       short: "EXC",
+      description: '',
       jsonPath: "exchange",
       on: true,
       getIt: (stream: Stream) => {
         return stream.exchange;
       }
-    },
-    {
+    },    {
       name: "Currency Pair",
       jsonPath: "currencyPair",
       short: "CP",
+      description: '',
       on: true,
       getIt: (stream: Stream) => {
         return stream.currencyPair;
       }
     },
-    {
+      {
       name: "Average Monthly Profit (incl. fees)",
       short: "AMPi",
+      description: "The average profit per month calculated from first to last signal. Including trading fees.",
       jsonPath: "stats.averageMonthlyProfitIncl",
       on: true,
       getIt: (stream: Stream) => {
@@ -51,6 +54,7 @@ export class tbHomeCtrl {
     {
       name: "Profit Factor",
       short: "PF",
+      description: '',
       jsonPath: "stats.profitFactor",
       on: true,
       getIt: (stream: Stream) => {
@@ -60,6 +64,7 @@ export class tbHomeCtrl {
     {
       name: "Part Winning Trades",
       short: "PWT",
+      description: "Percent closed trades with profit larger then 0",
       jsonPath: "stats.partWinningTrades",
       on: true,
       getIt: (stream: Stream) => {
@@ -69,6 +74,7 @@ export class tbHomeCtrl {
     {
       name: "Average Trade",
       short: "AT",
+      description: "Average profit on a trade",
       jsonPath: "stats.averageTrade",
       on: true,
       getIt: (stream: Stream) => {
@@ -78,6 +84,7 @@ export class tbHomeCtrl {
     {
       name: "Number of Closed Trads",
       short: "NCT",
+      description: '',
       jsonPath: "stats.numberOfClosedTrades",
       on: true,
       getIt: (stream: Stream) => {
@@ -85,7 +92,6 @@ export class tbHomeCtrl {
       }
     }
   ];
-
   /* @ngInject */
   constructor() {
   }

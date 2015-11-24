@@ -7,19 +7,23 @@ import { runBlock } from './index.run';
 // top-component
 import { tbHome } from './comp-top/home/home';
 import { tbStreams } from './comp-top/streams/streams';
+import { tbStream } from './comp-top/stream/stream';
 
 // components
 import { tbSideNavLayout } from './components/side-nav-layout/side-nav-layout';
 import { tbStreamsTable } from './components/streams-table/streams-table';
+import { tbInfoTable } from './components/info-table/info-table';
 
 // services
-import { PublicApiService } from './services/public-api-service/public-api-service';
+import { PublicApi } from './services/public-api/public-api';
+import { BitcoinaverageApi } from './services/bitcoinaverage-api/bitcoinaverage-api';
 
 
 module tradersbitCom {
   'use strict';
 
   angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial'])
+    .constant('_', (<any> window)._)
     .config(config)
     .config(routerConfig)
     .run(runBlock)
@@ -27,13 +31,16 @@ module tradersbitCom {
   // top-components
     .directive('tbHome', tbHome)
     .directive('tbStreams', tbStreams)
+    .directive('tbStream', tbStream)
     
   // components
     .directive('tbSideNavLayout', tbSideNavLayout)
     .directive('tbStreamsTable', tbStreamsTable)
+    .directive('tbInfoTable', tbInfoTable)
     
   // services
-    .service('publicApiService', PublicApiService);
+    .service('publicApi', PublicApi)
+    .service('bitcoinaverageApi', BitcoinaverageApi);
 
 
 

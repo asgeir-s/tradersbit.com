@@ -27,12 +27,16 @@ export class tbStreamsTableCtrl {
     predicate: String = "stats.averageMonthlyProfitIncl";
 
     /* @ngInject */
-    constructor() {
+    constructor(private $state) {
     }
 
     order(predicate: String) {
         this.reverse = (this.predicate === predicate) ? !this.reverse : false;
         this.predicate = predicate;
+    }
+    
+    goToStream(streamID: string) {
+        this.$state.go('stream', {'streamId': streamID});
     }
 
 }

@@ -1,0 +1,52 @@
+<div layout="column" layout-margin layout-fill layout-padding layout-align="center center">
+
+  <div flex class="stream-chart" layout="column" layout-margin layout-fill layout-padding>
+    <!--
+    <div class="google-chart" google-chart chart="ctrl.zoomChart" ng-if="ctrl.zoomChart">
+    </div>
+    -->
+    <div flex layout="row" ng-if="ctrl.zoomChart">
+      <div flex google-chart chart="ctrl.zoomChart"></div>
+    </div>
+
+  </div>
+
+  <md-button class="md-primary md-raised subscribe-button" ng-click="ctrl.openSubscriptionDialog($event)" flex flex-md="100">
+    <h3>Subscribe for {{ctrl.stream.subscriptionPriceUSD | currency:"$"}} ≈ ฿{{ctrl.subscriptionPriceBTC | number:4}}</h3>
+  </md-button>
+
+  <div flex layout="row" layout-sm="column" layout-margin layout-fill layout-padding>
+    <tb-info-table in-stream="ctrl.stream" in-attributes="ctrl.infoAttributes" in-name="Info"></tb-info-table>
+    <tb-info-table in-stream="ctrl.stream" in-attributes="ctrl.statsAttributes" in-name="Stats"></tb-info-table>
+  </div>
+
+  <div flex class="stream-trades" layout="column" layout-margin layout-fill layout-padding>
+    <h4 flex class="md-headline">Closed Trades</h4>
+    <div flex>
+
+      <table class="trads-table">
+        <thead>
+          <tr>
+            <th class="table-header">position</th>
+            <th class="table-header">open time</th>
+            <th class="table-header">open price</th>
+            <th class="table-header">close time</th>
+            <th class="table-header">close price</th>
+            <th class="table-header">change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="trade in ctrl.trades" ng-class="{winning: trade.close.change > 0, loosing: trade.close.change < 0}">
+            <td class="table-header">{{trade.position}}</td>
+            <td>{{trade.open.timestamp | date: 'short'}}</td>
+            <td>{{trade.open.price | currency }}</td>
+            <td>{{trade.close.timestamp | date: 'short'}}</td>
+            <td>{{trade.close.price | currency }}</td>
+            <td>{{trade.close.change * 100 | number: 2}}%</td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>

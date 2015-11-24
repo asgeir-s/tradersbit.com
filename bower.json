@@ -2,6 +2,7 @@
   "name": "tradersbitCom",
   "version": "0.0.0",
   "dependencies": {
+    "lodash": "~3.10.1",
     "angular-sanitize": "~1.4.2",
     "angular-ui-router": "~0.2.15",
     "angular-material": "1.0.0-rc4",
@@ -11,7 +12,8 @@
     "moment": "~2.10.6",
     "animate.css": "~3.4.0",
     "angular": "~1.4.2",
-    "rx-angular": "angular-rx#~1.0.4"
+    "rx-angular": "angular-rx#~1.0.4",
+    "angular-google-chart": "0.1.0-beta.2"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"
