@@ -6,9 +6,8 @@ export class BitcoinaverageApi {
     constructor(private $http: angular.IHttpService) {}
 
     getPrice() {
-      return this.$http.get(this.apiURL, {
-      })
-        .then((response: any) => {
+      return this.$http.get(this.apiURL)
+        .then((response: angular.IHttpPromiseCallbackArg<number>) => {
           return response.data;
         });
     }

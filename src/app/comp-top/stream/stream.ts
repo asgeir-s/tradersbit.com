@@ -12,8 +12,8 @@ export function tbStream(): angular.IDirective {
     controller: tbStreamCtrl,
     controllerAs: 'ctrl',
     bindToController: {
-      inStream: '&',
-      inSignals: '&'
+      inStream: '=',
+      inSignals: '='
     },
   };
 
@@ -21,40 +21,17 @@ export function tbStream(): angular.IDirective {
 
 /** @ngInject */
 export class tbStreamCtrl {
-  private btcRate: number;
-  stream: Stream;
-  signals: Array<Signal>;
-  inStream: () => Stream;
-  inSignals: () => Array<Signal>;
-  public trades: Array<Trade> = [];
-  public subscriptionPriceBTC: number;
-  public infoAttributes: Array<StreamsAttribute> = StreamAttributes.infoAttributes();
-  public statsAttributes: Array<StreamsAttribute> = StreamAttributes.statsAttributes();
-
   
-  /* @ngInject */
-  constructor($filter: any, $scope: any, private $mdDialog: angular.material.IDialogService, bitcoinaverageApi: BitcoinaverageApi) {
-    this.stream = this.inStream();
-    this.signals = this.inSignals();
+  // input:
+  inStream: Stream;
+  inSignals: Array<Signal>;
 
-    console.log('inStream: ' + JSON.stringify(this.stream));
-    console.log('inSignals: ' + JSON.stringify(this.signals));
-    
-    this.generateTrades(this.signals);
-
-    bitcoinaverageApi.getPrice().then(
-      (btcPrice: number) => {
-        this.btcRate = btcPrice;
-      });
-
-    // scales the chart width according to the window width (without this; the chart 'sometimes' fail)
-    $scope.$watch(() => window.innerWidth,
-      (newValue: string, oldValue: string) => {
-        this.zoomChart.options.width = window.innerWidth - 65;
-      });
-  }
-
-  public zoomChart = {
+  private btcRate: number;
+  trades: Array<Trade>;
+  subscriptionPriceBTC: number;
+  infoAttributes: Array<StreamsAttribute> = StreamAttributes.infoAttributes();
+  statsAttributes: Array<StreamsAttribute> = StreamAttributes.statsAttributes();
+  zoomChart = {
     signals: [],
     type: "AnnotationChart",
     data: {
@@ -73,40 +50,57 @@ export class tbStreamCtrl {
       displayZoomButtons: false,
       'backgroundColor.fill': "#000",
       height: 380,
-      width: window.innerWidth - 80
+      width: this.contentWidth() - 65
     }
   };
+
   
-  updateSubscriptionPrice() {
-    this.subscriptionPriceBTC = this.stream.subscriptionPriceUSD / this.btcRate;
+  /* @ngInject */
+  constructor($scope: any, private $mdDialog: angular.material.IDialogService, bitcoinaverageApi: BitcoinaverageApi) {
+    this.trades = this.signalsToTrades(this.inSignals);
+    this.addSignalsToChart(this.inSignals);
+    bitcoinaverageApi.getPrice().then(
+      (btcPrice: number) => {
+        this.btcRate = btcPrice;
+        this.subscriptionPriceBTC = this.inStream.subscriptionPriceUSD / this.btcRate;
+      });
+
+    // scales the chart width according to the window width (without this; the chart 'sometimes' fail)
+    $scope.$watch(() => this.contentWidth(),
+      (newValue: number, oldValue: number) => {
+        this.zoomChart.options.width = newValue - 65;
+      });
   }
 
-  generateTrades(signals: Array<Signal>) {
+  signalsToTrades(signals: Array<Signal>): Array<Trade> {
     console.log(signals);
-    
-    var startI = 0;
-    var first = signals[startI];
+
+    let tradesArray = new Array<Trade>();
+
+    let startI = 0;
+    let first = signals[startI];
     if (first.signal !== 0) {
       startI = 1;
     }
 
-    for (var i = startI; i < signals.length; i++) {
+    for (let i = startI; i < signals.length; i++) {
       if (signals[i].signal === 0) {
-        var close: Signal = signals[i];
+        let close: Signal = signals[i];
         if (i + 1 < signals.length) {
-          var open: Signal = signals[i + 1];
-          var trade: Trade = {
+          let open: Signal = signals[i + 1];
+          let trade: Trade = {
             open: open,
             close: close,
-            position: this.getPosition(open.signal)
+            position: this.positionNumberToString(open.signal)
           };
-          this.trades.push(trade);
+          tradesArray.push(trade);
         }
       }
     }
+    return tradesArray;
   }
 
-  getPosition(signalNum: number) {
+  private positionNumberToString(signalNum: number): string {
     if (signalNum === - 1) {
       return "short";
     } else if (signalNum === 1) {
@@ -116,7 +110,7 @@ export class tbStreamCtrl {
     }
   }
 
-  addSignals(signals: Signal[]) {
+  private addSignalsToChart(signals: Signal[]) {
     for (var i = signals.length - 1; i > 0; i--) {
       this.zoomChart.signals.push(signals[i]);
       this.zoomChart.data.rows.push({
@@ -125,6 +119,16 @@ export class tbStreamCtrl {
           { v: ((signals[i].value) - this.zoomChart.signals[0].value) * 100 }
         ]
       });
+    }
+  }
+
+  private contentWidth(): number {
+    let rawWidth = window.innerWidth;
+    if (rawWidth >= 1055) {
+      return rawWidth - 200;
+    }
+    else {
+      return rawWidth - 55;
     }
   }
 
@@ -138,7 +142,7 @@ export class tbStreamCtrl {
       targetEvent: ev,
       clickOutsideToClose: true,
       locals: {
-        stream: this.stream,
+        stream: this.inStream,
         btcRate: this.btcRate
       }
     });

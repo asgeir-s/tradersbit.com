@@ -23,7 +23,7 @@ import { BitcoinaverageApi } from './services/bitcoinaverage-api/bitcoinaverage-
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial'])
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart'])
     .constant('_', (<any> window)._)
     .config(config)
     .config(routerConfig)
