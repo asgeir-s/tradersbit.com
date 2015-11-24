@@ -13,7 +13,10 @@
     "animate.css": "~3.4.0",
     "angular": "~1.4.2",
     "rx-angular": "angular-rx#~1.0.4",
-    "angular-google-chart": "0.1.0-beta.2"
+    "angular-google-chart": "0.1.0-beta.2",
+    "highstock": "highstock-release#~2.1.9",
+    "highcharts-ng": "~0.0.11"
+
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"

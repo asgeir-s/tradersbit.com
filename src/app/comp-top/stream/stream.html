@@ -1,16 +1,30 @@
-<div layout="column" layout-margin layout-fill layout-padding layout-align="center center">
+<div layout="column" layout-align="center center" flex>
 
-  <div flex google-chart chart="ctrl.zoomChart"></div>
+  <md-toolbar flex>
+    <div class="md-toolbar-tools">
+      <h2>Streams > {{ctrl.inStream.id}}</h2>
+      <span flex></span>
+      <md-button ng-click="ctrl.toggleRightSidebar()">
+        Subscribe
+      </md-button>
+    </div>
+  </md-toolbar>
 
-  <md-button class="md-primary md-raised subscribe-button" ng-click="ctrl.openSubscriptionDialog($event)" flex flex-md="100">
-    <h3>Subscribe for {{ctrl.inStream.subscriptionPriceUSD | currency:"$"}} ≈ ฿{{ctrl.subscriptionPriceBTC | number:4}}</h3>
-  </md-button>
 
-  <div flex layout="row" layout-sm="column" layout-margin layout-fill layout-padding>
-    <tb-info-table in-stream="ctrl.inStream" in-attributes="ctrl.infoAttributes" in-name="Info"></tb-info-table>
-    <tb-info-table in-stream="ctrl.inStream" in-attributes="ctrl.statsAttributes" in-name="Stats"></tb-info-table>
+  <highchart id="chart1" config="ctrl.chartConfig"></highchart>
+
+  <div layout="column" layout-margin layout-fill layout-padding layout-align="center center" flex>
+
+    <md-button class="md-primary md-raised subscribe-button" ng-click="ctrl.openSubscriptionDialog($event)" flex flex-md="100">
+      <h3>Subscribe for {{ctrl.inStream.subscriptionPriceUSD | currency:"$"}} ≈ ฿{{ctrl.subscriptionPriceBTC | number:4}}</h3>
+    </md-button>
+
+    <div flex layout="row" layout-sm="column" layout-margin layout-fill layout-padding>
+      <tb-info-table in-stream="ctrl.inStream" in-attributes="ctrl.infoAttributes" in-name="Info"></tb-info-table>
+      <tb-info-table in-stream="ctrl.inStream" in-attributes="ctrl.statsAttributes" in-name="Stats"></tb-info-table>
+    </div>
+
+    <tb-trades-table in-trades="ctrl.trades"></tb-trades-table>
+
   </div>
-
-  <tb-trades-table in-trades="ctrl.trades"></tb-trades-table>
-
 </div>
