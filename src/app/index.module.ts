@@ -13,6 +13,7 @@ import { tbStream } from './comp-top/stream/stream';
 import { tbSideNavLayout } from './components/side-nav-layout/side-nav-layout';
 import { tbStreamsTable } from './components/streams-table/streams-table';
 import { tbInfoTable } from './components/info-table/info-table';
+import { tbTradesTable } from './components/trades-table/trades-table';
 
 // services
 import { PublicApi } from './services/public-api/public-api';
@@ -37,6 +38,7 @@ module tradersbitCom {
     .directive('tbSideNavLayout', tbSideNavLayout)
     .directive('tbStreamsTable', tbStreamsTable)
     .directive('tbInfoTable', tbInfoTable)
+    .directive('tbTradesTable', tbTradesTable)
     
   // services
     .service('publicApi', PublicApi)
