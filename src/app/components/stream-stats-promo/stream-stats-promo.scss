@@ -1,0 +1,25 @@
+tb-stream-stats-promo {
+	text-align: center;
+	h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	small {
+		color: lighten($dark-font-color, 55%);
+	}
+	.good {
+		background-color: $background-color-good;
+	}
+	
+	.bad {
+		background-color: $background-color-bad;
+	}
+	
+	.promo-item {
+		margin-top: 2em;
+		margin-bottom: 2em;
+		margin-left: 1em;
+		margin-right: 1em;
+	}
+	
+}

@@ -12,6 +12,9 @@ $dark-font-color: #000;
 $light-font-color: #fff;
 $light-link-color: darken($light-font-color, 15%);
 
+$background-color-good: #c7f3cb;
+$background-color-bad: #f3d7cd;
+
 /**
  *  Do not remove the comment below. It's the markers used by wiredep to inject
  *  sass dependencies when defined in the bower.json of your dependencies

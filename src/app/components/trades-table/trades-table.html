@@ -1,4 +1,4 @@
-  <div flex class="stream-trades" layout="column" layout-margin layout-fill layout-padding>
+  <div class="stream-trades">
     <h4 flex class="md-headline">Closed Trades</h4>
     <div flex>
 
@@ -14,7 +14,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="trade in ctrl.inTrades" ng-class="{winning: trade.close.change > 0, loosing: trade.close.change < 0}">
+          <tr ng-repeat="trade in ctrl.inTrades" ng-class="{good: trade.close.change > 0, bad: trade.close.change < 0}">
             <td class="table-header">{{trade.position}}</td>
             <td>{{trade.open.timestamp | date: 'short'}}</td>
             <td>{{trade.open.price | currency }}</td>

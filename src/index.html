@@ -20,6 +20,17 @@
   <!-- css files will be automatically insert here -->
   <!-- endinject -->
   <!-- endbuild -->
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function(event) { 
+      Highcharts.createElement('link', {
+	href: '//fonts.googleapis.com/css?family=Unica+One',
+	rel: 'stylesheet',
+	type: 'text/css'
+}, null, document.getElementsByTagName('head')[0]);
+});
+
+  </script>
 </head>
 
 <body>
@@ -54,7 +65,7 @@
   <!-- angular templates will be automatically converted in js and inserted here -->
   <!-- endinject -->
   <!-- endbuild -->
-    <script src="/bower_components/highstock/themes/dark-unica.js"></script>
+
 </body>
 
 </html>

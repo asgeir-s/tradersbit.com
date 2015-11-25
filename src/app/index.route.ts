@@ -40,8 +40,6 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       controller:
       class StateStream {
         constructor(public stream, public signals) {
-          console.log('stream: ' + JSON.stringify(stream));
-          console.log('signals: ' + JSON.stringify(signals));
          }
       },
       controllerAs: "ctrl"

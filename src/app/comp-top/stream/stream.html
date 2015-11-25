@@ -4,27 +4,42 @@
     <div class="md-toolbar-tools">
       <h2>Streams > {{ctrl.inStream.id}}</h2>
       <span flex></span>
-      <md-button ng-click="ctrl.toggleRightSidebar()">
+      <md-button ng-click="">
         Subscribe
       </md-button>
+      <small> 
+        {{ctrl.inStream.subscriptionPriceUSD | currency:"$"}} ≈ ฿{{ctrl.subscriptionPriceBTC | number:4}}
+      </small>
+
     </div>
   </md-toolbar>
 
+  <div flex layout="column" layout-fill>
+    <tb-stream-chart-profit in-signals="ctrl.inSignals" flex></tb-stream-chart-profit>
+  </div>
 
-  <highchart id="chart1" config="ctrl.chartConfig"></highchart>
+  <div flex layout="column" layout-fill>
+    <tb-stream-info-promo in-stream="ctrl.inStream" flex></tb-stream-info-promo>
+  </div>
 
-  <div layout="column" layout-margin layout-fill layout-padding layout-align="center center" flex>
+  <div flex layout="column" layout-fill>
+    <tb-stream-stats-promo in-stream="ctrl.inStream" flex></tb-stream-stats-promo>
+  </div>
 
-    <md-button class="md-primary md-raised subscribe-button" ng-click="ctrl.openSubscriptionDialog($event)" flex flex-md="100">
-      <h3>Subscribe for {{ctrl.inStream.subscriptionPriceUSD | currency:"$"}} ≈ ฿{{ctrl.subscriptionPriceBTC | number:4}}</h3>
-    </md-button>
 
-    <div flex layout="row" layout-sm="column" layout-margin layout-fill layout-padding>
-      <tb-info-table in-stream="ctrl.inStream" in-attributes="ctrl.infoAttributes" in-name="Info"></tb-info-table>
-      <tb-info-table in-stream="ctrl.inStream" in-attributes="ctrl.statsAttributes" in-name="Stats"></tb-info-table>
+
+  <div layout="column" layout-fill layout-align="center center" flex>
+
+    <div flex layout="row" layout-sm="column" layout-fill>
+      <tb-stream-average-trade-chart in-stream="ctrl.inStream" flex></tb-stream-average-trade-chart>
+      <tb-stream-piechart-trades in-stream="ctrl.inStream" flex></tb-stream-piechart-trades>
     </div>
 
-    <tb-trades-table in-trades="ctrl.trades"></tb-trades-table>
+    <div flex layout="column" layout-fill>
+      <tb-trades-table flex in-trades="ctrl.trades"></tb-trades-table>
+    </div>
+
+    <tb-info-table flex in-stream="ctrl.inStream" in-attributes="ctrl.statsAttributes" in-name="Stats"></tb-info-table>
 
   </div>
 </div>

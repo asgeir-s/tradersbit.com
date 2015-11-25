@@ -1,0 +1,30 @@
+<div flex layout="row" layout-sm="column" layout-fill layout-column flex>
+	<div flex ng-class="{good: ctrl.inStream.stats.averageMonthlyProfitIncl > 0, bad: ctrl.inStream.stats.averageMonthlyProfitIncl < 0}">
+		<div class="promo-item">
+			<small>Average Monthly Profit</small>
+			<br/>
+			<h3 class="md-display-1">{{ctrl.inStream.stats.averageMonthlyProfitIncl * 100 | number:2}} %</h3>
+		</div>
+	</div>
+	<div flex ng-class="{good: ctrl.inStream.stats.averageTrade > 0, bad: ctrl.inStream.stats.averageTrade < 0}">
+		<div class="promo-item">
+			<small>Average Trade</small>
+			<br/>
+			<h3 class="md-display-1">{{ctrl.inStream.stats.averageTrade * 100 | number:2}} %</h3>
+		</div>
+	</div>
+	<div flex ng-class="{good: ctrl.inStream.stats.partWinningTrades > 0.5, bad: ctrl.inStream.stats.partWinningTrades < 0.5}">
+		<div class="promo-item">
+			<small>Profitable Trades</small>
+			<br/>
+			<h3 class="md-display-1">{{ctrl.inStream.stats.partWinningTrades * 100 | number:2}} %</h3>
+		</div>
+	</div>
+	<div flex ng-class="{good: ctrl.inStream.stats.profitFactor > 1, bad: ctrl.inStream.stats.profitFactor < 1}">
+		<div class="promo-item">
+			<small>Profit Factor</small>
+			<br/>
+			<h3 class="md-display-1">{{ctrl.inStream.stats.profitFactor | number:2}}</h3>
+		</div>
+	</div>
+</div>

@@ -1,6 +1,7 @@
 import { BitcoinaverageApi } from '../../services/bitcoinaverage-api/bitcoinaverage-api'
 import { Stream, StreamsAttribute, Signal, Trade } from '../../typings/types'
 import { StreamAttributes } from '../../util/stream-attributes'
+import { HighChartThemes } from '../../util/highChartThemes'
 
 /** @ngInject */
 export function tbStream(): angular.IDirective {
@@ -32,36 +33,9 @@ export class tbStreamCtrl {
     infoAttributes: Array<StreamsAttribute> = StreamAttributes.infoAttributes();
     statsAttributes: Array<StreamsAttribute> = StreamAttributes.statsAttributes();
   
-    //This is not a highcharts object. It just looks a little like one!
-    chartConfig = {
-        options: {
-            //This is the Main Highcharts chart config. Any Highchart options are valid here.
-            //will be overriden by values specified below.
-            chart: {
-                zoomType: 'x'
-            },
-            rangeSelector: {
-                enabled: true
-            },
-            navigator: {
-                enabled: true
-            },
-              tooltip: {
-                    valueDecimals: 2
-                }
-        },
-        //The below properties are watched separately for changes.
-
-        //Series object (optional) - a list of series using normal Highcharts series options.
-        series: [{
-            data: this.createChartSerie(this.inSignals)
-        }],
-        useHighStocks: true
-    };
-  
-  
     /* @ngInject */
-    constructor($scope: any, private $mdDialog: angular.material.IDialogService, bitcoinaverageApi: BitcoinaverageApi, highchartsNG) {
+    constructor(private $timeout, private $mdDialog: angular.material.IDialogService, bitcoinaverageApi: BitcoinaverageApi, highchartsNG) {
+        // Highcharts.setOptions(HighChartThemes.darkTheme);        
         this.trades = this.signalsToTrades(this.inSignals);
 
         bitcoinaverageApi.getPrice().then(
@@ -72,8 +46,6 @@ export class tbStreamCtrl {
     }
 
     signalsToTrades(signals: Array<Signal>): Array<Trade> {
-        console.log(signals);
-
         let tradesArray = new Array<Trade>();
 
         let startI = 0;
@@ -109,16 +81,6 @@ export class tbStreamCtrl {
         }
     }
 
-    private createChartSerie(signals: Signal[]): any {
-        let series = new Array<Array<number>>();
-        for (var i = signals.length - 1; i > 0; i--) {
-            series.push(Array(signals[i].timestamp,
-                (signals[i].value - signals[0].value) * 100
-            ))
-        }
-        return series;
-    }
-
     private contentWidth(): number {
         let rawWidth = window.innerWidth;
         if (rawWidth >= 1055) {
@@ -130,8 +92,6 @@ export class tbStreamCtrl {
     }
 
     openSubscriptionDialog(ev: any): void {
-        console.log("test");
-
         this.$mdDialog.show({
             controller: "SubscribeController as subscribeCtrl",
             templateUrl: "app/stream/subscribe.tmpl.html",
