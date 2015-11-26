@@ -6,21 +6,14 @@
       <md-button ng-click="">
         Subscribe
       </md-button>
-      <small> 
-        {{ctrl.inStream.subscriptionPriceUSD | currency:"$"}} ≈ ฿{{ctrl.subscriptionPriceBTC | number:4}}
-      </small>
-
     </div>
   </md-toolbar>
-
 
   <tb-stream-stats-promo flex in-stream="ctrl.inStream"></tb-stream-stats-promo>
 
   <tb-stream-chart-profit flex in-signals="ctrl.inSignals"></tb-stream-chart-profit>
 
-  <tb-stream-info-promo flex inBtcRate="ctrl.btcRate" in-stream="ctrl.inStream"></tb-stream-info-promo>
-
-
+  <tb-stream-info-promo flex in-btc-rate="ctrl.btcRate" in-stream="ctrl.inStream"></tb-stream-info-promo>
 
   <div flex class="two-chart-row">
     <tb-stream-average-trade-chart in-stream="ctrl.inStream"></tb-stream-average-trade-chart>

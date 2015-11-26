@@ -10,7 +10,7 @@ export function tbStreamInfoPromo(): angular.IDirective {
         templateUrl: 'app/components/stream-info-promo/stream-info-promo.html',
         bindToController: {
             inStream: '=',
-            inBtcRate: '@'
+            inBtcRate: '='
         },
         controller: tbStreamInfoPromeCtrl,
         controllerAs: 'ctrl'
@@ -22,12 +22,9 @@ export function tbStreamInfoPromo(): angular.IDirective {
 export class tbStreamInfoPromeCtrl {
     inStream: Stream;
     inBtcRate: number;
-    subscriptionPriceBTC: number;
     
     /* @ngInject */
-    constructor() { 
-        this.subscriptionPriceBTC = this.inBtcRate;
-    }
+    constructor() { }
 
     logoUrl(): string {
         if (this.inStream.exchange === 'bitstamp') {
