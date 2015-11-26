@@ -1,5 +1,4 @@
-<div layout="column">
-
+<div layout="column" layout-align="center">
   <md-toolbar flex>
     <div class="md-toolbar-tools">
       <h2>Streams > {{ctrl.inStream.id}}</h2>
@@ -14,16 +13,22 @@
     </div>
   </md-toolbar>
 
-  <tb-stream-chart-profit flex in-signals="ctrl.inSignals"></tb-stream-chart-profit>
-
-  <tb-stream-info-promo flex in-stream="ctrl.inStream"></tb-stream-info-promo>
 
   <tb-stream-stats-promo flex in-stream="ctrl.inStream"></tb-stream-stats-promo>
 
-  <div flex>
+  <tb-stream-chart-profit flex in-signals="ctrl.inSignals"></tb-stream-chart-profit>
+
+  <tb-stream-info-promo flex inBtcRate="ctrl.btcRate" in-stream="ctrl.inStream"></tb-stream-info-promo>
+
+
+
+  <div flex class="two-chart-row">
     <tb-stream-average-trade-chart in-stream="ctrl.inStream"></tb-stream-average-trade-chart>
     <tb-stream-piechart-trades in-stream="ctrl.inStream"></tb-stream-piechart-trades>
   </div>
+
+  <md-divider md-inset></md-divider>
+
 
   <tb-trades-table flex in-trades="ctrl.trades"></tb-trades-table>
 

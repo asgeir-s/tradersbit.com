@@ -6,5 +6,10 @@
 	<div flex>
 		<small>currency pair</small> <br/>
 		<h3 class="md-display-1">BTC/USD</h3>
-		</div>
+	</div>
+	<div flex>
+		<small>subsciption price</small> <br/>
+		<h3 class="md-display-1">{{ctrl.inStream.subscriptionPriceUSD | currency:"$"}}</h3>
+		<small> ≈ ฿{{ctrl.subscriptionPriceBTC | number:4}} </small>
+	</div>
 </div>

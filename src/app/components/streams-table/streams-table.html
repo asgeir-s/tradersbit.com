@@ -1,29 +1,26 @@
 <md-content>
-	<div layout layout-align="center center">
-		<div flex flex-gt-lg="90">
-			<table class="streams-table click-table">
-				<thead>
-					<tr>
-						<th ng-repeat="atribute in ctrl.inAttributes()" ng-if="atribute.on">
-							<a class="md-subhead table-header md-body-2" href="" ng-click="ctrl.order(atribute.jsonPath)">
+	<table class="streams-table click-table">
+		<thead>
+			<tr>
+				<th ng-repeat="atribute in ctrl.inAttributes()" ng-if="atribute.on">
+					<a class="md-subhead table-header md-body-2" href="" ng-click="ctrl.order(atribute.jsonPath)">
 								{{atribute.short}}     
 								<md-tooltip md-direction="right">{{atribute.name}}</md-tooltip>
 							</a>
-							<span class="sortorder" ng-show="ctrl.predicate === atribute.jsonPath">
+					<span class="sortorder" ng-show="ctrl.predicate === atribute.jsonPath">
                 				<i class="material-icons" ng-hide="ctrl.reverse">arrow_drop_down</i>
                 				<i class="material-icons" ng-show="ctrl.reverse">arrow_drop_up</i>
               				</span>
-						</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="stream in ctrl.inStreams() | orderBy:ctrl.predicate:ctrl.reverse" ng-click="ctrl.goToStream(stream.id)">
-						<td ng-repeat="atribute in ctrl.inAttributes()" style="pointer:cursor" ng-if="atribute.on">
-							{{atribute.getIt(stream)}}
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</div>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="stream in ctrl.inStreams() | orderBy:ctrl.predicate:ctrl.reverse" ng-click="ctrl.goToStream(stream.id)">
+				<td ng-repeat="atribute in ctrl.inAttributes()" style="pointer:cursor" ng-if="atribute.on">
+					{{atribute.getIt(stream)}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
 </md-content>

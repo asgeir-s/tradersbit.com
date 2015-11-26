@@ -21,4 +21,18 @@ tb-stream {
 		margin-bottom: 2em;
 	}
 	
+	.two-chart-row {
+		margin-top: 2em;
+		margin-bottom: 1em;
+	}
+	
+	md-divider {
+    	margin-left: 0 !important;
+    	margin-right: 0 !important;
+	}
+	
+	md-content {
+  		overflow-x: hidden; // bad hack from chrome
+	}
+	
 }

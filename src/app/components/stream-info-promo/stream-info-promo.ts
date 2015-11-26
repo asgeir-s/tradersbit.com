@@ -1,4 +1,5 @@
 import { StreamsAttribute, Stream} from '../../../app/typings/types';
+import { BitcoinaverageApi } from '../../services/bitcoinaverage-api/bitcoinaverage-api';
 
 /** @ngInject */
 export function tbStreamInfoPromo(): angular.IDirective {
@@ -8,7 +9,8 @@ export function tbStreamInfoPromo(): angular.IDirective {
         scope: {},
         templateUrl: 'app/components/stream-info-promo/stream-info-promo.html',
         bindToController: {
-            inStream: '='
+            inStream: '=',
+            inBtcRate: '@'
         },
         controller: tbStreamInfoPromeCtrl,
         controllerAs: 'ctrl'
@@ -19,9 +21,13 @@ export function tbStreamInfoPromo(): angular.IDirective {
 /** @ngInject */
 export class tbStreamInfoPromeCtrl {
     inStream: Stream;
-
+    inBtcRate: number;
+    subscriptionPriceBTC: number;
+    
     /* @ngInject */
-    constructor() { }
+    constructor() { 
+        this.subscriptionPriceBTC = this.inBtcRate;
+    }
 
     logoUrl(): string {
         if (this.inStream.exchange === 'bitstamp') {

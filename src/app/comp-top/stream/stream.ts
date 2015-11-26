@@ -27,22 +27,17 @@ export class tbStreamCtrl {
     inStream: Stream;
     inSignals: Array<Signal>;
 
-    private btcRate: number;
+    btcRate: number;
     trades: Array<Trade>;
     subscriptionPriceBTC: number;
     infoAttributes: Array<StreamsAttribute> = StreamAttributes.infoAttributes();
     statsAttributes: Array<StreamsAttribute> = StreamAttributes.statsAttributes();
   
     /* @ngInject */
-    constructor(private $timeout, private $mdDialog: angular.material.IDialogService, bitcoinaverageApi: BitcoinaverageApi, highchartsNG) {
+    constructor(private $timeout, private $mdDialog: angular.material.IDialogService, highchartsNG) {
         // Highcharts.setOptions(HighChartThemes.darkTheme);        
         this.trades = this.signalsToTrades(this.inSignals);
 
-        bitcoinaverageApi.getPrice().then(
-            (btcPrice: number) => {
-                this.btcRate = btcPrice;
-                this.subscriptionPriceBTC = this.inStream.subscriptionPriceUSD / this.btcRate;
-            });
     }
 
     signalsToTrades(signals: Array<Signal>): Array<Trade> {

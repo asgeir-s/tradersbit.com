@@ -1,5 +1,5 @@
-<div layout="column" layout-align="center" flex>
-<md-toolbar>
+<div layout="column" layout-align="center">
+<md-toolbar flex>
   <div class="md-toolbar-tools">
     <h2>Streams</h2>
     <span flex></span>
@@ -9,7 +9,7 @@
   </div>
 </md-toolbar>
 
-<tb-streams-table in-streams="ctrl.inStreams()" in-attributes="ctrl.streamAttributes"></tb-streams-table>
+<tb-streams-table flex in-streams="ctrl.inStreams()" in-attributes="ctrl.streamAttributes"></tb-streams-table>
 
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
   <md-toolbar class="md-theme-light md-warn md-hue-3">
