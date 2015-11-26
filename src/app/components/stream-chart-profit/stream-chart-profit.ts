@@ -49,6 +49,9 @@ export class tbStreamChartProfitCtrl {
                 xAxis: {
                     type: 'datetime',
                     ordinal: false
+                },
+                exporting: { 
+                    enabled: false 
                 }
             },
             //The below properties are watched separately for changes.

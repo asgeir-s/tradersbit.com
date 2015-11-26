@@ -1,8 +1,6 @@
-<section layout="row" flex style="height:100vh;">
-	<md-sidenav class="md-sidenav-left md-whiteframe-z2 tb-side-nav show-gt-md" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-
+<section layout="row" style="height:100vh;">
+	<md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav" md-component-id="leftBig" md-is-locked-open="$mdMedia('gt-md')">
 		<h1 class="md-display-1 side-nav-layout--logo"><a href="/">TradersBit</a></h1>
-
 		<md-content>
 			<md-list>
 				<md-list-item ng-click="ctrl.chnageState('home')">
@@ -29,14 +27,14 @@
 		</md-content>
 	</md-sidenav>
 
-	<md-sidenav class="md-sidenav-left md-whiteframe-z2 tb-side-nav-mini hide-gt-md" md-component-id="left" md-is-locked-open="true">
+	<md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav-mini hide-gt-md" md-component-id="leftSmal" md-is-locked-open="true">
 		<h1 class="md-display-1 side-nav-layout--logo"><a href="/">TB</a></h1>
-		<md-content>
+		<md-content class="sidenav-icons">
 			<md-list>
 				<md-list-item ng-click="ctrl.chnageState('home')">
 					<md-icon class="material-icons">home</md-icon>
 				</md-list-item>
-				<md-list-item ng-click="ctrl.chnageState('home')">
+				<md-list-item ng-click="ctrl.chnageState('streams')">
 					<md-icon class="material-icons">insert_chart</md-icon>
 				</md-list-item>
 				<md-list-item ng-click="ctrl.chnageState('home')">
@@ -52,11 +50,11 @@
 		</md-content>
 	</md-sidenav>
 
-	<md-content role="main" layout="column">
+	<md-content flex role="main" layout="column">
 		<!-- route output here -->
 		<div flex ng-transclude> </div>
 
-		<footer class="footer" role="contentinfo">
+		<footer flex>
 			<div layout="column" layout-align="center center">
 				<div flex layout="row" layout-margin layout-padding layout-align="center">
 					<ul flex>
@@ -83,10 +81,10 @@
 						<li><a href="javascript:void(0)">Privacy Policy</a></li>
 					</ul>
 				</div>
-				<div flex layout="row" layout-margin layout-padding layout-align="center">
-					<div class="disclamer" flex flex-gt-md="70">
+				<div flex>
+					<p class="disclamer">
 						<small>Past performance of signal streams, is not necessarily indicative of future results. No representation is made that any account is likely to achieve profits or losses similar to those shown.</small>
-					</div>
+					</p>
 				</div>
 
 			</div>

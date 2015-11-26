@@ -1,4 +1,4 @@
-<div layout="column" layout-align="center center" flex>
+<div layout="column">
 
   <md-toolbar flex>
     <div class="md-toolbar-tools">
@@ -14,32 +14,19 @@
     </div>
   </md-toolbar>
 
-  <div flex layout="column" layout-fill>
-    <tb-stream-chart-profit in-signals="ctrl.inSignals" flex></tb-stream-chart-profit>
+  <tb-stream-chart-profit flex in-signals="ctrl.inSignals"></tb-stream-chart-profit>
+
+  <tb-stream-info-promo flex in-stream="ctrl.inStream"></tb-stream-info-promo>
+
+  <tb-stream-stats-promo flex in-stream="ctrl.inStream"></tb-stream-stats-promo>
+
+  <div flex>
+    <tb-stream-average-trade-chart in-stream="ctrl.inStream"></tb-stream-average-trade-chart>
+    <tb-stream-piechart-trades in-stream="ctrl.inStream"></tb-stream-piechart-trades>
   </div>
 
-  <div flex layout="column" layout-fill>
-    <tb-stream-info-promo in-stream="ctrl.inStream" flex></tb-stream-info-promo>
-  </div>
+  <tb-trades-table flex in-trades="ctrl.trades"></tb-trades-table>
 
-  <div flex layout="column" layout-fill>
-    <tb-stream-stats-promo in-stream="ctrl.inStream" flex></tb-stream-stats-promo>
-  </div>
+  <tb-info-table flex in-stream="ctrl.inStream" in-attributes="ctrl.statsAttributes" in-name="Stats"></tb-info-table>
 
-
-
-  <div layout="column" layout-fill layout-align="center center" flex>
-
-    <div flex layout="row" layout-sm="column" layout-fill>
-      <tb-stream-average-trade-chart in-stream="ctrl.inStream" flex></tb-stream-average-trade-chart>
-      <tb-stream-piechart-trades in-stream="ctrl.inStream" flex></tb-stream-piechart-trades>
-    </div>
-
-    <div flex layout="column" layout-fill>
-      <tb-trades-table flex in-trades="ctrl.trades"></tb-trades-table>
-    </div>
-
-    <tb-info-table flex in-stream="ctrl.inStream" in-attributes="ctrl.statsAttributes" in-name="Stats"></tb-info-table>
-
-  </div>
 </div>

@@ -48,7 +48,10 @@ export class tbStreamPiechartTradesCtrl {
                         }
                     }
                 },
-                 colors: ['#96D957', '#da5a58', '#f1d537']
+                colors: ['#96D957', '#da5a58', '#f1d537'],
+                exporting: {
+                    enabled: false
+                }
 
             },
             //The below properties are watched separately for changes.
@@ -63,26 +66,17 @@ export class tbStreamPiechartTradesCtrl {
                         y: this.inStream.stats.numberOfProfitableTrades,
                         sliced: true,
                         selected: true
-                    }, 
+                    },
                     {
                         name: "Loosing",
                         y: this.inStream.stats.numberOfLoosingTrades
-                    }, 
+                    },
                     {
                         name: "Unchanged value",
                         y: (this.inStream.stats.numberOfClosedTrades - (this.inStream.stats.numberOfProfitableTrades + this.inStream.stats.numberOfLoosingTrades))
                     }]
             }],
-            useHighStocks: false,
-              // function to trigger reflow in bootstrap containers
-            // see: http://jsfiddle.net/pgbc988d/ and https://github.com/pablojim/highcharts-ng/issues/211
-            func: function(chart) {
-                $timeout(function() {
-                    chart.reflow();
-                    //The below is an event that will trigger all instances of charts to reflow
-                    //$scope.$broadcast('highchartsng.reflow');
-                }, 0)
-            }
+            useHighStocks: false
         };
 
     }

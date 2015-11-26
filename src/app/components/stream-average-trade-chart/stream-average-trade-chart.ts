@@ -22,7 +22,7 @@ export class tbStreamAverageTradeChartCtrl {
     avrageTradeBarChartConfig: any;
 
     /* @ngInject */
-    constructor($timeout) {
+    constructor() {
         this.avrageTradeBarChartConfig = {
             options: {
                 chart: {
@@ -39,15 +39,18 @@ export class tbStreamAverageTradeChartCtrl {
                 tooltip: {
                     valueSuffix: '%',
                     valueDecimals: 2
+                },
+                exporting: { 
+                    enabled: false 
                 }
             },
             //The below properties are watched separately for changes.
 
             //Series object (optional) - a list of series using normal Highcharts series options.
             series: [{
-                    name: 'Average Profitable Trade',
-                    data: [this.inStream.stats.averageWinningTrade * 100]
-                },
+                name: 'Average Profitable Trade',
+                data: [this.inStream.stats.averageWinningTrade * 100]
+            },
                 {
                     name: 'Average Loosing Trade',
                     data: [-this.inStream.stats.averageLoosingTrade * 100]
@@ -56,19 +59,16 @@ export class tbStreamAverageTradeChartCtrl {
                     name: 'Average Trade',
                     data: [this.inStream.stats.averageTrade * 100]
                 }],
-            useHighStocks: false,
-            // function to trigger reflow in bootstrap containers
-            // see: http://jsfiddle.net/pgbc988d/ and https://github.com/pablojim/highcharts-ng/issues/211
-            func: function(chart) {
-                $timeout(function() {
-                    chart.reflow();
-                    //The below is an event that will trigger all instances of charts to reflow
-                    //$scope.$broadcast('highchartsng.reflow');
-                }, 0)
-            }
+            useHighStocks: false
         };
-        
 
     }
+    /**
+    $(window).resize(function() {
+    height = chart.height
+    width = $("#chartRow").width() / 2
+    chart.setSize(width, height, doAnimation = true);
+});
+*/
 
 }

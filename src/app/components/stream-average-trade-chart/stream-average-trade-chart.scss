@@ -1,0 +1,15 @@
+tb-stream-average-trade-chart {
+	.average-trade-chart {
+		width: 50% !important;
+	}
+	.chart-wrapper {
+    float: left;
+    //padding-bottom: 40%;
+    position: relative;
+    width: 50%;
+	    @media screen and (max-width: 660px) {
+       width: 100%;
+    }
+	
+  }
+}
