@@ -90,16 +90,26 @@ export class tbStreamCtrl {
     }
 
     openSubscriptionDialog(ev: any): void {
+
         this.$mdDialog.show({
-            controller: "SubscribeController as subscribeCtrl",
-            templateUrl: "app/stream/subscribe.tmpl.html",
+            template: `
+                <md-dialog aria-label="Subscribe">
+                    <tb-subscription-dialog in-stream="ctrl.stream" in-btc-rate="ctrl.btcRate">
+                </tb-subscription-dialog></md-dialog>`,
             parent: angular.element(document.body),
             targetEvent: ev,
             clickOutsideToClose: true,
             locals: {
                 stream: this.inStream,
                 btcRate: this.btcRate
-            }
+            },
+            controller: 
+            /** @ngInject */
+            class DialogCtrl {
+                constructor(public stream, public btcRate) {
+                }
+            },
+            controllerAs: 'ctrl',
         });
 
     }

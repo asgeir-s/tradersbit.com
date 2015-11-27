@@ -1,0 +1,30 @@
+tb-subscription-dialog {
+	width:500px;
+	text-align: center;
+	
+	md-toolbar {
+		color: $light-font-color !important;
+	}
+	
+		h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	small {
+		color: lighten($dark-font-color, 55%);
+	}
+	
+	.recaptcha {
+		    align-self: center;
+			padding: 1em;
+	}
+	
+	.signals-to-email {
+		    margin-bottom: 0px;
+	}
+	
+	md-progress-circular {
+		align-self: center;
+	}
+	
+}

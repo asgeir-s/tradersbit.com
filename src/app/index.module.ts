@@ -19,6 +19,7 @@ import { tbStreamStatsPromo } from './components/stream-stats-promo/stream-stats
 import { tbStreamChartProfit } from './components/stream-chart-profit/stream-chart-profit';
 import { tbStreamPiechartTrades } from './components/stream-piechart-trades/stream-piechart-trades';
 import { tbStreamAverageTradeChart } from './components/stream-average-trade-chart/stream-average-trade-chart';
+import { tbSubscriptionDialog } from './components/subscription-dialog/subscription-dialog';
 
 // services
 import { PublicApi } from './services/public-api/public-api';
@@ -28,8 +29,9 @@ import { BitcoinaverageApi } from './services/bitcoinaverage-api/bitcoinaverage-
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart', 'highcharts-ng'])
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart', 'highcharts-ng', 'vcRecaptcha'])
     .constant('_', (<any> window)._)
+    .constant('Highcharts', (<any> window).Highcharts)
     .config(config)
     .config(routerConfig)
     .run(runBlock)
@@ -49,12 +51,10 @@ module tradersbitCom {
     .directive('tbStreamChartProfit', tbStreamChartProfit)
     .directive('tbStreamPiechartTrades', tbStreamPiechartTrades)
     .directive('tbStreamAverageTradeChart', tbStreamAverageTradeChart)
+    .directive('tbSubscriptionDialog', tbSubscriptionDialog)
    
   // services
     .service('publicApi', PublicApi)
     .service('bitcoinaverageApi', BitcoinaverageApi);
-
-
-
 
 }

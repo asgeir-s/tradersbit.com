@@ -1,4 +1,4 @@
-import { StreamsAttribute, Stream, Signal} from '../../../app/typings/types';
+import { StreamsAttribute, Stream, Signal, Subscription, CoinbaseEmbedCode } from '../../../app/typings/types';
 
 export class PublicApi {
   private static BASE_URL: string = "https://dc3r5gsogb.execute-api.us-west-2.amazonaws.com/dev";
@@ -10,7 +10,7 @@ export class PublicApi {
   constructor(private $http: angular.IHttpService, private $q: angular.IQService, private _: _.LoDashStatic) { }
   
   allStreams(): angular.IPromise<Array<Stream>> {
-    let deferred = this.$q.defer();
+    let deferred: angular.IDeferred<Array<Stream>> = this.$q.defer();
 
     if (typeof this.streams !== 'undefined') {
       // the variable is defined
@@ -33,7 +33,7 @@ export class PublicApi {
   }
 
   stream(streamId: string): angular.IPromise<Stream> {
-    let deferred = this.$q.defer();
+    let deferred: angular.IDeferred<Stream> = this.$q.defer();
     if (typeof this.streams !== 'undefined') {
       // the variable is defined
       console.log('PublicApiService - get already fatched streams: ' + this.streams);
@@ -49,7 +49,7 @@ export class PublicApi {
 
   signals(streamId: string): angular.IPromise<Array<Signal>> {
     
-    let deferred = this.$q.defer();
+    let deferred: angular.IDeferred<Array<Signal>> = this.$q.defer();
     
     if (typeof this.signalsMap[streamId] !== 'undefined') {
       // the variable is defined
@@ -71,4 +71,28 @@ export class PublicApi {
 
     return deferred.promise;
   }
+  
+  subscribe(reCaptcha: string, streamId: string, subscription: Subscription): angular.IPromise<CoinbaseEmbedCode> {
+      let deferred: angular.IDeferred<CoinbaseEmbedCode> = this.$q.defer();
+        
+      console.log("streamId: " + streamId + ", subscription: " + JSON.stringify(subscription) + ", reCaptcha: " + reCaptcha);
+      this.$http({
+        method: "POST",
+        url: PublicApi.BASE_URL + "/streams/" + streamId + "/subscribe",
+        data: subscription,
+        headers: {
+          "x-re-captcha": reCaptcha,
+          'Content-Type': 'application/json'
+        }}).then(
+          (res: angular.IHttpPromiseCallbackArg<CoinbaseEmbedCode>) => {
+          deferred.resolve(res.data);
+        },
+        (err) => {
+          console.error('PublicApiService - Failed to add subscription. Error: ' + err);
+          deferred.reject('PublicApiService - Failed to add subscription. Error: ' + err);
+        })
+        
+      return deferred.promise;
+    }
+    
 }
