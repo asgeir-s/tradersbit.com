@@ -31,16 +31,16 @@ module tradersbitCom {
 
   angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart', 'highcharts-ng', 'vcRecaptcha'])
     .constant('_', (<any> window)._)
-    .constant('Highcharts', (<any> window).Highcharts)
+    .constant('highcharts', (<any> window).Highcharts)
     .config(config)
     .config(routerConfig)
     .run(runBlock)
-    
+
   // top-components
     .directive('tbHome', tbHome)
     .directive('tbStreams', tbStreams)
     .directive('tbStream', tbStream)
-    
+
   // components
     .directive('tbSideNavLayout', tbSideNavLayout)
     .directive('tbStreamsTable', tbStreamsTable)
@@ -52,7 +52,7 @@ module tradersbitCom {
     .directive('tbStreamPiechartTrades', tbStreamPiechartTrades)
     .directive('tbStreamAverageTradeChart', tbStreamAverageTradeChart)
     .directive('tbSubscriptionDialog', tbSubscriptionDialog)
-   
+
   // services
     .service('publicApi', PublicApi)
     .service('bitcoinaverageApi', BitcoinaverageApi);

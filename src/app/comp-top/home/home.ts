@@ -1,6 +1,4 @@
-import { PublicApi } from '../../services/public-api/public-api'
 import { Stream, StreamsAttribute } from '../../typings/types'
-import { StreamAttributes } from '../../util/stream-attributes'
 
 /** @ngInject */
 export function tbHome(): angular.IDirective {
@@ -9,17 +7,17 @@ export function tbHome(): angular.IDirective {
     restrict: 'E',
     scope: {},
     templateUrl: 'app/comp-top/home/home.html',
-    controller: tbHomeCtrl,
+    controller: TbHomeCtrl,
     controllerAs: 'ctrl',
     bindToController: {
       inStreams: '&'
-    },
+    }
   };
 
 }
 
 /** @ngInject */
-export class tbHomeCtrl {
+export class TbHomeCtrl {
   inStreams: () => Array<Stream>;
   attributes: Array<StreamsAttribute> = [
    {
@@ -92,8 +90,5 @@ export class tbHomeCtrl {
       }
     }
   ];
-  /* @ngInject */
-  constructor() {
-  }
 
 }

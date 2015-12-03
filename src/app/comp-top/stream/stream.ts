@@ -1,7 +1,6 @@
 import { BitcoinaverageApi } from '../../services/bitcoinaverage-api/bitcoinaverage-api'
 import { Stream, StreamsAttribute, Signal, Trade } from '../../typings/types'
 import { StreamAttributes } from '../../util/stream-attributes'
-import { HighChartThemes } from '../../util/highChartThemes'
 
 /** @ngInject */
 export function tbStream(): angular.IDirective {
@@ -10,18 +9,18 @@ export function tbStream(): angular.IDirective {
         restrict: 'E',
         scope: {},
         templateUrl: 'app/comp-top/stream/stream.html',
-        controller: tbStreamCtrl,
+        controller: TbStreamCtrl,
         controllerAs: 'ctrl',
         bindToController: {
             inStream: '=',
             inSignals: '='
-        },
+        }
     };
 
 }
 
 /** @ngInject */
-export class tbStreamCtrl {
+export class TbStreamCtrl {
   
     // input:
     inStream: Stream;
@@ -33,8 +32,8 @@ export class tbStreamCtrl {
     statsAttributes: Array<StreamsAttribute> = StreamAttributes.statsAttributes();
   
     /* @ngInject */
-    constructor(private $timeout, private $mdDialog: angular.material.IDialogService, highchartsNG, bitcoinaverageApi: BitcoinaverageApi) {
-        // Highcharts.setOptions(HighChartThemes.darkTheme);        
+    constructor(private $timeout: angular.ITimeoutService, private $mdDialog: angular.material.IDialogService, highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi) {
+        // highcharts.setOptions(HighChartThemes.darkTheme);        
         this.trades = this.signalsToTrades(this.inSignals);
 
         bitcoinaverageApi.getPrice().then(
@@ -69,26 +68,6 @@ export class tbStreamCtrl {
         return tradesArray;
     }
 
-    private positionNumberToString(signalNum: number): string {
-        if (signalNum === - 1) {
-            return "short";
-        } else if (signalNum === 1) {
-            return "long";
-        } else if (signalNum === 0) {
-            return "close";
-        }
-    }
-
-    private contentWidth(): number {
-        let rawWidth = window.innerWidth;
-        if (rawWidth >= 1055) {
-            return rawWidth - 200;
-        }
-        else {
-            return rawWidth - 55;
-        }
-    }
-
     openSubscriptionDialog(ev: any): void {
 
         this.$mdDialog.show({
@@ -106,12 +85,22 @@ export class tbStreamCtrl {
             controller: 
             /** @ngInject */
             class DialogCtrl {
-                constructor(public stream, public btcRate) {
+                constructor(public stream: Stream, public btcRate: number) {
                 }
             },
-            controllerAs: 'ctrl',
+            controllerAs: 'ctrl'
         });
 
+    }
+
+    private positionNumberToString(signalNum: number): string {
+        if (signalNum === - 1) {
+            return "short";
+        } else if (signalNum === 1) {
+            return "long";
+        } else if (signalNum === 0) {
+            return "close";
+        }
     }
 
 }

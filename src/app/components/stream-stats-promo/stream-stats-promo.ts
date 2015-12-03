@@ -1,4 +1,4 @@
-import { StreamsAttribute, Stream} from '../../../app/typings/types';
+import { Stream} from '../../../app/typings/types';
 
 /** @ngInject */
 export function tbStreamStatsPromo(): angular.IDirective {
@@ -10,18 +10,13 @@ export function tbStreamStatsPromo(): angular.IDirective {
         bindToController: {
             inStream: '='
         },
-        controller: tbStreamStatsPromeCtrl,
+        controller: TbStreamStatsPromeCtrl,
         controllerAs: 'ctrl'
     };
 
 }
 
 /** @ngInject */
-export class tbStreamStatsPromeCtrl {
+export class TbStreamStatsPromeCtrl {
     inStream: Stream;
-
-    /* @ngInject */
-    constructor() { 
-    }
-
 }

@@ -11,14 +11,14 @@ export function tbStreamsTable(): angular.IDirective {
             inStreams: '&',
             inAttributes: '&'
         },
-        controller: tbStreamsTableCtrl,
+        controller: TbStreamsTableCtrl,
         controllerAs: 'ctrl'
     };
 
 }
 
 /** @ngInject */
-export class tbStreamsTableCtrl {
+export class TbStreamsTableCtrl {
     // inputs
     inAttributes: () => Array<StreamsAttribute>;
     inStreams: () => Array<Stream>;
@@ -27,7 +27,7 @@ export class tbStreamsTableCtrl {
     predicate: String = "stats.averageMonthlyProfitIncl";
 
     /* @ngInject */
-    constructor(private $state) {
+    constructor(private $state: any) {
     }
 
     order(predicate: String) {

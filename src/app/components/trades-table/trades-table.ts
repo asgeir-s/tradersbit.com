@@ -1,4 +1,4 @@
-import { Trade } from '../../../app/typings/types';
+
 
 /** @ngInject */
 export function tbTradesTable(): angular.IDirective {
@@ -10,15 +10,13 @@ export function tbTradesTable(): angular.IDirective {
         bindToController: {
             inTrades: '='
         },
-        controller: tbTradesTableCtrl,
+        controller: TbTradesTableCtrl,
         controllerAs: 'ctrl'
     };
 
 }
 
 /** @ngInject */
-export class tbTradesTableCtrl {
-    /* @ngInject */
-    constructor() { }
+export class TbTradesTableCtrl {
 
 }

@@ -1,4 +1,5 @@
 import { PublicApi } from './services/public-api/public-api'
+import { Stream, Signal } from './typings/types';
 
 /** @ngInject */
 export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
@@ -13,7 +14,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       },
       controller:
       class StateHome {
-        constructor(public streams) { }
+        constructor(public streams: Array<Stream>) { }
       },
       controllerAs: 'ctrl'
     })
@@ -26,7 +27,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       },
       controller:
       class StateStreams {
-        constructor(public streams) { }
+        constructor(public streams: Array<Stream>) { }
       },
       controllerAs: 'ctrl'
     })
@@ -34,12 +35,12 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       url: "/streams/:streamId",
       template: '<tb-stream in-stream="ctrl.stream" in-signals="ctrl.signals"></tb-stream>',
       resolve: {
-        stream: (publicApi: PublicApi, $stateParams) => publicApi.stream($stateParams.streamId),
-        signals: (publicApi: PublicApi, $stateParams) => publicApi.signals($stateParams.streamId)
+        stream: (publicApi: PublicApi, $stateParams: any) => publicApi.stream($stateParams.streamId),
+        signals: (publicApi: PublicApi, $stateParams: any) => publicApi.signals($stateParams.streamId)
       },
       controller:
       class StateStream {
-        constructor(public stream, public signals) {
+        constructor(public stream: Array<Stream>, public signals: Array<Signal>) {
          }
       },
       controllerAs: "ctrl"

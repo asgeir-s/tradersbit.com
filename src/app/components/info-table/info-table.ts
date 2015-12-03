@@ -1,4 +1,4 @@
-import { StreamsAttribute, Stream} from '../../../app/typings/types';
+
 
 /** @ngInject */
 export function tbInfoTable(): angular.IDirective {
@@ -12,15 +12,12 @@ export function tbInfoTable(): angular.IDirective {
             inAttributes: '=',
             inName: '@'
         },
-        controller: tbInfoTableCtrl,
+        controller: TbInfoTableCtrl,
         controllerAs: 'ctrl'
     };
 
 }
 
 /** @ngInject */
-export class tbInfoTableCtrl {
-    /* @ngInject */
-    constructor() { }
-
+export class TbInfoTableCtrl {
 }

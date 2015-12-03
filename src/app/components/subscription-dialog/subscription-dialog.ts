@@ -1,4 +1,4 @@
-import { StreamsAttribute, Stream, Subscription, CoinbaseEmbedCode } from '../../../app/typings/types';
+import { Stream, Subscription, CoinbaseEmbedCode } from '../../../app/typings/types';
 import { PublicApi } from '../../services/public-api/public-api';
 
 /** @ngInject */
@@ -12,14 +12,14 @@ export function tbSubscriptionDialog(): angular.IDirective {
             inStream: "=",
             inBtcRate: "="
         },
-        controller: tbSubscriptionDialogCtrl,
+        controller: TbSubscriptionDialogCtrl,
         controllerAs: 'ctrl'
     };
 
 }
 
 /** @ngInject */
-export class tbSubscriptionDialogCtrl {
+export class TbSubscriptionDialogCtrl {
     // inputs
     inStream: Stream;
     inBtcRate: number;
@@ -76,7 +76,7 @@ export class tbSubscriptionDialogCtrl {
                 this.coinbaseEmbedCode = coinbaseEmbedCode.embed_code;
                 this.gotPaymentInfo = true;
             })
-            .catch((err) => console.log("Server error: " + err))
+            .catch((err: any) => console.log("Server error: " + err))
             .finally(() => this.waitForResponds = false);
     }
 

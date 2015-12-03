@@ -1,4 +1,4 @@
-import { StreamsAttribute, Stream, Signal } from '../../../app/typings/types';
+import { Stream } from '../../../app/typings/types';
 
 /** @ngInject */
 export function tbStreamAverageTradeChart(): angular.IDirective {
@@ -10,14 +10,14 @@ export function tbStreamAverageTradeChart(): angular.IDirective {
         bindToController: {
             inStream: '='
         },
-        controller: tbStreamAverageTradeChartCtrl,
+        controller: TbStreamAverageTradeChartCtrl,
         controllerAs: 'ctrl'
     };
 
 }
 
 /** @ngInject */
-export class tbStreamAverageTradeChartCtrl {
+export class TbStreamAverageTradeChartCtrl {
     inStream: Stream;
     avrageTradeBarChartConfig: any;
 
@@ -44,9 +44,9 @@ export class tbStreamAverageTradeChartCtrl {
                     enabled: false 
                 }
             },
-            //The below properties are watched separately for changes.
+            // the below properties are watched separately for changes.
 
-            //Series object (optional) - a list of series using normal Highcharts series options.
+            // series object (optional) - a list of series using normal Highcharts series options.
             series: [{
                 name: 'Average Profitable Trade',
                 data: [this.inStream.stats.averageWinningTrade * 100]
@@ -63,12 +63,5 @@ export class tbStreamAverageTradeChartCtrl {
         };
 
     }
-    /**
-    $(window).resize(function() {
-    height = chart.height
-    width = $("#chartRow").width() / 2
-    chart.setSize(width, height, doAnimation = true);
-});
-*/
 
 }

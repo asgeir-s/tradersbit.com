@@ -6,21 +6,19 @@ export function tbSideNavLayout(): angular.IDirective {
     scope: {},
     templateUrl: 'app/components/side-nav-layout/side-nav-layout.html',
     transclude: true,
-    controller: tbSideNavLayoutCtrl,
+    controller: TbSideNavLayoutCtrl,
     controllerAs: 'ctrl'
   };
 
 }
 
 /** @ngInject */
-export class tbSideNavLayoutCtrl {
+export class TbSideNavLayoutCtrl {
 
   /* @ngInject */
-  constructor (private $state: ng.ui.IStateService) {
+  constructor (private $state: ng.ui.IStateService) { }
 
-  }
-
-  chnageState(newState) {
+  chnageState(newState: string) {
     this.$state.go(newState);
   }
 

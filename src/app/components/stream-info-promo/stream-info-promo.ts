@@ -1,5 +1,4 @@
-import { StreamsAttribute, Stream} from '../../../app/typings/types';
-import { BitcoinaverageApi } from '../../services/bitcoinaverage-api/bitcoinaverage-api';
+import { Stream} from '../../../app/typings/types';
 
 /** @ngInject */
 export function tbStreamInfoPromo(): angular.IDirective {
@@ -12,20 +11,17 @@ export function tbStreamInfoPromo(): angular.IDirective {
             inStream: '=',
             inBtcRate: '='
         },
-        controller: tbStreamInfoPromeCtrl,
+        controller: TbStreamInfoPromeCtrl,
         controllerAs: 'ctrl'
     };
 
 }
 
 /** @ngInject */
-export class tbStreamInfoPromeCtrl {
+export class TbStreamInfoPromeCtrl {
     inStream: Stream;
     inBtcRate: number;
     
-    /* @ngInject */
-    constructor() { }
-
     logoUrl(): string {
         if (this.inStream.exchange === 'bitstamp') {
             return 'assets/images/bitstamp_logo.png'

@@ -1,4 +1,4 @@
-import { StreamsAttribute, Stream, Signal } from '../../../app/typings/types';
+import { Signal } from '../../../app/typings/types';
 
 /** @ngInject */
 export function tbStreamChartProfit(): angular.IDirective {
@@ -10,24 +10,24 @@ export function tbStreamChartProfit(): angular.IDirective {
         bindToController: {
             inSignals: '='
         },
-        controller: tbStreamChartProfitCtrl,
+        controller: TbStreamChartProfitCtrl,
         controllerAs: 'ctrl'
     };
 
 }
 
 /** @ngInject */
-export class tbStreamChartProfitCtrl {
+export class TbStreamChartProfitCtrl {
     inSignals: Array<Signal>;
     profitChartConfig: any;
 
     /* @ngInject */
-    constructor() {
+    constructor(highcharts: any) {
 
         this.profitChartConfig = {
             options: {
-                //This is the Main Highcharts chart config. Any Highchart options are valid here.
-                //will be overriden by values specified below.
+                // this is the Main Highcharts chart config. Any Highchart options are valid here.
+                // will be overriden by values specified below.
                 chart: {
                     zoomType: 'x'
                 },
@@ -54,9 +54,9 @@ export class tbStreamChartProfitCtrl {
                     enabled: false 
                 }
             },
-            //The below properties are watched separately for changes.
+            // the below properties are watched separately for changes.
 
-            //Series object (optional) - a list of series using normal Highcharts series options.
+            // series object (optional) - a list of series using normal Highcharts series options.
             series: [{
                 type: 'area',
                 name: 'Change in value',
@@ -69,8 +69,8 @@ export class tbStreamChartProfitCtrl {
                         y2: 1
                     },
                     stops: [
-                        [0, Highcharts.getOptions().colors[0]],
-                        [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        [0, highcharts.getOptions().colors[0]],
+                        [1, highcharts.Color(highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
                     ]
                 }
             }],
@@ -88,10 +88,6 @@ export class tbStreamChartProfitCtrl {
         }
         return series;
     }
-
-
-
-
 }
 
 

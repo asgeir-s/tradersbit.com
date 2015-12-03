@@ -1,9 +1,9 @@
-import { StreamsAttribute, Stream, Signal, Subscription, CoinbaseEmbedCode } from '../../../app/typings/types';
+import { Stream, Signal, Subscription, CoinbaseEmbedCode } from '../../../app/typings/types';
 
 export class PublicApi {
   private static BASE_URL: string = "https://dc3r5gsogb.execute-api.us-west-2.amazonaws.com/dev";
   streams: Array<Stream>;
-  signalsMap = new Map<String, Array<Signal>>();
+  signalsMap: { [streamId: string]: Array<Signal>; } = {};
   
 
   /** @ngInject */
@@ -14,7 +14,7 @@ export class PublicApi {
 
     if (typeof this.streams !== 'undefined') {
       // the variable is defined
-      console.log('PublicApiService - get already fatched streams: ' + this.streams);
+      console.log('PublicApiService - gets already fatched streams.');
       deferred.resolve(this.streams);
     }
     else {
@@ -24,7 +24,7 @@ export class PublicApi {
           this.streams = res.data;
           deferred.resolve(this.streams);
         },
-        (err) => {
+        (err: any) => {
           console.error('PublicApiService - Could not get streams. Error: ' + err);
           deferred.reject('PublicApiService - Could not get streams. Error: ' + err);
         })
@@ -36,7 +36,7 @@ export class PublicApi {
     let deferred: angular.IDeferred<Stream> = this.$q.defer();
     if (typeof this.streams !== 'undefined') {
       // the variable is defined
-      console.log('PublicApiService - get already fatched streams: ' + this.streams);
+      console.log('PublicApiService - gets already fatched streams.');
       deferred.resolve(_.find(this.streams, (stream: Stream) => stream.id === streamId));
     }
     else {
@@ -53,7 +53,7 @@ export class PublicApi {
     
     if (typeof this.signalsMap[streamId] !== 'undefined') {
       // the variable is defined
-      console.log('PublicApiService - get already fatched signals: ' + this.signalsMap[streamId]);
+      console.log('PublicApiService - gets already fatched signals.');
       deferred.resolve(this.signalsMap[streamId]);
     }
     else {
@@ -63,7 +63,7 @@ export class PublicApi {
           this.signalsMap[streamId] = res.data;
           deferred.resolve(this.signalsMap[streamId]);
         },
-        (err) => {
+        (err: any) => {
           console.error('PublicApiService - Could not get signals. Error: ' + err);
           deferred.reject('PublicApiService - Could not get signals. Error: ' + err);
         })
@@ -87,7 +87,7 @@ export class PublicApi {
           (res: angular.IHttpPromiseCallbackArg<CoinbaseEmbedCode>) => {
           deferred.resolve(res.data);
         },
-        (err) => {
+        (err: any) => {
           console.error('PublicApiService - Failed to add subscription. Error: ' + err);
           deferred.reject('PublicApiService - Failed to add subscription. Error: ' + err);
         })

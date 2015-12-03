@@ -1,4 +1,3 @@
-import { PublicApi } from '../../services/public-api/public-api'
 import { Stream, StreamsAttribute } from '../../typings/types'
 import { StreamAttributes } from '../../util/stream-attributes'
 
@@ -9,24 +8,23 @@ export function tbStreams(): angular.IDirective {
     restrict: 'E',
     scope: {},
     templateUrl: 'app/comp-top/streams/streams.html',
-    controller: tbStreamsCtrl,
+    controller: TbStreamsCtrl,
     controllerAs: 'ctrl',
     bindToController: {
       inStreams: '&'
-    },
+    }
   };
 
 }
 
 /** @ngInject */
-export class tbStreamsCtrl {
+export class TbStreamsCtrl {
   inStreams: () => Array<Stream>;
   streamAttributes: Array<StreamsAttribute> = StreamAttributes.allAtributes();
 
-  constructor(private $mdSidenav) {
-  }
+  constructor(private $mdSidenav: angular.material.ISidenavService) { }
   
-  toggleRightSidebar() {
+  toggleRightSidebar(): void {
     this.$mdSidenav('right').toggle();
   }
 

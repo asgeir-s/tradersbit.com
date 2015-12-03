@@ -1,5 +1,4 @@
 /** @ngInject */
-export function runBlock($log: angular.ILogService, $rootScope) {
+export function runBlock($log: angular.ILogService) {
   $log.debug('runBlock end');
-   $rootScope._ = (<any> window)._;
 }

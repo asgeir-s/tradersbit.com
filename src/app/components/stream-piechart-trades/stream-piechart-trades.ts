@@ -1,4 +1,4 @@
-import { StreamsAttribute, Stream, Signal } from '../../../app/typings/types';
+import { Stream } from '../../../app/typings/types';
 
 /** @ngInject */
 export function tbStreamPiechartTrades(): angular.IDirective {
@@ -10,19 +10,19 @@ export function tbStreamPiechartTrades(): angular.IDirective {
         bindToController: {
             inStream: '='
         },
-        controller: tbStreamPiechartTradesCtrl,
+        controller: TbStreamPiechartTradesCtrl,
         controllerAs: 'ctrl'
     };
 
 }
 
 /** @ngInject */
-export class tbStreamPiechartTradesCtrl {
+export class TbStreamPiechartTradesCtrl {
     inStream: Stream;
     tradsPiechartConfig: any;
 
     /* @ngInject */
-    constructor($timeout) {
+    constructor($timeout: angular.ITimeoutService, highcharts: any) {
         this.tradsPiechartConfig = {
             options: {
                 chart: {
@@ -43,7 +43,7 @@ export class tbStreamPiechartTradesCtrl {
                             enabled: true,
                             format: '<b>{point.name}</b>: {point.percentage:.1f} % ({point.y})',
                             style: {
-                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                color: (highcharts.theme && highcharts.theme.contrastTextColor) || 'black'
                             }
                         }
                     }
@@ -54,9 +54,9 @@ export class tbStreamPiechartTradesCtrl {
                 }
 
             },
-            //The below properties are watched separately for changes.
+            // the below properties are watched separately for changes.
 
-            //Series object (optional) - a list of series using normal Highcharts series options.
+            // series object (optional) - a list of series using normal Highcharts series options.
             series: [{
                 name: "Brands",
                 colorByPoint: true,
