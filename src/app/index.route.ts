@@ -41,9 +41,13 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       controller:
       class StateStream {
         constructor(public stream: Array<Stream>, public signals: Array<Signal>) {
-         }
+        }
       },
       controllerAs: "ctrl"
+    })
+    .state('publish', {
+      url: '/publish',
+      template: '<tb-publish></tb-publish>'
     });
 
   $urlRouterProvider.otherwise('/');

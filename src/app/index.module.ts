@@ -8,6 +8,7 @@ import { runBlock } from './index.run';
 import { tbHome } from './comp-top/home/home';
 import { tbStreams } from './comp-top/streams/streams';
 import { tbStream } from './comp-top/stream/stream';
+import { tbPublish } from './comp-top/publish/publish';
 
 // components
 import { tbSideNavLayout } from './components/side-nav-layout/side-nav-layout';
@@ -29,7 +30,7 @@ import { BitcoinaverageApi } from './services/bitcoinaverage-api/bitcoinaverage-
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart', 'highcharts-ng', 'vcRecaptcha'])
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart', 'highcharts-ng', 'vcRecaptcha', 'auth0'])
     .constant('_', (<any> window)._)
     .constant('highcharts', (<any> window).Highcharts)
     .config(config)
@@ -40,6 +41,7 @@ module tradersbitCom {
     .directive('tbHome', tbHome)
     .directive('tbStreams', tbStreams)
     .directive('tbStream', tbStream)
+    .directive('tbPublish', tbPublish)
 
   // components
     .directive('tbSideNavLayout', tbSideNavLayout)
