@@ -17,7 +17,8 @@
     "highstock": "highstock-release#~2.1.9",
     "highcharts-ng": "~0.0.11",
     "angular-recaptcha": "~2.2.5",
-    "auth0-angular": "~4.0.5"
+    "auth0-angular": "~4.0.5",
+    "a0-angular-storage": "~0.0.13"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"

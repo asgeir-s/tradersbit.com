@@ -30,7 +30,7 @@ import { BitcoinaverageApi } from './services/bitcoinaverage-api/bitcoinaverage-
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart', 'highcharts-ng', 'vcRecaptcha', 'auth0'])
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage'])
     .constant('_', (<any> window)._)
     .constant('highcharts', (<any> window).Highcharts)
     .config(config)
