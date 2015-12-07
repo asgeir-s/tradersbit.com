@@ -1,17 +1,17 @@
 /// <reference path="../../.tmp/typings/tsd.d.ts" />
 
-    require('script!../assets/api-sdk/lib/axios/dist/axios.standalone.js');
-    require('script!../assets/api-sdk/lib/CryptoJS/rollups/hmac-sha256.js');
-    require('script!../assets/api-sdk/lib/CryptoJS/rollups/sha256.js');
-    require('script!../assets/api-sdk/lib/CryptoJS/components/hmac.js');
-    require('script!../assets/api-sdk/lib/CryptoJS/components/enc-base64.js');
-    require('script!../assets/api-sdk/lib/moment/moment.js');
-    require('script!../assets/api-sdk/lib/url-template/url-template.js');
-    require('script!../assets/api-sdk/lib/apiGatewayCore/sigV4Client.js');
-    require('script!../assets/api-sdk/lib/apiGatewayCore/apiGatewayClient.js');
-    require('script!../assets/api-sdk/lib/apiGatewayCore/simpleHttpClient.js');
-    require('script!../assets/api-sdk/lib/apiGatewayCore/utils.js');
-    require('script!../assets/api-sdk/apigClient.js');
+    require('script!../assets/auth-api-sdk/lib/axios/dist/axios.standalone.js');
+    require('script!../assets/auth-api-sdk/lib/CryptoJS/rollups/hmac-sha256.js');
+    require('script!../assets/auth-api-sdk/lib/CryptoJS/rollups/sha256.js');
+    require('script!../assets/auth-api-sdk/lib/CryptoJS/components/hmac.js');
+    require('script!../assets/auth-api-sdk/lib/CryptoJS/components/enc-base64.js');
+    require('script!../assets/auth-api-sdk/lib/moment/moment.js');
+    require('script!../assets/auth-api-sdk/lib/url-template/url-template.js');
+    require('script!../assets/auth-api-sdk/lib/apiGatewayCore/sigV4Client.js');
+    require('script!../assets/auth-api-sdk/lib/apiGatewayCore/apiGatewayClient.js');
+    require('script!../assets/auth-api-sdk/lib/apiGatewayCore/simpleHttpClient.js');
+    require('script!../assets/auth-api-sdk/lib/apiGatewayCore/utils.js');
+    require('script!../assets/auth-api-sdk/apigClient.js');
     
 import { config } from './index.config';
 import { routerConfig } from './index.route';
@@ -47,6 +47,7 @@ module tradersbitCom {
   angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt']) // 'angular-storage'
     .constant('_', (<any> window)._)
     .constant('highcharts', (<any> window).Highcharts)
+    .constant('apigClient', (<any> window).apigClientFactory.newClient())
     .config(config)
     .config(routerConfig)
     .run(runBlock)
