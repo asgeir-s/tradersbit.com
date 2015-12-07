@@ -15,7 +15,7 @@ function webpackWrapper(watch, test, callback) {
     watch: watch,
     module: {
       preLoaders: [{ test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader'}],
-      loaders: [{ test: /\.ts$/, exclude: /node_modules/, loaders: ['ng-annotate', 'awesome-typescript-loader']}]
+      loaders: [{ test: /\.ts$/, exclude: /node_modules/, loaders: ['ng-annotate', 'awesome-typescript-loader']}] //'script-loader'
     },
     output: { filename: 'index.module.js' }
   };

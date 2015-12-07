@@ -1,5 +1,18 @@
 /// <reference path="../../.tmp/typings/tsd.d.ts" />
 
+    require('script!./api-sdk/lib/axios/dist/axios.standalone.js');
+    require('script!./api-sdk/lib/CryptoJS/rollups/hmac-sha256.js');
+    require('script!./api-sdk/lib/CryptoJS/rollups/sha256.js');
+    require('script!./api-sdk/lib/CryptoJS/components/hmac.js');
+    require('script!./api-sdk/lib/CryptoJS/components/enc-base64.js');
+    require('script!./api-sdk/lib/moment/moment.js');
+    require('script!./api-sdk/lib/url-template/url-template.js');
+    require('script!./api-sdk/lib/apiGatewayCore/sigV4Client.js');
+    require('script!./api-sdk/lib/apiGatewayCore/apiGatewayClient.js');
+    require('script!./api-sdk/lib/apiGatewayCore/simpleHttpClient.js');
+    require('script!./api-sdk/lib/apiGatewayCore/utils.js');
+    require('script!./api-sdk/apigClient.js');
+    
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
@@ -21,6 +34,7 @@ import { tbStreamChartProfit } from './components/stream-chart-profit/stream-cha
 import { tbStreamPiechartTrades } from './components/stream-piechart-trades/stream-piechart-trades';
 import { tbStreamAverageTradeChart } from './components/stream-average-trade-chart/stream-average-trade-chart';
 import { tbSubscriptionDialog } from './components/subscription-dialog/subscription-dialog';
+import { tbSignIn } from './components/sign-in/sign-in';
 
 // services
 import { PublicApi } from './services/public-api/public-api';
@@ -30,7 +44,7 @@ import { BitcoinaverageApi } from './services/bitcoinaverage-api/bitcoinaverage-
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage'])
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'googlechart', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt']) // 'angular-storage'
     .constant('_', (<any> window)._)
     .constant('highcharts', (<any> window).Highcharts)
     .config(config)
@@ -54,6 +68,7 @@ module tradersbitCom {
     .directive('tbStreamPiechartTrades', tbStreamPiechartTrades)
     .directive('tbStreamAverageTradeChart', tbStreamAverageTradeChart)
     .directive('tbSubscriptionDialog', tbSubscriptionDialog)
+    .directive('tbSignIn', tbSignIn)
 
   // services
     .service('publicApi', PublicApi)
