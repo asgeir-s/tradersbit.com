@@ -21,11 +21,10 @@ export class TbSignInCtrl {
         auth.config.auth0lib.$container = null;
         console.log('constructor rusn');
 
-
         auth.signin({
             container: 'hiw-login-container',
             authParams: {
-                scope: "openid name email"
+                scope: "user_id openid email app_metadata"
             },
             dict: {
                 signin: {
