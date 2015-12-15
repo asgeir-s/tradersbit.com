@@ -1,18 +1,20 @@
 /// <reference path="../../.tmp/typings/tsd.d.ts" />
 
-    require('script!../assets/auth-api-sdk/lib/axios/dist/axios.standalone.js');
-    require('script!../assets/auth-api-sdk/lib/CryptoJS/rollups/hmac-sha256.js');
-    require('script!../assets/auth-api-sdk/lib/CryptoJS/rollups/sha256.js');
-    require('script!../assets/auth-api-sdk/lib/CryptoJS/components/hmac.js');
-    require('script!../assets/auth-api-sdk/lib/CryptoJS/components/enc-base64.js');
-    require('script!../assets/auth-api-sdk/lib/moment/moment.js');
-    require('script!../assets/auth-api-sdk/lib/url-template/url-template.js');
-    require('script!../assets/auth-api-sdk/lib/apiGatewayCore/sigV4Client.js');
-    require('script!../assets/auth-api-sdk/lib/apiGatewayCore/apiGatewayClient.js');
-    require('script!../assets/auth-api-sdk/lib/apiGatewayCore/simpleHttpClient.js');
-    require('script!../assets/auth-api-sdk/lib/apiGatewayCore/utils.js');
-    require('script!../assets/auth-api-sdk/apigClient.js');
-    
+require('script!../assets/auth-api-sdk/lib/axios/dist/axios.standalone.js');
+require('script!../assets/auth-api-sdk/lib/CryptoJS/rollups/hmac-sha256.js');
+require('script!../assets/auth-api-sdk/lib/CryptoJS/rollups/sha256.js');
+require('script!../assets/auth-api-sdk/lib/CryptoJS/components/hmac.js');
+require('script!../assets/auth-api-sdk/lib/CryptoJS/components/enc-base64.js');
+require('script!../assets/auth-api-sdk/lib/moment/moment.js');
+require('script!../assets/auth-api-sdk/lib/url-template/url-template.js');
+require('script!../assets/auth-api-sdk/lib/apiGatewayCore/sigV4Client.js');
+require('script!../assets/auth-api-sdk/lib/apiGatewayCore/apiGatewayClient.js');
+require('script!../assets/auth-api-sdk/lib/apiGatewayCore/simpleHttpClient.js');
+require('script!../assets/auth-api-sdk/lib/apiGatewayCore/utils.js');
+require('script!../assets/auth-api-sdk/apigClient.js');
+
+require('script!../assets/highstock.js');
+
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
@@ -38,6 +40,7 @@ import { tbSignIn } from './components/sign-in/sign-in';
 
 // services
 import { PublicApi } from './services/public-api/public-api';
+import { AuthApi } from './services/auth-api/auth-api';
 import { BitcoinaverageApi } from './services/bitcoinaverage-api/bitcoinaverage-api';
 
 
@@ -48,6 +51,7 @@ module tradersbitCom {
     .constant('_', (<any> window)._)
     .constant('highcharts', (<any> window).Highcharts)
     .constant('apigClient', (<any> window).apigClientFactory.newClient())
+    
     .config(config)
     .config(routerConfig)
     .run(runBlock)
@@ -73,6 +77,7 @@ module tradersbitCom {
 
   // services
     .service('publicApi', PublicApi)
+    .service('authApi', AuthApi)
     .service('bitcoinaverageApi', BitcoinaverageApi);
 
 }

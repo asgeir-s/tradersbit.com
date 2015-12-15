@@ -17,7 +17,7 @@ export function tbSignIn(): angular.IDirective {
 /** @ngInject */
 export class TbSignInCtrl {
 
-    constructor(private auth: any, private store: any, private $window: any, private $location: any) {
+    constructor(private auth: any, private store: any, private $window: any, private $location: any, authApi: any) {
         auth.config.auth0lib.$container = null;
         console.log('constructor rusn');
 
@@ -50,13 +50,17 @@ export class TbSignInCtrl {
                 (delegation) => {
                     console.log('awstoken: ' + JSON.stringify(delegation.Credentials));
                     this.store.set('awstoken', delegation.Credentials);  //add to local storage
-                    this.$location.path("/");
-                    var apigClient = this.getAwsCli();
+                    
+                    this.getAwsCli().streamsGet({ "x-auth-token": this.store.get('token') }, {}, {})
+                        .then((res: any) => {
+                            //This is where you would put a success callback
+                            console.log('res: ' + JSON.stringify(res));
 
-                    apigClient.streamsPostGet({}, {}, {})
-                        .then((res) => {
-                            console.log("resss: " + res.data.message);
                         })
+                        .catch((err: any) => {
+                            //This is where you would put an error callback
+                            console.log('error: ' + err);
+                        });
 
 
                 },
@@ -68,19 +72,19 @@ export class TbSignInCtrl {
             // Error callback
         });
     }
-    
-      getAwsCli = () => {
-    console.log("getAwsCli");
-    var awstoken = this.store.get('awstoken');
 
-    console.log("awstoken: " + awstoken)
+    getAwsCli = () => {
+        console.log("getAwsCli");
+        var awstoken = this.store.get('awstoken');
 
-    return this.$window.apigClientFactory.newClient({
-      accessKey: awstoken.AccessKeyId,
-      secretKey: awstoken.SecretAccessKey,
-      sessionToken: awstoken.SessionToken,
-      region: 'us-west-2' // Set to your region
-    });
+        console.log("awstoken: " + awstoken)
 
-  };
+        return this.$window.apigClientFactory.newClient({
+            accessKey: awstoken.AccessKeyId,
+            secretKey: awstoken.SecretAccessKey,
+            sessionToken: awstoken.SessionToken,
+            region: 'us-west-2' // Set to your region
+        });
+
+    };
 }

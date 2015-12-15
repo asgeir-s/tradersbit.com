@@ -5,10 +5,10 @@ export class AuthApi {
   signalsMap: { [streamId: string]: Array<Signal>; } = {};
   
   /** @ngInject */
-  constructor(private $http: angular.IHttpService, private $q: angular.IQService, private _: _.LoDashStatic, private apigClient: any) {
+  constructor(private store: any, private $http: angular.IHttpService, private $q: angular.IQService, private _: _.LoDashStatic, private apigClient: any) {
    }
   
-  allStreams(): angular.IPromise<Array<Stream>> {
+  getMyStreams(): angular.IPromise<Array<Stream>> {
     let deferred: angular.IDeferred<Array<Stream>> = this.$q.defer();
 
     if (typeof this.streams !== 'undefined') {
@@ -19,7 +19,7 @@ export class AuthApi {
     else {
       console.log('PublicApiService - fatches streams');
    
-      this.apigClient.streamsGet({},{},{})
+      this.apigClient.streamsGet({"x-auth-token": this.store.get('token')},{},{})
       .then( (res: SuccessRespondse<Array<Stream>>) => {
         //This is where you would put a success callback
           this.streams = res.data;
