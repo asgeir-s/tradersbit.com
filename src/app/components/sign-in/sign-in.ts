@@ -1,3 +1,4 @@
+import { AuthApi } from '../../services/auth-api/auth-api'
 
 /** @ngInject */
 export function tbSignIn(): angular.IDirective {
@@ -17,8 +18,8 @@ export function tbSignIn(): angular.IDirective {
 /** @ngInject */
 export class TbSignInCtrl {
 
-    constructor(private auth: any, private store: any, private $window: any, private $location: any, authApi: any) {
-        auth.config.auth0lib.$container = null;
+    constructor(private auth: any, authApi: AuthApi, private $state: ng.ui.IStateService) {
+        auth.config.auth0lib.$container = null; // auth0 lock fix
         console.log('constructor rusn');
 
         auth.signin({
@@ -33,58 +34,11 @@ export class TbSignInCtrl {
             }
         }, (profile, token) => {
             // Success callback
-            this.store.set('profile', profile);
-            this.store.set('token', token);
-
-            console.log("profile: " + JSON.stringify(profile));
-            console.log("token: " + token);
-
-            var options = {
-                "id_token": token,
-                "role": "arn:aws:iam::525932482084:role/auth0-api-role",
-                "principal": "arn:aws:iam::525932482084:saml-provider/auth0"
-            }
-
-            this.auth.getToken(options)
-                .then(
-                (delegation) => {
-                    console.log('awstoken: ' + JSON.stringify(delegation.Credentials));
-                    this.store.set('awstoken', delegation.Credentials);  //add to local storage
-                    
-                    this.getAwsCli().streamsGet({ "x-auth-token": this.store.get('token') }, {}, {})
-                        .then((res: any) => {
-                            //This is where you would put a success callback
-                            console.log('res: ' + JSON.stringify(res));
-
-                        })
-                        .catch((err: any) => {
-                            //This is where you would put an error callback
-                            console.log('error: ' + err);
-                        });
-
-
-                },
-                (err) => {
-                    console.log('failed to acquire delegation token', err);
-                });
-
+            authApi.signIn(profile, token)
+              .then(() => this.$state.go('publish-dash'))
         }, () => {
-            // Error callback
+            console.log('signin failed!');
         });
     }
 
-    getAwsCli = () => {
-        console.log("getAwsCli");
-        var awstoken = this.store.get('awstoken');
-
-        console.log("awstoken: " + awstoken)
-
-        return this.$window.apigClientFactory.newClient({
-            accessKey: awstoken.AccessKeyId,
-            secretKey: awstoken.SecretAccessKey,
-            sessionToken: awstoken.SessionToken,
-            region: 'us-west-2' // Set to your region
-        });
-
-    };
 }

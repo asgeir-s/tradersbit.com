@@ -1,3 +1,4 @@
+import { AuthApi } from '../../services/auth-api/auth-api'
 
 /** @ngInject */
 export function tbPublish(): angular.IDirective {
@@ -17,12 +18,9 @@ export function tbPublish(): angular.IDirective {
 /** @ngInject */
 export class TbPublishCtrl {
 
-  constructor(private auth: any, private store: any) { }
-
-  logout() {
-    console.log("sign out");
-    this.auth.signout();
-    this.store.remove('profile');
-    this.store.remove('token');
-  };
+  constructor(private authApi: AuthApi) { }
+  
+  signOut() {
+    this.authApi.signOut()
+  }
 }

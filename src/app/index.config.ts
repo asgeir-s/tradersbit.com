@@ -8,11 +8,12 @@ export function config($logProvider: angular.ILogProvider, $locationProvider: an
   $mdThemingProvider.theme('default')
     .primaryPalette('cyan')
     .accentPalette('orange');
-
-
-  authProvider.init({
+  
+   authProvider.init({
     domain: 'cluda.auth0.com',
-    clientID: '7VNS2Tc2IiQB2PvjUBcb5744qH9eY7iB'
-  });
+    clientID: '7VNS2Tc2IiQB2PvjUBcb5744qH9eY7iB',
+    callbackUrl: location.href,
+    loginState: 'publish'
+  })
 
 }

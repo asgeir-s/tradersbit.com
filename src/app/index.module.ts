@@ -24,6 +24,7 @@ import { tbHome } from './comp-top/home/home';
 import { tbStreams } from './comp-top/streams/streams';
 import { tbStream } from './comp-top/stream/stream';
 import { tbPublish } from './comp-top/publish/publish';
+import { tbPublishDash } from './comp-top/publish-dash/publish-dash';
 
 // components
 import { tbSideNavLayout } from './components/side-nav-layout/side-nav-layout';
@@ -50,8 +51,7 @@ module tradersbitCom {
   angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt']) // 'angular-storage'
     .constant('_', (<any> window)._)
     .constant('highcharts', (<any> window).Highcharts)
-    .constant('apigClient', (<any> window).apigClientFactory.newClient())
-    
+
     .config(config)
     .config(routerConfig)
     .run(runBlock)
@@ -61,6 +61,7 @@ module tradersbitCom {
     .directive('tbStreams', tbStreams)
     .directive('tbStream', tbStream)
     .directive('tbPublish', tbPublish)
+        .directive('tbPublishDash', tbPublishDash)
 
   // components
     .directive('tbSideNavLayout', tbSideNavLayout)

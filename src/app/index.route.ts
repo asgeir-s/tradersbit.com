@@ -1,4 +1,5 @@
 import { PublicApi } from './services/public-api/public-api'
+import { AuthApi } from './services/auth-api/auth-api'
 import { Stream, Signal } from './typings/types';
 
 /** @ngInject */
@@ -48,6 +49,23 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     .state('publish', {
       url: '/publish',
       template: '<tb-publish></tb-publish>'
+    })
+    .state("publish-dash", {
+      url: "/publish/dash",
+      template: '<tb-publish-dash my-streams="ctrl.streams"></tb-publish-dash>',
+      resolve: {
+        streams: (authApi: AuthApi) => authApi.getMyStreams()
+      },
+      controller:
+      class StateStream {
+        constructor(public streams: Array<Stream>) {
+          console.log('publish-dash!!!');
+        }
+      },
+      controllerAs: "ctrl",
+      data: {
+        requiresLogin: true
+      }
     });
 
   $urlRouterProvider.otherwise('/');
