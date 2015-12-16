@@ -3,3 +3,5 @@
 <input type="submit" ng-click="ctrl.signOut()" value="Sign out" />
 
 <tb-streams-table in-streams="ctrl.myStreams()" in-attributes="ctrl.attributes"></tb-streams-table>
+
+<tb-publisher-stream ng-repeat="stream in ctrl.myStreams()" in-stream="stream"></tb-publisher-stream>

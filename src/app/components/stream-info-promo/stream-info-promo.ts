@@ -32,7 +32,6 @@ export class TbStreamInfoPromeCtrl {
         else {
             return '';
         }
-
     }
 
 }

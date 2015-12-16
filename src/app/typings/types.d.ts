@@ -34,6 +34,15 @@ export interface Stats {
   numberOfClosedTrades: number;
 }
 
+export interface PublisherStream {
+  id: string;
+  currencyPair: string;
+  subscriptionPriceUSD: number;
+  exchange: string;
+  stats: Stats;
+  status: number;
+}
+
 export interface Stream {
   id: string;
   currencyPair: string;

@@ -1,0 +1,44 @@
+<md-card>
+	<md-card-header>
+		<md-card-avatar>
+			<md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+		</md-card-avatar>
+		<md-card-header-text>
+			<span class="md-title">Stream Name</span>
+			<span class="md-subhead">{{ctrl.inStream.id}}</span>
+		</md-card-header-text>
+	</md-card-header>
+	<md-card-title>
+		<md-card-title-text>
+			<div flex layout="row" layout-sm="column" layout-fill layout-margin layout-padding layout-align-center-center layout-column
+			flex>
+				<div flex>
+					<small>exchange</small>
+					<br/>
+					<img ng-src="{{ctrl.logoUrl()}}" alt="exchange logo" />
+				</div>
+				<div flex>
+					<small>position</small>
+					<br/>
+					<h3 class="md-display-1">{{ctrl.positionString()}}</h3>
+				</div>
+				<div flex>
+					<small>unrealized P/L</small>
+					<br/>
+					<h3 class="md-display-1">{{ctrl.inStream.subscriptionPriceUSD | number:2}}%</h3>
+				</div>
+			</div>
+		</md-card-title-text>
+	</md-card-title>
+	<md-card-actions layout="row" layout-align="start center">
+		<md-button>SHORT</md-button>
+		<md-button>CLOSE</md-button>
+		<md-button>LONG</md-button>
+	</md-card-actions>
+	<md-card-content>
+		<p>
+			The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
+			Greene's musical language: feel it. It's a simple request, as well...
+		</p>
+	</md-card-content>
+</md-card>

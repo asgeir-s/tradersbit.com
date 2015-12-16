@@ -38,6 +38,7 @@ import { tbStreamPiechartTrades } from './components/stream-piechart-trades/stre
 import { tbStreamAverageTradeChart } from './components/stream-average-trade-chart/stream-average-trade-chart';
 import { tbSubscriptionDialog } from './components/subscription-dialog/subscription-dialog';
 import { tbSignIn } from './components/sign-in/sign-in';
+import { tbPublisherStream } from './components/publisher-stream/publisher-stream';
 
 // services
 import { PublicApi } from './services/public-api/public-api';
@@ -75,6 +76,7 @@ module tradersbitCom {
     .directive('tbStreamAverageTradeChart', tbStreamAverageTradeChart)
     .directive('tbSubscriptionDialog', tbSubscriptionDialog)
     .directive('tbSignIn', tbSignIn)
+    .directive('tbPublisherStream', tbPublisherStream)
 
   // services
     .service('publicApi', PublicApi)
