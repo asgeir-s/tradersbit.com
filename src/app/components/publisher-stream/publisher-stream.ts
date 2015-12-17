@@ -1,5 +1,6 @@
 import { PublisherStream } from '../../../app/typings/types';
 import { Signal } from '../../typings/types'
+import { AuthApi } from '../../services/auth-api/auth-api'
 
 /** @ngInject */
 export function tbPublisherStream(): angular.IDirective {
@@ -23,8 +24,9 @@ export class TbPublisherStreamCtrl {
     inStream: PublisherStream;
     inBtcRate: number;
     unrealizedPL: number;
+    waitingForSignalBack = false;
 
-    constructor(private $q: angular.IQService, private $http: angular.IHttpService, private $state: any) {
+    constructor(private $q: angular.IQService, private $http: angular.IHttpService, private $state: any, private authApi: AuthApi, private _: _.LoDashStatic, private $mdToast: any) {
         console.log('inStream: ' + JSON.stringify(this.inStream));
         this.computeUnrealizedPL(this.inStream.lastSignal, this.inStream.exchange)
     }
@@ -86,5 +88,32 @@ export class TbPublisherStreamCtrl {
 
     goToStream(streamID: string) {
         this.$state.go('stream', { 'streamId': streamID });
+    }
+
+    postSignal(streamId: string, signal: number) {
+        this.waitingForSignalBack = true;
+        this.authApi.postSignal(streamId, signal)
+            .then((signals: Array<Signal>) => {
+                this.inStream.lastSignal = _.max(signals, 'id');
+                this.inStream.status = this.inStream.lastSignal.signal;
+                this.computeUnrealizedPL(this.inStream.lastSignal, this.inStream.exchange);
+                this.waitingForSignalBack = false;
+                let text: string;
+                if (signals.length === 1) {
+                    text = "New " + this.positionString() + " signal @ " + signals[0].price + "$. P/L: " + (signals[0].change * 100).toFixed(2) + "%.";
+                }
+                else {
+                    text = "Position closed @ " + signals[0].price + "$. P/L: " + (signals[0].change * 100).toFixed(2) + "%.\n New " + this.positionString() + " position opened.";
+                }
+
+                this.$mdToast.show(
+                    this.$mdToast.simple()
+                        .textContent(text)
+                        .position("bottom right")
+                        .hideDelay(10000)
+                );
+
+
+            })
     }
 }

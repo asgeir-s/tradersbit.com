@@ -1,4 +1,5 @@
 <md-card>
+
 	<div layout="row" layout-xs="column" layout-sm="column">
 
 		<div class="id-row" flex layout="row" layout-align="center center" ng-click="ctrl.goToStream(ctrl.inStream.id)" style="cursor:pointer">
@@ -32,9 +33,10 @@
 		</div>
 
 		<section class="button-section" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
-			<md-button class="groupX left short-btn" ng-disabled="ctrl.inStream.lastSignal.signal === -1" flex>SHORT</md-button>
-			<md-button class="groupX middle" ng-disabled="ctrl.inStream.lastSignal.signal === 0" flex>CLOSE</md-button>
-			<md-button class="long-btn groupX right" ng-disabled="ctrl.inStream.lastSignal.signal === 1" flex>LONG</md-button>
+			<md-button class="groupX left short-btn" flex ng-disabled="ctrl.inStream.lastSignal.signal === -1" ng-click="ctrl.postSignal(ctrl.inStream.id, -1)">SHORT</md-button>
+			<md-button class="groupX middle" flex ng-disabled="ctrl.inStream.lastSignal.signal === 0" ng-click="ctrl.postSignal(ctrl.inStream.id, 0)">CLOSE</md-button>
+			<md-button class="long-btn groupX right" flex ng-disabled="ctrl.inStream.lastSignal.signal === 1" ng-click="ctrl.postSignal(ctrl.inStream.id, 1)">LONG</md-button>
 		</section>
 	</div>
+	<md-progress-linear ng-show="ctrl.waitingForSignalBack" md-mode="indeterminate"></md-progress-linear>
 </md-card>

@@ -91,6 +91,24 @@ apigClientFactory.newClient = function (config) {
     
     
     
+    apigClient.streamSignalPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['x-auth-token'], ['body']);
+        
+        var streamSignalPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/stream/signal').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-auth-token']),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(streamSignalPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
     apigClient.streamSubPricePatch = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         

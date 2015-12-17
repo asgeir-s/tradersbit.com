@@ -9,6 +9,8 @@ export class AuthApi {
   constructor(private auth: any, private store: any, private $q: angular.IQService, private _: _.LoDashStatic, private $window: any, private $state: ng.ui.IStateService) { }
 
   signIn(profile: string, token: string): angular.IPromise<boolean> {
+    console.log('jwt: ' + token);
+
     let deferred: angular.IDeferred<boolean> = this.$q.defer();
 
     this.store.set('profile', profile);
@@ -80,6 +82,28 @@ export class AuthApi {
         });
 
     }
+    return deferred.promise;
+  }
+
+  postSignal(streamId: string, signal: number): angular.IPromise<Array<Signal>> {
+    this.streams = undefined;
+    let deferred: angular.IDeferred<Array<Signal>> = this.$q.defer();
+
+    console.log('AuthApi - post signal');
+    this.apigClient.streamSignalPost({ "x-auth-token": this.store.get('token') }, {
+      "streamId": streamId,
+      "signal": signal
+    }, {})
+      .then((res: SuccessRespondse<Array<Signal>>) => {
+        //This is where you would put a success callback
+        console.log("signal res: " + JSON.stringify(res));
+        deferred.resolve(res.data);
+      })
+      .catch((err: any) => {
+        //This is where you would put an error callback
+        console.log('signal error: ' + err);
+        deferred.reject('AuthApi - Could not post signal. Error: ' + err);
+      });
     return deferred.promise;
   }
 
