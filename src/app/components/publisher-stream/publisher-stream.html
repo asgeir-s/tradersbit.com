@@ -1,44 +1,41 @@
 <md-card>
-	<md-card-header>
-		<md-card-avatar>
-			<md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
-		</md-card-avatar>
-		<md-card-header-text>
-			<span class="md-title">Stream Name</span>
-			<span class="md-subhead">{{ctrl.inStream.id}}</span>
-		</md-card-header-text>
-	</md-card-header>
-	<md-card-title>
-		<md-card-title-text>
-			<div flex layout="row" layout-sm="column" layout-fill layout-margin layout-padding layout-align-center-center layout-column
-			flex>
-				<div flex>
-					<small>exchange</small>
-					<br/>
-					<img ng-src="{{ctrl.logoUrl()}}" alt="exchange logo" />
-				</div>
-				<div flex>
-					<small>position</small>
-					<br/>
-					<h3 class="md-display-1">{{ctrl.positionString()}}</h3>
-				</div>
-				<div flex>
-					<small>unrealized P/L</small>
-					<br/>
-					<h3 class="md-display-1">{{ctrl.inStream.subscriptionPriceUSD | number:2}}%</h3>
-				</div>
+
+	<div layout="row" layout-xs="column" layout-sm="column">
+
+		<div flex layout="row" layout-align="center center">
+			<img flex="10" ng-src="{{ctrl.logoUrl()}}" alt="exchange logo" />
+
+			<div flex>
+				<span class="md-title">Stream Name</span>
+				<br>
+				<span class="md-subhead">{{ctrl.inStream.id}}</span>
 			</div>
-		</md-card-title-text>
-	</md-card-title>
-	<md-card-actions layout="row" layout-align="start center">
-		<md-button>SHORT</md-button>
-		<md-button>CLOSE</md-button>
-		<md-button>LONG</md-button>
-	</md-card-actions>
-	<md-card-content>
-		<p>
-			The titles of Washed Out's breakthrough song and the first single from Paracosm share the two most important words in Ernest
-			Greene's musical language: feel it. It's a simple request, as well...
-		</p>
-	</md-card-content>
+		</div>
+
+		<div class="stats" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
+			<div flex>
+				<small>instrument</small>
+				<br/>
+				<h6 class="md-title">BTC/USD</h6>
+			</div>
+			<div flex>
+				<small>position</small>
+				<br/>
+				<h6 class="md-title">{{ctrl.positionString()}}</h6>
+			</div>
+			<div flex>
+				<small>unrealized P/L</small>
+				<br/>
+				<h6 class="md-title">≈ {{ctrl.unrealizedPL | number:2}}%</h6>
+			</div>
+		</div>
+
+		<section class="button-section" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
+			<md-button class="groupX left short-btn" ng-disabled="ctrl.inStream.lastSignal.signal === -1" flex>SHORT</md-button>
+			<md-button class="groupX middle" ng-disabled="ctrl.inStream.lastSignal.signal === 0" flex>CLOSE</md-button>
+			<md-button class="long-btn groupX right" ng-disabled="ctrl.inStream.lastSignal.signal === 1" flex>LONG</md-button>
+		</section>
+
+	</div>
+
 </md-card>

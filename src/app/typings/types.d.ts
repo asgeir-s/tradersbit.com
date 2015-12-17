@@ -41,6 +41,7 @@ export interface PublisherStream {
   exchange: string;
   stats: Stats;
   status: number;
+  lastSignal: Signal;
 }
 
 export interface Stream {
