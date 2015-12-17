@@ -19,6 +19,7 @@ export function tbHome(): angular.IDirective {
 /** @ngInject */
 export class TbHomeCtrl {
   inStreams: () => Array<Stream>;
+  top5Streams: Array<Stream>;
   attributes: Array<StreamsAttribute> = [
    {
       name: "Exchange",
@@ -90,5 +91,9 @@ export class TbHomeCtrl {
       }
     }
   ];
+  
+  constructor() {
+    this.top5Streams = this.inStreams().sort((stream1, stream2) => stream1.stats.averageMonthlyProfitIncl - stream2.stats.averageMonthlyProfitIncl).slice(0, 5);
+  }
 
 }

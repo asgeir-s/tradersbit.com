@@ -1,5 +1,16 @@
-<h1>Publish Dash</h1>
+<div layout="column" layout-align="center">
+	<md-toolbar flex>
+		<div class="md-toolbar-tools">
+			<h2>Publish > My Streams</h2>
+			<span flex></span>
+			<md-button ng-click="ctrl.openSubscriptionDialog($event)">
+				New Stream
+			</md-button>
+			<md-button ng-click="ctrl.signOut()">
+				Sign Out
+			</md-button>
+		</div>
+	</md-toolbar>
 
-<input type="submit" ng-click="ctrl.signOut()" value="Sign out" />
-
-<tb-publisher-stream ng-repeat="stream in ctrl.myStreams()" in-stream="stream"></tb-publisher-stream>
+	<tb-publisher-stream ng-repeat="stream in ctrl.myStreams()" in-stream="stream"></tb-publisher-stream>
+</div>

@@ -35,6 +35,13 @@ $background-color-bad: #f3d7cd;
        url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
 
+md-toolbar {
+  color: $light-font-color !important;
+  button {
+      color: $light-font-color !important;
+  }
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;

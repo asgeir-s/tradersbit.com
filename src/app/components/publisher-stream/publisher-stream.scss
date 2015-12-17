@@ -1,6 +1,9 @@
 tb-publisher-stream {
-	img {
-		height: 2em !important;
+	.id-row {
+		background-color: $secondary-color;
+	}
+	
+	.exchange-logo {
 		margin: 12px;
 	}
 	h6 {

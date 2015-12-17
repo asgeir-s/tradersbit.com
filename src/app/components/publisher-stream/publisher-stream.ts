@@ -9,7 +9,8 @@ export function tbPublisherStream(): angular.IDirective {
         scope: {},
         templateUrl: 'app/components/publisher-stream/publisher-stream.html',
         bindToController: {
-            inStream: '='
+            inStream: '=',
+            inBtcRate: '&'
         },
         controller: TbPublisherStreamCtrl,
         controllerAs: 'ctrl'
@@ -20,14 +21,14 @@ export function tbPublisherStream(): angular.IDirective {
 /** @ngInject */
 export class TbPublisherStreamCtrl {
     inStream: PublisherStream;
+    inBtcRate: number;
     unrealizedPL: number;
 
-    constructor(private $q: angular.IQService, private $http: angular.IHttpService) {
+    constructor(private $q: angular.IQService, private $http: angular.IHttpService, private $state: any) {
         console.log('inStream: ' + JSON.stringify(this.inStream));
         this.computeUnrealizedPL(this.inStream.lastSignal, this.inStream.exchange)
+    }
 
-}
-    
 
     logoUrl(): string {
         if (this.inStream.exchange === 'bitstamp') {
@@ -81,5 +82,9 @@ export class TbPublisherStreamCtrl {
             (err: any) => {
                 console.error('Could not get bitcoin/usd rate at ' + exchange + '. Error: ' + err);
             })
+    }
+
+    goToStream(streamID: string) {
+        this.$state.go('stream', { 'streamId': streamID });
     }
 }
