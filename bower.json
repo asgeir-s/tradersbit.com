@@ -5,7 +5,7 @@
     "lodash": "~3.10.1",
     "angular-sanitize": "~1.4.2",
     "angular-ui-router": "~0.2.15",
-    "angular-material": "1.0.0",
+    "angular-material": "1.0.1",
     "material-design-iconfont": "~0.0.2",
     "animate.css": "~3.4.0",
     "angular": "~1.4.8",

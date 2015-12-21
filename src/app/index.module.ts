@@ -39,6 +39,7 @@ import { tbStreamAverageTradeChart } from './components/stream-average-trade-cha
 import { tbSubscriptionDialog } from './components/subscription-dialog/subscription-dialog';
 import { tbSignIn } from './components/sign-in/sign-in';
 import { tbPublisherStream } from './components/publisher-stream/publisher-stream';
+import { tbStreamNewDialog } from './components/stream-new-dialog/stream-new-dialog';
 
 // services
 import { PublicApi } from './services/public-api/public-api';
@@ -77,6 +78,7 @@ module tradersbitCom {
     .directive('tbSubscriptionDialog', tbSubscriptionDialog)
     .directive('tbSignIn', tbSignIn)
     .directive('tbPublisherStream', tbPublisherStream)
+    .directive('tbStreamNewDialog', tbStreamNewDialog)
 
   // services
     .service('publicApi', PublicApi)

@@ -52,6 +52,14 @@ export interface Stream {
   stats: Stats;
 }
 
+export interface NewStream {
+    name: string;
+    exchange: string;
+    currencyPair: string;
+    payoutAddress: string;
+    subscriptionPriceUSD: number;
+}
+
 export interface Signal {
   timestamp: number;
   price: number;
