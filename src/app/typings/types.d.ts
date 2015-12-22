@@ -46,6 +46,7 @@ export interface PublisherStream {
 
 export interface Stream {
   id: string;
+  name: string;
   currencyPair: string;
   subscriptionPriceUSD: number;
   exchange: string;

@@ -26,7 +26,7 @@ export class TbPublisherStreamCtrl {
     unrealizedPL: number;
     waitingForSignalBack = false;
 
-    constructor(private $q: angular.IQService, private $http: angular.IHttpService, private $state: any, private authApi: AuthApi, private _: _.LoDashStatic, private $mdToast: any) {
+    constructor(private $q: angular.IQService, private $http: angular.IHttpService, private $state: angular.ui.IStateService, private authApi: AuthApi, private _: _.LoDashStatic, private $mdToast: any) {
         console.log('inStream: ' + JSON.stringify(this.inStream));
         this.computeUnrealizedPL(this.inStream.lastSignal, this.inStream.exchange)
     }

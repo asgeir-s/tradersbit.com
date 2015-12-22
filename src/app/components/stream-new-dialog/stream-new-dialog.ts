@@ -19,10 +19,24 @@ export function tbStreamNewDialog(): angular.IDirective {
 /** @ngInject */
 export class TbStreamNewCtrl {
     stream: NewStream;
-    
-    constructor(private authApi: AuthApi) { }
-    
+    wating: boolean = false;
+    error: string;
+
+    constructor(private authApi: AuthApi, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) { }
+
     createStream(newStream: NewStream) {
-        this.authApi.postStream(newStream);
+        this.wating = true;
+        this.authApi.postStream(newStream)
+            .then((streamId: string) => {
+                this.$state.go(<string>this.$state.current, {}, { reload: true })
+                    .then(() => {
+                        this.wating = false;
+                        this.$mdDialog.hide('some id');
+                    })
+            })
+            .catch((err: any) => {
+                this.wating = false;
+                this.error = err.errorMessage;
+            })
     }
 }

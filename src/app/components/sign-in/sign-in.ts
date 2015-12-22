@@ -18,6 +18,8 @@ export function tbSignIn(): angular.IDirective {
 /** @ngInject */
 export class TbSignInCtrl {
 
+    wating: boolean = false;
+
     constructor(private auth: any, authApi: AuthApi, private $state: ng.ui.IStateService) {
         auth.config.auth0lib.$container = null; // auth0 lock fix
         console.log('constructor rusn');
@@ -34,8 +36,13 @@ export class TbSignInCtrl {
             }
         }, (profile, token) => {
             // Success callback
+            this.wating = true;
+
             authApi.signIn(profile, token)
-              .then(() => this.$state.go('publish-dash'))
+                .then(() => {
+                    this.$state.go('publish-dash')
+                    this.wating = false;
+                })
         }, () => {
             console.log('signin failed!');
         });

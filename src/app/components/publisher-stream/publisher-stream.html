@@ -8,9 +8,9 @@
 			</div>
 
 			<div flex>
-				<span class="md-title">Stream Name</span>
+				<span class="md-title">{{ctrl.inStream.name}}</span>
 				<br>
-				<span class="md-subhead">{{ctrl.inStream.id}}</span>
+				<small>{{ctrl.inStream.id}}</small>
 			</div>
 		</div>
 
@@ -33,9 +33,9 @@
 		</div>
 
 		<section class="button-section" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
-			<md-button class="groupX left short-btn" flex ng-disabled="ctrl.inStream.lastSignal.signal === -1" ng-click="ctrl.postSignal(ctrl.inStream.id, -1)">SHORT</md-button>
-			<md-button class="groupX middle" flex ng-disabled="ctrl.inStream.lastSignal.signal === 0" ng-click="ctrl.postSignal(ctrl.inStream.id, 0)">CLOSE</md-button>
-			<md-button class="long-btn groupX right" flex ng-disabled="ctrl.inStream.lastSignal.signal === 1" ng-click="ctrl.postSignal(ctrl.inStream.id, 1)">LONG</md-button>
+			<md-button class="groupX left short-btn" flex ng-disabled="ctrl.inStream.lastSignal.signal === -1 || ctrl.waitingForSignalBack" ng-click="ctrl.postSignal(ctrl.inStream.id, -1)">SHORT</md-button>
+			<md-button class="groupX middle" flex ng-disabled="ctrl.inStream.lastSignal.signal === 0 || ctrl.waitingForSignalBack" ng-click="ctrl.postSignal(ctrl.inStream.id, 0)">CLOSE</md-button>
+			<md-button class="long-btn groupX right" flex ng-disabled="ctrl.inStream.lastSignal.signal === 1 || ctrl.waitingForSignalBack" ng-click="ctrl.postSignal(ctrl.inStream.id, 1)">LONG</md-button>
 		</section>
 	</div>
 	<md-progress-linear ng-show="ctrl.waitingForSignalBack" md-mode="indeterminate"></md-progress-linear>

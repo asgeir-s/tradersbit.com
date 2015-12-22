@@ -1,6 +1,7 @@
 import { BitcoinaverageApi } from '../../services/bitcoinaverage-api/bitcoinaverage-api'
 import { Stream, StreamsAttribute, Signal, Trade } from '../../typings/types'
 import { StreamAttributes } from '../../util/stream-attributes'
+import { AuthApi } from '../../services/auth-api/auth-api'
 
 /** @ngInject */
 export function tbStream(): angular.IDirective {
@@ -30,16 +31,26 @@ export class TbStreamCtrl {
     trades: Array<Trade>;
     infoAttributes: Array<StreamsAttribute> = StreamAttributes.infoAttributes();
     statsAttributes: Array<StreamsAttribute> = StreamAttributes.statsAttributes();
+
+    empety: boolean = true;
+    amOwner: boolean = false;
   
     /* @ngInject */
-    constructor(private $timeout: angular.ITimeoutService, private $mdDialog: angular.material.IDialogService, highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi) {
-        // highcharts.setOptions(HighChartThemes.darkTheme);        
-        this.trades = this.signalsToTrades(this.inSignals);
+    constructor(private $timeout: angular.ITimeoutService, private $mdDialog: angular.material.IDialogService, highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi, private authApi: AuthApi) {
+        this.empety = this.inSignals.length <= 1;
+        if (typeof authApi.streamIds !== 'undefined') {
+            this.amOwner = authApi.streamIds.indexOf(this.inStream.id) >= 0;
+        }
 
-        bitcoinaverageApi.getPrice().then(
-            (btcPrice: number) => {
-                this.btcRate = btcPrice;
-            });
+        if (!this.empety) {
+            // highcharts.setOptions(HighChartThemes.darkTheme);        
+            this.trades = this.signalsToTrades(this.inSignals);
+
+            bitcoinaverageApi.getPrice().then(
+                (btcPrice: number) => {
+                    this.btcRate = btcPrice;
+                });
+        }
     }
 
     signalsToTrades(signals: Array<Signal>): Array<Trade> {

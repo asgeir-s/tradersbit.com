@@ -1,30 +1,34 @@
 <div layout="column" layout-align="center">
-  <md-toolbar flex>
-    <div class="md-toolbar-tools">
-      <h2>Streams > {{ctrl.inStream.id}}</h2>
-      <span flex></span>
-      <md-button ng-click="ctrl.openSubscriptionDialog($event)">
-        Subscribe
-      </md-button>
+    <md-toolbar flex>
+        <div class="md-toolbar-tools">
+            <h2>Streams > {{ctrl.inStream.name}}</h2>
+            <span flex></span>
+            <md-button ng-click="ctrl.openSubscriptionDialog($event)">
+                Subscribe
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-toolbar ng-hide="!ctrl.empety" class="md-accent">
+        <h2 class="md-toolbar-tools">
+        <span>there are no closed trades in this stream yet</span>
+      </h2>
+    </md-toolbar>
+    
+    <tb-stream-publisher-row ng-hide="!ctrl.amOwner"></tb-stream-publisher-row>
+
+    <tb-stream-stats-promo flex ng-hide="ctrl.empety" in-stream="ctrl.inStream"></tb-stream-stats-promo>
+
+    <tb-stream-chart-profit flex ng-hide="ctrl.empety" in-signals="ctrl.inSignals"></tb-stream-chart-profit>
+
+    <tb-stream-info-promo flex ng-hide="ctrl.empety" in-btc-rate="ctrl.btcRate" in-stream="ctrl.inStream"></tb-stream-info-promo>
+
+    <div flex ng-hide="ctrl.empety" class="two-chart-row">
+        <tb-stream-average-trade-chart in-stream="ctrl.inStream"></tb-stream-average-trade-chart>
+        <tb-stream-piechart-trades in-stream="ctrl.inStream"></tb-stream-piechart-trades>
     </div>
-  </md-toolbar>
 
-  <tb-stream-stats-promo flex in-stream="ctrl.inStream"></tb-stream-stats-promo>
+    <md-divider ng-hide="ctrl.empety" md-inset></md-divider>
 
-  <tb-stream-chart-profit flex in-signals="ctrl.inSignals"></tb-stream-chart-profit>
-
-  <tb-stream-info-promo flex in-btc-rate="ctrl.btcRate" in-stream="ctrl.inStream"></tb-stream-info-promo>
-
-  <div flex class="two-chart-row">
-    <tb-stream-average-trade-chart in-stream="ctrl.inStream"></tb-stream-average-trade-chart>
-    <tb-stream-piechart-trades in-stream="ctrl.inStream"></tb-stream-piechart-trades>
-  </div>
-
-  <md-divider md-inset></md-divider>
-
-
-  <tb-trades-table flex in-trades="ctrl.trades"></tb-trades-table>
-
-  <tb-info-table flex in-stream="ctrl.inStream" in-attributes="ctrl.statsAttributes" in-name="Stats"></tb-info-table>
+    <tb-trades-table flex ng-hide="ctrl.empety" in-trades="ctrl.trades"></tb-trades-table>
 
 </div>

@@ -6,24 +6,27 @@
 </md-toolbar>
 <md-dialog-content>
 
-    <form flex novalidate name="subscribeForm">
+    <form flex novalidate name="subscribeForm" ng-hide="ctrl.wating || ctrl.error">
         <div class="md-dialog-content" layout="column">
             <md-input-container flex>
                 <label>Stream name</label>
-                <input required ng-minlength="4" ng-maxlength="11" ng-trim="true" ng-pattern="/^[a-zA-Z1-9_- ]{4,12}$/" name="streamName" type="text" ng-model="ctrl.stream.name" />
+                <input required ng-minlength="4" ng-maxlength="20" ng-trim="true" ng-pattern="/^[a-zA-Z1-9\_\- ]{4,20}$/" name="streamName"
+                type="text" ng-model="ctrl.stream.name" />
                 <small>we retain the right to change or remove the stream's name at any time for any reason</small>
             </md-input-container>
 
             <md-input-container flex>
                 <label>Payout bitcoin address</label>
-                <input required name="payoutAddress" ng-trim="true" type="text" ng-pattern="/^[13][a-km-zA-HJ-NP-Z0-9]{26,34}$/" ng-model="ctrl.stream.payoutAddress" />
+                <input required name="payoutAddress" ng-trim="true" type="text" ng-pattern="/^[13][a-km-zA-HJ-NP-Z0-9]{26,34}$/" ng-model="ctrl.stream.payoutAddress"
+                />
                 <small>WARNING: The payout address can not be changed later!</small>
             </md-input-container>
 
             <div layout="row" flex>
                 <md-input-container flex>
                     <label for="subscriptionPriceUSD">Initial subscription price ($USD)</label>
-                    <input required type="number" min="3" max="9999" ng-model="ctrl.stream.subscriptionPriceUSD" id="subscriptionPriceUSD" placeholder="$" ng-init="ctrl.stream.subscriptionPriceUSD=5"/>
+                    <input required type="number" min="3" max="9999" ng-model="ctrl.stream.subscriptionPriceUSD" id="subscriptionPriceUSD" placeholder="$"
+                    ng-init="ctrl.stream.subscriptionPriceUSD=5" />
                 </md-input-container>
 
                 <md-input-container flex>
@@ -41,14 +44,22 @@
                 </md-input-container>
             </div>
 
-            <md-button flex ng-hide="ctrl.waitForResponds" ng-disabled="!subscribeForm.$valid"
-            class="md-raised md-accent btc-pay-button" type="submit" ng-click="ctrl.createStream(ctrl.stream)"
-            value="Submit" style="margin:0">create stream</md-button>
+            <md-button flex ng-hide="ctrl.waitForResponds" ng-disabled="!subscribeForm.$valid" class="md-raised md-accent btc-pay-button"
+            type="submit" ng-click="ctrl.createStream(ctrl.stream)" value="Submit" style="margin:0">create stream</md-button>
         </div>
 
     </form>
 
-    <md-progress-circular class="waiting" md-mode="indeterminate" ng-hide="!ctrl.waitForResponds" md-diameter="100"></md-progress-circular>
+    <div class="md-dialog-content center" flex layout="row" layout-align="center center">
+        <div ng-hide="!ctrl.error" flex="20">
+            <md-icon class="material-icons">error</md-icon>
+        </div>
+        <div ng-hide="!ctrl.error" flex>{{ctrl.error}}</div>
+        <div>
+            <md-progress-circular class="waiting" md-mode="indeterminate" ng-hide="!ctrl.wating" md-diameter="100"></md-progress-circular>
+        </div>
+    </div>
+
 
     <iframe ng-show="ctrl.gotPaymentInfo" id="coinbase_inline_iframe_{{ctrl.coinbaseEmbedCode}}" ng-src="{{ctrl.trustSrc('https://sandbox.coinbase.com/checkouts/' + ctrl.coinbaseEmbedCode + '/inline')}}"
     style="width: 100%; height: 450px; border: none;" allowtransparency="true" frameborder="0"></iframe>

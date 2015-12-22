@@ -1,15 +1,25 @@
 import { NewStream, Stream, Signal, Subscription, CoinbaseEmbedCode } from '../../../app/typings/types';
+import { PublicApi } from '../../services/public-api/public-api'
 
 export class AuthApi {
+    streamIds: Array<string>;
     streams: Array<Stream>;
     signalsMap: { [streamId: string]: Array<Signal>; } = {};
     private apigClient: any;
   
     /** @ngInject */
-    constructor(private auth: any, private store: any, private $q: angular.IQService, private _: _.LoDashStatic, private $window: any, private $state: ng.ui.IStateService) { }
+    constructor(private auth: any, private store: any, private $q: angular.IQService, private _: _.LoDashStatic, private $window: any, private $state: ng.ui.IStateService, private publicApi: PublicApi, private jwtHelper: any) {
+        try {
+            let token = this.store.get('token');
+            if (typeof token !== 'undefined') {
+                this.streamIds = this.getStreamIdsFromJWT(this.jwtHelper.decodeToken(token));
+            }
+        }
+        catch (err) { }
+    }
 
     signIn(profile: string, token: string): angular.IPromise<boolean> {
-        console.log('jwt: ' + token);
+        this.streamIds = this.getStreamIdsFromJWT(this.jwtHelper.decodeToken(token));
 
         let deferred: angular.IDeferred<boolean> = this.$q.defer();
 
@@ -50,6 +60,9 @@ export class AuthApi {
         this.store.remove('profile');
         this.store.remove('token');
         this.store.remove('awstoken');
+        this.signalsMap = {};
+        this.streams = undefined;
+        this.streamIds = undefined;
         console.log("auth-api: signed out");
         this.$state.go('home');
     };
@@ -86,7 +99,8 @@ export class AuthApi {
     }
 
     postSignal(streamId: string, signal: number): angular.IPromise<Array<Signal>> {
-        this.streams = undefined;
+        delete this.signalsMap[streamId];
+        delete this.publicApi.signalsMap[streamId];
         let deferred: angular.IDeferred<Array<Signal>> = this.$q.defer();
 
         console.log('AuthApi - post signal');
@@ -115,9 +129,17 @@ export class AuthApi {
         this.apigClient.streamsPost({ "x-auth-token": this.store.get('token') }, newStream, {})
             .then((res: SuccessRespondse<any>) => {
                 //This is where you would put a success callback
-                console.log("new stream res: " + JSON.stringify(res));
-                this.store.set('token', res.data.jwt);
-                deferred.resolve(res.data.streamId);
+                if (typeof res.data.jwt !== 'undefined') {
+                    console.log("new stream res: " + JSON.stringify(res));
+                    this.store.set('token', res.data.jwt);
+                    this.streamIds = this.getStreamIdsFromJWT(this.jwtHelper.decodeToken(res.data.jwt));
+                    deferred.resolve(res.data.streamId);
+                }
+                else {
+                    console.log("faild to add stream. Error: " + JSON.stringify(res));
+                    deferred.reject(res.data);
+                }
+
             })
             .catch((err: any) => {
                 //This is where you would put an error callback
@@ -125,6 +147,17 @@ export class AuthApi {
                 deferred.reject('AuthApi - Could not post new stream. Error: ' + err);
             });
         return deferred.promise;
+    }
+
+    isStream(value: string) {
+        let start = 'stream-';
+        return value.substring(0, start.length) === start;
+    }
+
+    getStreamIdsFromJWT(valideUser: any): Array<string> {
+        let streamKeys = Object.keys(valideUser.app_metadata).filter(this.isStream);
+        console.log('<<<<<<<<<<<<<ides from jwt: ' + JSON.stringify(streamKeys.map((key: string) => valideUser.app_metadata[key])));
+        return streamKeys.map((key: string) => valideUser.app_metadata[key]);
     }
 
 }
