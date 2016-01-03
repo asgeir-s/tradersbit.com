@@ -25,6 +25,9 @@ export class AuthApi {
 
         this.store.set('profile', profile);
         this.store.set('token', token);
+        
+        console.log('JWT:' + token);
+        
 
         var options = {
             "id_token": token,

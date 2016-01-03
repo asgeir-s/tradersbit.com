@@ -1,7 +1,7 @@
 import { Stream, Signal, Subscription, CoinbaseEmbedCode } from '../../../app/typings/types';
 
 export class PublicApi {
-  private static BASE_URL: string = "https://dc3r5gsogb.execute-api.us-west-2.amazonaws.com/dev";
+  private static BASE_URL: string = "https://366jdttql2.execute-api.us-west-2.amazonaws.com/development";
   streams: Array<Stream>;
   signalsMap: { [streamId: string]: Array<Signal>; } = {};
   
