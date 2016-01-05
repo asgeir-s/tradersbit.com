@@ -83,7 +83,7 @@ export class TbStreamChartProfitCtrl {
         let series = new Array<Array<number>>();
         for (var i = signals.length - 1; i > 0; i--) {
             series.push(Array(signals[i].timestamp,
-                (signals[i].value - signals[signals.length - 1].value) * 100
+                (signals[i].valueInclFee - signals[signals.length - 1].value) * 100
             ))
         }
         return series;

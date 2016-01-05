@@ -70,10 +70,6 @@ export class TbStreamPiechartTradesCtrl {
                     {
                         name: "Loosing",
                         y: this.inStream.stats.numberOfLoosingTrades
-                    },
-                    {
-                        name: "Unchanged value",
-                        y: (this.inStream.stats.numberOfClosedTrades - (this.inStream.stats.numberOfProfitableTrades + this.inStream.stats.numberOfLoosingTrades))
                     }]
             }],
             useHighStocks: false

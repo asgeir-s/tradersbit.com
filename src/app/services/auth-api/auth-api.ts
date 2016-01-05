@@ -104,6 +104,8 @@ export class AuthApi {
     postSignal(streamId: string, signal: number): angular.IPromise<Array<Signal>> {
         delete this.signalsMap[streamId];
         delete this.publicApi.signalsMap[streamId];
+        _.remove(this.publicApi.streams, (stream) => stream.id===streamId);
+        
         let deferred: angular.IDeferred<Array<Signal>> = this.$q.defer();
 
         console.log('AuthApi - post signal');

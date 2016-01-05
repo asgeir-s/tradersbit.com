@@ -100,10 +100,10 @@ export class TbPublisherStreamCtrl {
                 this.waitingForSignalBack = false;
                 let text: string;
                 if (signals.length === 1) {
-                    text = "New " + this.positionString() + " signal @ " + signals[0].price + "$. P/L: " + (signals[0].change * 100).toFixed(2) + "%.";
+                    text = "New " + this.positionString() + " signal @ " + signals[0].price + "$. P/L: " + (signals[0].changeInclFee * 100).toFixed(2) + "%.";
                 }
                 else {
-                    text = "Position closed @ " + signals[0].price + "$. P/L: " + (signals[0].change * 100).toFixed(2) + "%.\n New " + this.positionString() + " position opened.";
+                    text = "Position closed @ " + signals[0].price + "$. P/L: " + (signals[0].changeInclFee * 100).toFixed(2) + "%.\n New " + this.positionString() + " position opened.";
                 }
 
                 this.$mdToast.show(

@@ -65,8 +65,10 @@ export interface Signal {
   timestamp: number;
   price: number;
   change: number;
+  changeInclFee: number;
   id: string;
   value: number;
+  valueInclFee: number;
   signal: number;
 }
 

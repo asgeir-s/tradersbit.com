@@ -37,7 +37,26 @@ export class PublicApi {
     if (typeof this.streams !== 'undefined') {
       // the variable is defined
       console.log('PublicApiService - gets already fatched streams.');
-      deferred.resolve(_.find(this.streams, (stream: Stream) => stream.id === streamId));
+      let cachedStream = _.find(this.streams, (stream: Stream) => stream.id === streamId)
+      if (typeof cachedStream === 'undefined') {
+        console.log('PublicApiService - the stream was not in already fatched streams. Get single stream.');
+
+        this.$http.get(PublicApi.BASE_URL + '/streams/' + streamId).then(
+          (res: angular.IHttpPromiseCallbackArg<Stream>) => {
+            // add the stream to the cash
+            this.streams.push(res.data)
+            // resolve
+            deferred.resolve(res.data);
+          },
+          (err: any) => {
+            console.error('PublicApiService - Could not get stream. Error: ' + err);
+            deferred.reject('PublicApiService - Could not get stream. Error: ' + err);
+          })
+        
+      }
+      else {
+        deferred.resolve(cachedStream);
+      }
     }
     else {
       this.allStreams().then((streams: Array<Stream>) => {
