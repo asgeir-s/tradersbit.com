@@ -120,7 +120,7 @@ export class AuthApi {
             })
             .catch((err: any) => {
                 //This is where you would put an error callback
-                console.log('signal error: ' + err);
+                console.log('signal error: ' + JSON.stringify(err));
                 deferred.reject('AuthApi - Could not post signal. Error: ' + err);
             });
         return deferred.promise;

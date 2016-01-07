@@ -75,7 +75,7 @@ export class StreamAttributes {
             jsonPath: "stats.profitFactor",
             on: false,
             getIt: (stream: Stream) => {
-                return (stream.stats.profitFactor * 100).toFixed(2);
+                return stream.stats.profitFactor.toFixed(2);
             }
         },
         {

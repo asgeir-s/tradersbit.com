@@ -130,12 +130,12 @@ apigClientFactory.newClient = function (config) {
     apigClient.streamSubPricePatch = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['x-auth-token'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
         var streamSubPricePatchRequest = {
             verb: 'patch'.toUpperCase(),
             path: pathComponent + uritemplate('/stream/sub-price').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-auth-token']),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
