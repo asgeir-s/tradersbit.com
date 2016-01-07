@@ -57,21 +57,18 @@ export class TbPublisherStreamCtrl {
     }
 
     computeUnrealizedPL(lastSignal: Signal, exchange: string) {
-        this.unrealizedPL = 10;
-        /*
         this.getLastRate(this.inStream.exchange)
             .then((rate: number) => {
                 if (lastSignal.signal === 0) {
                     this.unrealizedPL = 0;
                 }
                 else if (lastSignal.signal === 1) {
-                    this.unrealizedPL = rate - lastSignal.price;
+                    this.unrealizedPL = rate - lastSignal.price-0.2;
                 }
                 else if (lastSignal.signal === -1) {
-                    this.unrealizedPL = lastSignal.price - rate;
+                    this.unrealizedPL = (lastSignal.price - rate)-0.2;
                 }
             })
-            */
 
     }
 
