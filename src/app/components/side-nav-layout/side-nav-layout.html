@@ -1,97 +1,106 @@
 <section layout="row" style="height:100vh;">
-	<md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav" md-component-id="leftBig" md-is-locked-open="$mdMedia('gt-md')">
-		<h1 class="md-display-1 side-nav-layout--logo"><a href="/">TradersBit</a></h1>
-		<md-content>
-			<md-list>
-				<md-list-item ng-click="ctrl.chnageState('home')">
-					<md-icon class="material-icons">home</md-icon>
-					<p>Home</p>
-				</md-list-item>
-				<md-list-item ng-click="ctrl.chnageState('streams')">
-					<md-icon class="material-icons">insert_chart</md-icon>
-					<p>Streams</p>
-				</md-list-item>
-				<md-list-item ng-click="ctrl.chnageState('publish-dash')">
-					<md-icon class="material-icons">settings_remote</md-icon>
-					<p>Publish</p>
-				</md-list-item>
-				<md-list-item ng-click="ctrl.chnageState('home')">
-					<md-icon class="material-icons">help</md-icon>
-					<p>Help</p>
-				</md-list-item>
-				<md-list-item ng-click="ctrl.chnageState('home')">
-					<md-icon class="material-icons">business</md-icon>
-					<p>About</p>
-				</md-list-item>
-			</md-list>
-		</md-content>
-	</md-sidenav>
+  <md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav" md-component-id="leftBig" md-is-locked-open="$mdMedia('gt-md')">
+    <h1 class="md-display-1 side-nav-layout--logo"><a href="/">TradersBit</a></h1>
+    <md-content>
+      <md-list>
+        <md-list-item ng-class="{active: ctrl.stateIs('home')}" ng-click="ctrl.chnageState('home')">
+          <md-icon class="material-icons">home</md-icon>
+          <p>Home</p>
+        </md-list-item>
+        <md-list-item ng-class="{active: ctrl.stateIs('streams')}" ng-click="ctrl.chnageState('streams')">
+          <md-icon class="material-icons">insert_chart</md-icon>
+          <p>Streams</p>
+        </md-list-item>
+        <md-list-item ng-class="{active: ctrl.stateIs('publish-dash')}" ng-click="ctrl.chnageState('publish-dash')">
+          <md-icon class="material-icons">settings_remote</md-icon>
+          <p>Publish</p>
+        </md-list-item>
+        <md-list-item ng-class="{active: ctrl.stateIs('help')}" ng-click="ctrl.chnageState('help')">
+          <md-icon class="material-icons">help</md-icon>
+          <p>Help</p>
+        </md-list-item>
+        <md-list-item ng-class="{active: ctrl.stateIs('about')}" ng-click="ctrl.chnageState('about')">
+          <md-icon class="material-icons">business</md-icon>
+          <p>About</p>
+        </md-list-item>
+        <md-list-item ng-click="ctrl.chnageState('home')">
+          <md-icon class="material-icons">mode_edit</md-icon>
+          <p>Blog</p>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
 
-	<md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav-mini hide-gt-md" md-component-id="leftSmal" md-is-locked-open="true">
-		<h1 class="md-display-1 side-nav-layout--logo"><a href="/">TB</a></h1>
-		<md-content class="sidenav-icons">
-			<md-list>
-				<md-list-item ng-click="ctrl.chnageState('home')">
-					<md-icon class="material-icons">home</md-icon>
-				</md-list-item>
-				<md-list-item ng-click="ctrl.chnageState('streams')">
-					<md-icon class="material-icons">insert_chart</md-icon>
-				</md-list-item>
-				<md-list-item ng-click="ctrl.chnageState('publish-dash')">
-					<md-icon class="material-icons">settings_remote</md-icon>
-				</md-list-item>
-				<md-list-item ng-click="ctrl.chnageState('home')">
-					<md-icon class="material-icons">help</md-icon>
-				</md-list-item>
-				<md-list-item ng-click="ctrl.chnageState('home')">
-					<md-icon class="material-icons">business</md-icon>
-				</md-list-item>
-			</md-list>
-		</md-content>
-	</md-sidenav>
+  <md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav-mini hide-gt-md" md-component-id="leftSmal" md-is-locked-open="true">
+    <h1 class="md-display-1 side-nav-layout--logo"><a href="/">TB</a></h1>
+    <md-content class="sidenav-icons">
+      <md-list>
+        <md-list-item ng-class="{active: ctrl.stateIs('home')}" ng-click="ctrl.chnageState('home')">
+          <md-icon class="material-icons">home</md-icon>
+        </md-list-item>
+        <md-list-item ng-class="{active: ctrl.stateIs('streams')}" ng-click="ctrl.chnageState('streams')">
+          <md-icon class="material-icons">insert_chart</md-icon>
+        </md-list-item>
+        <md-list-item ng-class="{active: ctrl.stateIs('publish-dash')}" ng-click="ctrl.chnageState('publish-dash')">
+          <md-icon class="material-icons">settings_remote</md-icon>
+        </md-list-item>
+        <md-list-item ng-class="{active: ctrl.stateIs('help')}" ng-click="ctrl.chnageState('help')">
+          <md-icon class="material-icons">help</md-icon>
+        </md-list-item>
+        <md-list-item ng-class="{active: ctrl.stateIs('about')}" ng-click="ctrl.chnageState('about')">
+          <md-icon class="material-icons">business</md-icon>
+        </md-list-item>
+        <md-list-item ng-click="ctrl.chnageState('home')">
+          <md-icon class="material-icons">mode_edit</md-icon>
+        </md-list-item>
+      </md-list>
+    </md-content>
+  </md-sidenav>
 
-	<md-content flex role="main" layout="column">
-		<!-- route output here -->
-		<div class="main-content" flex ng-transclude> </div>
+  <md-content flex role="main" layout="column">
+    <!-- route output here -->
+    <div class="main-content" flex ng-transclude> </div>
 
-		<footer flex>
-			<div layout="column" layout-align="center center">
-				<div flex layout="row" layout-margin layout-padding layout-align="center">
-					<ul flex>
-						<li>
-							<h3>Content</h3>
-						</li>
-						<li><a href="javascript:void(0)">Price</a></li>
-						<li><a href="javascript:void(0)">Help</a></li>
-						<li><a href="javascript:void(0)">API</a></li>
-						<li><a href="javascript:void(0)">About</a></li>
-					</ul>
-					<ul flex>
-						<li>
-							<h3>Follow Us</h3>
-						</li>
-						<li><a href="javascript:void(0)">Facebook</a></li>
-						<li><a href="javascript:void(0)">Twitter</a></li>
-					</ul>
-					<ul flex>
-						<li>
-							<h3>Legal</h3>
-						</li>
-						<li><a href="javascript:void(0)">Terms and Conditions</a></li>
-						<li><a href="javascript:void(0)">Privacy Policy</a></li>
-					</ul>
-				</div>
-				<div flex>
-					<p class="disclamer">
-						<small>Past performance of signal streams, is not necessarily indicative of future results. No representation is made that any account is likely to achieve profits or losses similar to those shown.</small>
-						<br>
-						<small>Prise data from Bitcoinaverage</small>
-					</p>
-				</div>
+    <footer flex>
+      <div layout="column" layout-align="center center">
+        <div flex layout="row" layout-margin layout-padding layout-align="center">
+          <ul flex>
+            <li>
+              <h3>Content</h3>
+            </li>
+            <li><a href="javascript:void(0)">Price</a></li>
+            <li><a href="javascript:void(0)">Help</a></li>
+            <li><a href="javascript:void(0)">API</a></li>
+            <li><a href="javascript:void(0)">About</a></li>
+          </ul>
+          <ul flex>
+            <li>
+              <h3>Follow Us</h3>
+            </li>
+            <li><a href="javascript:void(0)">Facebook</a></li>
+            <li><a href="javascript:void(0)">Twitter</a></li>
+          </ul>
+          <ul flex>
+            <li>
+              <h3>Legal</h3>
+            </li>
+            <li><a href="javascript:void(0)">Terms and Conditions</a></li>
+            <li><a href="javascript:void(0)">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div flex>
+          <p class="disclamer">
+            <small>Past performance of signal streams, is not necessarily indicative of future results. No representation is made that any account is likely to achieve profits or losses similar to those shown.</small>
+            <br/>
+            <small>Prise data from Bitcoinaverage</small>
+            <br/>
+            <small class="center">Bitcoin icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></small>
+          </p>
+        </div>
 
-			</div>
+      </div>
 
-		</footer>
-	</md-content>
+    </footer>
+  </md-content>
 
 </section>

@@ -25,6 +25,8 @@ import { tbStreams } from './comp-top/streams/streams';
 import { tbStream } from './comp-top/stream/stream';
 import { tbPublish } from './comp-top/publish/publish';
 import { tbPublishDash } from './comp-top/publish-dash/publish-dash';
+import { tbHelp } from './comp-top/help/help';
+import { tbAbout } from './comp-top/about/about';
 
 // components
 import { tbSideNavLayout } from './components/side-nav-layout/side-nav-layout';
@@ -64,7 +66,9 @@ module tradersbitCom {
     .directive('tbStreams', tbStreams)
     .directive('tbStream', tbStream)
     .directive('tbPublish', tbPublish)
-        .directive('tbPublishDash', tbPublishDash)
+    .directive('tbPublishDash', tbPublishDash)
+    .directive('tbHelp', tbHelp)
+    .directive('tbAbout', tbAbout)
 
   // components
     .directive('tbSideNavLayout', tbSideNavLayout)

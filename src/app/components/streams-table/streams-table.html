@@ -2,14 +2,14 @@
 	<table class="streams-table click-table">
 		<thead>
 			<tr>
-				<th ng-repeat="atribute in ctrl.inAttributes()" ng-if="atribute.on">
-					<a class="md-subhead table-header md-body-2" href="" ng-click="ctrl.order(atribute.jsonPath)">
+				<th ng-repeat="atribute in ctrl.inAttributes()" ng-if="atribute.on" ng-click="ctrl.order(atribute.jsonPath)">
+					<a class="md-subhead table-header md-body-2" href="">
 								{{atribute.short}}     
 								<md-tooltip md-direction="right">{{atribute.name}}</md-tooltip>
 							</a>
 					<span class="sortorder" ng-show="ctrl.predicate === atribute.jsonPath">
-                				<i class="material-icons" ng-hide="ctrl.reverse">arrow_drop_down</i>
-                				<i class="material-icons" ng-show="ctrl.reverse">arrow_drop_up</i>
+                				<i class="material-icons" ng-show="ctrl.reverse">arrow_drop_down</i>
+                				<i class="material-icons" ng-hide="ctrl.reverse">arrow_drop_up</i>
               				</span>
 				</th>
 			</tr>

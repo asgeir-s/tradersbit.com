@@ -23,7 +23,7 @@ export class TbStreamsTableCtrl {
     inAttributes: () => Array<StreamsAttribute>;
     inStreams: () => Array<Stream>;
 
-    reverse: Boolean = false;
+    reverse: Boolean = true;
     predicate: String = "stats.averageMonthlyProfitIncl";
 
     /* @ngInject */

@@ -1,12 +1,14 @@
 tb-home {
+  font-size: 1.15em;
 .home--promo-top {
-    padding: 7em;
     padding-top: 10em;
     padding-bottom: 5em;
     background-color: $primary-color;
     text-align: center;
     color: $light-font-color;
     font-weight: 400;
+    
+
 }
 
 .home--features-row {
@@ -17,6 +19,24 @@ tb-home {
     md-icon {
         font-size: 4em;
     }
+}
+
+.home--features-outer {
+  background-color: $primary-color;
+  color: $light-font-color;
+  
+  a {
+    color: $light-link-color;
+  }
+  
+  md-icon {
+    color: $light-font-color;
+  }
+}
+
+
+h3 {
+  
 }
 
 md-card {
@@ -38,7 +58,6 @@ form {
 }
 
 p {
-  text-align: center;
   margin-bottom: 0px;
 }
 
@@ -47,6 +66,30 @@ p {
      @media screen and (max-width: 600px) {
       margin-bottom: 0px;
   }
+}
+
+.bitcoin-promo-image {
+  background-image: url('/assets/images/bitcoin32.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 300px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.outer-bitcoin-promo-image {
+  padding: 30px;  
+}
+
+.text-content {
+  font-size: 1.4em;
+  max-width: 600px !important;
+
+}
+
+.readmore-button {
+  margin-left: 0px !important;
 }
 
 }

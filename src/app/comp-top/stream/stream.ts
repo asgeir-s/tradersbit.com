@@ -106,11 +106,11 @@ export class TbStreamCtrl {
 
     private positionNumberToString(signalNum: number): string {
         if (signalNum === - 1) {
-            return "short";
+            return "SHORT";
         } else if (signalNum === 1) {
-            return "long";
+            return "LONG";
         } else if (signalNum === 0) {
-            return "close";
+            return "CLOSE";
         }
     }
 

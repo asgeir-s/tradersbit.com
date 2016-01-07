@@ -21,5 +21,9 @@ export class TbSideNavLayoutCtrl {
   chnageState(newState: string) {
     this.$state.go(newState);
   }
+  
+  stateIs(stateIn: string) {
+    return this.$state.is(stateIn);
+  }
 
 }

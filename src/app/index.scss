@@ -11,6 +11,7 @@ $success-color: color("green", "base") !default;
 $dark-font-color: #000;
 $light-font-color: #fff;
 $light-link-color: darken($light-font-color, 15%);
+$active-color: darken($light-font-color, 15%);
 
 $background-color-good: #c7f3cb;
 $background-color-bad: #f3d7cd;
@@ -34,6 +35,20 @@ $background-color-bad: #f3d7cd;
        url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'),
        url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
+
+@font-face {
+  font-family: "Carosello";
+  src: url(/assets/fonts/Carosello-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "Streetware";
+  src: url(/assets/fonts/Oldways-Regular.otf) format("truetype");
+}
+
+  .text-content {
+    max-width: 670px;
+  }
   
 
 
@@ -85,6 +100,9 @@ footer {
   }
 }
 
+.center {
+  text-align: center;
+}
 
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject

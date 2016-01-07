@@ -19,7 +19,6 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       },
       controllerAs: 'ctrl'
     })
-
     .state('streams', {
       url: '/streams',
       template: '<tb-streams in-streams="ctrl.streams"></tb-streams>',
@@ -66,6 +65,14 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       data: {
         requiresLogin: true
       }
+    })
+    .state('help', {
+      url: '/help',
+      template: '<tb-help></tb-help>'
+    })
+    .state('about', {
+      url: '/about',
+      template: '<tb-about></tb-about>'
     });
 
   $urlRouterProvider.otherwise('/');

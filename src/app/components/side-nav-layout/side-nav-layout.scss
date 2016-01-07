@@ -32,4 +32,9 @@ tb-side-nav-layout {
     footer {
         max-height: 300px;
     }
+    
+    .active {
+      background-color: $active-color;
+    }
+    
 }
