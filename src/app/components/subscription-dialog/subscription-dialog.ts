@@ -25,7 +25,7 @@ export class TbSubscriptionDialogCtrl {
     inBtcRate: number;
 
     subscriptionPriceUSD: number;
-    subscription: Subscription = { email: "", apiKey: "", apiSecret: "", signalsToEmail: true };
+    subscription: Subscription = { email: "", apiKey: "", apiSecret: "", signalsToEmail: false }; // signalsToEmail should be true when relesing subscriptions
     fullPriceUSD: number;
     subscribeAutoTrader: boolean = false;
     fullPriceBTC: number;

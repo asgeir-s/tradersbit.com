@@ -1,6 +1,6 @@
 <md-toolbar>
     <div class="md-toolbar-tools">
-        <h2>Subscribe to Stream</h2>
+        <h2>Subscribe to Stream (comming soon)</h2>
         <span flex></span>
     </div>
 </md-toolbar>
@@ -36,10 +36,10 @@
                 </md-switch>
                 <md-input-container flex>
                     <label for="email">Email (optinal if you use Autotrader)</label>
-                    <input ng-required='ctrl.subscription.signalsToEmail' type="email" ng-model="ctrl.subscription.email" id="email" value=""/>
+                    <input ng-disabled="true" ng-required='ctrl.subscription.signalsToEmail' type="email" ng-model="ctrl.subscription.email" id="email" value=""/>
                 </md-input-container>
                 <md-switch class="md-primary" ng-disabled="true" ng-model="ctrl.subscribeAutoTrader" aria-label="Switch 6" ng-change="ctrl.updatePrice()">
-                    Autotrader ({{ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{ctrl.autoTraderPrice / ctrl.inBtcRate | number:4}}) <small>comming soon</small>
+                    Autotrader ({{ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{ctrl.autoTraderPrice / ctrl.inBtcRate | number:4}})
                 </md-switch>
                 <md-input-container flex ng-hide="!ctrl.subscribeAutoTrader">
                     <label>API key for <span style="text-transform: capitalize;">{{ctrl.stream.exchange}}</span></label>
@@ -52,7 +52,7 @@
                     ng-minlength="5" />
                 </md-input-container>
 
-                <div flex class="recaptcha" vc-recaptcha key="'6Lek2xETAAAAANo7-PKjcbAn8OuxJytZ4IQwLmFg'" on-success="ctrl.setReCaptchaResponds(response)"></div>
+                <div ng-hide="true" flex class="recaptcha" vc-recaptcha key="'6Lek2xETAAAAANo7-PKjcbAn8OuxJytZ4IQwLmFg'" on-success="ctrl.setReCaptchaResponds(response)"></div>
 
                 <md-button flex ng-hide="ctrl.waitForResponds" ng-disabled="!ctrl.subscription.signalsToEmail && !ctrl.subscribeAutoTrader || !subscribeForm.$valid"
                 class="md-raised md-accent btc-pay-button" type="submit" ng-click="ctrl.postSubscriptionReturnButtonCode(ctrl.subscription)"

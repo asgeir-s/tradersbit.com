@@ -25,6 +25,7 @@ export class TbSignInCtrl {
         console.log('constructor rusn');
 
         auth.signin({
+          disableSignupAction: true,
             container: 'hiw-login-container',
             authParams: {
                 scope: "user_id openid email app_metadata"
