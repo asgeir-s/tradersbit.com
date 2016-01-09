@@ -1,9 +1,9 @@
 /** @ngInject */
 export function config($logProvider: angular.ILogProvider, $locationProvider: angular.ILocationProvider, $mdThemingProvider: any, authProvider: any) {
   // enable log
+  $locationProvider.html5Mode(true).hashPrefix('!');
+  
   $logProvider.debugEnabled(true);
-
-  $locationProvider.html5Mode(true);
 
   $mdThemingProvider.theme('default')
     .primaryPalette('cyan')

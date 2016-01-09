@@ -1,70 +1,74 @@
 <md-toolbar>
-    <div class="md-toolbar-tools">
-        <h2>Subscribe to Stream (comming soon)</h2>
-        <span flex></span>
-    </div>
+  <div class="md-toolbar-tools">
+    <h2>Subscribe to Stream (comming soon)</h2>
+    <span flex></span>
+    <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+      <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+    </md-button>
+  </div>
 </md-toolbar>
 <md-dialog-content>
-    <div class="md-dialog-content" layout="column">
+  <div class="md-dialog-content" layout="column">
 
-        <div flex ng-hide="ctrl.gotPaymentInfo">
-            <small>price for 30 days subscription</small>
-            <br/>
-            <h3 class="md-display-1">{{ctrl.inStream.subscriptionPriceUSD | currency:"$"}}</h3>
-            <small>≈ ฿{{ctrl.fullPriceUSD / ctrl.inBtcRate | number:4}}</small>
-        </div>
-
-        <div flex ng-hide="ctrl.gotPaymentInfo">
-            <p>
-                Subscribe to this stream to get new trading signals sendt to your email and/or Autotraded for you at
-                <span style="text-transform: capitalize;">{{ctrl.stream.exchange}}</span>.
-            </p>
-            <p>
-                If you include your email, you get a email with the option to continue subscrption 5 days befor the subscription expires.
-            </p>
-        </div>
-
-        <form flex novalidate name="subscribeForm" ng-hide="ctrl.gotPaymentInfo">
-            <div layout="column" layout-align="center">
-                <legend flex>
-                    The information entered here can not be changed later. If you make a typo or wants to change somthing later you have tu buy
-                    a new subscription.
-                </legend>
-
-                <md-switch class="md-primary signals-to-email" ng-model="ctrl.subscription.signalsToEmail" ng-disabled="true" aria-label="Subscribe with Email">
-                    Send new signals to email
-                </md-switch>
-                <md-input-container flex>
-                    <label for="email">Email (optinal if you use Autotrader)</label>
-                    <input ng-disabled="true" ng-required='ctrl.subscription.signalsToEmail' type="email" ng-model="ctrl.subscription.email" id="email" value=""/>
-                </md-input-container>
-                <md-switch class="md-primary" ng-disabled="true" ng-model="ctrl.subscribeAutoTrader" aria-label="Switch 6" ng-change="ctrl.updatePrice()">
-                    Autotrader ({{ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{ctrl.autoTraderPrice / ctrl.inBtcRate | number:4}})
-                </md-switch>
-                <md-input-container flex ng-hide="!ctrl.subscribeAutoTrader">
-                    <label>API key for <span style="text-transform: capitalize;">{{ctrl.stream.exchange}}</span></label>
-                    <input name="apiKey" ng-required='ctrl.subscribeAutoTrader' ng-disabled="!ctrl.subscribeAutoTrader" type="text" ng-model="ctrl.subscription.apiKey"
-                    ng-minlength="5" />
-                </md-input-container>
-                <md-input-container flex ng-hide="!ctrl.subscribeAutoTrader">
-                    <label>API secret for <span style="text-transform: capitalize;">{{ctrl.stream.exchange}}</span></label>
-                    <input name="apiSecret" ng-required='ctrl.subscribeAutoTrader' ng-disabled="!ctrl.subscribeAutoTrader" type="text" ng-model="ctrl.subscription.apiSecret"
-                    ng-minlength="5" />
-                </md-input-container>
-
-                <div ng-hide="true" flex class="recaptcha" vc-recaptcha key="'6Lek2xETAAAAANo7-PKjcbAn8OuxJytZ4IQwLmFg'" on-success="ctrl.setReCaptchaResponds(response)"></div>
-
-                <md-button flex ng-hide="ctrl.waitForResponds" ng-disabled="!ctrl.subscription.signalsToEmail && !ctrl.subscribeAutoTrader || !subscribeForm.$valid"
-                class="md-raised md-accent btc-pay-button" type="submit" ng-click="ctrl.postSubscriptionReturnButtonCode(ctrl.subscription)"
-                value="Submit" style="margin:0">Pay with Bitcoin</md-button>
-                
-            </div>
-        </form>
-        
-        <md-progress-circular flex class="waiting" md-mode="indeterminate" ng-hide="!ctrl.waitForResponds" md-diameter="100"></md-progress-circular>
-        
-        <iframe flex ng-show="ctrl.gotPaymentInfo" id="coinbase_inline_iframe_{{ctrl.coinbaseEmbedCode}}" ng-src="{{ctrl.trustSrc('https://sandbox.coinbase.com/checkouts/' + ctrl.coinbaseEmbedCode + '/inline')}}"
-        style="width: 100%; height: 450px; border: none;" allowtransparency="true" frameborder="0"></iframe>
-        
+    <div flex ng-hide="ctrl.gotPaymentInfo">
+      <small>price for 30 days subscription</small>
+      <br/>
+      <h3 class="md-display-1">{{ctrl.inStream.subscriptionPriceUSD | currency:"$"}}</h3>
+      <small>≈ ฿{{ctrl.fullPriceUSD / ctrl.inBtcRate | number:4}}</small>
     </div>
+
+    <div flex ng-hide="ctrl.gotPaymentInfo">
+      <p>
+        Subscribe to this stream to get new trading signals sendt to your email and/or Autotraded for you at
+        <span style="text-transform: capitalize;">{{ctrl.stream.exchange}}</span>.
+      </p>
+      <p>
+        If you include your email, you get a email with the option to continue subscrption 5 days befor the subscription expires.
+      </p>
+    </div>
+
+    <form flex novalidate name="subscribeForm" ng-hide="ctrl.gotPaymentInfo">
+      <div layout="column" layout-align="center">
+        <legend flex>
+          The information entered here can not be changed later. If you make a typo or wants to change somthing later you have tu buy
+          a new subscription.
+        </legend>
+
+        <md-switch class="md-primary signals-to-email" ng-model="ctrl.subscription.signalsToEmail" ng-disabled="true" aria-label="Subscribe with Email">
+          Send new signals to email
+        </md-switch>
+        <md-input-container flex>
+          <label for="email">Email (optinal if you use Autotrader)</label>
+          <input ng-disabled="true" ng-required='ctrl.subscription.signalsToEmail' type="email" ng-model="ctrl.subscription.email"
+          id="email" value="" />
+        </md-input-container>
+        <md-switch class="md-primary" ng-disabled="true" ng-model="ctrl.subscribeAutoTrader" aria-label="Switch 6" ng-change="ctrl.updatePrice()">
+          Autotrader ({{ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{ctrl.autoTraderPrice / ctrl.inBtcRate | number:4}})
+        </md-switch>
+        <md-input-container flex ng-hide="!ctrl.subscribeAutoTrader">
+          <label>API key for <span style="text-transform: capitalize;">{{ctrl.stream.exchange}}</span></label>
+          <input name="apiKey" ng-required='ctrl.subscribeAutoTrader' ng-disabled="!ctrl.subscribeAutoTrader" type="text" ng-model="ctrl.subscription.apiKey"
+          ng-minlength="5" />
+        </md-input-container>
+        <md-input-container flex ng-hide="!ctrl.subscribeAutoTrader">
+          <label>API secret for <span style="text-transform: capitalize;">{{ctrl.stream.exchange}}</span></label>
+          <input name="apiSecret" ng-required='ctrl.subscribeAutoTrader' ng-disabled="!ctrl.subscribeAutoTrader" type="text" ng-model="ctrl.subscription.apiSecret"
+          ng-minlength="5" />
+        </md-input-container>
+
+        <div ng-hide="true" flex class="recaptcha" vc-recaptcha key="'6Lek2xETAAAAANo7-PKjcbAn8OuxJytZ4IQwLmFg'" on-success="ctrl.setReCaptchaResponds(response)"></div>
+
+        <md-button flex ng-hide="ctrl.waitForResponds" ng-disabled="!ctrl.subscription.signalsToEmail && !ctrl.subscribeAutoTrader || !subscribeForm.$valid"
+        class="md-raised md-accent btc-pay-button" type="submit" ng-click="ctrl.postSubscriptionReturnButtonCode(ctrl.subscription)"
+        value="Submit" style="margin:0">Pay with Bitcoin</md-button>
+
+      </div>
+    </form>
+
+    <md-progress-circular flex class="waiting" md-mode="indeterminate" ng-hide="!ctrl.waitForResponds" md-diameter="100"></md-progress-circular>
+
+    <iframe flex ng-show="ctrl.gotPaymentInfo" id="coinbase_inline_iframe_{{ctrl.coinbaseEmbedCode}}" ng-src="{{ctrl.trustSrc('https://sandbox.coinbase.com/checkouts/' + ctrl.coinbaseEmbedCode + '/inline')}}"
+    style="width: 100%; height: 450px; border: none;" allowtransparency="true" frameborder="0"></iframe>
+
+  </div>
 </md-dialog-content>

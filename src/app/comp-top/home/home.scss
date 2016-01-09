@@ -1,5 +1,6 @@
 tb-home {
-  font-size: 1.15em;
+  //font-size: 1.15em;
+  
 .home--promo-top {
     padding-top: 10em;
     padding-bottom: 5em;
@@ -7,8 +8,6 @@ tb-home {
     text-align: center;
     color: $light-font-color;
     font-weight: 400;
-    
-
 }
 
 .home--features-row {
@@ -34,39 +33,41 @@ tb-home {
   }
 }
 
-
-h3 {
-  
-}
-
-md-card {
-    min-height: 300px;
-}
-
 .mailchimp {
-  background-color: $secondary-color; 
+  background-color: $secondary-color;
+  
+form {
+       @media screen and (max-width: 600px) {
+       display: block !important;
+   }
+    
 }
+  
 
-#mc-embedded-subscribe {
+ 
+  #mc-embedded-subscribe {
     margin-top: 5px;
     margin-bottom: 20px;
     color: $light-font-color;
-}
-
-form {
-    width: 600px; 
-}
-
-p {
-  margin-bottom: 0px;
-}
-
-.email-row {
-    padding-right: 20px;
-     @media screen and (max-width: 600px) {
-      margin-bottom: 0px;
   }
+
+  form {
+    width: 600px;
+  }
+
+  p {
+    margin-bottom: 0px;
+  }
+
+  .email-row {
+     //padding-right: 20px;
+     //margin-bottom: 30px !important;
+     @media screen and (max-width: 600px) {
+       margin-bottom: 0px;
+   }
+  } 
 }
+
 
 .bitcoin-promo-image {
   background-image: url('/assets/images/bitcoin32.svg');
@@ -90,6 +91,10 @@ p {
 
 .readmore-button {
   margin-left: 0px !important;
+}
+
+.how {
+  //min-height: 1100px;
 }
 
 }

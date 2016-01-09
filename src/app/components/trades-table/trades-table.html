@@ -1,29 +1,30 @@
-  <div class="stream-trades">
-    <h4 flex class="md-headline">Closed Trades</h4>
-    <div flex>
+<div class="stream-trades">
+  <h4 flex class="md-headline">Closed Trades</h4>
+  <div flex>
+<md-content>
+    <table class="trads-table">
+      <thead>
+        <tr>
+          <th class="table-header">position</th>
+          <th class="table-header">open time</th>
+          <th class="table-header">open price</th>
+          <th class="table-header">close time</th>
+          <th class="table-header">close price</th>
+          <th class="table-header">change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="trade in ctrl.inTrades" ng-class="{good: trade.close.changeInclFee > 0.01, bad: trade.close.changeInclFee < -0.01}">
+          <td class="table-header">{{trade.position}}</td>
+          <td>{{trade.open.timestamp | date: 'short'}}</td>
+          <td>{{trade.open.price | currency }}</td>
+          <td>{{trade.close.timestamp | date: 'short'}}</td>
+          <td>{{trade.close.price | currency }}</td>
+          <td>{{trade.close.changeInclFee * 100 | number: 2}}%</td>
+        </tr>
+      </tbody>
 
-      <table class="trads-table">
-        <thead>
-          <tr>
-            <th class="table-header">position</th>
-            <th class="table-header">open time</th>
-            <th class="table-header">open price</th>
-            <th class="table-header">close time</th>
-            <th class="table-header">close price</th>
-            <th class="table-header">change</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="trade in ctrl.inTrades" ng-class="{good: trade.close.changeInclFee > 0.01, bad: trade.close.changeInclFee < -0.01}">
-            <td class="table-header">{{trade.position}}</td>
-            <td>{{trade.open.timestamp | date: 'short'}}</td>
-            <td>{{trade.open.price | currency }}</td>
-            <td>{{trade.close.timestamp | date: 'short'}}</td>
-            <td>{{trade.close.price | currency }}</td>
-            <td>{{trade.close.changeInclFee * 100 | number: 2}}%</td>
-          </tr>
-        </tbody>
-
-      </table>
-    </div>
+    </table>
+    </md-content>
   </div>
+</div>

@@ -1,6 +1,11 @@
 tb-subscription-dialog {
-	width:500px;
+	max-width: 500px;
 	text-align: center;
+  
+  
+  @media screen and (max-width: 600px) {
+    max-width: 600px;
+  }
 	
 	md-toolbar {
 		color: $light-font-color !important;
@@ -15,7 +20,7 @@ tb-subscription-dialog {
 	}
 	
 	.recaptcha {
-		    align-self: center;
+		  align-self: center;
 			padding: 1em;
 	}
 	
@@ -26,5 +31,9 @@ tb-subscription-dialog {
 	md-progress-circular {
 		align-self: center;
 	}
+  
+  md-icon {
+    color: $light-font-color !important;
+  }
 	
 }

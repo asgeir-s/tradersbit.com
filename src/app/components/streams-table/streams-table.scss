@@ -57,7 +57,7 @@ table {
       border-bottom: 0px;
       border-left: 1px solid $table-border-color;
       padding: $table-padding;
-      text-align: left;
+      text-align: right;
       &:first-child {
         border-left: none;
       }
@@ -98,4 +98,9 @@ table {
     }
   }
 }
+
+td {
+  text-align: right;
+}
+
 }

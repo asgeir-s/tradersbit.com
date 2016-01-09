@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html ng-app="tradersbitCom" ng-strict-di>
 
 <head>
@@ -7,6 +8,8 @@
   <title>TradersBit</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
+  
+  <link rel="stylesheet" href="/assets/normalize.css">
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
  
   <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
@@ -33,7 +36,7 @@
 
   <div ng-cloak>
     <tb-side-nav-layout>
-      <div ui-view></div>
+      <div ui-view  autoscroll="true"></div>
     </tb-side-nav-layout>
   </div>
 

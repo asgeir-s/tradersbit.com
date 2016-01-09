@@ -50,7 +50,10 @@ $background-color-bad: #f3d7cd;
     max-width: 670px;
   }
   
-
+.main-content {
+  min-height: 80vh;
+    overflow-x: hidden;
+}
 
 md-toolbar {
   color: $light-font-color !important;
