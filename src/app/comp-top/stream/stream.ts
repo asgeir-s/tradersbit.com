@@ -34,11 +34,11 @@ export class TbStreamCtrl {
 
   empety: boolean = true;
   amOwner: boolean = false;
-
-  dialogFullscreen = false;
   
   /* @ngInject */
-  constructor(private $timeout: angular.ITimeoutService, private $mdDialog: any, highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi, private authApi: AuthApi, $mdMedia: angular.material.IMedia) {
+  constructor(private $timeout: angular.ITimeoutService, private $mdDialog: any, 
+  highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi, private authApi: AuthApi, 
+  private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService) {
     this.empety = this.inSignals.length <= 1;
     if (typeof authApi.streamIds !== 'undefined') {
       this.amOwner = authApi.streamIds.indexOf(this.inStream.id) >= 0;
@@ -53,7 +53,6 @@ export class TbStreamCtrl {
           this.btcRate = btcPrice;
         });
     }
-    this.dialogFullscreen = $mdMedia('xs');
   }
 
   signalsToTrades(signals: Array<Signal>): Array<Trade> {
@@ -92,7 +91,7 @@ export class TbStreamCtrl {
       parent: angular.element(document.body),
       targetEvent: ev,
       clickOutsideToClose: true,
-      fullscreen: this.dialogFullscreen,
+      fullscreen: this.$mdMedia('xs'),
       locals: {
         stream: this.inStream,
         btcRate: this.btcRate
@@ -107,6 +106,10 @@ export class TbStreamCtrl {
     });
 
   }
+  
+  toggleMenu() {
+    return this.$mdSidenav('leftBig').open();
+  }
 
   private positionNumberToString(signalNum: number): string {
     if (signalNum === - 1) {
@@ -117,5 +120,4 @@ export class TbStreamCtrl {
       return "CLOSE";
     }
   }
-
 }

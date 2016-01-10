@@ -31,8 +31,21 @@ tb-stream {
     	margin-right: 0 !important;
 	}
 	
-	md-content {
-  		//overflow-x: hidden; // bad hack from chrome
-	}
+  md-toolbar {
+    md-icon {
+      color: $light-font-color !important;
+    }
+  }
 	
+  .fab-buttom-right {
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    left: auto;
+    position: fixed;
+    
+    md-icon {
+      color: $light-font-color !important;
+    }
+  }
 }

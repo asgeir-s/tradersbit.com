@@ -1,34 +1,41 @@
 <div layout="column" layout-align="center">
-    <md-toolbar flex>
-        <div class="md-toolbar-tools">
-            <h2>Streams > {{ctrl.inStream.name}}</h2>
-            <span flex></span>
-            <md-button ng-click="ctrl.openSubscriptionDialog($event)">
-                Subscribe
-            </md-button>
-        </div>
-    </md-toolbar>
-    <md-toolbar ng-hide="!ctrl.empety" class="md-accent">
-        <h2 class="md-toolbar-tools">
-        <span>there are no closed trades in this stream yet</span>
-      </h2>
-    </md-toolbar>
-    
-    <tb-stream-publisher-row ng-hide="!ctrl.amOwner"></tb-stream-publisher-row>
-
-    <tb-stream-stats-promo flex ng-hide="ctrl.empety" in-stream="ctrl.inStream"></tb-stream-stats-promo>
-
-    <tb-stream-chart-profit flex ng-hide="ctrl.empety" in-signals="ctrl.inSignals"></tb-stream-chart-profit>
-
-    <tb-stream-info-promo flex ng-hide="ctrl.empety" in-btc-rate="ctrl.btcRate" in-stream="ctrl.inStream"></tb-stream-info-promo>
-
-    <div flex ng-hide="ctrl.empety" class="two-chart-row">
-        <tb-stream-average-trade-chart in-stream="ctrl.inStream"></tb-stream-average-trade-chart>
-        <tb-stream-piechart-trades in-stream="ctrl.inStream"></tb-stream-piechart-trades>
+  <md-toolbar flex>
+    <div class="md-toolbar-tools">
+      <md-button hide-gt-xs ng-click="ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <h2>Streams > {{ctrl.inStream.name}}</h2>
+      <span flex></span>
     </div>
+  </md-toolbar>
+  <md-toolbar ng-hide="!ctrl.empety" class="md-accent">
+    <h2 class="md-toolbar-tools">
+        <span>no closed trades in this stream yet</span>
+      </h2>
+  </md-toolbar>
 
-    <md-divider ng-hide="ctrl.empety" md-inset></md-divider>
+  <md-button class="md-fab fab-buttom-right" aria-label="add stream" ng-click="ctrl.openSubscriptionDialog($event)">
+    <md-icon class="material-icons">add_alert</md-icon>
+    <md-tooltip md-direction="left">
+      Subscribe
+    </md-tooltip>
+  </md-button>
 
-    <tb-trades-table flex ng-hide="ctrl.empety" in-trades="ctrl.trades"></tb-trades-table>
+  <tb-stream-publisher-row ng-hide="!ctrl.amOwner"></tb-stream-publisher-row>
+
+  <tb-stream-stats-promo flex ng-hide="ctrl.empety" in-stream="ctrl.inStream"></tb-stream-stats-promo>
+
+  <tb-stream-chart-profit flex ng-hide="ctrl.empety" in-signals="ctrl.inSignals"></tb-stream-chart-profit>
+
+  <tb-stream-info-promo flex ng-hide="ctrl.empety" in-btc-rate="ctrl.btcRate" in-stream="ctrl.inStream"></tb-stream-info-promo>
+
+  <div flex ng-hide="ctrl.empety" class="two-chart-row">
+    <tb-stream-average-trade-chart in-stream="ctrl.inStream"></tb-stream-average-trade-chart>
+    <tb-stream-piechart-trades in-stream="ctrl.inStream"></tb-stream-piechart-trades>
+  </div>
+
+  <md-divider ng-hide="ctrl.empety" md-inset></md-divider>
+
+  <tb-trades-table flex ng-hide="ctrl.empety" in-trades="ctrl.trades"></tb-trades-table>
 
 </div>

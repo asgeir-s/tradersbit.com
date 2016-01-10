@@ -103,12 +103,17 @@ export class TbHomeCtrl {
     }
   ];
 
-  constructor(private $state: ng.ui.IStateService) {
-    this.top5Streams = this.inStreams().sort((stream1, stream2) => stream1.stats.averageMonthlyProfitIncl - stream2.stats.averageMonthlyProfitIncl).slice(0, 5);
+  constructor(private $state: ng.ui.IStateService, private $mdSidenav: angular.material.ISidenavService) {
+    this.top5Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) => 
+    stream1.stats.averageMonthlyProfitIncl - stream2.stats.averageMonthlyProfitIncl).slice(0, 5);
   }
 
   chnageState(newState: string) {
     this.$state.go(newState);
+  }
+  
+  toggleMenu() {
+    return this.$mdSidenav('leftBig').open();
   }
 
 }

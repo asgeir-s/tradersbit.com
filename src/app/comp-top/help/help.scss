@@ -1,3 +1,9 @@
 tb-help {
   font-size: 1.2em;
+  
+  md-toolbar {
+    md-icon {
+      color: $light-font-color !important;
+    }
+  }
 }

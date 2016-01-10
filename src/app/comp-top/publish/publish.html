@@ -1,13 +1,16 @@
 <div layout="column" layout-align="center">
-	<md-toolbar flex>
-		<div class="md-toolbar-tools">
-			<h2>Publish</h2>
-			<span flex></span>
-		</div>
-	</md-toolbar>
+  <md-toolbar flex>
+    <div class="md-toolbar-tools">
+      <md-button hide-gt-xs ng-click="ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <h2>Publish</h2>
+      <span flex></span>
+    </div>
+  </md-toolbar>
 
-	<div class="signin-widget" flex layout="row" layout-align="center center">
-		<tb-sign-in></tb-sign-in>
-	</div>
+  <div class="signin-widget" flex layout="row" layout-align="center center">
+    <tb-sign-in></tb-sign-in>
+  </div>
 
 </div>

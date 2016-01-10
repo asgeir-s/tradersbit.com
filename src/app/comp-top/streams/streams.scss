@@ -12,4 +12,9 @@ md-backdrop {
 	top: 64px !important;
 }
   
+  md-toolbar {
+    md-icon {
+      color: $light-font-color !important;
+    }
+  }
 }

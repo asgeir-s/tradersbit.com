@@ -46,13 +46,20 @@ $background-color-bad: #f3d7cd;
   src: url(/assets/fonts/Oldways-Regular.otf) format("truetype");
 }
 
+@media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
+.md-toolbar-tools {
+    height: 64px; 
+    max-height: 64px; 
+}
+}
+
   .text-content {
     max-width: 670px;
   }
   
 .main-content {
-  min-height: 80vh;
-    overflow-x: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 md-toolbar {

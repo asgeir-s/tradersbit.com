@@ -1,5 +1,9 @@
 tb-stream-new-dialog {
-    	width:500px;
+  	max-width: 500px;
+  @media screen and (max-width: 600px) {
+    max-width: 600px;
+  }
+      
         .center {
             align-content: center;
             align-items: center;

@@ -18,9 +18,13 @@ export function tbPublish(): angular.IDirective {
 /** @ngInject */
 export class TbPublishCtrl {
 
-  constructor(private authApi: AuthApi) { }
+  constructor(private authApi: AuthApi, private $mdSidenav: angular.material.ISidenavService) { }
   
   signOut() {
     this.authApi.signOut()
+  }
+  
+  toggleMenu() {
+    return this.$mdSidenav('leftBig').open();
   }
 }

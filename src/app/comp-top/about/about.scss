@@ -4,4 +4,10 @@ tb-about {
     margin-top: 30px;
     margin-bottom: 10px;
   }
+  
+  md-toolbar {
+    md-icon {
+      color: $light-font-color !important;
+    }
+  }
 }

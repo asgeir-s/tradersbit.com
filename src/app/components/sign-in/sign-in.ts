@@ -35,8 +35,8 @@ export class TbSignInCtrl {
                     title: ' Sign in '
                 }
             }
-        }, (profile, token) => {
-            // Success callback
+        }, (profile: any, token: string) => {
+            // success callback
             this.wating = true;
 
             authApi.signIn(profile, token)

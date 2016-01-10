@@ -16,10 +16,11 @@ export function tbSideNavLayout(): angular.IDirective {
 export class TbSideNavLayoutCtrl {
 
   /* @ngInject */
-  constructor (private $state: ng.ui.IStateService) { }
+  constructor (private $state: ng.ui.IStateService, private $mdSidenav: angular.material.ISidenavService) { }
 
   chnageState(newState: string) {
     this.$state.go(newState);
+    return this.$mdSidenav('leftBig').close();
   }
   
   stateIs(stateIn: string) {

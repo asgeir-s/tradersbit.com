@@ -1,6 +1,6 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <h2>Subscribe to Stream (comming soon)</h2>
+    <h2>Subscribe to Stream (coming soon)</h2>
     <span flex></span>
     <md-button class="md-icon-button" ng-click="ctrl.cancel()">
       <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
@@ -19,18 +19,18 @@
 
     <div flex ng-hide="ctrl.gotPaymentInfo">
       <p>
-        Subscribe to this stream to get new trading signals sendt to your email and/or Autotraded for you at
+        Subscribe to this stream to get new trading signals sendt to your email and/or automatically traded for you at
         <span style="text-transform: capitalize;">{{ctrl.stream.exchange}}</span>.
       </p>
       <p>
-        If you include your email, you get a email with the option to continue subscrption 5 days befor the subscription expires.
+        If you include your email, you get a email with the option to continue subscription 5 days befor the subscription expires.
       </p>
     </div>
 
     <form flex novalidate name="subscribeForm" ng-hide="ctrl.gotPaymentInfo">
       <div layout="column" layout-align="center">
         <legend flex>
-          The information entered here can not be changed later. If you make a typo or wants to change somthing later you have tu buy
+          The information entered here can not be changed later. If you make a typo or wants to change somthing later you have to buy
           a new subscription.
         </legend>
 
@@ -38,7 +38,7 @@
           Send new signals to email
         </md-switch>
         <md-input-container flex>
-          <label for="email">Email (optinal if you use Autotrader)</label>
+          <label for="email">Email (optional if you use Autotrader)</label>
           <input ng-disabled="true" ng-required='ctrl.subscription.signalsToEmail' type="email" ng-model="ctrl.subscription.email"
           id="email" value="" />
         </md-input-container>

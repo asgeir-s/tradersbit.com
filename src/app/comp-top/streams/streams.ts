@@ -27,5 +27,9 @@ export class TbStreamsCtrl {
   toggleRightSidebar(): void {
     this.$mdSidenav('right').toggle();
   }
+  
+  toggleMenu() {
+    return this.$mdSidenav('leftBig').open();
+  }
 
 }

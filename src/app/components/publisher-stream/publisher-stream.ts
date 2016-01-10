@@ -63,10 +63,10 @@ export class TbPublisherStreamCtrl {
                     this.unrealizedPL = 0;
                 }
                 else if (lastSignal.signal === 1) {
-                    this.unrealizedPL = rate - lastSignal.price-0.2;
+                    this.unrealizedPL = rate - lastSignal.price - 0.2;
                 }
                 else if (lastSignal.signal === -1) {
-                    this.unrealizedPL = (lastSignal.price - rate)-0.2;
+                    this.unrealizedPL = (lastSignal.price - rate) - 0.2;
                 }
             })
 

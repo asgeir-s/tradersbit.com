@@ -1,16 +1,26 @@
 <div layout="column" layout-align="center">
-	<md-toolbar flex>
-		<div class="md-toolbar-tools">
-			<h2>Publish > My Streams</h2>
-			<span flex></span>
-			<md-button ng-click="ctrl.openNewStreamDialog($event)">
-				New Stream
-			</md-button>
-			<md-button ng-click="ctrl.signOut()">
-				Sign Out
-			</md-button>
-		</div>
-	</md-toolbar>
+  <md-toolbar flex>
+    <div class="md-toolbar-tools">
+      <md-button hide-gt-xs ng-click="ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <h2>My Streams</h2>
+      <span flex></span>
+      <md-button ng-click="ctrl.signOut()">
+        Sign Out
+      </md-button>
+    </div>
+  </md-toolbar>
+  <p ng-if="ctrl.noStreams" class="center">
+    Click the "+" icon to create your first stream.
+  </p>
 
-	<tb-publisher-stream ng-repeat="stream in ctrl.myStreams()" in-stream="stream"></tb-publisher-stream>
+  <md-button class="md-fab fab-buttom-right" aria-label="add stream" ng-click="ctrl.openNewStreamDialog($event)">
+    <md-icon class="material-icons">add</md-icon>
+    <md-tooltip md-direction="left">
+      Create Stream
+    </md-tooltip>
+  </md-button>
+
+  <tb-publisher-stream ng-repeat="stream in ctrl.myStreams()" in-stream="stream"></tb-publisher-stream>
 </div>

@@ -16,7 +16,7 @@ export function runBlock($log: angular.ILogService, auth: any, $rootScope: any, 
           authApi.createApiClient(store.get('awstoken'));
         }
       } else {
-        // Either show Login page or use the refresh token to get a new idToken
+        // either show Login page or use the refresh token to get a new idToken
       }
     }
   })

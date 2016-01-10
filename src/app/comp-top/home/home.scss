@@ -20,6 +20,10 @@ tb-home {
     }
 }
 
+md-toolbar {
+  background-color: $primary-color !important;
+}
+
 .home--features-outer {
   background-color: $primary-color;
   color: $light-font-color;
@@ -96,5 +100,11 @@ form {
 .how {
   //min-height: 1100px;
 }
+
+  md-toolbar {
+    md-icon {
+      color: $light-font-color !important;
+    }
+  }
 
 }
