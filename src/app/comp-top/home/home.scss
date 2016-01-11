@@ -40,14 +40,20 @@ md-toolbar {
 .mailchimp {
   background-color: $secondary-color;
   
-form {
+  .email-row {
+    font-size: 20px;
+    height: 40px; 
+  }
+  
+  form {
+     margin: 30px;
       @media screen and (max-width: 600px) {
        display: block !important;
    }
    
    @media screen\0 {
-	margin-top: 40px;
-  }
+	   margin-top: 40px;
+    }
     
 }
 
@@ -58,20 +64,13 @@ form {
   }
 
   form {
-    width: 600px;
+    //width: 600px;
   }
 
   p {
     margin-bottom: 0px;
   }
 
-  .email-row {
-     //padding-right: 20px;
-     //margin-bottom: 30px !important;
-     @media screen and (max-width: 600px) {
-       margin-bottom: 0px;
-   }
-  } 
 }
 
 
