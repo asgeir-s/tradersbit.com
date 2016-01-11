@@ -53,13 +53,23 @@ $background-color-bad: #f3d7cd;
 }
 }
 
+#footer {
+ 
+  flex: 0 1 auto !important;
+  -ms-flex: 0 1 auto !important;
+  -ms-flex-preferred-size: auto !important;
+  -webkit-flex: 0 1 auto !important;
+
+}
+
   .text-content {
     max-width: 670px;
+    margin: auto;
   }
   
 .main-content {
   min-height: 100vh;
-  overflow-x: hidden;
+  //overflow-x: hidden;
 }
 
 md-toolbar {

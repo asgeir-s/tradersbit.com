@@ -8,16 +8,16 @@
   </div>
 </md-toolbar>
 <md-dialog-content>
-  <div class="md-dialog-content" layout="column">
+  <div class="md-dialog-content">
 
-    <div flex ng-hide="ctrl.gotPaymentInfo">
+    <div ng-hide="ctrl.gotPaymentInfo">
       <small>price for 30 days subscription</small>
       <br/>
       <h3 class="md-display-1">{{ctrl.inStream.subscriptionPriceUSD | currency:"$"}}</h3>
       <small>≈ ฿{{ctrl.fullPriceUSD / ctrl.inBtcRate | number:4}}</small>
     </div>
 
-    <div flex ng-hide="ctrl.gotPaymentInfo">
+    <div ng-hide="ctrl.gotPaymentInfo">
       <p>
         Subscribe to this stream to get new trading signals sendt to your email and/or automatically traded for you at
         <span style="text-transform: capitalize;">{{ctrl.stream.exchange}}</span>.
@@ -25,14 +25,14 @@
       <p>
         If you include your email, you get a email with the option to continue subscription 5 days befor the subscription expires.
       </p>
+      <p>
+        The information entered here can not be changed later. If you make a typo or wants to change somthing later you have to buy
+        a new subscription.
+      </p>
     </div>
 
-    <form flex novalidate name="subscribeForm" ng-hide="ctrl.gotPaymentInfo">
+    <form novalidate name="subscribeForm" ng-hide="ctrl.gotPaymentInfo">
       <div layout="column" layout-align="center">
-        <legend flex>
-          The information entered here can not be changed later. If you make a typo or wants to change somthing later you have to buy
-          a new subscription.
-        </legend>
 
         <md-switch class="md-primary signals-to-email" ng-model="ctrl.subscription.signalsToEmail" ng-disabled="true" aria-label="Subscribe with Email">
           Send new signals to email
@@ -65,9 +65,9 @@
       </div>
     </form>
 
-    <md-progress-circular flex class="waiting" md-mode="indeterminate" ng-hide="!ctrl.waitForResponds" md-diameter="100"></md-progress-circular>
+    <md-progress-circular class="waiting" md-mode="indeterminate" ng-hide="!ctrl.waitForResponds" md-diameter="100"></md-progress-circular>
 
-    <iframe flex ng-show="ctrl.gotPaymentInfo" id="coinbase_inline_iframe_{{ctrl.coinbaseEmbedCode}}" ng-src="{{ctrl.trustSrc('https://sandbox.coinbase.com/checkouts/' + ctrl.coinbaseEmbedCode + '/inline')}}"
+    <iframe ng-show="ctrl.gotPaymentInfo" id="coinbase_inline_iframe_{{ctrl.coinbaseEmbedCode}}" ng-src="{{ctrl.trustSrc('https://sandbox.coinbase.com/checkouts/' + ctrl.coinbaseEmbedCode + '/inline')}}"
     style="width: 100%; height: 450px; border: none;" allowtransparency="true" frameborder="0"></iframe>
 
   </div>

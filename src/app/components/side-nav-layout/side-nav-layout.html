@@ -62,13 +62,12 @@
   </md-sidenav>
   </div>
 
-  <md-content flex role="main" layout="column">
+  <div flex>
     <!-- route output here -->
-    <div class="main-content" flex ng-transclude> </div>
+    <div class="main-content" ng-transclude> </div>
 
-    <footer flex>
-      <div layout="column" layout-align="center center">
-        <div flex layout="row" layout-margin layout-padding layout-align="center">
+    <footer>
+        <div layout="row" layout-margin layout-padding layout-align="center">
           <ul>
             <li>
               <h3>Follow Us</h3>
@@ -94,10 +93,8 @@
           </p>
         </div>
 
-      </div>
-
     </footer>
-  </md-content>
+  </div>
 
 </section>
 

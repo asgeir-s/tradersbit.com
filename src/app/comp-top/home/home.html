@@ -6,105 +6,95 @@
     <span flex></span>
   </div>
 </md-toolbar>
-<div layout="column" layout-align="center">
-  <div class="home--promo-top" flex>
-    <h3 class="md-display-3">TradersBit</h3>
-    <p>TradersBit is a marketplace for streams of bitcoin trading signals.</p>
-  </div>
 
-  <!-- Begin MailChimp Signup Form -->
-  <div class="mailchimp" layout="column" layout-align="center center">
-    <p flex class="center">Sign up for a beta invite and future updates. The beta invites are limited and first come first serve.
-      <br/> Are you intersted in subscribing to streams or publish your own?
-    </p>
-    <form action="//tradersbit.us10.list-manage.com/subscribe/post?u=4ebb5d10617696ec106ffd803&amp;id=8c6fade340" method="post"
-    name="mc-embedded-subscribe-form" class="validate center reset-this" target="_blank" novalidate layout="row" 
-    layout-xs="column" layout-align="center center">
-      <md-input-container class="email-row" flex="40" flex-xs="100">
-        <label for="mce-EMAIL">Email</label>
-        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+<div class="home--promo-top">
+  <h3 class="md-display-3">TradersBit</h3>
+  <p>TradersBit is a marketplace for streams of bitcoin trading signals.</p>
+</div>
+
+<!-- Begin MailChimp Signup Form -->
+<div class="mailchimp" layout="column" layout-align="center center">
+  <p flex class="center">Sign up for a beta invite and future updates. The beta invites are limited and first come first serve.
+    <br/> Are you intersted in subscribing to streams or publish your own?
+  </p>
+  <form action="//tradersbit.us10.list-manage.com/subscribe/post?u=4ebb5d10617696ec106ffd803&amp;id=8c6fade340" method="post"
+  name="mc-embedded-subscribe-form" class="validate center reset-this" target="_blank" novalidate layout="row" layout-xs="column"
+  layout-align="center center">
+    <md-input-container class="email-row" flex="40" flex-xs="100">
+      <label for="mce-EMAIL">Email</label>
+      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+    </md-input-container>
+
+    <div layout="row" flex="40" flex-xs="100">
+      <md-input-container class="input-group" flex="45">
+        <md-checkbox class="md-primary" type="checkbox" value="1" name="group[8205][1]">
+          publish
+        </md-checkbox>
       </md-input-container>
 
-      <div layout="row" flex="40" flex-xs="100">
-        <md-input-container class="input-group" flex="45">
-          <md-checkbox class="md-primary" type="checkbox" value="1" name="group[8205][1]">
-            publish
-          </md-checkbox>
-        </md-input-container>
+      <md-input-container class="input-group" flex="55">
+        <md-checkbox class="md-primary" type="checkbox" value="2" name="group[8205][2]">
+          subscribe
+        </md-checkbox>
+      </md-input-container>
+    </div>
 
-        <md-input-container class="input-group" flex="55">
-          <md-checkbox class="md-primary" type="checkbox" value="2" name="group[8205][2]">
-            subscribe
-          </md-checkbox>
-        </md-input-container>
-      </div>
+    <div flex id="mce-responses" class="clear">
+      <div class="response" id="mce-error-response" style="display:none"></div>
+      <div class="response" id="mce-success-response" style="display:none"></div>
+    </div>
 
-      <div flex id="mce-responses" class="clear">
-        <div class="response" id="mce-error-response" style="display:none"></div>
-        <div class="response" id="mce-success-response" style="display:none"></div>
-      </div>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+      <input type="text" name="b_4ebb5d10617696ec106ffd803_8c6fade340" tabindex="-1" value="">
+    </div>
 
-      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-      <div style="position: absolute; left: -5000px;" aria-hidden="true">
-        <input type="text" name="b_4ebb5d10617696ec106ffd803_8c6fade340" tabindex="-1" value="">
-      </div>
-      
-      <div class="submit-container">
+    <div class="submit-container">
       <md-button type="submit" name="subscribe" id="mc-embedded-subscribe" class="md-raised md-primary clear">submit</md-button>
-        </div>
-    </form>
-  </div>
+    </div>
+  </form>
+</div>
 
-  <!--End mc_embed_signup-->
-  <div>
-    <h3 class="md-title center">Top streams</h3>
-    <tb-streams-table in-streams="ctrl.top5Streams;" in-attributes="ctrl.attributes"></tb-streams-table>
-  </div>
-  <div class="home--features-outer">
-    <div layout="row" layout-xs="column" layout-align="center center" layout-padding layout-margin class="home--features-row">
-      <div class="home--features-row--item" flex flex-gt-lg="25">
-        <md-icon class="material-icons">settings_remote</md-icon>
-        <p>Publish streams and sell subscriptions to your streams.</p>
-      </div>
-      <div class="home--features-row--item" flex flex-gt-lg="25">
-        <md-icon class="material-icons">settings_input_antenna</md-icon>
-        <p>You can subscribe to streams. Get signals by email or <a href="/">Autotrader</a>.</p>
-      </div>
-      <div class="home--features-row--item" flex flex-gt-lg="25">
-        <md-icon class="material-icons">trending_up</md-icon>
-        <p>Streams can be sorted by profit, average monthly return and more.</p>
-      </div>
+<!--End mc_embed_signup-->
+<div>
+  <h3 class="md-title center">Top streams</h3>
+  <tb-streams-table in-streams="ctrl.top5Streams;" in-attributes="ctrl.attributes"></tb-streams-table>
+</div>
+<div class="home--features-outer">
+  <div layout="row" layout-xs="column" layout-align="center center" layout-padding layout-margin class="home--features-row">
+    <div class="home--features-row--item" flex flex-gt-lg="25">
+      <md-icon class="material-icons">settings_remote</md-icon>
+      <p>Publish streams and sell subscriptions to your streams.</p>
+    </div>
+    <div class="home--features-row--item" flex flex-gt-lg="25">
+      <md-icon class="material-icons">settings_input_antenna</md-icon>
+      <p>You can subscribe to streams. Get signals by email or <a href="/">Autotrader</a>.</p>
+    </div>
+    <div class="home--features-row--item" flex flex-gt-lg="25">
+      <md-icon class="material-icons">trending_up</md-icon>
+      <p>Streams can be sorted by profit, average monthly return and more.</p>
     </div>
   </div>
+</div>
 
-  <div class="how" layout="column" layout-sm="column" layout-align="center" layout-padding>
-    <h3 class="md-display-2 center">How it works</h3>
-    <div flex layout="columen" layout-align="center">
-      <div flex="60" flex-xs="100">
-        <div class="text-content">
-          <p>
-            This is a marketplace for streams of bitcoin trading signals.
-          </p>
-          <p>
-            Publishers can create streams, send trading signals to streams and sell subscriptions to streams. Statistics for each streams
-            performance is computed and displayed in the marketplace. All closed trades are displayed.
-          </p>
-          <p>
-            Subscribers can browse and sort streams based on average monthly profit, average trade profit and many other indicators.
-            When subscribing to a stream, the subscriber can get signals sent to his email or automatically executed on his
-            behalf with our autotrader-feature.
-          </p>
-          <p>
-            <md-button ng-click="ctrl.chnageState('help')" class=" readmore-button">Reade more.</md-button>
-          </p>
-        </div>
-      </div>
+<div>
+  <h3 class="md-display-2 center">How it works</h3>
+  <div class="text-content">
+    <p>
+      This is a marketplace for streams of bitcoin trading signals.
+    </p>
+    <p>
+      Publishers can create streams, send trading signals to streams and sell subscriptions to streams. Statistics for each streams
+      performance is computed and displayed in the marketplace. All closed trades are displayed.
+    </p>
+    <p>
+      Subscribers can browse and sort streams based on average monthly profit, average trade profit and many other indicators.
+      When subscribing to a stream, the subscriber can get signals sent to his email or automatically executed on his behalf
+      with our autotrader-feature.
+    </p>
+    <p>
+      <md-button ng-click="ctrl.chnageState('help')" class=" readmore-button">Reade more.</md-button>
+    </p>
 
-      <div class="outer-bitcoin-promo-image" hide-xs flex>
-        <div class="bitcoin-promo-image"></div>
-      </div>
-
-    </div>
   </div>
-
 </div>

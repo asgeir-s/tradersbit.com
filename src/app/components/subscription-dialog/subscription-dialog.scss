@@ -34,5 +34,13 @@ tb-subscription-dialog {
   md-icon {
     color: $light-font-color !important;
   }
+  
+  form {
+   
+   @media screen\0 {
+	margin-top: 40px;
+  }
+    
+}
 	
 }
