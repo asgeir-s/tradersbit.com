@@ -20,7 +20,7 @@
           <td>{{trade.open.price | currency }}</td>
           <td>{{trade.close.timestamp | date: 'short'}}</td>
           <td>{{trade.close.price | currency }}</td>
-          <td>{{trade.close.changeInclFee * 100 | number: 2}}%</td>
+          <td>{{(trade.close.changeInclFee + trade.open.changeInclFee) * 100 | number: 2}}%</td>
         </tr>
       </tbody>
 
