@@ -59,5 +59,17 @@ tb-publisher-stream {
 	    margin-top: 1em;
     margin-bottom: 1em;
 }
+
+md-card {
+   @media screen and (max-width: 600px) {
+       display: block !important;
+   }
+}
+
+.outer {
+   @media screen and (max-width: 600px) {
+       display: block !important;
+   }
+}
 	
 }
