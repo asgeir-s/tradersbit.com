@@ -5,14 +5,14 @@ md-toolbar {
 		color: $light-font-color !important;
 	}
 }
-md-sidenav{
-	  top: 64px !important;
-}
-md-backdrop {
-	top: 64px !important;
-}
   
-  md-toolbar {
+ .fab-buttom-right {
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    left: auto;
+    position: fixed;
+    
     md-icon {
       color: $light-font-color !important;
     }
