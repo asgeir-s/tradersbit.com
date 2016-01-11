@@ -65,11 +65,20 @@ $background-color-bad: #f3d7cd;
   .text-content {
     max-width: 670px;
     margin: auto;
+    padding: 10px;
   }
   
 .main-content {
   min-height: 100vh;
   //overflow-x: hidden;
+}
+
+.hide-overflow-x {
+  overflow-x: hidden;
+}
+
+tb-side-nav-layout {
+  overflow-x: hidden;
 }
 
 md-toolbar {

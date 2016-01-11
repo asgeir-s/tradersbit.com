@@ -1,5 +1,5 @@
 <section layout="row">
-  <md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav" md-component-id="leftBig" md-is-locked-open="$mdMedia('gt-md')">
+  <md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav" md-component-id="leftBig" md-is-locked-open="$mdMedia('gt-sm')">
     <h1 class="md-display-1 side-nav-layout--logo"><a href="/">TradersBit</a></h1>
     <md-content>
       <md-list>
@@ -32,8 +32,8 @@
       </md-list>
     </md-content>
   </md-sidenav>
- <div hide-xs>
-  <md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav-mini hide-gt-md" md-component-id="leftSmal" md-is-locked-open="true">
+
+  <md-sidenav flex="none" class="md-sidenav-left md-whiteframe-z2 tb-side-nav-mini hide-gt-md" md-component-id="leftSmal" md-is-locked-open="$mdMedia('sm')">
     <h1 class="md-display-1 side-nav-layout--logo"><a href="/">TB</a></h1>
     <md-content class="sidenav-icons">
       <md-list>
@@ -60,9 +60,8 @@
       </md-list>
     </md-content>
   </md-sidenav>
-  </div>
 
-  <div flex>
+  <div class="hide-overflow-x" flex>
     <!-- route output here -->
     <div class="main-content" ng-transclude> </div>
 
