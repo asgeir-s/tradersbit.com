@@ -62,20 +62,23 @@ export class StreamAttributes {
       name: "Average Monthly Profit",
       short: "AMP",
       description: "The average profit per month calculated from first to last signal.",
-      jsonPath: "stats.averageMonthlyProfitIncl",
+      jsonPath: "",
       on: true,
       getIt: (stream: Stream) => {
-        return (stream.stats.averageMonthlyProfitIncl * 100).toFixed(2) + '%';
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+        return ((((allProfit / duration)) * secInMonth) * 100).toFixed(2) + '%';
       }
     },
     {
       name: "Profit Factor",
       short: "PF",
       description: '',
-      jsonPath: "stats.profitFactor",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        return stream.stats.profitFactor.toFixed(2);
+        return (stream.stats.accumulatedProfit / stream.stats.accumulatedLoss).toFixed(2);
       }
     },
     {
@@ -92,10 +95,10 @@ export class StreamAttributes {
       name: "Average Winning Trade",
       short: "AWT",
       description: "Average profit on a trade with profit larger then 0",
-      jsonPath: "stats.averageWinningTrade",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        return (stream.stats.averageWinningTrade).toFixed(2) + '%';
+        return ((stream.stats.accumulatedProfit / stream.stats.numberOfProfitableTrades) * 100).toFixed(2) + '%';
       }
     },
     {
@@ -109,53 +112,44 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Accumulated Loss",
-      short: "AL",
-      description: '',
-      jsonPath: "stats.accumulatedLoss",
-      on: false,
-      getIt: (stream: Stream) => {
-        return (stream.stats.accumulatedLoss).toFixed(2);
-      }
-    },
-    {
       name: "Average Loosing Trade",
       short: "ALT",
       description: "Average loss of all losing trades.",
-      jsonPath: "stats.averageLoosingTrade",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        return -(stream.stats.averageLoosingTrade * 100).toFixed(2) + '%';
+        return -((stream.stats.accumulatedLoss / stream.stats.numberOfLoosingTrades) * 100).toFixed(2) + '%';
       }
     },
     {
       name: "Part Winning Trades",
       short: "PWT",
       description: "Percent closed trades with profit larger then 0",
-      jsonPath: "stats.partWinningTrades",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        return (stream.stats.partWinningTrades * 100).toFixed(2) + '%';
+        return ((stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100).toFixed(2) + '%';
       }
     },
     {
       name: "Part Loosing Trades",
       short: "PLT",
       description: "Percent closed trades with profit smaller then 0",
-      jsonPath: "stats.partLoosingTrades",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        return (stream.stats.partLoosingTrades * 100).toFixed(2) + '%';
+        return ((stream.stats.numberOfLoosingTrades / stream.stats.numberOfClosedTrades) * 100).toFixed(2) + '%';
       }
     },
     {
       name: "Average Trade",
       short: "AT",
       description: "Average profit on a trade",
-      jsonPath: "stats.averageTrade",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        return (stream.stats.averageTrade * 100).toFixed(2) + '%';
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        return ((allProfit / stream.stats.numberOfClosedTrades) * 100).toFixed(2) + '%';
       }
     },
     {
@@ -175,7 +169,7 @@ export class StreamAttributes {
       jsonPath: "stats.allTimeValueIncl",
       on: false,
       getIt: (stream: Stream) => {
-        return ((stream.stats.allTimeValueIncl - 1) * 100).toFixed(2);
+        return ((stream.stats.allTimeValueIncl - 1) * 100).toFixed(2) + '%';
       }
     },
     {
@@ -192,10 +186,12 @@ export class StreamAttributes {
       name: "Months of Trading",
       short: "MT",
       description: '',
-      jsonPath: "stats.monthsOfTrading",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        return stream.stats.monthsOfTrading.toFixed(2);
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+        return (duration / secInMonth).toFixed(2);
       }
     },
     {
@@ -212,10 +208,13 @@ export class StreamAttributes {
       name: "Average Monthly Profit Excl",
       short: "AMPx",
       description: "The average profit per month calculated from first to last signal. Excluding trading fees.",
-      jsonPath: "stats.averageMonthlyProfitExcl",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        return stream.stats.averageMonthlyProfitExcl.toFixed(2) + '%';
+        let allProfit = stream.stats.allTimeValueExcl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+        return ((((allProfit / duration)) * secInMonth) * 100).toFixed(2) + '%';
       }
     },
     {
@@ -249,16 +248,6 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Accumulated Profit",
-      short: "AP",
-      description: '',
-      jsonPath: "stats.accumulatedProfit",
-      on: false,
-      getIt: (stream: Stream) => {
-        return stream.stats.accumulatedProfit.toFixed(2);
-      }
-    },
-    {
       name: "Time of First Signal",
       short: "TFS",
       description: '',
@@ -285,10 +274,10 @@ export class StreamAttributes {
 
 }
 
- function formatDate(inn: number): string {
-    let d = new Date(inn);
-    let curr_date = d.getDate();
-    let curr_month = d.getMonth() + 1; //Months are zero based
-    let curr_year = d.getFullYear;
-    return curr_month + '/' + curr_date + "/" + curr_year + ' ' + d.toTimeString;
-  }
+function formatDate(inn: number): string {
+  let d = new Date(inn);
+  let curr_date = d.getDate();
+  let curr_month = d.getMonth() + 1; //Months are zero based
+  let curr_year = d.getFullYear;
+  return curr_month + '/' + curr_date + "/" + curr_year + ' ' + d.toTimeString;
+}

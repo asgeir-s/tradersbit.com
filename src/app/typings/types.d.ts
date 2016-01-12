@@ -78,6 +78,7 @@ export interface Subscription {
 
 export interface StreamsAttribute {
   name: string;
+  short: string;
   description: string;
   jsonPath: string;
   on: boolean;

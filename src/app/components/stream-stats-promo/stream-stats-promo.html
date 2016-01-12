@@ -13,7 +13,7 @@
 			<h3 class="md-display-1">{{ctrl.averageTrade | number:2}} %</h3>
 		</div>
 	</div>
-	<div flex ng-class="{good: ctrl.partProfitableTrads > 0.5, bad: ctrl.partProfitableTrads < 0.5}">
+	<div flex ng-class="{good: ctrl.partProfitableTrads > 50, bad: ctrl.partProfitableTrads < 50}">
 		<div class="promo-item">
 			<small>Profitable Trades</small>
 			<br/>
