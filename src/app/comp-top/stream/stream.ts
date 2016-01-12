@@ -31,9 +31,12 @@ export class TbStreamCtrl {
   trades: Array<Trade>;
   infoAttributes: Array<StreamsAttribute> = StreamAttributes.infoAttributes();
   statsAttributes: Array<StreamsAttribute> = StreamAttributes.statsAttributes();
+  allAttributes: Array<StreamsAttribute> = StreamAttributes.allAtributes();
 
   empety: boolean = true;
   amOwner: boolean = false;
+  
+  showAllStats: boolean = false;
   
   /* @ngInject */
   constructor(private $timeout: angular.ITimeoutService, private $mdDialog: any, 
@@ -110,6 +113,10 @@ export class TbStreamCtrl {
   toggleMenu() {
     return this.$mdSidenav('leftBig').open();
   }
+  
+  togleAllInfo() {
+    this.showAllStats = !this.showAllStats;
+  }
 
   private positionNumberToString(signalNum: number): string {
     if (signalNum === - 1) {
@@ -120,4 +127,5 @@ export class TbStreamCtrl {
       return "CLOSE";
     }
   }
+  
 }

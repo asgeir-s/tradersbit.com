@@ -1,4 +1,4 @@
-import { Stream} from '../../../app/typings/types';
+import { Stream } from '../../../app/typings/types';
 
 /** @ngInject */
 export function tbStreamInfoPromo(): angular.IDirective {

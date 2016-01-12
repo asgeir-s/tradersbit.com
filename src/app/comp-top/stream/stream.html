@@ -33,6 +33,14 @@
   <tb-stream-piechart-trades in-stream="ctrl.inStream"></tb-stream-piechart-trades>
 </div>
 
+<div flex class="center">
+  <md-button class="md-raised" ng-click="ctrl.togleAllInfo()">Show All Stats</md-button>
+</div>
+
+<div flex layout layout-align="center center" ng-hide="!ctrl.showAllStats">
+  <tb-info-table in-stream="ctrl.inStream" in-attributes="ctrl.allAttributes" in-name="All stats"></tb-info-table>
+</div>
+
 <md-divider ng-hide="ctrl.empety" md-inset></md-divider>
 
 <tb-trades-table flex ng-hide="ctrl.empety" in-trades="ctrl.trades"></tb-trades-table>

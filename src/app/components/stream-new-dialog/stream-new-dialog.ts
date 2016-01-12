@@ -18,7 +18,13 @@ export function tbStreamNewDialog(): angular.IDirective {
 
 /** @ngInject */
 export class TbStreamNewCtrl {
-  stream: NewStream;
+  stream: NewStream = {
+        name: "",
+    exchange: "",
+    currencyPair: "",
+    payoutAddress: "1Cw4FR4DBhpjtB1nHPJqKJQnzpmESHJXt",
+    subscriptionPriceUSD: 3
+    };
   wating: boolean = false;
   error: string;
 
