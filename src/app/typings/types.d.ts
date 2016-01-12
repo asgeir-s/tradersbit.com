@@ -10,21 +10,12 @@ export interface Trade {
 }
 
 export interface Stats {
-  partWinningTrades: number;
-  partLoosingTrades: number;
   timeOfLastSignal: number;
   accumulatedLoss: number;
-  averageMonthlyProfitIncl: number;
-  averageLoosingTrade: number;
   numberOfProfitableTrades: number;
-  averageWinningTrade: number;
   numberOfLoosingTrades: number;
   numberOfSignals: number;
-  averageMonthlyProfitExcl: number;
-  profitFactor: number;
-  monthsOfTrading: number;
   allTimeValueExcl: number;
-  averageTrade: number;
   maxDrawDown: number;
   firstPrice: number;
   buyAndHoldChange: number;
@@ -87,7 +78,6 @@ export interface Subscription {
 
 export interface StreamsAttribute {
   name: string;
-  short: string;
   description: string;
   jsonPath: string;
   on: boolean;

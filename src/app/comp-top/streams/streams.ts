@@ -20,9 +20,15 @@ export function tbStreams(): angular.IDirective {
 /** @ngInject */
 export class TbStreamsCtrl {
   inStreams: () => Array<Stream>;
-  streamAttributes: Array<StreamsAttribute> = StreamAttributes.allAtributes();
+  streamAttributes = 
+  StreamAttributes.infoAttributes;
+  
 
-  constructor(private $mdSidenav: angular.material.ISidenavService) { }
+   
+
+  constructor(private $mdSidenav: angular.material.ISidenavService) { 
+    console.log(StreamAttributes.arr["2"]);
+  }
   
   toggleRightSidebar(): void {
     this.$mdSidenav('right').toggle();

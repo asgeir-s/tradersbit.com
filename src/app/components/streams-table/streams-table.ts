@@ -20,8 +20,9 @@ export function tbStreamsTable(): angular.IDirective {
 /** @ngInject */
 export class TbStreamsTableCtrl {
     // inputs
-    inAttributes: () => Array<StreamsAttribute>;
+    inAttributes: () => Map<String, number>;
     inStreams: () => Array<Stream>;
+    
 
     reverse: Boolean = true;
     predicate: String = "stats.averageMonthlyProfitIncl";

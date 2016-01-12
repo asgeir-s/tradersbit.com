@@ -52,13 +52,16 @@ export class TbHomeCtrl {
       }
     },
     {
-      name: "Average Monthly Profit (incl. fees)",
-      short: "AMPi",
-      description: "The average profit per month calculated from first to last signal. Including trading fees.",
+      name: "Average Monthly Profit",
+      short: "AMP",
+      description: "The average profit per month calculated from first to last signal.",
       jsonPath: "stats.averageMonthlyProfitIncl",
       on: true,
       getIt: (stream: Stream) => {
-        return (stream.stats.averageMonthlyProfitIncl * 100).toFixed(2);
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+        return ((((allProfit / duration)) * secInMonth) * 100).toFixed(2) + '%';
       }
     },
     {
@@ -66,9 +69,9 @@ export class TbHomeCtrl {
       short: "PF",
       description: '',
       jsonPath: "stats.profitFactor",
-      on: true,
+      on: false,
       getIt: (stream: Stream) => {
-        return (stream.stats.profitFactor * 100).toFixed(2);
+        return (stream.stats.accumulatedProfit / stream.stats.accumulatedLoss).toFixed(2);
       }
     },
     {
@@ -76,9 +79,9 @@ export class TbHomeCtrl {
       short: "PWT",
       description: "Percent closed trades with profit larger then 0",
       jsonPath: "stats.partWinningTrades",
-      on: true,
+      on: false,
       getIt: (stream: Stream) => {
-        return (stream.stats.partWinningTrades * 100).toFixed(2);
+        return ((stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100).toFixed(2) + '%';
       }
     },
     {
@@ -86,9 +89,10 @@ export class TbHomeCtrl {
       short: "AT",
       description: "Average profit on a trade",
       jsonPath: "stats.averageTrade",
-      on: true,
+      on: false,
       getIt: (stream: Stream) => {
-        return (stream.stats.averageTrade * 100).toFixed(2);
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        return ((allProfit / stream.stats.numberOfClosedTrades) * 100).toFixed(2) + '%';
       }
     },
     {
@@ -104,16 +108,23 @@ export class TbHomeCtrl {
   ];
 
   constructor(private $state: ng.ui.IStateService, private $mdSidenav: angular.material.ISidenavService) {
-    this.top5Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) => 
-    stream1.stats.averageMonthlyProfitIncl - stream2.stats.averageMonthlyProfitIncl).slice(0, 5);
+    this.top5Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) =>
+      this.averageMonthlyProfitIncl(stream1) - this.averageMonthlyProfitIncl(stream2)).slice(0, 5);
   }
 
   chnageState(newState: string) {
     this.$state.go(newState);
   }
-  
+
   toggleMenu() {
     return this.$mdSidenav('leftBig').open();
+  }
+
+  averageMonthlyProfitIncl(stream: Stream): number {
+    let allProfit = stream.stats.allTimeValueIncl - 1;
+    let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+    let secInMonth = 86400000 * 30;
+    return ((((allProfit / duration)) * secInMonth) * 100);
   }
 
 }
