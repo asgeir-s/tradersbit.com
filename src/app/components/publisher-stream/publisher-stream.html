@@ -1,42 +1,58 @@
 <md-card>
 
-	<div class="outer" layout="row" layout-xs="column" layout-sm="column">
+  <div class="outer" layout="row" layout-xs="column" layout-sm="column">
 
-		<div class="id-row" flex layout="row" layout-align="center center" ng-click="ctrl.goToStream(ctrl.inStream.id)" style="cursor:pointer">
-			<div class="exchange-logo" flex="20">
-				<img ng-src="{{ctrl.logoUrl()}}" alt="exchange logo" />
-			</div>
+    <div class="id-row" flex layout="row" layout-align="center center" ng-click="ctrl.goToStream(ctrl.inStream.id)" style="cursor:pointer">
+      <div class="exchange-logo" flex="20">
+        <img ng-src="{{ctrl.logoUrl()}}" alt="exchange logo" />
+      </div>
 
-			<div flex>
-				<span class="md-title">{{ctrl.inStream.name}}</span>
-				<br>
-				<small>{{ctrl.inStream.id}}</small>
-			</div>
-		</div>
+      <div flex>
+        <span class="md-title">{{ctrl.inStream.name}}</span>
+        <br>
+        <small>{{ctrl.inStream.id}}</small>
+      </div>
+    </div>
 
-		<div class="stats" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
-			<div flex>
-				<small>instrument</small>
-				<br/>
-				<h6 class="md-title">BTC/USD</h6>
-			</div>
-			<div flex>
-				<small>position</small>
-				<br/>
-				<h6 class="md-title">{{ctrl.positionString()}}</h6>
-			</div>
-			<div flex>
-				<small>unrealized P/L</small>
-				<br/>
-				<h6 class="md-title">≈ {{ctrl.unrealizedPL | number:2}}%</h6>
-			</div>
-		</div>
+    <div class="stats" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
+      <div flex>
+        <small>instrument</small>
+        <br/>
+        <h6 class="md-title">BTC/USD</h6>
+      </div>
+      <div flex>
+        <small>position</small>
+        <br/>
+        <h6 class="md-title">{{ctrl.positionString()}}</h6>
+      </div>
+      <div flex>
+        <small>unrealized P/L</small>
+        <br/>
+        <h6 class="md-title">≈ {{ctrl.unrealizedPL | number:2}}%</h6>
+      </div>
+    </div>
 
-		<section class="button-section" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
-			<md-button class="groupX left short-btn" flex ng-disabled="ctrl.inStream.lastSignal.signal === -1 || ctrl.waitingForSignalBack" ng-click="ctrl.postSignal(ctrl.inStream.id, -1)">SHORT</md-button>
-			<md-button class="groupX middle" flex ng-disabled="ctrl.inStream.lastSignal.signal === 0 || ctrl.waitingForSignalBack" ng-click="ctrl.postSignal(ctrl.inStream.id, 0)">CLOSE</md-button>
-			<md-button class="long-btn groupX right" flex ng-disabled="ctrl.inStream.lastSignal.signal === 1 || ctrl.waitingForSignalBack" ng-click="ctrl.postSignal(ctrl.inStream.id, 1)">LONG</md-button>
-		</section>
-	</div>
-	<md-progress-linear ng-show="ctrl.waitingForSignalBack" md-mode="indeterminate"></md-progress-linear>
+
+
+    <section class="button-section" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
+      <md-button class="groupX left short-btn" flex ng-disabled="ctrl.inStream.lastSignal.signal === -1 || ctrl.waitingForSignalBack"
+      ng-click="ctrl.postSignal(ctrl.inStream.id, -1)">SHORT</md-button>
+      <md-button class="groupX middle" flex ng-disabled="ctrl.inStream.lastSignal.signal === 0 || ctrl.waitingForSignalBack" ng-click="ctrl.postSignal(ctrl.inStream.id, 0)">CLOSE</md-button>
+      <md-button class="long-btn groupX right" flex ng-disabled="ctrl.inStream.lastSignal.signal === 1 || ctrl.waitingForSignalBack"
+      ng-click="ctrl.postSignal(ctrl.inStream.id, 1)">LONG</md-button>
+    </section>
+    <md-menu>
+      <!-- Trigger element is a md-button with an icon -->
+      <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open sample menu">
+        <md-icon class="material-icons">more_vert</md-icon>
+      </md-button>
+      <md-menu-content>
+        <md-menu-item>
+          <md-button ng-click="ctrl.openApiKeyDialog()">API key</md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+
+  </div>
+  <md-progress-linear ng-show="ctrl.waitingForSignalBack" md-mode="indeterminate"></md-progress-linear>
 </md-card>

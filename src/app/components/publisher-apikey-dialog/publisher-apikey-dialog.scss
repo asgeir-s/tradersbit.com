@@ -1,0 +1,54 @@
+tb-publisher-apikey-dialog {
+	max-width: 500px;
+	text-align: center;
+  
+  @media screen and (max-width: 600px) {
+    max-width: 600px;
+  }
+	
+	md-toolbar {
+		color: $light-font-color !important;
+	}
+	
+		h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	small {
+		color: lighten($dark-font-color, 55%);
+	}
+	
+	.recaptcha {
+		  align-self: center;
+			padding: 1em;
+	}
+	
+	.signals-to-email {
+		    margin-bottom: 0px;
+	}
+	
+	md-progress-circular {
+		align-self: center;
+	}
+  
+  md-icon {
+    color: $light-font-color !important;
+  }
+  
+  form {
+   
+   @media screen\0 {
+	margin-top: 40px;
+  }
+    
+}
+
+  md-input-container {
+    width: 500px;
+  }
+
+textarea {
+  height: 250px;
+  width: 400px;
+}
+}

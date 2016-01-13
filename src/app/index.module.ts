@@ -43,6 +43,7 @@ import { tbSignIn } from './components/sign-in/sign-in';
 import { tbPublisherStream } from './components/publisher-stream/publisher-stream';
 import { tbStreamNewDialog } from './components/stream-new-dialog/stream-new-dialog';
 import { tbStreamPublisherRow } from './components/stream-publisher-row/stream-publisher-row'
+import { tbPublisherApikeyDialog } from './components/publisher-apikey-dialog/publisher-apikey-dialog';
 
 // services
 import { PublicApi } from './services/public-api/public-api';
@@ -85,6 +86,7 @@ module tradersbitCom {
     .directive('tbPublisherStream', tbPublisherStream)
     .directive('tbStreamNewDialog', tbStreamNewDialog)
     .directive('tbStreamPublisherRow', tbStreamPublisherRow)
+    .directive('tbPublisherApikeyDialog', tbPublisherApikeyDialog)
 
   // services
     .service('publicApi', PublicApi)

@@ -54,33 +54,66 @@
       </md-tab>
       <md-tab label="Signals">
         <md-content>
-              <h3 class="md-display-2 center">Signals</h3>
+          <h3 class="md-display-2 center">Signals</h3>
+
+          <div class="text-content">
+            <p>
+              Signals you can send are SHORT, LONG and CLOSE. A SHORT or LONG signal is always followed by a close signal. If you go directly
+              from SHORT to LONG or LONG to SHORT a CLOSE signal is automaticly generated for you.
+            </p>
+            <p>
+              If you send a LONG signal you will make a profit if the price of Bitcoin goes up. You profit if the price of bitcoin is higher
+              when you CLOSE your trade, then it was when you sent the LONG signal.
+              <a href="http://www.investopedia.com/terms/l/long.asp" target="_blank">Investopedia on longing.</a>
+            </p>
+            <p>
+              If you send a SHORT signal, you will make a profit if the price of Bitcoin goes down. You profit if the price of bitcoin
+              is lower when you CLOSE your trade, then it was when you sent the SHORT signal.
+              <a href="http://www.investopedia.com/terms/s/shortselling.asp" target="_blank">Investopedia on shorting.</a>
+            </p>
+            <p>
+              A CLOSE signal closes your current position.
+            </p>
+            <p>
+              Each signal will simulate using all assets avalible.
+            </p>
+          </div>
+        </md-content>
+      </md-tab>
+      <md-tab label="API">
+        <md-content>
+          <h3 class="md-display-2 center">API</h3>
+          <div class="text-content">
+            <p>API for sending trading signals.</p>
+
+              <b>POST: https://api.tradersbit.com/streams/<i>'your stream's id'</i>/signal</b>
+         
+              <h6 class="md-title">Headers</h6>
+              <ul>
+                <li>Content-Type: application/json</li>
+                <li>x-authorization: apikey <i>'you streams apikey'</i></li>
+              </ul>
+        
+              <h6 class="md-title">Body</h6> The body of the request should be -1 (SHORT), 0 (CLOSE) or 1 (LONG).
+            </p>
+
+<p>
+  <h5 class="md-headline">Example</h5>
+  <small>
+  POST: 
+  https://api.tradersbit.com/streams/4b0c2989-ca71-46c5-a138-c4777a41e13e/signal
+  
+         <b>Headers:</b>
+              <ul>
+                <li>Content-Type: application/json</li>
+                <li>x-authorization: apikey eyJhbGciOiJIUzI1NiId...</li>
+              </ul>
               
-                <div class="text-content">
-                  <p>
-                    Signals you can send are SHORT, LONG and CLOSE. A SHORT or LONG signal is always followed by a close signal. If you go directly
-                    from SHORT to LONG or LONG to SHORT a CLOSE signal is automaticly generated for you.
-                  </p>
-                  <p>
-                    If you send a LONG signal you will make a profit if the price of Bitcoin goes up. You profit if the price of bitcoin is higher
-                    when you CLOSE your trade, then it was when you sent the LONG signal.
-                    <a href="http://www.investopedia.com/terms/l/long.asp" target="_blank">Investopedia on longing.</a>
-                  </p>
-                  <p>
-                    If you send a SHORT signal, you will make a profit if the price of Bitcoin goes down. You profit if the price of bitcoin
-                    is lower when you CLOSE your trade, then it was when you sent the SHORT signal.
-                    <a href="http://www.investopedia.com/terms/s/shortselling.asp" target="_blank">Investopedia on shorting.</a>
-                  </p>
-                  <p>
-                    A CLOSE signal closes your current position.
-                  </p>
-                  <p>
-                    Each signal will simulate using all assets avalible.
-                  </p>
-                </div>
-
-
-          
+              <b>Body:</b>
+              1
+</small>
+</p>
+          </div>
         </md-content>
       </md-tab>
     </md-tabs>

@@ -166,6 +166,28 @@ export class AuthApi {
     return deferred.promise;
   }
 
+  getApiKey(streamId: string): angular.IPromise<string> {
+
+    let deferred: angular.IDeferred<string> = this.$q.defer();
+    console.log('AuthApi - post signal');
+
+    this.apigClient.streamsStreamIdGetapikeyGet({ 
+      "x-auth-token": this.store.get('token'), 
+      "streamId": streamId 
+    }, {}, {})
+      .then((res: SuccessRespondse<{ "apiKey": string }>) => {
+        // this is where you would put a success callback
+        console.log("apikey: " + JSON.stringify(res));
+        deferred.resolve(res.data.apiKey);
+      })
+      .catch((err: any) => {
+        // this is where you would put an error callback
+        console.log('signal error: ' + JSON.stringify(err));
+        deferred.reject('AuthApi - Could not get new api key. Error: ' + err);
+      });
+    return deferred.promise;
+  }
+
   isStream(value: string) {
     let start = 'stream-';
     return value.substring(0, start.length) === start;
