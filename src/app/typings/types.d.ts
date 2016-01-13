@@ -83,4 +83,5 @@ export interface StreamsAttribute {
   jsonPath: string;
   on: boolean;
   getIt: any
+  getValue: any;
 }

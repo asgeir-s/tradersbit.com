@@ -30,14 +30,21 @@ export class TbPublishDashCtrl {
       on: true,
       getIt: (stream: Stream) => {
         return stream.exchange;
+      },
+      getValue: (stream: Stream) => {
+        return stream.exchange;
       }
-    }, {
+    },
+    {
       name: "Currency Pair",
       jsonPath: "currencyPair",
       short: "CP",
       description: '',
-      on: true,
+      on: false,
       getIt: (stream: Stream) => {
+        return stream.currencyPair;
+      },
+      getValue: (stream: Stream) => {
         return stream.currencyPair;
       }
     },
@@ -45,44 +52,86 @@ export class TbPublishDashCtrl {
       name: "Average Monthly Profit",
       short: "AMP",
       description: "The average profit per month calculated from first to last signal.",
-      jsonPath: "stats.averageMonthlyProfitIncl",
+      jsonPath: "",
       on: true,
       getIt: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
         let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
         let secInMonth = 86400000 * 30;
-        return ((((allProfit / duration)) * secInMonth) * 100).toFixed(2) + '%';
+
+        let AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return '0%';
+        }
+        else {
+          return AMP.toFixed(2) + '%';
+        }
+      },
+      getValue: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+        return (((allProfit / duration)) * secInMonth) * 100
       }
     },
     {
       name: "Profit Factor",
       short: "PF",
       description: '',
-      jsonPath: "stats.profitFactor",
+      jsonPath: "",
       on: false,
+      getValue: (stream: Stream) => {
+        return (stream.stats.accumulatedProfit / stream.stats.accumulatedLoss);
+      },
       getIt: (stream: Stream) => {
-        return (stream.stats.accumulatedProfit / stream.stats.accumulatedLoss).toFixed(2);
+        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
+        if (isNaN(PF)) {
+          return '-'
+        }
+        else {
+          return PF.toFixed(2);
+        }
       }
     },
-      {
+    {
       name: "Part Winning Trades",
       short: "PWT",
       description: "Percent closed trades with profit larger then 0",
-      jsonPath: "stats.partWinningTrades",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        return ((stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100).toFixed(2) + '%';
+        let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(PWT)) {
+          return '-';
+        }
+        else {
+          return (PWT).toFixed(2) + '%';
+        }
+      },
+      getValue: (stream: Stream) => {
+        return stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades * 100;
       }
     },
     {
       name: "Average Trade",
       short: "AT",
       description: "Average profit on a trade",
-      jsonPath: "stats.averageTrade",
+      jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
-        return ((allProfit / stream.stats.numberOfClosedTrades) * 100).toFixed(2) + '%';
+        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(AT)) {
+          return '-';
+        }
+        else {
+          return (AT).toFixed(2) + '%';
+        }
+
+      },
+      getValue: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        return allProfit / stream.stats.numberOfClosedTrades * 100;
       }
     },
     {
@@ -90,15 +139,18 @@ export class TbPublishDashCtrl {
       short: "NCT",
       description: '',
       jsonPath: "stats.numberOfClosedTrades",
-      on: true,
+      on: false,
       getIt: (stream: Stream) => {
+        return stream.stats.numberOfClosedTrades;
+      },
+      getValue: (stream: Stream) => {
         return stream.stats.numberOfClosedTrades;
       }
     }
   ];
 
-  constructor(private authApi: AuthApi, private $mdDialog: any, 
-  private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService) {
+  constructor(private authApi: AuthApi, private $mdDialog: any,
+    private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService) {
     console.log('my streams: ' + JSON.stringify(this.myStreams()));
     this.noStreams = this.myStreams().length === 0;
   }
@@ -115,7 +167,7 @@ export class TbPublishDashCtrl {
       fullscreen: this.$mdMedia('xs')
     })
   };
-  
+
   toggleMenu() {
     return this.$mdSidenav('leftBig').open();
   }

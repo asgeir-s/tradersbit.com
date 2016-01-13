@@ -2,8 +2,8 @@
   <table class="streams-table click-table">
     <thead>
       <tr>
-        <th ng-repeat="atribute in ctrl.inAttributes()" ng-if="atribute.on" ng-click="ctrl.order(atribute.jsonPath)">
-          <span class="sortorder" ng-show="ctrl.predicate === atribute.jsonPath">
+        <th ng-repeat="atribute in ctrl.inAttributes()" ng-if="atribute.on" ng-click="ctrl.order(atribute)">
+          <span class="sortorder" ng-show="ctrl.predicate === atribute">
             <i class="material-icons" ng-show="ctrl.reverse">arrow_drop_down</i>
        	    <i class="material-icons" ng-hide="ctrl.reverse">arrow_drop_up</i>
           </span>
@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="stream in ctrl.inStreams() | orderBy:ctrl.predicate:ctrl.reverse" ng-click="ctrl.goToStream(stream.id)">
+      <tr ng-repeat="stream in ctrl.inStreams() | orderBy:ctrl.predicate.getValue:ctrl.reverse" ng-click="ctrl.goToStream(stream.id)">
         <td ng-repeat="atribute in ctrl.inAttributes()" style="cursor:pointer;" ng-if="atribute.on">
           {{atribute.getIt(stream)}}
         </td>

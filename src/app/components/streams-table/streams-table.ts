@@ -23,14 +23,14 @@ export class TbStreamsTableCtrl {
     inAttributes: () => Array<StreamsAttribute>;
     inStreams: () => Array<Stream>;
 
-    reverse: Boolean = true;
-    predicate: String = "stats.averageMonthlyProfitIncl";
+    reverse: Boolean = false;
+    predicate: StreamsAttribute = this.inAttributes[2];
 
     /* @ngInject */
     constructor(private $state: any) {
     }
 
-    order(predicate: String) {
+    order(predicate: StreamsAttribute) {
         this.reverse = (this.predicate === predicate) ? !this.reverse : false;
         this.predicate = predicate;
     }

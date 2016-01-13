@@ -41,8 +41,7 @@ export class TbSignInCtrl {
 
             authApi.signIn(profile, token)
                 .then(() => {
-                    this.$state.go('publish-dash')
-                    this.wating = false;
+                    this.$state.go('publish-dash');
                 })
         }, () => {
             console.log('signin failed!');

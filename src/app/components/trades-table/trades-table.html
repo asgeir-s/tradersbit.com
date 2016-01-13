@@ -18,7 +18,7 @@
           <td class="table-header">{{trade.position}}</td>
           <td>{{trade.open.timestamp | date: 'short'}}</td>
           <td>{{trade.open.price | currency }}</td>
-          <td>{{trade.close.timestamp | date: 'short'}}</td>
+          <td>{{trade.close.timestamp | date: 'M/d/yy HH:mm'}}</td>
           <td>{{trade.close.price | currency }}</td>
           <td>{{(trade.close.changeInclFee + trade.open.changeInclFee) * 100 | number: 2}}%</td>
         </tr>
