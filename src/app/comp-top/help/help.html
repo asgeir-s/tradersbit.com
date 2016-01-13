@@ -86,24 +86,23 @@
           <div class="text-content">
             <p>API for sending trading signals.</p>
 
-              <b>POST: https://api.tradersbit.com/streams/<i>'your stream's id'</i>/signal</b>
-         
-              <h6 class="md-title">Headers</h6>
-              <ul>
-                <li>Content-Type: application/json</li>
-                <li>x-authorization: apikey <i>'you streams apikey'</i></li>
-              </ul>
-        
-              <h6 class="md-title">Body</h6> The body of the request should be -1 (SHORT), 0 (CLOSE) or 1 (LONG).
+            <b>POST: https://api.tradersbit.com/streams/<i>'your stream's id'</i>/signal</b>
+
+            <h6 class="md-title">Headers</h6>
+            <ul>
+              <li>Content-Type: application/json</li>
+              <li>x-authorization: apikey <i>'you streams apikey'</i></li>
+            </ul>
+            Api-keys can be generated in the My Streams view (under Publisher). Click on the three-dot icon on one of you streams 
+            (icon on the far right of you streams on the My Streams page).
+            <h6 class="md-title">Body</h6> The body of the request should be -1 (SHORT), 0 (CLOSE) or 1 (LONG).
             </p>
 
-<p>
-  <h5 class="md-headline">Example</h5>
-  <small>
-  POST: 
-  https://api.tradersbit.com/streams/4b0c2989-ca71-46c5-a138-c4777a41e13e/signal
-  
-         <b>Headers:</b>
+            <p>
+              <h5 class="md-headline">Example</h5>
+              <small>
+                POST: https://api.tradersbit.com/streams/4b0c2989-ca71-46c5-a138-c4777a41e13e/signal
+               <b>Headers:</b>
               <ul>
                 <li>Content-Type: application/json</li>
                 <li>x-authorization: apikey eyJhbGciOiJIUzI1NiId...</li>
@@ -111,8 +110,8 @@
               
               <b>Body:</b>
               1
-</small>
-</p>
+              </small>
+            </p>
           </div>
         </md-content>
       </md-tab>
