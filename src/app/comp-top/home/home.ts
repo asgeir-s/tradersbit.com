@@ -165,6 +165,10 @@ export class TbHomeCtrl {
     this.top5Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) =>
       this.averageMonthlyProfitIncl(stream1) - this.averageMonthlyProfitIncl(stream2)).slice(0, 5);
   }
+  
+  goToApiHelp() {
+    this.$state.go('help', {"tab": "api"});
+  }
 
   chnageState(newState: string) {
     this.$state.go(newState);
