@@ -104,7 +104,7 @@ export class StreamAttributes {
       short: "PF",
       description: '',
       jsonPath: "",
-      on: false,
+      on: true,
       getValue: (stream: Stream) => {
         return (stream.stats.accumulatedProfit / stream.stats.accumulatedLoss);
       },
@@ -187,7 +187,7 @@ export class StreamAttributes {
       short: "PWT",
       description: "Percent closed trades with profit larger then 0",
       jsonPath: "",
-      on: false,
+      on: true,
       getIt: (stream: Stream) => {
         let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100;
         if (isNaN(PWT)) {
@@ -226,7 +226,7 @@ export class StreamAttributes {
       short: "AT",
       description: "Average profit on a trade",
       jsonPath: "",
-      on: false,
+      on: true,
       getIt: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
         let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
@@ -257,11 +257,11 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Alltime Value Profit",
-      short: "AVP",
+      name: "Net Profit",
+      short: "NP",
       description: "All-time profit for this signal stream.",
       jsonPath: "stats.allTimeValueIncl",
-      on: false,
+      on: true,
       getIt: (stream: Stream) => {
         return ((stream.stats.allTimeValueIncl - 1) * 100).toFixed(2) + '%';
       },
@@ -274,7 +274,7 @@ export class StreamAttributes {
       short: "NCT",
       description: '',
       jsonPath: "stats.numberOfClosedTrades",
-      on: false,
+      on: true,
       getIt: (stream: Stream) => {
         return stream.stats.numberOfClosedTrades;
       },
@@ -287,7 +287,7 @@ export class StreamAttributes {
       short: "MT",
       description: '',
       jsonPath: "",
-      on: false,
+      on: true,
       getIt: (stream: Stream) => {
         let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
         let secInMonth = 86400000 * 30;
@@ -304,7 +304,7 @@ export class StreamAttributes {
       short: "TLS",
       description: '',
       jsonPath: "stats.timeOfLastSignal",
-      on: false,
+      on: true,
       getIt: (stream: Stream) => {
         if (stream.stats.timeOfLastSignal === 0) {
           return '-';

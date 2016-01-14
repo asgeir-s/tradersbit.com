@@ -51,7 +51,7 @@ table {
       border-bottom: 0px;
       border-left: 1px solid $table-border-color;
       padding: $table-padding;
-      text-align: left;
+      text-align: right;
       &:first-child {
         border-left: none;
       }
@@ -86,6 +86,9 @@ table {
 }
 .click-table {
   tr {
+           center {
+         text-align: center !important;
+      }
     cursor: pointer;
     &:hover {
       background-color: $table-hover-background;
@@ -93,7 +96,7 @@ table {
   }
 }
   
-  text-align: center;
+  text-align: right;
 
 .good {
   background-color: $background-color-good !important;
