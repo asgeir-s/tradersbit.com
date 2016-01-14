@@ -4,6 +4,7 @@ export class PublicApi {
   private static BASE_URL: string = "https://abx4pd8fce.execute-api.us-east-1.amazonaws.com/prod";
   streams: Array<Stream>;
   signalsMap: { [streamId: string]: Array<Signal>; } = {};
+  streamsDirty = false;
   
 
   /** @ngInject */
@@ -12,12 +13,8 @@ export class PublicApi {
   allStreams(): angular.IPromise<Array<Stream>> {
     let deferred: angular.IDeferred<Array<Stream>> = this.$q.defer();
 
-    if (typeof this.streams !== 'undefined') {
-      // the variable is defined
-      console.log('PublicApiService - gets already fatched streams.');
-      deferred.resolve(this.streams);
-    }
-    else {
+    if (typeof this.streams === 'undefined' || this.streamsDirty) {
+      this.streamsDirty = false;
       console.log('PublicApiService - fatches streams');
       this.$http.get(PublicApi.BASE_URL + '/streams').then(
         (res: angular.IHttpPromiseCallbackArg<Array<Stream>>) => {
@@ -28,6 +25,11 @@ export class PublicApi {
           console.error('PublicApiService - Could not get streams. Error: ' + err);
           deferred.reject('PublicApiService - Could not get streams. Error: ' + err);
         })
+    }
+    else {
+       // the variable is defined
+      console.log('PublicApiService - gets already fatched streams.');
+      deferred.resolve(this.streams);
     }
     return deferred.promise;
   }

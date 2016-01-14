@@ -116,6 +116,7 @@ export class AuthApi {
     delete this.signalsMap[streamId];
     delete this.publicApi.signalsMap[streamId];
     _.remove(this.publicApi.streams, (stream: Stream) => stream.id === streamId);
+    this.publicApi.streamsDirty = true;
 
     let deferred: angular.IDeferred<Array<Signal>> = this.$q.defer();
 
