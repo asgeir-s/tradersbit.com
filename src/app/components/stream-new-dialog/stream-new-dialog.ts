@@ -22,7 +22,7 @@ export class TbStreamNewCtrl {
         name: "",
     exchange: "",
     currencyPair: "",
-    payoutAddress: "1Cw4FR4DBhpjtB1nHPJqKJQnzpmESHJXt",
+    payoutAddress: "n4Yh1V3qsgFtgv6RnctPKmWx33oPqgV7FY",
     subscriptionPriceUSD: 3
     };
   wating: boolean = false;
