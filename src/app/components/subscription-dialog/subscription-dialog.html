@@ -1,6 +1,6 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <h2>Subscribe to Stream (coming soon)</h2>
+    <h2>Subscribe to Stream (sandbox mode)</h2>
     <span flex></span>
     <md-button class="md-icon-button" ng-click="ctrl.cancel()">
       <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
@@ -31,15 +31,14 @@
       </p>
     </div>
 
-    <form novalidate name="subscribeForm" ng-hide="ctrl.gotPaymentInfo">
+    <form novalidate name="subscribeForm" ng-hide="ctrl.gotPaymentInfo || ctrl.waitForResponds">
       <div layout="column" layout-align="center">
-
         <md-switch class="md-primary signals-to-email" ng-model="ctrl.subscription.signalsToEmail" ng-disabled="true" aria-label="Subscribe with Email">
           Send new signals to email
         </md-switch>
         <md-input-container flex>
           <label for="email">Email (optional if you use Autotrader)</label>
-          <input ng-disabled="true" ng-required='ctrl.subscription.signalsToEmail' type="email" ng-model="ctrl.subscription.email"
+          <input ng-required='ctrl.subscription.signalsToEmail' type="email" ng-model="ctrl.subscription.email"
           id="email" value="" />
         </md-input-container>
         <md-switch class="md-primary" ng-disabled="true" ng-model="ctrl.subscribeAutoTrader" aria-label="Switch 6" ng-change="ctrl.updatePrice()">
@@ -56,7 +55,7 @@
           ng-minlength="5" />
         </md-input-container>
 
-        <div ng-hide="true" flex class="recaptcha" vc-recaptcha key="'6Lek2xETAAAAANo7-PKjcbAn8OuxJytZ4IQwLmFg'" on-success="ctrl.setReCaptchaResponds(response)"></div>
+        <div flex class="recaptcha" vc-recaptcha key="'6Lek2xETAAAAANo7-PKjcbAn8OuxJytZ4IQwLmFg'" on-success="ctrl.setReCaptchaResponds(response)"></div>
 
         <md-button flex ng-hide="ctrl.waitForResponds" ng-disabled="!ctrl.subscription.signalsToEmail && !ctrl.subscribeAutoTrader || !subscribeForm.$valid"
         class="md-raised md-accent btc-pay-button" type="submit" ng-click="ctrl.postSubscriptionReturnButtonCode(ctrl.subscription)"

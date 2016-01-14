@@ -28,16 +28,21 @@ export class TbPublisherStreamCtrl {
   constructor(public $location: any, private $mdMedia: angular.material.IMedia, private $mdDialog: any,
     private $q: angular.IQService, private $http: angular.IHttpService, private $state: angular.ui.IStateService,
     private authApi: AuthApi, private _: _.LoDashStatic, private $mdToast: any, bitfinexSocket: BitfinexSocket) {
-      
-      this.computeUnrealizedPL(this.inStream.lastSignal, bitfinexSocket.lastRate);
-    
-    bitfinexSocket.dataStream.onMessage((message: any) => {
-      let tick: Array<number> = JSON.parse(message.data)
-      if (tick.length > 8) {
-        this.computeUnrealizedPL(this.inStream.lastSignal, tick[7]);
-      }
-    });
 
+    if (this.inStream.exchange === 'bitfinex') {
+      this.computeUnrealizedPL(this.inStream.lastSignal, bitfinexSocket.lastRate);
+
+      bitfinexSocket.dataStream.onMessage((message: any) => {
+        let tick: Array<number> = JSON.parse(message.data)
+        if (tick.length > 8) {
+          this.computeUnrealizedPL(this.inStream.lastSignal, tick[7]);
+        }
+      });
+    }
+    else {
+      console.log('WARNING: dont have access to price data for ' + this.inStream.exchange);
+    }
+    
   }
 
   openApiKeyDialog(ev: any) {
