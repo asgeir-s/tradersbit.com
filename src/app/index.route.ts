@@ -67,8 +67,17 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       }
     })
     .state('help', {
-      url: '/help',
-      template: '<tb-help></tb-help>'
+      url: '/help?tab',
+      template: '<tb-help in-tab="ctrl.tab"></tb-help>',
+      controller:
+      class Help {
+        tab: string
+        constructor(public $stateParams: any) {
+          this.tab=$stateParams.tab;
+          console.log('help!!!');
+        }
+      },
+      controllerAs: "ctrl",
     })
     .state('about', {
       url: '/about',

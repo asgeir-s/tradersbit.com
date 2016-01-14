@@ -49,12 +49,13 @@ import { tbPublisherApikeyDialog } from './components/publisher-apikey-dialog/pu
 import { PublicApi } from './services/public-api/public-api';
 import { AuthApi } from './services/auth-api/auth-api';
 import { BitcoinaverageApi } from './services/bitcoinaverage-api/bitcoinaverage-api';
+import { BitfinexSocket } from './services/bitfinex-socket/bitfinex-socket';
 
 
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt']) // 'angular-storage'
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt', 'ngWebSocket']) // 'angular-storage'
     .constant('_', (<any> window)._)
     .constant('highcharts', (<any> window).Highcharts)
 
@@ -91,6 +92,7 @@ module tradersbitCom {
   // services
     .service('publicApi', PublicApi)
     .service('authApi', AuthApi)
-    .service('bitcoinaverageApi', BitcoinaverageApi);
+    .service('bitcoinaverageApi', BitcoinaverageApi)
+    .service('bitfinexSocket', BitfinexSocket);
 
 }

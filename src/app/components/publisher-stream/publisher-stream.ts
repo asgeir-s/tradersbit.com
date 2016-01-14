@@ -1,6 +1,7 @@
 import { PublisherStream, Stream } from '../../../app/typings/types';
 import { Signal } from '../../typings/types'
 import { AuthApi } from '../../services/auth-api/auth-api'
+import { BitfinexSocket } from '../../services/bitfinex-socket/bitfinex-socket'
 
 /** @ngInject */
 export function tbPublisherStream(): angular.IDirective {
@@ -10,8 +11,7 @@ export function tbPublisherStream(): angular.IDirective {
     scope: {},
     templateUrl: 'app/components/publisher-stream/publisher-stream.html',
     bindToController: {
-      inStream: '=',
-      inBtcRate: '&'
+      inStream: '='
     },
     controller: TbPublisherStreamCtrl,
     controllerAs: 'ctrl'
@@ -22,13 +22,22 @@ export function tbPublisherStream(): angular.IDirective {
 /** @ngInject */
 export class TbPublisherStreamCtrl {
   inStream: PublisherStream;
-  inBtcRate: number;
   unrealizedPL: number;
   waitingForSignalBack = false;
 
-  constructor(private $mdMedia: angular.material.IMedia, private $mdDialog: any, private $q: angular.IQService, private $http: angular.IHttpService, private $state: angular.ui.IStateService, private authApi: AuthApi, private _: _.LoDashStatic, private $mdToast: any) {
-    console.log('inStream: ' + JSON.stringify(this.inStream));
-    this.computeUnrealizedPL(this.inStream.lastSignal, this.inStream.exchange)
+  constructor(public $location: any, private $mdMedia: angular.material.IMedia, private $mdDialog: any,
+    private $q: angular.IQService, private $http: angular.IHttpService, private $state: angular.ui.IStateService,
+    private authApi: AuthApi, private _: _.LoDashStatic, private $mdToast: any, bitfinexSocket: BitfinexSocket) {
+      
+      this.computeUnrealizedPL(this.inStream.lastSignal, bitfinexSocket.lastRate);
+    
+    bitfinexSocket.dataStream.onMessage((message: any) => {
+      let tick: Array<number> = JSON.parse(message.data)
+      if (tick.length > 8) {
+        this.computeUnrealizedPL(this.inStream.lastSignal, tick[7]);
+      }
+    });
+
   }
 
   openApiKeyDialog(ev: any) {
@@ -76,31 +85,16 @@ export class TbPublisherStreamCtrl {
     }
   }
 
-  computeUnrealizedPL(lastSignal: Signal, exchange: string) {
-    this.getLastRate(this.inStream.exchange)
-      .then((rate: number) => {
-        if (lastSignal.signal === 0) {
-          this.unrealizedPL = 0;
-        }
-        else if (lastSignal.signal === 1) {
-          this.unrealizedPL = rate - lastSignal.price - 0.2;
-        }
-        else if (lastSignal.signal === -1) {
-          this.unrealizedPL = (lastSignal.price - rate) - 0.2;
-        }
-      })
-
-  }
-
-  getLastRate(exchange: string) {
-    return this.$http.get('https://api.bitcoinaverage.com/exchanges/USD').then(
-      (res: angular.IHttpPromiseCallbackArg<any>) => {
-        console.log('last rate at ' + exchange + ': ' + res.data[exchange].rates.last);
-        return res.data[exchange].rates.last
-      },
-      (err: any) => {
-        console.error('Could not get bitcoin/usd rate at ' + exchange + '. Error: ' + err);
-      })
+  computeUnrealizedPL(lastSignal: Signal, rate: number) {
+    if (lastSignal.signal === 0) {
+      this.unrealizedPL = 0;
+    }
+    else if (lastSignal.signal === 1) {
+      this.unrealizedPL = rate - lastSignal.price - 0.2;
+    }
+    else if (lastSignal.signal === -1) {
+      this.unrealizedPL = (lastSignal.price - rate) - 0.2;
+    }
   }
 
   goToStream(streamID: string) {
@@ -113,7 +107,7 @@ export class TbPublisherStreamCtrl {
       .then((signals: Array<Signal>) => {
         this.inStream.lastSignal = _.max(signals, 'id');
         this.inStream.status = this.inStream.lastSignal.signal;
-        this.computeUnrealizedPL(this.inStream.lastSignal, this.inStream.exchange);
+        //this.computeUnrealizedPL(this.inStream.lastSignal, this.inStream.exchange);
         this.waitingForSignalBack = false;
         let text: string;
         if (signals.length === 1) {

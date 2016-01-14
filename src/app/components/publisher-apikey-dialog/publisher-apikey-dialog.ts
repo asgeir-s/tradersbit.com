@@ -36,7 +36,7 @@ export class TbPublisherApikeyDialogCtrl {
   }
 
   chnageState(newState: string) {
-    this.$state.go(newState);
+    this.$state.go(newState, {"tab":"api"});
     this.cancel();
   }
 
