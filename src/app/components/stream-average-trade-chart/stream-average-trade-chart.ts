@@ -52,7 +52,7 @@ export class TbStreamAverageTradeChartCtrl {
         data: [this.averageWinningTrade(this.inStream)]
       },
         {
-          name: 'Average Loosing Trade',
+          name: 'Average Unprofitable Trade',
           data: [this.averageLoosingTrade(this.inStream)]
         },
         {

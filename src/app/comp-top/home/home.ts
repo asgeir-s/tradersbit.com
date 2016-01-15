@@ -106,11 +106,11 @@ export class TbHomeCtrl {
       }
     },
     {
-      name: "Part Winning Trades",
-      short: "PWT",
+      name: "Part Profitable Trades",
+      short: "PPT",
       description: "Percent closed trades with profit larger then 0",
       jsonPath: "",
-      on: false,
+      on: true,
       getIt: (stream: Stream) => {
         let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100;
         if (isNaN(PWT)) {
@@ -127,7 +127,7 @@ export class TbHomeCtrl {
     {
       name: "Average Trade",
       short: "AT",
-      description: "Average profit on a trade",
+      description: "Average profit on trades",
       jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
@@ -147,7 +147,7 @@ export class TbHomeCtrl {
       }
     },
     {
-      name: "Number of Closed Trads",
+      name: "Number of Closed Trades",
       short: "NCT",
       description: '',
       jsonPath: "stats.numberOfClosedTrades",

@@ -119,9 +119,9 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Number of Loosing Trades",
-      short: "NLT",
-      description: "Number of trads with profit smaller then 0",
+      name: "Number of Unprofitable Trades",
+      short: "NUT",
+      description: "Number of trads with profit equal or smaller then 0",
       jsonPath: "stats.numberOfLoosingTrades",
       on: false,
       getIt: (stream: Stream) => {
@@ -132,9 +132,9 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Average Winning Trade",
-      short: "AWT",
-      description: "Average profit on a trade with profit larger then 0",
+      name: "Average Profitable Trade",
+      short: "APT",
+      description: "Average profit on trades with profit larger then 0",
       jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
@@ -164,9 +164,9 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Average Loosing Trade",
+      name: "Average Unprofitable Trade",
       short: "ALT",
-      description: "Average loss of all losing trades.",
+      description: "Average loss on unprofitable trades.",
       jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
@@ -183,8 +183,8 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Part Winning Trades",
-      short: "PWT",
+      name: "Part Profitable Trades",
+      short: "PPT",
       description: "Percent closed trades with profit larger then 0",
       jsonPath: "",
       on: true,
@@ -202,9 +202,9 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Part Loosing Trades",
+      name: "Part Unprofitable Trades",
       short: "PLT",
-      description: "Percent closed trades with profit smaller then 0",
+      description: "Percent closed trades with profit smaller or equal to 0",
       jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
@@ -224,7 +224,7 @@ export class StreamAttributes {
     {
       name: "Average Trade",
       short: "AT",
-      description: "Average profit on a trade",
+      description: "Average profit on trades",
       jsonPath: "",
       on: true,
       getIt: (stream: Stream) => {
@@ -259,7 +259,7 @@ export class StreamAttributes {
     {
       name: "Net Profit",
       short: "NP",
-      description: "All-time profit for this signal stream.",
+      description: "All-time profit for this stream.",
       jsonPath: "stats.allTimeValueIncl",
       on: true,
       getIt: (stream: Stream) => {
@@ -270,7 +270,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Number of Closed Trads",
+      name: "Number of Closed Trades",
       short: "NCT",
       description: '',
       jsonPath: "stats.numberOfClosedTrades",
@@ -345,9 +345,9 @@ export class StreamAttributes {
       }
     },
     {
-      name: "All Time Value Change Excl",
-      short: "ATVx",
-      description: "All-time profit for this signal stream. Excluding trading fees.",
+      name: "Net Profit Excl",
+      short: "NPx",
+      description: "All-time profit for this stream. Excluding trading fees.",
       jsonPath: "stats.allTimeValueExcl",
       on: false,
       getIt: (stream: Stream) => {
@@ -373,7 +373,7 @@ export class StreamAttributes {
     {
       name: "Buy and Hold Change (first to last trade)",
       short: "BHC",
-      description: "Profit it buying at start of signal stream and selling on last signal",
+      description: "Profit if buying on first signal and selling on last signal",
       jsonPath: "stats.buyAndHoldChange",
       on: false,
       getIt: (stream: Stream) => {
