@@ -53,6 +53,7 @@ md-toolbar {
    
    @media screen\0 {
 	   margin-top: 40px;
+     display: block !important;
     }
     
 }
@@ -61,10 +62,6 @@ md-toolbar {
     margin-top: 5px;
     margin-bottom: 20px;
     color: $light-font-color;
-  }
-
-  form {
-    //width: 600px;
   }
 
   p {
