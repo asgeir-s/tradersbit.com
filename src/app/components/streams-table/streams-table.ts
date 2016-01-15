@@ -23,7 +23,7 @@ export class TbStreamsTableCtrl {
     inAttributes: () => Array<StreamsAttribute>;
     inStreams: () => Array<Stream>;
 
-    reverse: Boolean = false;
+    reverse: Boolean = true;
     predicate: StreamsAttribute = this.inAttributes[2];
 
     /* @ngInject */

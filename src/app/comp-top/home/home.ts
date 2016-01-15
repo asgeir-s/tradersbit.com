@@ -163,7 +163,7 @@ export class TbHomeCtrl {
 
   constructor(private $state: ng.ui.IStateService, private $mdSidenav: angular.material.ISidenavService) {
     this.top5Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) =>
-      this.averageMonthlyProfitIncl(stream1) - this.averageMonthlyProfitIncl(stream2)).slice(0, 5);
+    this.averageMonthlyProfitIncl(stream1) - this.averageMonthlyProfitIncl(stream2)).slice(0, 5);
   }
   
   goToApiHelp() {
