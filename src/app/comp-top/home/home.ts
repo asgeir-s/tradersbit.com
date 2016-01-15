@@ -169,6 +169,10 @@ export class TbHomeCtrl {
   goToApiHelp() {
     this.$state.go('help', {"tab": "api"});
   }
+  
+  goToRelesePlan() {
+    this.$state.go('about', {"tab":"relese"});
+  }
 
   chnageState(newState: string) {
     this.$state.go(newState);

@@ -9,7 +9,8 @@
 
 <div class="home--promo-top">
   <h3 class="md-display-3">TradersBit</h3>
-  <p>TradersBit is a marketplace for streams of bitcoin trading signals.</p>
+  <p>TradersBit is a marketplace for streams of Bitcoin trading signals.</p>
+  <small class="relese">We are currently in <b>Alpha</b>. Read about our relese plan <a href="" ng-click="ctrl.goToRelesePlan()">here</a>.</small>
 </div>
 
 <!-- Begin MailChimp Signup Form -->
@@ -20,22 +21,22 @@
   <form action="//tradersbit.us10.list-manage.com/subscribe/post?u=4ebb5d10617696ec106ffd803&amp;id=8c6fade340" method="post"
   name="mc-embedded-subscribe-form" class="validate center reset-this" target="_blank" novalidate layout="row" layout-xs="column"
   layout-align="center center">
-  <div flex>
-    <md-input-container class="email-row">
-      <label for="mce-EMAIL">Email</label>
-      <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-    </md-input-container>
+    <div flex>
+      <md-input-container class="email-row">
+        <label for="mce-EMAIL">Email</label>
+        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+      </md-input-container>
 
-    <div id="mce-responses" class="clear">
-      <div class="response" id="mce-error-response" style="display:none"></div>
-      <div class="response" id="mce-success-response" style="display:none"></div>
+      <div id="mce-responses" class="clear">
+        <div class="response" id="mce-error-response" style="display:none"></div>
+        <div class="response" id="mce-success-response" style="display:none"></div>
+      </div>
+
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true">
+        <input type="text" name="b_4ebb5d10617696ec106ffd803_8c6fade340" tabindex="-1" value="">
+      </div>
     </div>
-    
-    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-      <input type="text" name="b_4ebb5d10617696ec106ffd803_8c6fade340" tabindex="-1" value="">
-    </div>
-  </div>
 
     <div class="submit-container">
       <md-button type="submit" name="subscribe" id="mc-embedded-subscribe" class="md-raised md-primary clear">submit</md-button>
@@ -52,7 +53,8 @@
   <div layout="row" layout-xs="column" layout-align="center center" layout-padding layout-margin class="home--features-row">
     <div class="home--features-row--item" flex flex-gt-lg="25">
       <md-icon class="material-icons">settings_remote</md-icon>
-      <p>Publish streams and sell subscriptions to your streams. Send signals to your streams through our website or <a href="" ng-click="ctrl.goToApiHelp()">API.</a></p>
+      <p>Publish streams and sell subscriptions to your streams. Send signals to your streams through our website or <a href=""
+        ng-click="ctrl.goToApiHelp()">API</a>.</p>
     </div>
     <div class="home--features-row--item" flex flex-gt-lg="25">
       <md-icon class="material-icons">settings_input_antenna</md-icon>
@@ -60,7 +62,8 @@
     </div>
     <div class="home--features-row--item" flex flex-gt-lg="25">
       <md-icon class="material-icons">trending_up</md-icon>
-      <p>Streams can be sorted by profit, average monthly return and more.</p>
+      <p>Streams can be sorted by profit, average monthly return and more. All statistics include trading fees (unless explicitly
+        stated otherwise).</p>
     </div>
   </div>
 </div>
@@ -69,16 +72,17 @@
   <h3 class="md-display-2 center">How it works</h3>
   <div class="text-content">
     <p>
-      This is a marketplace for streams of bitcoin trading signals.
+      This is a marketplace for streams of Bitcoin trading signals.
     </p>
     <p>
       Publishers can create streams, send trading signals to streams and sell subscriptions to streams. Statistics for each streams
-      performance is computed and displayed in the marketplace. All closed trades are displayed.
+      performance is computed and displayed in the marketplace. The statistics include trading fees (unless explicitly stated
+      otherwise). All closed trades are also displayed.
     </p>
     <p>
-      Subscribers can browse and sort streams based on average monthly profit, average trade profit and many other indicators.
-      When subscribing to a stream, the subscriber can get signals sent to his email or automatically executed on his behalf
-      with our autotrader-feature.
+      Subscribers can browse and sort streams based on average monthly profit, average trade profit and other indicators. When
+      subscribing to a stream, the subscriber can get signals sent to his email or automatically executed on his behalf with
+      our autotrader-feature.
     </p>
     <p>
       <md-button ng-click="ctrl.chnageState('help')" class=" readmore-button">Reade more.</md-button>

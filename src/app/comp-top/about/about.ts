@@ -6,7 +6,10 @@ export function tbAbout(): angular.IDirective {
     scope: {},
     templateUrl: 'app/comp-top/about/about.html',
     controller: TbAboutCtrl,
-    controllerAs: 'ctrl'
+    controllerAs: 'ctrl',
+    bindToController: {
+      inTab: "="
+    }
   };
 
 }
@@ -14,7 +17,14 @@ export function tbAbout(): angular.IDirective {
 /** @ngInject */
 export class TbAboutCtrl {
 
-  constructor(private $mdSidenav: angular.material.ISidenavService) { }
+  inTab: string;
+  tabIndex: number;
+
+  constructor(private $mdSidenav: angular.material.ISidenavService) {
+    if (this.inTab === 'relese') {
+      this.tabIndex = 1;
+    }
+  }
 
   toggleMenu() {
     return this.$mdSidenav('leftBig').open();

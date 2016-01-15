@@ -73,15 +73,22 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       class Help {
         tab: string
         constructor(public $stateParams: any) {
-          this.tab=$stateParams.tab;
-          console.log('help!!!');
+          this.tab = $stateParams.tab;
         }
       },
       controllerAs: "ctrl",
     })
     .state('about', {
-      url: '/about',
-      template: '<tb-about></tb-about>'
+      url: '/about?tab',
+      template: '<tb-about in-tab="ctrl.tab"></tb-about>',
+      controller:
+      class About {
+        tab: string
+        constructor(public $stateParams: any) {
+          this.tab = $stateParams.tab;
+        }
+      },
+      controllerAs: "ctrl",
     });
 
   $urlRouterProvider.otherwise('/');

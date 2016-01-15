@@ -1,6 +1,14 @@
 tb-home {
   //font-size: 1.15em;
   
+    a {
+    color: $light-link-color;
+  }
+  
+  .relese {
+    bottom: 0;
+  }
+  
 .home--promo-top {
     padding-top: 10em;
     padding-bottom: 5em;
@@ -28,9 +36,6 @@ md-toolbar {
   background-color: $primary-color;
   color: $light-font-color;
   
-  a {
-    color: $light-link-color;
-  }
   
   md-icon {
     color: $light-font-color;
