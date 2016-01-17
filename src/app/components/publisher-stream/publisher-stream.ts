@@ -24,6 +24,7 @@ export class TbPublisherStreamCtrl {
   inStream: PublisherStream;
   unrealizedPL: number;
   waitingForSignalBack = false;
+  btcRate: number;
 
   constructor(public $location: any, private $mdMedia: angular.material.IMedia, private $mdDialog: any,
     private $q: angular.IQService, private $http: angular.IHttpService, private $state: angular.ui.IStateService,
@@ -31,11 +32,13 @@ export class TbPublisherStreamCtrl {
 
     if (this.inStream.exchange === 'bitfinex') {
       this.computeUnrealizedPL(this.inStream.lastSignal, bitfinexSocket.lastRate);
+      this.btcRate = bitfinexSocket.lastRate;
 
       bitfinexSocket.dataStream.onMessage((message: any) => {
         let tick: Array<number> = JSON.parse(message.data)
         if (tick.length > 8) {
           this.computeUnrealizedPL(this.inStream.lastSignal, tick[7]);
+          this.btcRate = tick[7];
         }
       });
     }
@@ -95,10 +98,10 @@ export class TbPublisherStreamCtrl {
       this.unrealizedPL = 0;
     }
     else if (lastSignal.signal === 1) {
-      this.unrealizedPL = rate - lastSignal.price - 0.2;
+      this.unrealizedPL =  ((100/lastSignal.price)*(rate - lastSignal.price)) - 0.2;
     }
     else if (lastSignal.signal === -1) {
-      this.unrealizedPL = (lastSignal.price - rate) - 0.2;
+      this.unrealizedPL = ((100/lastSignal.price)*(lastSignal.price - rate)) - 0.2;
     }
   }
 
@@ -112,7 +115,7 @@ export class TbPublisherStreamCtrl {
       .then((signals: Array<Signal>) => {
         this.inStream.lastSignal = _.max(signals, 'id');
         this.inStream.status = this.inStream.lastSignal.signal;
-        //this.computeUnrealizedPL(this.inStream.lastSignal, this.inStream.exchange);
+        this.computeUnrealizedPL(this.inStream.lastSignal, this.btcRate);
         this.waitingForSignalBack = false;
         let text: string;
         if (signals.length === 1) {
