@@ -22,5 +22,5 @@
     </md-tooltip>
   </md-button>
 
-  <tb-publisher-stream ng-repeat="stream in ctrl.myStreams()" in-stream="stream"></tb-publisher-stream>
+  <tb-publisher-stream ng-repeat="stream in ctrl.myStreams() | orderBy : 'name'" in-stream="stream"></tb-publisher-stream>
 </div>
