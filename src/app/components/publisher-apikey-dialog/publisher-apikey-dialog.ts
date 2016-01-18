@@ -1,4 +1,3 @@
-import { NewStream } from '../../../app/typings/types';
 import { AuthApi } from '../../services/auth-api/auth-api'
 
 /** @ngInject */
@@ -36,7 +35,7 @@ export class TbPublisherApikeyDialogCtrl {
   }
 
   chnageState(newState: string) {
-    this.$state.go(newState, {"tab":"api"});
+    this.$state.go(newState, { "tab": "api" });
     this.cancel();
   }
 

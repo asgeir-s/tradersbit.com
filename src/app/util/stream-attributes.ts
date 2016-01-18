@@ -465,7 +465,7 @@ export class StreamAttributes {
   static formatDate(inn: number): string {
     let d = new Date(inn);
     let date = d.getDate();
-    let month = d.getMonth() + 1; //Months are zero based
+    let month = d.getMonth() + 1; // months are zero based
     let year = d.getFullYear();
     let hours: any = d.getHours();
     if (hours < 10) {

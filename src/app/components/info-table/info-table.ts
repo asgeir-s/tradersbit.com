@@ -20,11 +20,8 @@ export function tbInfoTable(): angular.IDirective {
 
 /** @ngInject */
 export class TbInfoTableCtrl {
-    inStream: Stream;
-    inAttributes: number;
-    inName: String
-
-  constructor() {
-  }
+  inStream: Stream;
+  inAttributes: number;
+  inName: String
 
 }

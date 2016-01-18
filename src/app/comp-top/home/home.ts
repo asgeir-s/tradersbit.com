@@ -171,7 +171,7 @@ export class TbHomeCtrl {
   }
   
   goToRelesePlan() {
-    this.$state.go('about', {"tab":"relese"});
+    this.$state.go('about', { "tab": "relese" });
   }
 
   chnageState(newState: string) {

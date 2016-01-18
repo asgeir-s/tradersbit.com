@@ -55,8 +55,7 @@ export class TbPublisherStreamCtrl {
       clickOutsideToClose: true,
       fullscreen: this.$mdMedia('xs'),
       locals: {
-        stream: this.inStream,
-
+        stream: this.inStream
       },
       controller: 
       /** @ngInject */
@@ -98,10 +97,10 @@ export class TbPublisherStreamCtrl {
       this.unrealizedPL = 0;
     }
     else if (lastSignal.signal === 1) {
-      this.unrealizedPL =  ((100/lastSignal.price)*(rate - lastSignal.price)) - 0.2;
+      this.unrealizedPL =  ((100 / lastSignal.price) * (rate - lastSignal.price)) - 0.2;
     }
     else if (lastSignal.signal === -1) {
-      this.unrealizedPL = ((100/lastSignal.price)*(lastSignal.price - rate)) - 0.2;
+      this.unrealizedPL = ((100 / lastSignal.price) * (lastSignal.price - rate)) - 0.2;
     }
   }
 

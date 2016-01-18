@@ -76,7 +76,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
           this.tab = $stateParams.tab;
         }
       },
-      controllerAs: "ctrl",
+      controllerAs: "ctrl"
     })
     .state('about', {
       url: '/about?tab',
@@ -88,7 +88,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
           this.tab = $stateParams.tab;
         }
       },
-      controllerAs: "ctrl",
+      controllerAs: "ctrl"
     });
 
   $urlRouterProvider.otherwise('/');
