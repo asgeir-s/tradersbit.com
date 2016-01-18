@@ -24,10 +24,13 @@ export class TbStreamsTableCtrl {
     inStreams: () => Array<Stream>;
 
     reverse: Boolean = true;
-    predicate: StreamsAttribute = this.inAttributes[2];
+    predicate: StreamsAttribute;
 
     /* @ngInject */
-    constructor(private $state: any) {
+    constructor(private $state: any, private _: any) {
+      this.predicate = _.find(this.inAttributes(), (it) => it.short ==='AMP');
+      console.log(this.predicate.name);
+      ;
     }
 
     order(predicate: StreamsAttribute) {

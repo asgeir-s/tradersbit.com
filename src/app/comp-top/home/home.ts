@@ -83,7 +83,13 @@ export class TbHomeCtrl {
         let allProfit = stream.stats.allTimeValueIncl - 1;
         let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
         let secInMonth = 86400000 * 30;
-        return (((allProfit / duration)) * secInMonth) * 100
+        let AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return 0;
+        }
+        else {
+          return AMP;
+        }
       }
     },
     {
@@ -91,9 +97,15 @@ export class TbHomeCtrl {
       short: "PF",
       description: '',
       jsonPath: "",
-      on: false,
+      on: true,
       getValue: (stream: Stream) => {
-        return (stream.stats.accumulatedProfit / stream.stats.accumulatedLoss);
+        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
+        if (isNaN(PF)) {
+          return 0;
+        }
+        else {
+          return PF;
+        }
       },
       getIt: (stream: Stream) => {
         let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
@@ -121,7 +133,13 @@ export class TbHomeCtrl {
         }
       },
       getValue: (stream: Stream) => {
-        return stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades * 100;
+        let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(PWT)) {
+          return 0;
+        }
+        else {
+          return PWT;
+        }
       }
     },
     {
@@ -129,7 +147,7 @@ export class TbHomeCtrl {
       short: "AT",
       description: "Average profit on trades",
       jsonPath: "",
-      on: false,
+      on: true,
       getIt: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
         let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
@@ -139,11 +157,16 @@ export class TbHomeCtrl {
         else {
           return (AT).toFixed(2) + '%';
         }
-
       },
       getValue: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
-        return allProfit / stream.stats.numberOfClosedTrades * 100;
+        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(AT)) {
+          return 0;
+        }
+        else {
+          return AT;
+        }
       }
     },
     {
