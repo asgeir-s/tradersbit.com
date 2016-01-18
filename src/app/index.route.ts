@@ -89,6 +89,30 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
         }
       },
       controllerAs: "ctrl"
+    })
+    .state('terms', {
+      url: '/terms',
+      templateUrl: 'app/comp-top/legal/terms-of-service.html',
+      controller:
+      class TbPublishCtrl {
+        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        toggleMenu() {
+          return this.$mdSidenav('leftBig').open();
+        }
+      },
+      controllerAs: "ctrl"
+    })
+    .state('privacy', {
+      url: '/privacy',
+      templateUrl: 'app/comp-top/legal/privacy-policy.html',
+      controller:
+      class TbPublishCtrl {
+        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        toggleMenu() {
+          return this.$mdSidenav('leftBig').open();
+        }
+      },
+      controllerAs: "ctrl"
     });
 
   $urlRouterProvider.otherwise('/');
