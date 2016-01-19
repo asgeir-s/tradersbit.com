@@ -13,40 +13,77 @@
   <small class="relese">We are currently in <b>Alpha</b>. Read about our release plan <a href="" ng-click="ctrl.goToRelesePlan()">here</a>.</small>
 </div>
 
-<!-- Begin MailChimp Signup Form -->
-<div class="mailchimp" layout="column" layout-align="center center">
-  <p flex class="center">
-    Sign up for a <b>beta invite</b> and future updates. The beta invites are limited and first come first serve.
-  </p>
-  <p class="center">Beta users can publish streams and selling subscriptions before everybody else.</p>
-  <form action="//tradersbit.us10.list-manage.com/subscribe/post?u=4ebb5d10617696ec106ffd803&amp;id=8c6fade340" method="post"
-  name="mc-embedded-subscribe-form" class="validate center reset-this" target="_blank" novalidate layout="row" layout-xs="column"
-  layout-align="center center">
-    <div flex>
-      <md-input-container class="email-row">
-        <label for="mce-EMAIL">Email</label>
-        <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-      </md-input-container>
+<div class="steps" layout-gt-sm="row" layout="column" layout-align="center">
+  <md-content class="subscribe md-whiteframe-3dp" flex>
+    <md-list>
+      <md-subheader class="md-no-sticky">3 Easy Steps to Subscribe</md-subheader>
+      <md-list-item class="md-3-line">
+        <md-button class="md-fab" aria-label="Eat cake">
+          1
+        </md-button>
+        <div class="md-list-item-text" layout="column">
+          <h3>Browse Streams</h3>
+          <p>Find a stream you like. You can sort strems, checking statistics and previous trades.</p>
+        </div>
+      </md-list-item>
+      <md-list-item class="md-3-line">
+        <md-button class="md-fab" aria-label="Eat cake">
+          2
+        </md-button>
+        <div class="md-list-item-text" layout="column">
+          <h3>Fill in Subscription Informatin</h3>
+          <p>Click the subsbribe button (bottom right corner). Fill in email for receiving trading signals and if you want to use autotrader fill
+            inn api keys (coming soon).</p>
+        </div>
+      </md-list-item>
+      <md-list-item class="md-3-line">
+        <md-button class="md-fab" aria-label="Eat cake">
+          3
+        </md-button>
+        <div class="md-list-item-text" layout="column">
+          <h3>Pay</h3>
+          <p>Pay with Bitcoin. After payment you will receive trading signals by email and/or have the trading signals automatically traded for you.</p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
 
-      <div id="mce-responses" class="clear">
-        <div class="response" id="mce-error-response" style="display:none"></div>
-        <div class="response" id="mce-success-response" style="display:none"></div>
-      </div>
-
-      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-      <div style="position: absolute; left: -5000px;" aria-hidden="true">
-        <input type="text" name="b_4ebb5d10617696ec106ffd803_8c6fade340" tabindex="-1" value="">
-      </div>
-    </div>
-
-    <div class="submit-container">
-      <md-button type="submit" name="subscribe" id="mc-embedded-subscribe" class="md-raised md-primary clear">submit</md-button>
-    </div>
-  </form>
-
+  <md-content class="publish md-whiteframe-3dp" flex>
+    <md-list>
+      <md-subheader class="md-no-sticky">3 Easy Steps to Publish</md-subheader>
+      <md-list-item class="md-3-line">
+        <md-button class="md-fab" aria-label="Eat cake">
+          1
+        </md-button>
+        <div class="md-list-item-text" layout="column">
+          <h3>Sign Up as a Publisher</h3>
+          <p>Go to publish then click sign up.</p>
+        </div>
+      </md-list-item>
+      <md-list-item class="md-3-line">
+        <md-button class="md-fab" aria-label="Eat cake">
+          2
+        </md-button>
+        <div class="md-list-item-text" layout="column">
+          <h3>Create a Stream</h3>
+          <p>After you have signed in, click the new stream button (bottom right corner). Fill in a stream name, your bitcoin address for payouts to you (for subscriptions and winning contests). Select
+            initial subscription price.</p>
+        </div>
+      </md-list-item>
+      <md-list-item class="md-3-line">
+        <md-button class="md-fab" aria-label="Eat cake">
+          3
+        </md-button>
+        <div class="md-list-item-text" layout="column">
+          <h3>Submit Signals</h3>
+          <p>Click SHORT, CLOSE or LONG to send signals. Or generate an API key for sending signals through our <a href=""
+        ng-click="ctrl.goToApiHelp()">API</a>.</p>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
 </div>
 
-<!--End mc_embed_signup-->
 <div>
   <h3 class="md-title center">Top streams</h3>
   <tb-streams-table in-streams="ctrl.top5Streams;" in-attributes="ctrl.attributes"></tb-streams-table>

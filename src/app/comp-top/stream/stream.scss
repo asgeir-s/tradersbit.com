@@ -1,10 +1,4 @@
 tb-stream {
-	md-toolbar {
-		color: $light-font-color !important;
-		button {
-			color: $light-font-color !important;
-		}
-	}
 	
 	.google-chart-outer {
 		background-color: black;
@@ -31,11 +25,6 @@ tb-stream {
     	margin-right: 0 !important;
 	}
 	
-  md-toolbar {
-    md-icon {
-      color: $light-font-color !important;
-    }
-  }
 	
   .fab-buttom-right {
     top: auto;
@@ -44,8 +33,5 @@ tb-stream {
     left: auto;
     position: fixed;
     
-    md-icon {
-      color: $light-font-color !important;
-    }
   }
 }

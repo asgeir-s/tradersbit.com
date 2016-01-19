@@ -109,5 +109,67 @@ md-toolbar {
       color: $light-font-color !important;
     }
   }
+  
+  .md-fab {
+    color: $light-font-color !important;
+    font-size: 90px;
+    
 
+  }
+  
+  
+    .publish {
+                   background-color: $third-color-light;
+      .md-fab {
+              background-color: $primary-color!important;
+      }
+     
+    }
+    
+    .subscribe {
+                    background-color: $secondary-color;
+    
+       color: $light-font-color !important;
+      .md-fab {
+              background-color: $primary-color!important;
+      }
+    }
+    
+    .steps {
+      
+      .md-fab {
+        cursor: default;
+      }
+      
+      md-content {
+        margin: 10px;
+        max-width: 670px;
+        
+              @media screen and (max-width: 1055px) {
+ max-width: 100%;
+   }
+   
+        
+        
+        
+        a {
+          color: black;
+        }
+      }
+    }
+    
+    md-list {
+      padding: 0px;
+    }
+    
+          md-list-item {
+        margin-top: 50px !important;
+              margin-bottom: 50px !important;
+              margin-left: 30px;
+              margin-right: 30px;
+              
+              button {
+                margin-right: 40px! important;
+              }
+      }
 }
