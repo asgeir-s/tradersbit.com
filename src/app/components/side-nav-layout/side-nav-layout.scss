@@ -1,15 +1,37 @@
 tb-side-nav-layout {
+  
+  .main-screen {
+    //max-height: 100%!important;
+    
+  }
 
-	.tb-side-nav {
-			width: 190px !important;
+	.sidenav-outer {
+              @media screen and (min-width: 960px) {
+		width: 190px !important;
 		min-width: 190px !important;
 		max-width: 304px !important;
+     }
 	}
+  
+  .sidenav-fixed { 
+    		width: 190px !important;
+		min-width: 190px !important;
+		max-width: 304px !important;
+        position: fixed !important;
+         
+  }
 
-	.tb-side-nav-mini {
+	.tb-side-nav-mini-outer {
 			width: 55px !important;
 		min-width: 55px !important;
 		max-width: 55px !important;
+	}
+  
+  	.tb-side-nav-mini-fixed {
+			width: 55px !important;
+		min-width: 55px !important;
+		max-width: 55px !important;
+        position: fixed !important;
 	}
 
 	.side-nav-layout--logo {
@@ -44,4 +66,7 @@ tb-side-nav-layout {
       color: red;
     }
     
+    .no-margin-top {
+      margin-top: 0px;
+    }
 }

@@ -11,7 +11,7 @@ tb-home {
   
 .home--promo-top {
     padding-top: 10em;
-    padding-bottom: 5em;
+    padding-bottom: 10em;
     background-color: $primary-color;
     text-align: center;
     color: $light-font-color;
@@ -22,6 +22,7 @@ tb-home {
     text-align: center;
     padding-top: 3em;
     padding-bottom: 3em;
+    margin-bottom: 0px;
     
     md-icon {
         font-size: 4em;
@@ -33,7 +34,7 @@ md-toolbar {
 }
 
 .home--features-outer {
-  background-color: $primary-color;
+  background-color: $third-color-light;//$third-color-light; //dsfdsfds
   color: $light-font-color;
   
   
@@ -119,35 +120,38 @@ md-toolbar {
   
   
     .publish {
-                   background-color: $third-color-light;
+          //background-color: $third-color;
       .md-fab {
-              background-color: $primary-color!important;
+              background-color: $third-color-light!important;
       }
      
     }
     
     .subscribe {
-                    background-color: $secondary-color;
+          //background-color: $secondary-color;
     
        color: $light-font-color !important;
       .md-fab {
-              background-color: $primary-color!important;
+              background-color: $third-color-light!important;
       }
     }
     
     .steps {
+      //background-color: $third-color-dark;
+      //background-color: $third-color-dark;
+      //$primary-color
+      
+      margin-top: -60px;
       
       .md-fab {
         cursor: default;
       }
       
       md-content {
-        margin: 10px;
-        max-width: 670px;
+        //margin: 10px;
+
         
-              @media screen and (max-width: 1055px) {
- max-width: 100%;
-   }
+
    
         
         
@@ -163,13 +167,39 @@ md-toolbar {
     }
     
           md-list-item {
-        margin-top: 50px !important;
+        //margin-top: 50px !important;
               margin-bottom: 50px !important;
-              margin-left: 30px;
-              margin-right: 30px;
               
               button {
                 margin-right: 40px! important;
               }
+      }
+      
+      .how-it-works-row {
+        background-color: $secondary-color !important;
+      }
+      .how-it-works-content {
+        background-color: $third-color;
+        margin: 10px;
+        max-width: 670px;
+        padding: 30px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      
+     md-list .md-subheader {
+        background-color: transparent!important;
+      }
+      h6 {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      
+      .top-stream-card{
+            margin-top: 20px;
+    margin-bottom: -40px;
       }
 }

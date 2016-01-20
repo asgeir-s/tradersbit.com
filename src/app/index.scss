@@ -10,7 +10,7 @@ $secondary-color-dark: darken($secondary-color, 30%) !default;
 ; //color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 
-$third-color: rgba(128, 128, 128, 0.4) ! default;
+$third-color: #313236!default;    // #313236
 $third-color-light: lighten($third-color, 15%) !default;
 $third-color-dark: darken($third-color, 15%) !default;
 
@@ -28,6 +28,7 @@ $background-color-bad: #f3d7cd;
  */
 // bower:scss
 // endbower
+
 
 
 @font-face {
