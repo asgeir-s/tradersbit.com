@@ -1,4 +1,4 @@
-<md-toolbar hide-gt-xs flex>
+<md-toolbar hide-gt-xs>
   <div class="md-toolbar-tools">
     <md-button ng-click="ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
       <md-icon class="material-icons">menu</md-icon>
@@ -21,9 +21,9 @@
 </div>
 
 
-<div layout="column" layout-gt-md="row" layout-align="center center" layout="row" class="steps">
+<div class="steps" layout="row" layout-xs="column" layout-sm="column" layout-md="column" layout-align-gt-md="center" layout-align="center center">
 
-  <md-content flex flex-gt-md="33" class="subscribe md-whiteframe-15dp">
+  <md-content flex="90" flex-gt-md="35" class="subscribe md-whiteframe-15dp">
     <md-list>
       <md-subheader class="md-no-sticky">
         <h6 class="md-title">3 Steps to Subscribe</h6></md-subheader>
@@ -59,7 +59,7 @@
     </md-list>
   </md-content>
 
-  <md-content flex-offset-gt-md="5" flex class="publish md-whiteframe-15dp">
+  <md-content flex-offset-gt-md="5" flex="90" flex-gt-md="35" class="publish md-whiteframe-15dp">
     <md-list>
       <md-subheader class="md-no-sticky">
         <h6 class="md-title">3 Steps to Publish</h6></md-subheader>
@@ -96,36 +96,39 @@
 
 </div>
 
-<div layout="row" layout-align="center" layout="row">
-  <div class="md-whiteframe-15dp top-stream-card" flex="75">
+<div layout="row" layout-align="center">
+  <div class="md-whiteframe-15dp top-stream-card" flex="90" flex-gt-md="75" flex-xs="90">
     <md-subheader>
       <h6 class="md-title center">Top streams</h6></md-subheader>
     <tb-streams-table in-streams="ctrl.top5Streams;" in-attributes="ctrl.attributes"></tb-streams-table>
   </div>
 </div>
 <div class="home--features-outer">
-  <div layout="row" layout-xs="column" layout-align="center center" layout-padding layout-margin class="home--features-row">
-    <div class="home--features-row--item" flex flex-gt-lg="25">
-      <md-icon class="material-icons">settings_remote</md-icon>
-      <p>Publish streams and sell subscriptions to your streams. Send signals to your streams through our website or <a href=""
-        ng-click="ctrl.goToApiHelp()">API</a>.</p>
-    </div>
-    <div class="home--features-row--item" flex flex-gt-lg="25">
-      <md-icon class="material-icons">settings_input_antenna</md-icon>
-      <p>You can subscribe to streams. Get signals by email or automatically traded (coming soon).</p>
-    </div>
-    <div class="home--features-row--item" flex flex-gt-lg="25">
-      <md-icon class="material-icons">trending_up</md-icon>
-      <p>You can sort streams by net profit, average monthly return and more. All statistics include trading fees (unless explicitly
-        stated otherwise).</p>
+  <div layout="row" class="home--features-row" layout-align="center center">
+    <div flex="90" flex-gt-md="75" flex-xs="100" layout="row" layout-xs="column" layout-align="center center">
+      <div class="home--features-row--item" flex flex-gt-lg="25">
+        <md-icon class="material-icons">settings_remote</md-icon>
+        <p>Publish streams and sell subscriptions to your streams. Send signals to your streams through our website or <a href=""
+          ng-click="ctrl.goToApiHelp()">API</a>.</p>
+      </div>
+      <div class="home--features-row--item" flex flex-gt-lg="25">
+        <md-icon class="material-icons">settings_input_antenna</md-icon>
+        <p>You can subscribe to streams. Get signals by email or automatically traded (coming soon).</p>
+      </div>
+      <div class="home--features-row--item" flex flex-gt-lg="25">
+        <md-icon class="material-icons">trending_up</md-icon>
+        <p>You can sort streams by net profit, average monthly return and more. All statistics include trading fees (unless
+          explicitly stated otherwise).</p>
+      </div>
     </div>
   </div>
 </div>
 
-<div layout="row" class="how-it-works-row">
-  <div flex="30" class="md-whiteframe-3dp how-it-works-content">
-    <h3 class="md-display-2">How it works</h3>
-    <div>
+
+<div layout="row" layout-align="center">
+  <div flex="90" flex-gt-md="75" flex-xs="100" layout="row">
+    <div flex class="how-it-works-text">
+      <h3 class="md-display-2">How it works</h3>
       <p>
         This is a marketplace for streams of Bitcoin trading signals.
       </p>
@@ -142,6 +145,9 @@
       <p>
         <md-button ng-click="ctrl.chnageState('help')" class=" readmore-button">Read more.</md-button>
       </p>
+    </div>
+    <div flex hide show-gt-sm class="bitcoin-image">
+      <img src="/assets/images/bitcoin36.svg" alt="Bitcoin image">
     </div>
   </div>
 </div>

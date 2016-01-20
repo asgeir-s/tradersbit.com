@@ -39,7 +39,7 @@ export class TbHomeCtrl {
       short: "EXC",
       description: '',
       jsonPath: "exchange",
-      on: true,
+      on: false,
       getIt: (stream: Stream) => {
         return stream.exchange;
       },
@@ -66,6 +66,30 @@ export class TbHomeCtrl {
       description: "The average profit per month calculated from first to last signal.",
       jsonPath: "",
       on: true,
+      good: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+        let AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return false;
+        }
+        else {
+          return AMP > 0;
+        }
+      },
+      bad: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+        let AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return false;
+        }
+        else {
+          return AMP < 0;
+        }
+      },
       getIt: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
         let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
@@ -98,9 +122,18 @@ export class TbHomeCtrl {
       description: '',
       jsonPath: "",
       on: true,
+      good: (stream: Stream) => {
+        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
+        if (isNaN(PF) || PF == Number.POSITIVE_INFINITY) {
+          return false;
+        }
+        else {
+          return PF > 2;
+        }
+      },
       getValue: (stream: Stream) => {
         let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
-        if (isNaN(PF)) {
+        if (isNaN(PF) || PF == Number.POSITIVE_INFINITY) {
           return 0;
         }
         else {
@@ -109,7 +142,7 @@ export class TbHomeCtrl {
       },
       getIt: (stream: Stream) => {
         let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
-        if (isNaN(PF)) {
+        if (isNaN(PF) || PF == Number.POSITIVE_INFINITY) {
           return '-'
         }
         else {
@@ -122,7 +155,7 @@ export class TbHomeCtrl {
       short: "PPT",
       description: "Percent closed trades with profit larger then 0",
       jsonPath: "",
-      on: true,
+      on: false,
       getIt: (stream: Stream) => {
         let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100;
         if (isNaN(PWT)) {

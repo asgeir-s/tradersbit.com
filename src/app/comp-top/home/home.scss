@@ -9,6 +9,10 @@ tb-home {
     bottom: 0;
   }
   
+  md-card {
+    max-width: 500px;
+  }
+  
 .home--promo-top {
     padding-top: 10em;
     padding-bottom: 10em;
@@ -23,9 +27,10 @@ tb-home {
     padding-top: 60px;
     padding-bottom: 60px;
     margin-bottom: 0px;
-    
+    max-width: 1200px;
+    margin: auto;
     md-icon {
-        font-size: 4em;
+      font-size: 4em;
     }
 }
 
@@ -67,7 +72,6 @@ md-toolbar {
   #mc-embedded-subscribe {
     margin-top: 5px;
     margin-bottom: 20px;
-    color: $light-font-color;
   }
 
   p {
@@ -121,6 +125,11 @@ md-toolbar {
   
     .publish {
           //background-color: $third-color;
+          @media only screen and (min-width: 1280px) {
+    /* For desktop: */
+
+}
+          
       .md-fab {
               background-color: $third-color-light!important;
       }
@@ -129,8 +138,8 @@ md-toolbar {
     
     .subscribe {
           //background-color: $secondary-color;
+
     
-       color: $light-font-color !important;
       .md-fab {
               background-color: $third-color-light!important;
       }
@@ -148,23 +157,31 @@ md-toolbar {
       }
       
              .publish {
-          //margin-top: 20px;
+             @media only screen and (max-width: 1280px){
+          margin-top: 20px;
+          }
         }
       
       md-content {
         //max-width: 550px;
         
-
+        padding-right: 20px;
         
-
-   
-        
+        @media only screen and (max-width: 1280px) and (min-width: 960px){
+          max-width: 700px !important;
+        }
         
         
         a {
           color: black;
         }
       }
+    }
+    
+    .top-stream-card {
+         @media only screen and (max-width: 1280px) and (min-width: 960px){
+          max-width: 700px !important;
+        }
     }
     
     md-list {
@@ -181,18 +198,19 @@ md-toolbar {
       }
       
       .how-it-works-row {
-        background-color: $secondary-color !important;
+        //background-color: $secondary-color !important;
       }
-      .how-it-works-content {
-        background-color: $third-color;
+      .how-it-works-text {
+       // background-color: $third-color;
         margin: 10px;
-        max-width: 670px;
+        max-width: 500px;
         padding: 30px;
         padding-top: 0px;
         padding-bottom: 0px;
-        margin: auto;
+        //margin: auto;
         margin-top: 10px;
         margin-bottom: 10px;
+        font-size: 1.2em;
       }
       
      md-list .md-subheader {
@@ -206,5 +224,15 @@ md-toolbar {
       .top-stream-card{
             margin-top: 20px;
     margin-bottom: -40px;
+      }
+      
+      img {
+        display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 300px;
+  top: 50%;
+  transform: translateY(50%);
+  top: 50%;
       }
 }

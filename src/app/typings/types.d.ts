@@ -84,4 +84,6 @@ export interface StreamsAttribute {
   on: boolean;
   getIt: any;
   getValue: any;
+  good?: (stream: Stream) => boolean;
+  bad?: (stream: Stream) => boolean;
 }

@@ -103,4 +103,16 @@ td {
   text-align: right;
 }
 
+.allignleft {
+  text-align: left!important;
+}
+
+.good {
+  background-color: $background-color-good!important;
+}
+
+.bad {
+    background-color: $background-color-bad!important;
+}
+
 }

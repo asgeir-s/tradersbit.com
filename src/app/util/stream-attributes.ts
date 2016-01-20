@@ -79,6 +79,30 @@ export class StreamAttributes {
       description: "The average profit per month calculated from first to last signal.",
       jsonPath: "",
       on: true,
+      good: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+        let AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return false;
+        }
+        else {
+          return AMP > 0;
+        }
+      },
+      bad: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+        let AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return false;
+        }
+        else {
+          return AMP < 0;
+        }
+      },
       getIt: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
         let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
@@ -111,9 +135,18 @@ export class StreamAttributes {
       description: '',
       jsonPath: "",
       on: true,
+      good: (stream: Stream) => {
+        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
+        if (isNaN(PF) || PF == Number.POSITIVE_INFINITY) {
+          return false;
+        }
+        else {
+          return PF > 2;
+        }
+      },
       getValue: (stream: Stream) => {
         let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
-        if (isNaN(PF)) {
+        if (isNaN(PF) || PF == Number.POSITIVE_INFINITY) {
           return 0;
         }
         else {
@@ -122,7 +155,7 @@ export class StreamAttributes {
       },
       getIt: (stream: Stream) => {
         let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
-        if (isNaN(PF)) {
+        if (isNaN(PF) || PF == Number.POSITIVE_INFINITY) {
           return '-'
         }
         else {
@@ -212,6 +245,24 @@ export class StreamAttributes {
       description: "Percent closed trades with profit larger then 0",
       jsonPath: "",
       on: true,
+      bad: (stream: Stream) => {
+        let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(PWT)) {
+          return false;
+        }
+        else {
+          return PWT < 50;
+        }
+      },
+      good: (stream: Stream) => {
+        let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(PWT)) {
+          return false;
+        }
+        else {
+          return PWT > 50;
+        }
+      },
       getIt: (stream: Stream) => {
         let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100;
         if (isNaN(PWT)) {
@@ -237,6 +288,24 @@ export class StreamAttributes {
       description: "Percent closed trades with profit smaller or equal to 0",
       jsonPath: "",
       on: false,
+      bad: (stream: Stream) => {
+        let PLT = (stream.stats.numberOfLoosingTrades / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(PLT)) {
+          return false;
+        }
+        else {
+          return PLT > 50;
+        }
+      },
+      good: (stream: Stream) => {
+        let PLT = (stream.stats.numberOfLoosingTrades / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(PLT)) {
+          return false;
+        }
+        else {
+          return PLT < 50;
+        }
+      },
       getIt: (stream: Stream) => {
         let PLT = (stream.stats.numberOfLoosingTrades / stream.stats.numberOfClosedTrades) * 100;
         if (isNaN(PLT)) {
@@ -263,6 +332,26 @@ export class StreamAttributes {
       description: "Average profit on trades",
       jsonPath: "",
       on: true,
+      bad: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(AT)) {
+          return false;
+        }
+        else {
+          return AT < 0;
+        }
+      },
+      good: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueIncl - 1;
+        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
+        if (isNaN(AT)) {
+          return false;
+        }
+        else {
+          return AT > 0;
+        }
+      },
       getIt: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
         let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
@@ -303,6 +392,12 @@ export class StreamAttributes {
       description: "All-time profit for this stream.",
       jsonPath: "stats.allTimeValueIncl",
       on: true,
+      bad: (stream: Stream) => {
+        return (stream.stats.allTimeValueIncl - 1) * 100 < 0;
+      },
+      good: (stream: Stream) => {
+        return (stream.stats.allTimeValueIncl - 1) * 100 > 0;
+      },
       getIt: (stream: Stream) => {
         return ((stream.stats.allTimeValueIncl - 1) * 100).toFixed(2) + '%';
       },
@@ -346,6 +441,10 @@ export class StreamAttributes {
       description: '',
       jsonPath: "stats.timeOfLastSignal",
       on: true,
+      bad: (stream: Stream) => {
+        let secInMonth = 86400000 * 30;
+        return stream.stats.timeOfLastSignal < Date.now() - secInMonth;
+      },
       getIt: (stream: Stream) => {
         if (stream.stats.timeOfLastSignal === 0) {
           return '-';
@@ -364,6 +463,32 @@ export class StreamAttributes {
       description: "The average profit per month calculated from first to last signal. Excluding trading fees.",
       jsonPath: "",
       on: false,
+      bad: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueExcl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+
+        let AMPx = (((allProfit / duration)) * secInMonth) * 100;
+        if (isNaN(AMPx)) {
+          return false;
+        }
+        else {
+          return AMPx < 0;
+        }
+      },
+      good: (stream: Stream) => {
+        let allProfit = stream.stats.allTimeValueExcl - 1;
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
+        let secInMonth = 86400000 * 30;
+
+        let AMPx = (((allProfit / duration)) * secInMonth) * 100;
+        if (isNaN(AMPx)) {
+          return false;
+        }
+        else {
+          return AMPx > 0;
+        }
+      },
       getIt: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueExcl - 1;
         let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
@@ -397,6 +522,12 @@ export class StreamAttributes {
       description: "All-time profit for this stream. Excluding trading fees.",
       jsonPath: "stats.allTimeValueExcl",
       on: false,
+      bad: (stream: Stream) => {
+        return (stream.stats.allTimeValueExcl - 1) * 100 < 0;
+      },
+      good: (stream: Stream) => {
+        return (stream.stats.allTimeValueExcl - 1) * 100 > 0;
+      },
       getIt: (stream: Stream) => {
         return (stream.stats.allTimeValueExcl - 1).toFixed(2) + '%';
       },
