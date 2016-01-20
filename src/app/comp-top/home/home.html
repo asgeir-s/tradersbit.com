@@ -20,9 +20,10 @@
 
 </div>
 
-<div layout layout-align="center" layout="row" class="steps">
 
-  <md-content flex="35" class="subscribe md-whiteframe-15dp">
+<div layout="column" layout-gt-md="row" layout-align="center center" layout="row" class="steps">
+
+  <md-content flex flex-gt-md="33" class="subscribe md-whiteframe-15dp">
     <md-list>
       <md-subheader class="md-no-sticky">
         <h6 class="md-title">3 Steps to Subscribe</h6></md-subheader>
@@ -58,7 +59,7 @@
     </md-list>
   </md-content>
 
-  <md-content flex-offset="5" flex="35" class="publish md-whiteframe-15dp">
+  <md-content flex-offset-gt-md="5" flex class="publish md-whiteframe-15dp">
     <md-list>
       <md-subheader class="md-no-sticky">
         <h6 class="md-title">3 Steps to Publish</h6></md-subheader>
@@ -96,10 +97,11 @@
 </div>
 
 <div layout="row" layout-align="center" layout="row">
-<div class="md-whiteframe-15dp top-stream-card" flex="75">
-  <md-subheader><h6 class="md-title center">Top streams</h6></md-subheader>
-  <tb-streams-table in-streams="ctrl.top5Streams;" in-attributes="ctrl.attributes"></tb-streams-table>
-</div>
+  <div class="md-whiteframe-15dp top-stream-card" flex="75">
+    <md-subheader>
+      <h6 class="md-title center">Top streams</h6></md-subheader>
+    <tb-streams-table in-streams="ctrl.top5Streams;" in-attributes="ctrl.attributes"></tb-streams-table>
+  </div>
 </div>
 <div class="home--features-outer">
   <div layout="row" layout-xs="column" layout-align="center center" layout-padding layout-margin class="home--features-row">

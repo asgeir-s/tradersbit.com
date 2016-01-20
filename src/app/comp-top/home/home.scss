@@ -20,8 +20,8 @@ tb-home {
 
 .home--features-row {
     text-align: center;
-    padding-top: 3em;
-    padding-bottom: 3em;
+    padding-top: 60px;
+    padding-bottom: 60px;
     margin-bottom: 0px;
     
     md-icon {
@@ -147,8 +147,13 @@ md-toolbar {
         cursor: default;
       }
       
+             .publish {
+          //margin-top: 20px;
+        }
+      
       md-content {
-        //margin: 10px;
+        //max-width: 550px;
+        
 
         
 
