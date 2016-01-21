@@ -6,18 +6,18 @@ export function config($logProvider: angular.ILogProvider, $locationProvider: an
   $logProvider.debugEnabled(true);
 
       // Extend the red theme with a few different colors
-  var customCyan = $mdThemingProvider.extendPalette('cyan', {
+  var customBlue = $mdThemingProvider.extendPalette('blue', {
     '500': '3893C6',
     'contrastDefaultColor': 'light'
   });
-    var customOrange = $mdThemingProvider.extendPalette('orange', {
-    '500': 'FEE496',
-    'A200': 'FEE496',
+    var customAmber = $mdThemingProvider.extendPalette('amber', {
+    'A100': 'FEE496',
+    'A400': 'FEE496',
     'contrastDefaultColor': 'dark'
   });
   // Register the new color palette map with the name <code>neonRed</code>
-  $mdThemingProvider.definePalette('customCyan', customCyan);
-  $mdThemingProvider.definePalette('customOrange', customOrange);
+  $mdThemingProvider.definePalette('customCyan', customBlue);
+  $mdThemingProvider.definePalette('customOrange', customAmber);
   // Use that theme for the primary intentions
   $mdThemingProvider.theme('default')
     .primaryPalette('customCyan')
