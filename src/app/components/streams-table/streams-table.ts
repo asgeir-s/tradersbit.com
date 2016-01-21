@@ -28,7 +28,7 @@ export class TbStreamsTableCtrl {
 
     /* @ngInject */
     constructor(private $state: any, private _: any) {
-      this.predicate = _.find(this.inAttributes(), (it) => it.short ==='AMP');
+      this.predicate = _.find(this.inAttributes(), (it: any) => it.short === 'AMP');
       console.log(this.predicate.name);
       ;
     }

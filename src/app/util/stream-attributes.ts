@@ -137,7 +137,7 @@ export class StreamAttributes {
       on: true,
       good: (stream: Stream) => {
         let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
-        if (isNaN(PF) || PF == Number.POSITIVE_INFINITY) {
+        if (isNaN(PF) || PF === Number.POSITIVE_INFINITY) {
           return false;
         }
         else {
@@ -146,7 +146,7 @@ export class StreamAttributes {
       },
       getValue: (stream: Stream) => {
         let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
-        if (isNaN(PF) || PF == Number.POSITIVE_INFINITY) {
+        if (isNaN(PF) || PF === Number.POSITIVE_INFINITY) {
           return 0;
         }
         else {
@@ -155,7 +155,7 @@ export class StreamAttributes {
       },
       getIt: (stream: Stream) => {
         let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
-        if (isNaN(PF) || PF == Number.POSITIVE_INFINITY) {
+        if (isNaN(PF) || PF === Number.POSITIVE_INFINITY) {
           return '-'
         }
         else {

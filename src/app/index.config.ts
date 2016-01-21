@@ -5,7 +5,7 @@ export function config($logProvider: angular.ILogProvider, $locationProvider: an
   
   $logProvider.debugEnabled(true);
 
-      // Extend the red theme with a few different colors
+      // extend the red theme with a few different colors
   var customBlue = $mdThemingProvider.extendPalette('blue', {
     '500': '3893C6',
     'contrastDefaultColor': 'light'
@@ -15,10 +15,10 @@ export function config($logProvider: angular.ILogProvider, $locationProvider: an
     'A400': 'FEE496',
     'contrastDefaultColor': 'dark'
   });
-  // Register the new color palette map with the name <code>neonRed</code>
+  // register the new color palette map with the name <code>neonRed</code>
   $mdThemingProvider.definePalette('customCyan', customBlue);
   $mdThemingProvider.definePalette('customOrange', customAmber);
-  // Use that theme for the primary intentions
+  // use that theme for the primary intentions
   $mdThemingProvider.theme('default')
     .primaryPalette('customCyan')
     .accentPalette('customOrange');
