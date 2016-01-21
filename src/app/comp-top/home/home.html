@@ -23,7 +23,7 @@
 
 <section class="steps" layout="row" layout-xs="column" layout-sm="column" layout-md="column" layout-align="center center" layout-align-gt-md="center">
 
-      <md-content flex flex="90" flex-md="40" flex-gt-md="35" class="subscribe md-whiteframe-15dp" layout="row">
+      <md-content flex flex="90" flex-md="40" flex-gt-md="35" class="subscribe md-whiteframe-15dp">
         <md-list>
           <md-subheader class="md-no-sticky">
             <h6 class="md-title">3 Steps to Subscribe</h6></md-subheader>
@@ -97,16 +97,16 @@
 
 </section>
 
-<div layout="row" layout-align="center">
-  <div class="md-whiteframe-15dp top-stream-card" flex flex-gt-md="75">
+<div class="top-stream-outer" layout="row" layout-align="center">
+  <md-content class="md-whiteframe-15dp top-stream-card" flex flex-gt-md="75">
     <md-subheader>
       <h6 class="md-title center">Top streams</h6></md-subheader>
     <tb-streams-table in-streams="ctrl.top5Streams;" in-attributes="ctrl.attributes"></tb-streams-table>
-  </div>
+  </md-content>
 </div>
 <div class="home--features-outer">
   <div layout="row" class="home--features-row" layout-align="center center">
-    <div flex="90" flex-gt-md="75" flex-xs="100" layout="row" layout-xs="column" layout-align="center center">
+    <div class="home--features-row-inner" flex="90" flex-gt-md="75" flex-xs="100" layout="row" layout-xs="column" layout-align="center center">
       <div class="home--features-row--item" flex flex-gt-lg="25">
         <md-icon class="material-icons">settings_remote</md-icon>
         <p>Publish streams and sell subscriptions to your streams. Send signals to your streams through our website or <a href=""
