@@ -1,72 +1,74 @@
 tb-side-nav-layout {
-  
   .main-screen {
     //max-height: 100%!important;
-    
+  }
+  .sidenav-outer {
+    @media screen and (min-width: 960px) {
+      width: 190px !important;
+      min-width: 190px !important;
+      max-width: 304px !important;
+    }
+  }
+  .sidenav-fixed {
+    width: 190px !important;
+    min-width: 190px !important;
+    max-width: 304px !important;
+    position: fixed !important;
+  }
+  .tb-side-nav-mini-outer {
+    width: 55px !important;
+    min-width: 55px !important;
+    max-width: 55px !important;
+  }
+  .tb-side-nav-mini-fixed {
+    width: 55px !important;
+    min-width: 55px !important;
+    max-width: 55px !important;
+    position: fixed !important;
+  }
+  .side-nav-layout--logo {
+    text-align: center;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+  .sidenav-icons {
+    overflow-x: hidden;
+  }
+  .disclamer {
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-bottom: 0;
+  }
+  footer {}
+  .active {
+    background-color: $active-color;
+  }
+  .alpha {
+    margin-top: 0;
+    padding-top: 0;
+    color: red;
+  }
+  .no-margin-top {
+    margin-top: 0;
   }
 
-	.sidenav-outer {
-              @media screen and (min-width: 960px) {
-		width: 190px !important;
-		min-width: 190px !important;
-		max-width: 304px !important;
-     }
-	}
-  
-  .sidenav-fixed { 
-    		width: 190px !important;
-		min-width: 190px !important;
-		max-width: 304px !important;
-        position: fixed !important;
-         
+.logo-link {
+  width: 100%;
+  text-align: center;
+  @media screen and (max-width: 600px) {
+  padding: 15px;
   }
 
-	.tb-side-nav-mini-outer {
-			width: 55px !important;
-		min-width: 55px !important;
-		max-width: 55px !important;
-	}
-  
-  	.tb-side-nav-mini-fixed {
-			width: 55px !important;
-		min-width: 55px !important;
-		max-width: 55px !important;
-        position: fixed !important;
-	}
+}
 
-	.side-nav-layout--logo {
-		text-align: center;
-		a {
-    		text-decoration: none;
-			color: inherit;
-		}
-	}
-	
-	.sidenav-icons {
-		overflow-x: hidden;
-	}
-	
-	.disclamer {
-		padding-left: 2em;
-		padding-right: 2em; 
-    margin-bottom: 0px;
-	}
-    
-    footer {
-        
-    }
-    
-    .active {
-      background-color: $active-color;
-    }
-    
-    .alpha {
-      margin-top: 0px;
-      padding-top: 0px;
-      color: red;
-    }
-    
-    .no-margin-top {
-      margin-top: 0px;
-    }
+  .logo {
+    height: 30px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+
 }

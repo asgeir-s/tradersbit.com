@@ -1,106 +1,82 @@
 /*** Colors ***/
-$primary-color: #3893C6 !default;  //color("materialize-red", "lighten-2") !default; #00acc1
+$primary-color: #3893C6 !default; //color("materialize-red", "lighten-2") !default; #00acc1
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 $background-color-content: #fff;
-
 $secondary-color: #FEE496 !default; //#F5DEB3 rgb(255,171,64)   #FEE496
 $secondary-color-light: lighten($secondary-color, 15%) !default;
-$secondary-color-dark: darken($secondary-color, 30%) !default;
-; //color("teal", "lighten-1") !default;
+$secondary-color-dark: darken($secondary-color, 30%) !default; //color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
-
-$third-color: #313236!default;    // #313236
+$third-color: #313236!default; // #313236
 $third-color-light: lighten($third-color, 15%) !default;
 $third-color-dark: darken($third-color, 15%) !default;
-
 $dark-font-color: #000;
 $light-font-color: #fff;
 $light-link-color: darken($light-font-color, 15%);
 $active-color: darken($light-font-color, 15%);
-
 $background-color-good: #c7f3cb;
 $background-color-bad: #f3d7cd;
-
 /**
  *  Do not remove the comment below. It's the markers used by wiredep to inject
  *  sass dependencies when defined in the bower.json of your dependencies
  */
 // bower:scss
 // endbower
-
-
-
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-       local('MaterialIcons-Regular'),
-       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
-       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'),
-       url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+  src: url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot);
+  /* For IE6-8 */
+  src: local('Material Icons'), local('MaterialIcons-Regular'), url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2) format('woff2'), url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff) format('woff'), url(../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
-
 @font-face {
   font-family: "Carosello";
   src: url(/assets/fonts/Carosello-Regular.ttf) format("truetype");
 }
-
 @font-face {
   font-family: "Streetware";
   src: url(/assets/fonts/Oldways-Regular.otf) format("truetype");
 }
-
 @media only screen and (max-width: 959px) and (min-width: 0) and (orientation: landscape) {
-.md-toolbar-tools {
-    height: 64px; 
-    max-height: 64px; 
+  .md-toolbar-tools {
+    height: 64px;
+    max-height: 64px;
+  }
 }
-}
-
 .md-button.md-fab {
   background: $secondary-color-dark;
   md-icon {
-      color: $light-font-color !important;
+    color: $light-font-color !important;
   }
-
 }
-
 #footer {
- 
   flex: 0 1 auto !important;
   -ms-flex: 0 1 auto !important;
   -ms-flex-preferred-size: auto !important;
   -webkit-flex: 0 1 auto !important;
-
 }
-
-  .text-content {
-    max-width: 670px;
-    margin: auto;
-    padding: 10px;
-  }
-  
+.text-content {
+  max-width: 670px;
+  margin: auto;
+  padding: 10px;
+}
 .main-content {
   min-height: 100vh;
   //overflow-x: hidden;
 }
-
 .hide-overflow-x {
   overflow-x: hidden;
 }
-
 tb-side-nav-layout {
   overflow-x: hidden;
 }
-
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px;
+  /* Preferred icon size */
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -108,19 +84,15 @@ tb-side-nav-layout {
   text-transform: none;
   letter-spacing: normal;
   word-wrap: normal;
-
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
   text-rendering: optimizeLegibility;
-
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
-
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
-
 footer {
   background-color: $primary-color;
   color: $light-font-color;
@@ -129,24 +101,20 @@ footer {
   }
   a {
     color: $light-link-color;
-     text-decoration:none;
+    text-decoration: none;
   }
-  
   .disclamer {
     text-align: center;
   }
 }
-
 .center {
   text-align: center;
 }
-
 .legal {
   padding: 1em;
   max-width: 800px;
   margin: auto;
 }
-
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
