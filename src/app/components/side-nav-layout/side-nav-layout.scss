@@ -19,6 +19,11 @@ tb-side-nav-layout {
     width: 55px !important;
     min-width: 55px !important;
     max-width: 55px !important;
+    .logo {
+      height: 50px;
+      margin-bottom: 0px;
+      margin-top: 10px;
+    }
   }
   .tb-side-nav-mini-fixed {
     width: 55px !important;
