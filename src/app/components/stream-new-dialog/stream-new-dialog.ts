@@ -22,8 +22,8 @@ export class TbStreamNewCtrl {
         name: "",
     exchange: "",
     currencyPair: "",
-    payoutAddress: "n4Yh1V3qsgFtgv6RnctPKmWx33oPqgV7FY",
-    subscriptionPriceUSD: 3
+    payoutAddress: "",
+    subscriptionPriceUSD: 5
     };
   wating: boolean = false;
   error: string;
@@ -33,7 +33,7 @@ export class TbStreamNewCtrl {
   cancel() {
     this.$mdDialog.cancel();
   };
-  
+
   createStream(newStream: NewStream) {
     this.wating = true;
     this.authApi.postStream(newStream)

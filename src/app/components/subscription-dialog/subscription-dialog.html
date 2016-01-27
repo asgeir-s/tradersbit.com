@@ -1,6 +1,6 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <h2>Subscribe to Stream (sandbox mode)</h2>
+    <h2>Subscribe to Stream</h2>
     <span flex></span>
     <md-button class="md-icon-button" ng-click="ctrl.cancel()">
       <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
@@ -18,10 +18,6 @@
     </div>
 
     <div ng-hide="ctrl.gotPaymentInfo">
-      <p>
-        In the test period we use the Bitcoin Testnet (not real bitcoins). You can use a Coinbase sandbox account to "pay" subscription
-        fees. Create a sandbox account <a href="https://sandbox.coinbase.com/signup" target="_blank">here</a>.
-      </p>
       <p>
         By subscribing to this stream, you will get new trading signals sent to your email and/or automatically traded at
         <span style="text-transform: capitalize;">{{ctrl.inStream.exchange}}</span> on your behalf.
@@ -70,7 +66,7 @@
 
     <md-progress-circular class="waiting" md-mode="indeterminate" ng-hide="!ctrl.waitForResponds" md-diameter="100"></md-progress-circular>
 
-    <iframe ng-show="ctrl.gotPaymentInfo" id="coinbase_inline_iframe_{{ctrl.coinbaseEmbedCode}}" ng-src="{{ctrl.trustSrc('https://sandbox.coinbase.com/checkouts/' + ctrl.coinbaseEmbedCode + '/inline')}}"
+    <iframe ng-show="ctrl.gotPaymentInfo" id="coinbase_inline_iframe_{{ctrl.coinbaseEmbedCode}}" ng-src="{{ctrl.trustSrc('https://coinbase.com/checkouts/' + ctrl.coinbaseEmbedCode + '/inline')}}"
     style="width: 100%; height: 450px; border: none;" allowtransparency="true" frameborder="0"></iframe>
 
   </div>
