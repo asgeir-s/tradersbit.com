@@ -16,7 +16,7 @@
       <tbody>
         <tr ng-repeat="trade in ctrl.inTrades" ng-class="{good: trade.close.changeInclFee > 0.01, bad: trade.close.changeInclFee < -0.01}">
           <td class="center">{{trade.position}}</td>
-          <td>{{trade.open.timestamp | date: 'short'}}</td>
+          <td>{{trade.open.timestamp | date: 'M/d/yy HH:mm'}}</td>
           <td>{{trade.open.price | currency }}</td>
           <td>{{trade.close.timestamp | date: 'M/d/yy HH:mm'}}</td>
           <td>{{trade.close.price | currency }}</td>

@@ -19,13 +19,13 @@ export function tbStreamStatsPromo(): angular.IDirective {
 /** @ngInject */
 export class TbStreamStatsPromeCtrl {
   inStream: Stream;
-  averageMonthlyProfit: number;
+  netProfit: number;
   averageTrade: number;
   partProfitableTrads: number;
   profitFactor: number;
 
   constructor() {
-    this.averageMonthlyProfit = this.compAverageMonthlyProfit(this.inStream);
+    this.netProfit = this.compNetProfit(this.inStream);
     this.averageTrade = this.compAverageTrade(this.inStream);
     this.partProfitableTrads = this.compPartProfitableTrads(this.inStream);
     this.profitFactor = this.compProfitFactor(this.inStream);
@@ -36,6 +36,10 @@ export class TbStreamStatsPromeCtrl {
     let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
     let secInMonth = 86400000 * 30;
     return (((allProfit / duration)) * secInMonth) * 100;
+  }
+
+  compNetProfit(stream: Stream): number {
+    return ((stream.stats.allTimeValueIncl - 1) * 100);
   }
 
   compAverageTrade(stream: Stream): number {

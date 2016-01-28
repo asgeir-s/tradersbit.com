@@ -1,9 +1,9 @@
 <div flex layout-gt-sm="row" layout="column" layout-fill layout-column flex>
-	<div flex ng-class="{good: ctrl.averageMonthlyProfit > 0, bad: ctrl.averageMonthlyProfit < 0}">
+	<div flex ng-class="{good: ctrl.netProfit > 0, bad: ctrl.netProfit < 0}">
 		<div class="promo-item">
-			<small>Average Monthly Profit</small>
+			<small>Net Profit</small>
 			<br/>
-			<h3 class="md-display-1">{{ctrl.averageMonthlyProfit | number:2}} %</h3>
+			<h3 class="md-display-1">{{ctrl.netProfit | number:2}} %</h3>
 		</div>
 	</div>
 	<div flex ng-class="{good: ctrl.averageTrade > 0, bad: ctrl.averageTrade < 0}">
