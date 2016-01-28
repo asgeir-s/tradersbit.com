@@ -44,6 +44,11 @@ $background-color-bad: #f3d7cd;
     max-height: 64px;
   }
 }
+
+  md-toast {
+    position: fixed !important;
+  }
+  
 .md-button.md-fab {
   background: $secondary-color-dark;
   md-icon {

@@ -65,7 +65,7 @@ export class TbHomeCtrl {
       short: "AMP",
       description: "The average profit per month calculated from first to last signal.",
       jsonPath: "",
-      on: true,
+      on: false,
       good: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
         let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
@@ -114,6 +114,25 @@ export class TbHomeCtrl {
         else {
           return AMP;
         }
+      }
+    },
+    {
+      name: "Net Profit",
+      short: "NP",
+      description: "All-time profit for this stream.",
+      jsonPath: "stats.allTimeValueIncl",
+      on: true,
+      bad: (stream: Stream) => {
+        return (stream.stats.allTimeValueIncl - 1) * 100 < 0;
+      },
+      good: (stream: Stream) => {
+        return (stream.stats.allTimeValueIncl - 1) * 100 > 0;
+      },
+      getIt: (stream: Stream) => {
+        return ((stream.stats.allTimeValueIncl - 1) * 100).toFixed(2) + '%';
+      },
+      getValue: (stream: Stream) => {
+        return (stream.stats.allTimeValueIncl - 1) * 100;
       }
     },
     {
@@ -202,13 +221,18 @@ export class TbHomeCtrl {
   constructor(private $state: ng.ui.IStateService, private $mdSidenav: angular.material.ISidenavService, private $mdToast: any) {
     this.top5Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) =>
       this.getValue(stream2) - this.getValue(stream1)).slice(0, 5);
-      
-           $mdToast.show(
-          $mdToast.simple()
-            .textContent('First trading competition has started!')
-            .position("top right")
-            .hideDelay(4000)
-        );
+
+    $mdToast.show(
+      $mdToast.simple()
+        .action('Take a look')
+        .textContent('First trading competition has started!')
+        .position("top right")
+        .hideDelay(4000)
+    ).then((response) => {
+      if (response === 'ok') {
+        this.chnageState('competition');
+      }
+    });
   }
 
   getValue(stream: Stream) {

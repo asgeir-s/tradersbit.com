@@ -78,7 +78,7 @@ export class StreamAttributes {
       short: "AMP",
       description: "The average profit per month calculated from first to last signal.",
       jsonPath: "",
-      on: true,
+      on: false,
       good: (stream: Stream) => {
         let allProfit = stream.stats.allTimeValueIncl - 1;
         let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
