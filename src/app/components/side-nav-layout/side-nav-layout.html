@@ -17,6 +17,10 @@
             <md-icon class="material-icons">settings_remote</md-icon>
             <p>Publish</p>
           </md-list-item>
+          <md-list-item ng-class="{active: ctrl.stateIs('competition')}" ng-click="ctrl.chnageState('competition')">
+            <md-icon class="material-icons star">star</md-icon>
+            <p>Competitions</p>
+          </md-list-item>
           <md-list-item ng-class="{active: ctrl.stateIs('help')}" ng-click="ctrl.chnageState('help')">
             <md-icon class="material-icons">help</md-icon>
             <p>Help</p>
@@ -39,7 +43,7 @@
   <div hide flex="none" show-sm class="tb-side-nav-mini-outer">
     <md-sidenav class="tb-side-nav-mini-fixed md-sidenav-left md-whiteframe-z2 tb-side-nav-mini hide-gt-md" md-component-id="leftSmal"
     md-is-locked-open="$mdMedia('sm')">
-    <a class="logo-link center" href="/"><img class="logo" src="/assets/logo/logo.svg" alt="TradesBit logo"></a>
+      <a class="logo-link center" href="/"><img class="logo" src="/assets/logo/logo.svg" alt="TradesBit logo"></a>
       <md-content class="sidenav-icons">
         <md-list>
           <md-list-item ng-class="{active: ctrl.stateIs('home')}" ng-click="ctrl.chnageState('home')">
@@ -50,6 +54,9 @@
           </md-list-item>
           <md-list-item ng-class="{active: ctrl.stateIs('publish-dash')}" ng-click="ctrl.chnageState('publish-dash')">
             <md-icon class="material-icons">settings_remote</md-icon>
+          </md-list-item>
+           <md-list-item ng-class="{active: ctrl.stateIs('competition')}" ng-click="ctrl.chnageState('competition')">
+            <md-icon class="material-icons star">star</md-icon>
           </md-list-item>
           <md-list-item ng-class="{active: ctrl.stateIs('help')}" ng-click="ctrl.chnageState('help')">
             <md-icon class="material-icons">help</md-icon>

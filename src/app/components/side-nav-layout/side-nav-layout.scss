@@ -2,6 +2,11 @@ tb-side-nav-layout {
   .main-screen {
     //max-height: 100%!important;
   }
+  
+  .star {
+    color: $secondary-color-dark;  
+  }
+  
   .sidenav-outer {
     @media screen and (min-width: 960px) {
       width: 190px !important;

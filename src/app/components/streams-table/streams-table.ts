@@ -9,7 +9,8 @@ export function tbStreamsTable(): angular.IDirective {
         templateUrl: 'app/components/streams-table/streams-table.html',
         bindToController: {
             inStreams: '&',
-            inAttributes: '&'
+            inAttributes: '&',
+            inSortBy: '='
         },
         controller: TbStreamsTableCtrl,
         controllerAs: 'ctrl'
@@ -22,13 +23,14 @@ export class TbStreamsTableCtrl {
     // inputs
     inAttributes: () => Array<StreamsAttribute>;
     inStreams: () => Array<Stream>;
+    inSortBy: string;
 
     reverse: Boolean = true;
     predicate: StreamsAttribute;
 
     /* @ngInject */
     constructor(private $state: any, private _: any) {
-      this.predicate = _.find(this.inAttributes(), (it: any) => it.short === 'AMP');
+      this.predicate = _.find(this.inAttributes(), (it: any) => it.short === this.inSortBy);
       console.log(this.predicate.name);
       ;
     }

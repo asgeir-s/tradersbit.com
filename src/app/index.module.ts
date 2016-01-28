@@ -27,6 +27,7 @@ import { tbPublish } from './comp-top/publish/publish';
 import { tbPublishDash } from './comp-top/publish-dash/publish-dash';
 import { tbHelp } from './comp-top/help/help';
 import { tbAbout } from './comp-top/about/about';
+import { tbCompetition } from './comp-top/competition/competition';
 
 // components
 import { tbSideNavLayout } from './components/side-nav-layout/side-nav-layout';
@@ -71,6 +72,7 @@ module tradersbitCom {
     .directive('tbPublishDash', tbPublishDash)
     .directive('tbHelp', tbHelp)
     .directive('tbAbout', tbAbout)
+    .directive('tbCompetition', tbCompetition)
 
   // components
     .directive('tbSideNavLayout', tbSideNavLayout)

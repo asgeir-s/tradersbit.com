@@ -31,6 +31,18 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       },
       controllerAs: 'ctrl'
     })
+     .state('competition', {
+      url: '/competition',
+      template: '<tb-competition in-streams="ctrl.streams"></tb-competition>',
+      resolve: {
+        streams: (publicApi: PublicApi) => publicApi.allStreams()
+      },
+      controller:
+      class StateCompetition {
+        constructor(public streams: Array<Stream>) { }
+      },
+      controllerAs: 'ctrl'
+    })
     .state("stream", {
       url: "/streams/:streamId",
       template: '<tb-stream in-stream="ctrl.stream" in-signals="ctrl.signals"></tb-stream>',
