@@ -1,21 +1,25 @@
 tb-stream-new-dialog {
-  	max-width: 500px;
+  max-width: 500px;
   @media screen and (max-width: 600px) {
     max-width: 600px;
   }
-      
-        .center {
-            align-content: center;
-            align-items: center;
-        }
-        
-        md-icon {
-            font-size: 2em!important;
-        }
-        
-        md-toolbar {
-          md-icon {
-            color: #fff !important;
-          }
-        }
+
+  .center {
+    align-content: center;
+    align-items: center;
+  }
+
+  md-icon {
+    font-size: 2em!important;
+  }
+
+  md-toolbar {
+    md-icon {
+      color: #fff !important;
+    }
+  }
+
+  .bitcoin-address-comtainer {
+    margin-bottom: 40px;
+  }
 }
