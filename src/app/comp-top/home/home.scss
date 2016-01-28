@@ -16,6 +16,16 @@ tb-home {
     text-align: center;
     color: $light-font-color;
     font-weight: 400;
+      background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      transparentize($third-color-dark, 0.3),
+      transparentize($primary-color, 0.03),
+      transparentize($primary-color, 0.05)
+    ),
+    /* bottom, image */
+    url("/assets/images/bitcoin-promo.jpg");
+    background-size: cover;
 
     img {
       height: 200px;
