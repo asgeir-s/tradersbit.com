@@ -1,0 +1,118 @@
+<md-toolbar flex>
+  <div class="md-toolbar-tools">
+    <md-button hide-gt-xs ng-click="ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
+      <md-icon class="material-icons">menu</md-icon>
+    </md-button>
+    <h2>FAQ</h2>
+    <span flex></span>
+  </div>
+</md-toolbar>
+<md-content>
+  <h3 class="md-display-2 center">FAQ</h3>
+  <p class="text-content">
+    If you do not find you answer here, please contact us in the chat or at tradersbit(at)cluda.com.
+  </p>
+  <md-list class="text-content">
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>Is publishing free?</h4>
+        <p>
+          Yes!
+        </p>
+      </div>
+    </md-list-item>
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>How do I add my stream to the competition?</h4>
+        <p>
+          All streams are automatically participating in all competitions.
+        </p>
+      </div>
+    </md-list-item>
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>How do TradersBit simulate trades?</h4>
+        <p>
+          When simulating trades (LONG, SHORT, CLOSE), we use the last price and 0.02% fee (takers fee). Each signal will simulate
+          a trade using all assets available.
+        </p>
+      </div>
+    </md-list-item>
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>What does LONG, SHORT and CLOSE mean?</h4>
+        <p>
+          SHORT, LONG, and CLOSE are the signalks you can send to your streams. A SHORT or LONG signal is always followed by a CLOSE
+          signal. If you go directly from SHORT to LONG or LONG to SHORT, a CLOSE signal is automatically generated for you.
+        </p>
+        <p>
+          If you send a LONG signal, you will make a profit if the price of the Bitcoin goes up. You profit if the price of the Bitcoin
+          is higher when you CLOSE your trade than it was when you sent the LONG signal. <a href="http://www.investopedia.com/terms/l/long.asp"
+          target="_blank">Read about LONGING on Investopedia.</a>
+        </p>
+        <p>
+          If you send a SHORT signal, you will make a profit if the price of the Bitcoin goes down. You profit if the price of the
+          Bitcoin is lower when you CLOSE your trade than it was when you sent the SHORT signal. <a href="http://www.investopedia.com/terms/s/shortselling.asp"
+          target="_blank">Read about SHORTING on Investopedia.</a>.
+        </p>
+        <p>
+          A CLOSE signal closes your current position.
+        </p>
+      </div>
+    </md-list-item>
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>How will TradersBit make money?</h4>
+        <p>
+          TradersBit gets 30% of the subscription fee when subscribers buy subscriptions to streams. The publisher of the stream gets
+          70%. We make money if the publisher makes money.
+        </p>
+      </div>
+    </md-list-item>
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>Will TradersBit host more competitions?</h4>
+        <p>
+          Yes, we are planning to host competitions at least until publishers start earning money by selling subscriptions.
+        </p>
+      </div>
+    </md-list-item>
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>What does BETA mean?</h4>
+        <p>
+          TradersBit is currently in BETA. By this, we mean we are in the early stages, under heavy development and TradersBit not
+          thoroughly tested yet. Therefore, there might be unforeseen events like parts of the service might not work as
+          intended, there might be downtime, and there are not all essential features are implemented yet.
+        </p>
+        <p>
+          This should not have any impact on who wins the competition because all users should have the same experience.
+        </p>
+        <p>
+          We released in BETA because we wanted to release a version as fast as possible to let publisher start building statistics.
+        </p>
+      </div>
+    </md-list-item>
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>How many streams can I have?</h4>
+        <p>
+          For now, each user can have three streams each.
+        </p>
+        <p>
+          There should be one account per user. Users with multiple accounts might be banned and disqualified from all competitions.
+
+        </p>
+      </div>
+    </md-list-item>
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>Who is the creator of TradersBit?</h4>
+        <p>
+          TradersBit is created by <a href="http://cluda.com" target="_blank">Cluda AS</a>. Cluda is located in Nesbyen,
+          Norway.
+        </p>
+      </div>
+    </md-list-item>
+  </md-list>
+</md-content>

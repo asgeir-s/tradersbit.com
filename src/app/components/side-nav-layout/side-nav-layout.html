@@ -21,9 +21,13 @@
             <md-icon class="material-icons star">star</md-icon>
             <p>Competitions</p>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('help')}" ng-click="ctrl.chnageState('help')">
+          <md-list-item ng-class="{active: ctrl.stateIs('faq')}" ng-click="ctrl.chnageState('faq')">
             <md-icon class="material-icons">help</md-icon>
-            <p>Help</p>
+            <p>FAQ</p>
+          </md-list-item>
+          <md-list-item ng-class="{active: ctrl.stateIs('api')}" ng-click="ctrl.chnageState('api')">
+            <md-icon class="material-icons">code</md-icon>
+            <p>API</p>
           </md-list-item>
           <md-list-item ng-class="{active: ctrl.stateIs('about')}" ng-click="ctrl.chnageState('about')">
             <md-icon class="material-icons">business</md-icon>
@@ -55,11 +59,14 @@
           <md-list-item ng-class="{active: ctrl.stateIs('publish-dash')}" ng-click="ctrl.chnageState('publish-dash')">
             <md-icon class="material-icons">settings_remote</md-icon>
           </md-list-item>
-           <md-list-item ng-class="{active: ctrl.stateIs('competition')}" ng-click="ctrl.chnageState('competition')">
+          <md-list-item ng-class="{active: ctrl.stateIs('competition')}" ng-click="ctrl.chnageState('competition')">
             <md-icon class="material-icons star">star</md-icon>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('help')}" ng-click="ctrl.chnageState('help')">
+          <md-list-item ng-class="{active: ctrl.stateIs('faq')}" ng-click="ctrl.chnageState('faq')">
             <md-icon class="material-icons">help</md-icon>
+          </md-list-item>
+          <md-list-item ng-class="{active: ctrl.stateIs('api')}" ng-click="ctrl.chnageState('api')">
+            <md-icon class="material-icons">code</md-icon>
           </md-list-item>
           <md-list-item ng-class="{active: ctrl.stateIs('about')}" ng-click="ctrl.chnageState('about')">
             <md-icon class="material-icons">business</md-icon>
@@ -104,7 +111,7 @@
           <br/>
           <small>Price data from <a href="https://bitcoinaverage.com" target="_blank">Bitcoinaverage</a> are used for displaying subscription fees in Bitcoins.</small>
           <br/>
-          <small class="center">Bitcoin illustrations created by <a href="http://www.freepik.com" title="Freepik" target="_blank">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></small>
+          <small class="center">Bitcoin illustrations created by <a href="http://www.freepik.com" title="Freepik" target="_blank">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></small>
         </p>
       </div>
 

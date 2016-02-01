@@ -1,5 +1,6 @@
 tb-home {
   //font-size: 1.15em;
+
   a {
     color: $light-link-color;
   }
@@ -9,16 +10,16 @@ tb-home {
   md-card {
     max-width: 500px;
   }
-  
+
   .home--promo-top {
-    padding-top: 10em;
-    padding-bottom: 10em;
+    padding-top: 300px;
+    padding-bottom: 200px;
     background-color: $primary-color;
     text-align: center;
     color: $light-font-color;
     font-weight: 400;
-      background: 
-    /* top, transparent red, faked with gradient */ 
+      background:
+    /* top, transparent red, faked with gradient */
     linear-gradient(
       transparentize($third-color-dark, 0.3),
       transparentize($primary-color, 0.03),
@@ -28,9 +29,9 @@ tb-home {
     url("/assets/images/bitcoin-promo.jpg");
     background-size: cover;
 
-    img {
-      height: 200px;
-      margin-bottom: 200px;
+    @media screen and (max-width: 600px) {
+      padding-top: 100px;
+      padding-bottom: 100px;
     }
   }
   .home--features-row {
@@ -38,7 +39,7 @@ tb-home {
     padding-top: 84px;
     padding-bottom: 60px;
     margin-bottom: 0;
-    max-width: 1200px;
+    //max-width: 1500px;
     margin: auto;
     md-icon {
       font-size: 4em;
@@ -153,7 +154,8 @@ tb-home {
       padding-left: 50px;
       padding-right: 50px;
     }
-    margin-top: -60px;
+    margin-top: 20px;
+    margin-bottom: -30px;
     .md-fab {
       cursor: default;
     }
@@ -197,7 +199,7 @@ tb-home {
   .how-it-works-text {
     // background-color: $third-color;
     margin: 10px;
-    max-width: 500px;
+    //max-width: 500px;
     padding: 0 30px;
     //margin: auto;
     margin-top: 10px;
@@ -235,8 +237,8 @@ tb-home {
         max-width: 700px !important;
       }
     }
-    margin-top: 20px;
-    margin-bottom: -40px;
+    //margin-top: 20px;
+    margin-top: -60px;
     @media only screen and (max-width: 599px) {
       margin-left: 20px;
       margin-right: 20px;
@@ -250,6 +252,7 @@ tb-home {
       margin-right: auto;
     }
   }
+.bitcoin-image {
   img {
     display: block;
     margin-left: auto;
@@ -259,4 +262,7 @@ tb-home {
     transform: translateY(50%);
     top: 50%;
   }
+}
+
+
 }

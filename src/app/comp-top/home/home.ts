@@ -118,7 +118,7 @@ export class TbHomeCtrl {
     },
     {
       name: "Net Profit",
-      short: "NP",
+      short: "Net Profit",
       description: "All-time profit for this stream.",
       jsonPath: "stats.allTimeValueIncl",
       on: true,
@@ -137,7 +137,7 @@ export class TbHomeCtrl {
     },
     {
       name: "Profit Factor",
-      short: "PF",
+      short: "Profit Factor",
       description: '',
       jsonPath: "",
       on: true,
@@ -171,7 +171,7 @@ export class TbHomeCtrl {
     },
     {
       name: "Average Trade",
-      short: "AT",
+      short: "Average Trade",
       description: "Average profit on trades",
       jsonPath: "",
       on: true,
@@ -249,12 +249,9 @@ export class TbHomeCtrl {
   }
 
   goToApiHelp() {
-    this.$state.go('help', { "tab": "api" });
+    this.$state.go('api');
   }
 
-  goToRelesePlan() {
-    this.$state.go('about', { "tab": "relese" });
-  }
 
   chnageState(newState: string) {
     this.$state.go(newState);

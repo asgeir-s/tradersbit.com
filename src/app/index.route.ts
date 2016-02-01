@@ -78,11 +78,11 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
         requiresLogin: true
       }
     })
-    .state('help', {
-      url: '/help?tab',
-      template: '<tb-help in-tab="ctrl.tab"></tb-help>',
+    .state('api', {
+      url: '/api',
+      templateUrl: 'app/comp-top/api/api.html',
       controller:
-      class Help {
+      class Api {
         tab: string
         constructor(public $stateParams: any) {
           this.tab = $stateParams.tab;
@@ -117,6 +117,18 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     .state('privacy', {
       url: '/privacy',
       templateUrl: 'app/comp-top/legal/privacy-policy.html',
+      controller:
+      class TbPublishCtrl {
+        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        toggleMenu() {
+          return this.$mdSidenav('leftBig').open();
+        }
+      },
+      controllerAs: "ctrl"
+    })
+    .state('faq', {
+      url: '/faq',
+      templateUrl: 'app/comp-top/faq/faq.html',
       controller:
       class TbPublishCtrl {
         constructor(private $mdSidenav: angular.material.ISidenavService) { }
