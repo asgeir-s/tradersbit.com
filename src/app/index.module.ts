@@ -25,7 +25,6 @@ import { tbStreams } from './comp-top/streams/streams';
 import { tbStream } from './comp-top/stream/stream';
 import { tbPublish } from './comp-top/publish/publish';
 import { tbPublishDash } from './comp-top/publish-dash/publish-dash';
-import { tbHelp } from './comp-top/help/help';
 import { tbAbout } from './comp-top/about/about';
 import { tbCompetition } from './comp-top/competition/competition';
 
@@ -56,7 +55,7 @@ import { BitfinexSocket } from './services/bitfinex-socket/bitfinex-socket';
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt', 'ngWebSocket']) // 'angular-storage'
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt', 'ngWebSocket', "oc.lazyLoad"]) // 'angular-storage'
     .constant('_', (<any> window)._)
     .constant('highcharts', (<any> window).Highcharts)
 
@@ -70,7 +69,6 @@ module tradersbitCom {
     .directive('tbStream', tbStream)
     .directive('tbPublish', tbPublish)
     .directive('tbPublishDash', tbPublishDash)
-    .directive('tbHelp', tbHelp)
     .directive('tbAbout', tbAbout)
     .directive('tbCompetition', tbCompetition)
 

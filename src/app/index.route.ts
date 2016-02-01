@@ -31,7 +31,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       },
       controllerAs: 'ctrl'
     })
-     .state('competition', {
+    .state('competition', {
       url: '/competition',
       template: '<tb-competition in-streams="ctrl.streams"></tb-competition>',
       resolve: {
@@ -81,11 +81,21 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     .state('api', {
       url: '/api',
       templateUrl: 'app/comp-top/api/api.html',
+      controllerAs: "ctrl"
+    })
+    .state('medium', {
+      url: '/medium',
+      templateUrl: 'app/comp-top/medium/medium.html',
       controller:
-      class Api {
+      class Medium {
         tab: string
-        constructor(public $stateParams: any) {
-          this.tab = $stateParams.tab;
+        constructor($ocLazyLoad: any) {
+
+          $ocLazyLoad.load({
+            files: ['https://static.medium.com/embed.js'],
+            cache: false
+          });
+
         }
       },
       controllerAs: "ctrl"

@@ -1,7 +1,7 @@
 <section layout="row">
   <div hide-sm flex="none" class="sidenav-outer">
     <md-sidenav class="md-sidenav-left md-whiteframe-z2 tb-side-nav sidenav-fixed" md-component-id="leftBig" md-is-locked-open="$mdMedia('gt-sm')">
-      <small>BETA</small>
+      <small>BETA 0.1.2</small>
       <a class="logo-link" href="/"><img class="logo" src="/assets/logo/logo-text.svg" alt="TradesBit logo"></a>
       <md-content>
         <md-list>
@@ -29,16 +29,14 @@
             <md-icon class="material-icons">code</md-icon>
             <p>API</p>
           </md-list-item>
+          <md-list-item ng-class="{active: ctrl.stateIs('medium')}" ng-click="ctrl.chnageState('medium')">
+            <md-icon class="material-icons">mode_edit</md-icon>
+            <p>Medium</p>
+          </md-list-item>
           <md-list-item ng-class="{active: ctrl.stateIs('about')}" ng-click="ctrl.chnageState('about')">
             <md-icon class="material-icons">business</md-icon>
             <p>About</p>
           </md-list-item>
-          <!--
-        <md-list-item ng-click="ctrl.chnageState('home')">
-          <md-icon class="material-icons">mode_edit</md-icon>
-          <p>Blog</p>
-        </md-list-item>
-        -->
         </md-list>
       </md-content>
     </md-sidenav>
@@ -68,14 +66,12 @@
           <md-list-item ng-class="{active: ctrl.stateIs('api')}" ng-click="ctrl.chnageState('api')">
             <md-icon class="material-icons">code</md-icon>
           </md-list-item>
+          <md-list-item ng-class="{active: ctrl.stateIs('medium')}" ng-click="ctrl.chnageState('medium')">
+            <md-icon class="material-icons">mode_edit</md-icon>
+          </md-list-item>
           <md-list-item ng-class="{active: ctrl.stateIs('about')}" ng-click="ctrl.chnageState('about')">
             <md-icon class="material-icons">business</md-icon>
           </md-list-item>
-          <!--
-        <md-list-item ng-click="ctrl.chnageState('home')">
-          <md-icon class="material-icons">mode_edit</md-icon>
-        </md-list-item>
-        -->
         </md-list>
       </md-content>
     </md-sidenav>
