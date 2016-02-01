@@ -81,7 +81,14 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     .state('api', {
       url: '/api',
       templateUrl: 'app/comp-top/api/api.html',
-      controllerAs: "ctrl"
+      controllerAs: "ctrl",
+      controller:
+      class TbAPICtrl {
+        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        toggleMenu() {
+          return this.$mdSidenav('leftBig').open();
+        }
+      },
     })
     .state('medium', {
       url: '/medium',
@@ -89,13 +96,14 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       controller:
       class Medium {
         tab: string
-        constructor($ocLazyLoad: any) {
-
+        constructor($ocLazyLoad: any, private $mdSidenav: angular.material.ISidenavService) {
           $ocLazyLoad.load({
             files: ['https://static.medium.com/embed.js'],
             cache: false
           });
-
+        }
+                toggleMenu() {
+          return this.$mdSidenav('leftBig').open();
         }
       },
       controllerAs: "ctrl"
