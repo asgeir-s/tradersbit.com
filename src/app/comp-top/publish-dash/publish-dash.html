@@ -6,6 +6,12 @@
       </md-button>
       <h2>My Streams</h2>
       <span flex></span>
+
+      <small class="ticker">
+          <span class="mini">Bitfinex</span>
+          <br>
+          <span ng-class="{up: ctrl.up, down: ctrl.down}">${{ctrl.btcRate| number:2}}</span>
+       </small>
       <md-button ng-click="ctrl.signOut()">
         Sign Out
       </md-button>

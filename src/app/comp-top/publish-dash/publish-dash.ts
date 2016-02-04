@@ -1,5 +1,6 @@
 import { Stream, StreamsAttribute } from '../../typings/types'
 import { AuthApi } from '../../services/auth-api/auth-api'
+import { BitfinexSocket } from '../../services/bitfinex-socket/bitfinex-socket'
 
 /** @ngInject */
 export function tbPublishDash(): angular.IDirective {
@@ -19,6 +20,9 @@ export function tbPublishDash(): angular.IDirective {
 
 /** @ngInject */
 export class TbPublishDashCtrl {
+  btcRate: number;
+  up: boolean = false;
+  down: boolean = false;
   myStreams: () => Array<Stream>;
   noStreams = true;
   attributes: Array<StreamsAttribute> = [
@@ -150,9 +154,25 @@ export class TbPublishDashCtrl {
   ];
 
   constructor(private authApi: AuthApi, private $mdDialog: any,
-    private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService) {
+    private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService, bitfinexSocket: BitfinexSocket) {
     console.log('my streams: ' + JSON.stringify(this.myStreams()));
     this.noStreams = this.myStreams().length === 0;
+    this.btcRate = bitfinexSocket.lastRate;
+
+    bitfinexSocket.dataStream.onMessage((message: any) => {
+      let tick: Array<number> = JSON.parse(message.data)
+      if (tick.length > 8) {
+        this.down = false;
+        this.up = false;
+        if(tick[7] < this.btcRate) {
+          this.down = true;
+        }
+        else if(tick[7] > this.btcRate) {
+          this.up = true;
+        }
+        this.btcRate = tick[7];
+      }
+    });
   }
 
   signOut() {

@@ -65,7 +65,9 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       url: "/publish/dash",
       template: '<tb-publish-dash my-streams="ctrl.streams"></tb-publish-dash>',
       resolve: {
-        streams: (authApi: AuthApi) => authApi.getMyStreams()
+        streams: (authApi: AuthApi) => authApi.getMyStreams().catch((err: any) => {
+          authApi.signOut();
+        })
       },
       controller:
       class StateStream {
