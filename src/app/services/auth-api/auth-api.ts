@@ -54,7 +54,7 @@ export class AuthApi {
       accessKey: awstoken.AccessKeyId,
       secretKey: awstoken.SecretAccessKey,
       sessionToken: awstoken.SessionToken,
-      region: 'us-west-2' // set to your region
+      region: 'us-east-1' // set to your region
     });
   }
 
@@ -86,7 +86,7 @@ export class AuthApi {
     }
     else {
       console.log('AuthApi - fatches streams');
-      this.apigClient.streamsGet({ "x-auth-token": this.store.get('token') }, {}, {})
+      this.apigClient.streamsMeGet({ "x-auth-token": this.store.get('token') }, {}, {})
         .then((res: any) => {
           // this is where you would put a success callback
                     
@@ -121,8 +121,7 @@ export class AuthApi {
     let deferred: angular.IDeferred<Array<Signal>> = this.$q.defer();
 
     console.log('AuthApi - post signal');
-    this.apigClient.streamSignalPost({ "x-auth-token": this.store.get('token') }, {
-      "streamId": streamId,
+    this.apigClient.streamsStreamIdSignalPost({ "x-auth-token": this.store.get('token'), "streamId": streamId }, {
       "signal": signal
     }, {})
       .then((res: SuccessRespondse<Array<Signal>>) => {
@@ -170,9 +169,9 @@ export class AuthApi {
   getApiKey(streamId: string): angular.IPromise<string> {
 
     let deferred: angular.IDeferred<string> = this.$q.defer();
-    console.log('AuthApi - post signal');
+    console.log('AuthApi - get apiKey');
 
-    this.apigClient.streamsStreamIdGetapikeyGet({ 
+    this.apigClient.streamsStreamIdApikeyGet({ 
       "x-auth-token": this.store.get('token'), 
       "streamId": streamId 
     }, {}, {})
@@ -183,7 +182,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
-        console.log('signal error: ' + JSON.stringify(err));
+        console.log('get apiKey error: ' + JSON.stringify(err));
         deferred.reject('AuthApi - Could not get new api key. Error: ' + err);
       });
     return deferred.promise;

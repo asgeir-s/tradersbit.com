@@ -1,6 +1,7 @@
 tb-publisher-apikey-dialog {
 	max-width: 500px;
 	text-align: center;
+    
   
   @media screen and (max-width: 600px) {
     max-width: 600px;
@@ -29,6 +30,7 @@ tb-publisher-apikey-dialog {
 	
 	md-progress-circular {
 		align-self: center;
+        margin: auto;
 	}
   
   md-icon {

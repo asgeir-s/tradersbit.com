@@ -11,13 +11,14 @@
 <md-dialog-content>
   <div class="md-dialog-content">
 
-    <p ng-hide="ctrl.apiKey">If you have generated an API key before, the old API key will stop working when you generate a new API key.</p>
-
-    <md-button ng-hide="ctrl.apiKey" ng-click="ctrl.getApiKey()" class="md-raised">Generate new API key</md-button>
+    <p ng-hide="ctrl.apiKey || ctrl.watingForKey">If you have generated an API key before, the old API key will stop working when you generate a new API key.</p>
+    <md-progress-circular class="waiting" md-mode="indeterminate" ng-hide="!ctrl.watingForKey" md-diameter="100"></md-progress-circular>
+    <md-button ng-hide="ctrl.apiKey || ctrl.watingForKey" ng-click="ctrl.getApiKey()" class="md-raised">Generate new API key</md-button>
     <div>
       <textarea ng-hide="!ctrl.apiKey">{{ctrl.apiKey}}</textarea>
     </div>
     <small ng-hide="!ctrl.apiKey">This API key will not be displayed again. If you lose this one, you must generate new..</small>
+    <br>
     <md-button ng-click="ctrl.chnageState('api')">API docs</md-button>
 
   </div>

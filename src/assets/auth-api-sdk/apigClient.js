@@ -1,5 +1,5 @@
 /*
- * Copyright 2010-2015 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ * Copyright 2010-2016 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -52,7 +52,7 @@ apigClientFactory.newClient = function (config) {
     }
 
     
-    var endpoint = 'https://rfug15vi49.execute-api.us-east-1.amazonaws.com/prod';
+    var endpoint = 'https://eupcyj1yj9.execute-api.us-east-1.amazonaws.com/prod';
     var parser = document.createElement('a');
     parser.href = endpoint;
 
@@ -91,93 +91,39 @@ apigClientFactory.newClient = function (config) {
     
     
     
-    apigClient.streamSignalPost = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['x-auth-token'], ['body']);
-        
-        var streamSignalPostRequest = {
-            verb: 'post'.toUpperCase(),
-            path: pathComponent + uritemplate('/stream/signal').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-auth-token']),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(streamSignalPostRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.streamSignalOptions = function (params, body, additionalParams) {
+    apigClient.streamGetApikeyGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var streamSignalOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/stream/signal').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(streamSignalOptionsRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.streamSubPricePatch = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var streamSubPricePatchRequest = {
-            verb: 'patch'.toUpperCase(),
-            path: pathComponent + uritemplate('/stream/sub-price').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(streamSubPricePatchRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.streamSubPriceOptions = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
-        
-        var streamSubPriceOptionsRequest = {
-            verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/stream/sub-price').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, []),
-            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
-            body: body
-        };
-        
-        
-        return apiGatewayClient.makeRequest(streamSubPriceOptionsRequest, authType, additionalParams, config.apiKey);
-    };
-    
-    
-    apigClient.streamsGet = function (params, body, additionalParams) {
-        if(additionalParams === undefined) { additionalParams = {}; }
-        
-        apiGateway.core.utils.assertParametersDefined(params, ['x-auth-token'], ['body']);
-        
-        var streamsGetRequest = {
+        var streamGetApikeyGetRequest = {
             verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/streams').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-auth-token']),
+            path: pathComponent + uritemplate('/stream/get-apikey').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(streamsGetRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(streamGetApikeyGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.streamGetApikeyOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var streamGetApikeyOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/stream/get-apikey').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(streamGetApikeyOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
     
@@ -217,39 +163,147 @@ apigClientFactory.newClient = function (config) {
     };
     
     
-    apigClient.streamsStreamIdGetapikeyGet = function (params, body, additionalParams) {
+    apigClient.streamsMeGet = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, ['x-auth-token', 'streamId'], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['x-auth-token'], ['body']);
         
-        var streamsStreamIdGetapikeyGetRequest = {
+        var streamsMeGetRequest = {
             verb: 'get'.toUpperCase(),
-            path: pathComponent + uritemplate('/streams/{streamId}/getapikey').expand(apiGateway.core.utils.parseParametersToObject(params, ['streamId'])),
-            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-auth-token', ]),
+            path: pathComponent + uritemplate('/streams/me').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-auth-token']),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(streamsStreamIdGetapikeyGetRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(streamsMeGetRequest, authType, additionalParams, config.apiKey);
     };
     
     
-    apigClient.streamsStreamIdGetapikeyOptions = function (params, body, additionalParams) {
+    apigClient.streamsMeOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
         apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
         
-        var streamsStreamIdGetapikeyOptionsRequest = {
+        var streamsMeOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/streams/{streamId}/getapikey').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/streams/me').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
         };
         
         
-        return apiGatewayClient.makeRequest(streamsStreamIdGetapikeyOptionsRequest, authType, additionalParams, config.apiKey);
+        return apiGatewayClient.makeRequest(streamsMeOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.streamsStreamIdApikeyGet = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['x-auth-token', 'streamId'], ['body']);
+        
+        var streamsStreamIdApikeyGetRequest = {
+            verb: 'get'.toUpperCase(),
+            path: pathComponent + uritemplate('/streams/{streamId}/apikey').expand(apiGateway.core.utils.parseParametersToObject(params, ['streamId'])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-auth-token', ]),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(streamsStreamIdApikeyGetRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.streamsStreamIdApikeyOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var streamsStreamIdApikeyOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/streams/{streamId}/apikey').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(streamsStreamIdApikeyOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.streamsStreamIdSignalPost = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['x-auth-token', 'streamId'], ['body']);
+        
+        var streamsStreamIdSignalPostRequest = {
+            verb: 'post'.toUpperCase(),
+            path: pathComponent + uritemplate('/streams/{streamId}/signal').expand(apiGateway.core.utils.parseParametersToObject(params, ['streamId'])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-auth-token', ]),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(streamsStreamIdSignalPostRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.streamsStreamIdSignalOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var streamsStreamIdSignalOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/streams/{streamId}/signal').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(streamsStreamIdSignalOptionsRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.streamsStreamIdSubpricePatch = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, ['x-auth-token', 'streamId'], ['body']);
+        
+        var streamsStreamIdSubpricePatchRequest = {
+            verb: 'patch'.toUpperCase(),
+            path: pathComponent + uritemplate('/streams/{streamId}/subprice').expand(apiGateway.core.utils.parseParametersToObject(params, ['streamId'])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, ['x-auth-token', ]),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(streamsStreamIdSubpricePatchRequest, authType, additionalParams, config.apiKey);
+    };
+    
+    
+    apigClient.streamsStreamIdSubpriceOptions = function (params, body, additionalParams) {
+        if(additionalParams === undefined) { additionalParams = {}; }
+        
+        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        
+        var streamsStreamIdSubpriceOptionsRequest = {
+            verb: 'options'.toUpperCase(),
+            path: pathComponent + uritemplate('/streams/{streamId}/subprice').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            headers: apiGateway.core.utils.parseParametersToObject(params, []),
+            queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
+            body: body
+        };
+        
+        
+        return apiGatewayClient.makeRequest(streamsStreamIdSubpriceOptionsRequest, authType, additionalParams, config.apiKey);
     };
     
 

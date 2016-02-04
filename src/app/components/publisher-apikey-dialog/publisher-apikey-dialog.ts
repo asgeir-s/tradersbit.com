@@ -21,6 +21,7 @@ export class TbPublisherApikeyDialogCtrl {
 
   inStreamId: string
   apiKey: string
+  watingForKey: boolean = false
 
   constructor(private authApi: AuthApi, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) { }
 
@@ -29,9 +30,11 @@ export class TbPublisherApikeyDialogCtrl {
   };
 
   getApiKey() {
-    this.authApi.getApiKey(this.inStreamId).then((apiKey: string) =>
+    this.watingForKey = true;
+    this.authApi.getApiKey(this.inStreamId).then((apiKey: string) => {
       this.apiKey = apiKey
-    )
+      this.watingForKey = false;
+    })
   }
 
   chnageState(newState: string) {
