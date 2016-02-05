@@ -104,6 +104,7 @@ export class AuthApi {
         })
         .catch((err: any) => {
           // this is where you would put an error callback
+          this.signOut();
           console.log('error: ' + err);
           deferred.reject('AuthApi - Could not get streams. Error: ' + err);
         });
@@ -131,6 +132,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
+        this.signOut();
         console.log('signal error: ' + JSON.stringify(err));
         deferred.reject('AuthApi - Could not post signal. Error: ' + err);
       });
@@ -160,6 +162,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
+        this.signOut();
         console.log('stream error: ' + err);
         deferred.reject('AuthApi - Could not post new stream. Error: ' + err);
       });
@@ -182,6 +185,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
+        this.signOut();
         console.log('get apiKey error: ' + JSON.stringify(err));
         deferred.reject('AuthApi - Could not get new api key. Error: ' + err);
       });
