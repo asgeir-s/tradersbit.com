@@ -176,7 +176,7 @@ export class TbPublishDashCtrl {
   }
 
   signOut() {
-    this.authApi.signOut()
+    this.authApi.signOut('')
   }
 
   openNewStreamDialog(ev: any) {

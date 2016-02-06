@@ -8,18 +8,29 @@ export class AuthApi {
   private apigClient: any;
   
   /** @ngInject */
-  constructor(private auth: any, private store: any, private $q: angular.IQService, private _: _.LoDashStatic, private $window: any, private $state: ng.ui.IStateService, private publicApi: PublicApi, private jwtHelper: any) {
+  constructor(private auth: any, private store: any, private $q: angular.IQService, private _: _.LoDashStatic, private $window: any,
+    private $state: ng.ui.IStateService, private publicApi: PublicApi, private jwtHelper: any, private $timeout: angular.ITimeoutService,
+    private $mdToast: any) {
     try {
       let token = this.store.get('token');
+
       if (typeof token !== 'undefined') {
-        this.streamIds = this.getStreamIdsFromJWT(this.jwtHelper.decodeToken(token));
+        let jwtDecoded = this.jwtHelper.decodeToken(token);
+        this.setSignoutTimeout(jwtDecoded);
+        this.streamIds = this.getStreamIdsFromJWT(jwtDecoded);
       }
     }
     catch (err) { }
   }
 
+  setSignoutTimeout(jwtDecoded: any) {    
+    this.$timeout(() => this.signOut('User session timeout'), jwtDecoded.exp - Date.now() / 1000 | 0);
+  }
+
   signIn(profile: string, token: string): angular.IPromise<boolean> {
-    this.streamIds = this.getStreamIdsFromJWT(this.jwtHelper.decodeToken(token));
+    let jwtDecoded = this.jwtHelper.decodeToken(token);
+    this.setSignoutTimeout(jwtDecoded);
+    this.streamIds = this.getStreamIdsFromJWT(jwtDecoded);
 
     let deferred: angular.IDeferred<boolean> = this.$q.defer();
 
@@ -58,7 +69,7 @@ export class AuthApi {
     });
   }
 
-  signOut() {
+  signOut(reason: string) {
     this.auth.signout();
     this.store.remove('profile');
     this.store.remove('token');
@@ -68,7 +79,18 @@ export class AuthApi {
     this.streamIds = undefined;
     this.apigClient = undefined;
     console.log("auth-api: signed out");
-    this.$state.go('home');
+    this.$state.reload();
+    if (reason !== '') {
+      this.$mdToast
+      console.log('reason: ' + reason);
+      this.$mdToast.show(
+        this.$mdToast.simple()
+          .textContent(reason)
+          .position("bottom right")
+          .hideDelay(3000)
+      );
+
+    }
   };
 
   isAuthentificated(): boolean {
@@ -104,7 +126,7 @@ export class AuthApi {
         })
         .catch((err: any) => {
           // this is where you would put an error callback
-          this.signOut();
+          this.signOut('User session timeout');
           console.log('error: ' + err);
           deferred.reject('AuthApi - Could not get streams. Error: ' + err);
         });
@@ -132,7 +154,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
-        this.signOut();
+        this.signOut('User session timeout');
         console.log('signal error: ' + JSON.stringify(err));
         deferred.reject('AuthApi - Could not post signal. Error: ' + err);
       });
@@ -162,7 +184,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
-        this.signOut();
+        this.signOut('User session timeout');
         console.log('stream error: ' + err);
         deferred.reject('AuthApi - Could not post new stream. Error: ' + err);
       });
@@ -174,9 +196,9 @@ export class AuthApi {
     let deferred: angular.IDeferred<string> = this.$q.defer();
     console.log('AuthApi - get apiKey');
 
-    this.apigClient.streamsStreamIdApikeyGet({ 
-      "x-auth-token": this.store.get('token'), 
-      "streamId": streamId 
+    this.apigClient.streamsStreamIdApikeyGet({
+      "x-auth-token": this.store.get('token'),
+      "streamId": streamId
     }, {}, {})
       .then((res: SuccessRespondse<{ "apiKey": string }>) => {
         // this is where you would put a success callback
@@ -185,7 +207,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
-        this.signOut();
+        this.signOut('User session timeout');
         console.log('get apiKey error: ' + JSON.stringify(err));
         deferred.reject('AuthApi - Could not get new api key. Error: ' + err);
       });

@@ -21,7 +21,7 @@ export class TbPublishCtrl {
   constructor(private authApi: AuthApi, private $mdSidenav: angular.material.ISidenavService) { }
   
   signOut() {
-    this.authApi.signOut()
+    this.authApi.signOut('')
   }
   
   toggleMenu() {
