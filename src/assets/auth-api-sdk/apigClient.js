@@ -52,7 +52,7 @@ apigClientFactory.newClient = function (config) {
     }
 
     
-    var endpoint = 'https://eupcyj1yj9.execute-api.us-east-1.amazonaws.com/dev';
+    var endpoint = 'https://eupcyj1yj9.execute-api.us-east-1.amazonaws.com/prod';
     var parser = document.createElement('a');
     parser.href = endpoint;
 
