@@ -22,7 +22,7 @@ export class TbPublishCtrl {
   verifyed: boolean = false;
 
   constructor(private authApi: AuthApi, private $mdSidenav: angular.material.ISidenavService) {
-   if(typeof this.inVerify !== 'undefined') {
+   if(typeof this.inVerify !== 'undefined' && this.inVerify === 'verifyed' ) {
      this.verifyed = true;
    }
   }
