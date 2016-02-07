@@ -21,6 +21,7 @@ export function tbPublisherStream(): angular.IDirective {
 
 /** @ngInject */
 export class TbPublisherStreamCtrl {
+  BITFINEX_FEE: number = 0.2;
   inStream: PublisherStream;
   unrealizedPL: number;
   waitingForSignalBack = false;
@@ -45,7 +46,7 @@ export class TbPublisherStreamCtrl {
     else {
       console.log('WARNING: dont have access to price data for ' + this.inStream.exchange);
     }
-    
+
   }
 
   openApiKeyDialog(ev: any) {
@@ -97,10 +98,10 @@ export class TbPublisherStreamCtrl {
       this.unrealizedPL = 0;
     }
     else if (lastSignal.signal === 1) {
-      this.unrealizedPL =  ((100 / lastSignal.price) * (rate - lastSignal.price)) - 0.2;
+      this.unrealizedPL = ((100 / lastSignal.price) * (rate - lastSignal.price)) - (this.BITFINEX_FEE * 2);
     }
     else if (lastSignal.signal === -1) {
-      this.unrealizedPL = ((100 / lastSignal.price) * (lastSignal.price - rate)) - 0.2;
+      this.unrealizedPL = ((100 / lastSignal.price) * (lastSignal.price - rate)) - (this.BITFINEX_FEE * 2);
     }
   }
 
@@ -118,10 +119,15 @@ export class TbPublisherStreamCtrl {
         this.waitingForSignalBack = false;
         let text: string;
         if (signals.length === 1) {
-          text = "New " + this.positionString() + " signal @ " + signals[0].price + "$. P/L: " + (signals[0].changeInclFee * 100).toFixed(2) + "%.";
+          if (signals[0].signal === 0) {
+            text = "New " + this.positionString() + " signal @ " + signals[0].price + "$. P/L: " + ((signals[0].changeInclFee * 100) - this.BITFINEX_FEE).toFixed(2) + "%.";
+          }
+          else {
+            text = "New " + this.positionString() + " signal @ " + signals[0].price + "$";
+          }
         }
         else {
-          text = "Position closed @ " + signals[0].price + "$. P/L: " + (signals[0].changeInclFee * 100).toFixed(2) + "%.\n New " + this.positionString() + " position opened.";
+          text = "Position closed @ " + signals[0].price + "$. P/L: " + ((signals[0].changeInclFee * 100) - this.BITFINEX_FEE).toFixed(2) + "%.\n New " + this.positionString() + " position opened.";
         }
 
         this.$mdToast.show(
