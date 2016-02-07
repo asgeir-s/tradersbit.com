@@ -529,10 +529,10 @@ export class StreamAttributes {
         return (stream.stats.allTimeValueExcl - 1) * 100 > 0;
       },
       getIt: (stream: Stream) => {
-        return (stream.stats.allTimeValueExcl - 1).toFixed(2) + '%';
+        return ((stream.stats.allTimeValueExcl - 1) * 100).toFixed(2) + '%';
       },
       getValue: (stream: Stream) => {
-        return stream.stats.allTimeValueExcl - 1;
+        return (stream.stats.allTimeValueExcl - 1) * 100;
       }
     },
     {
