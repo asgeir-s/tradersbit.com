@@ -595,10 +595,13 @@ export class StreamAttributes {
 
   static formatDate(inn: number): string {
     let d = new Date(inn);
-    let date = d.getDate();
-    let month = d.getMonth() + 1; // months are zero based
     let year = d.getFullYear();
     let hours: any = d.getHours();
+
+    let monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Des"
+    ];
+
     if (hours < 10) {
       hours = '0' + hours;
     }
@@ -606,7 +609,12 @@ export class StreamAttributes {
     if (minutes < 10) {
       minutes = '0' + minutes;
     }
-    return month + '/' + date + "/" + year + ' ' + hours + ':' + minutes;
+    let date: any = d.getDate();
+    if (date < 10) {
+      date = '0' + date;
+    }
+
+    return date + " " + monthNames[d.getMonth()] + ' ' + year + ', ' + hours + ':' + minutes;
   }
 
 }

@@ -234,18 +234,8 @@ export class TbHomeCtrl {
       }
     });
   }
-
   getValue(stream: Stream) {
-    let allProfit = stream.stats.allTimeValueIncl - 1;
-    let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
-    let secInMonth = 86400000 * 30;
-    let AMP = (((allProfit / duration)) * secInMonth) * 100
-    if (isNaN(AMP)) {
-      return 0;
-    }
-    else {
-      return AMP;
-    }
+    return (stream.stats.allTimeValueIncl - 1) * 100;
   }
 
   goToApiHelp() {
