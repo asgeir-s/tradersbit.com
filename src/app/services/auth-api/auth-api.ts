@@ -23,8 +23,9 @@ export class AuthApi {
     catch (err) { }
   }
 
-  setSignoutTimeout(jwtDecoded: any) {    
-    this.$timeout(() => this.signOut('User session timeout'), jwtDecoded.exp - Date.now() / 1000 | 0);
+  setSignoutTimeout(jwtDecoded: any) {
+    console.log('timeout: ' + ((jwtDecoded.exp * 1000) - Date.now()) + 'ms');
+    this.$timeout(() => this.signOut('User session timeout'), ((jwtDecoded.exp * 1000) - Date.now()));
   }
 
   signIn(profile: string, token: string): angular.IPromise<boolean> {
@@ -126,7 +127,7 @@ export class AuthApi {
         })
         .catch((err: any) => {
           // this is where you would put an error callback
-          this.signOut('User session timeout');
+          this.signOut('Could not connect');
           console.log('error: ' + err);
           deferred.reject('AuthApi - Could not get streams. Error: ' + err);
         });
@@ -154,7 +155,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
-        this.signOut('User session timeout');
+        this.signOut('Could not connect');
         console.log('signal error: ' + JSON.stringify(err));
         deferred.reject('AuthApi - Could not post signal. Error: ' + err);
       });
@@ -184,7 +185,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
-        this.signOut('User session timeout');
+        this.signOut('Could not connect');
         console.log('stream error: ' + err);
         deferred.reject('AuthApi - Could not post new stream. Error: ' + err);
       });
@@ -207,7 +208,7 @@ export class AuthApi {
       })
       .catch((err: any) => {
         // this is where you would put an error callback
-        this.signOut('User session timeout');
+        this.signOut('Could not connect');
         console.log('get apiKey error: ' + JSON.stringify(err));
         deferred.reject('AuthApi - Could not get new api key. Error: ' + err);
       });

@@ -8,4 +8,21 @@ tb-publish {
       color: $light-font-color !important;
     }
   }
+  
+  .unsuported-browser {
+    color: red;
+  }
+  
+  @media screen and (-webkit-min-device-pixel-ratio:0) {
+    .unsuported-browser {
+     display: none;
+    }
+  }  
+
+  @media (max-width: 600px) {
+    .unsuported-browser {
+     display: none !important;
+    }
+  }
+    
 }
