@@ -58,8 +58,16 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       controllerAs: "ctrl"
     })
     .state('publish', {
-      url: '/publish',
-      template: '<tb-publish></tb-publish>'
+      url: '/publish?verify',
+      template: '<tb-publish in-verify="ctrl.verify"></tb-publish>',
+      controllerAs: 'ctrl',
+      controller:
+      class Publish {
+        verify: string;
+        constructor($stateParams) {
+          this.verify = $stateParams.verify;
+        }
+      }
     })
     .state("publish-dash", {
       url: "/publish/dash",

@@ -10,6 +10,7 @@ export function tbPublish(): angular.IDirective {
     controller: TbPublishCtrl,
     controllerAs: 'ctrl',
     bindToController: {
+      inVerify: "="
     }
   };
 
@@ -17,8 +18,14 @@ export function tbPublish(): angular.IDirective {
 
 /** @ngInject */
 export class TbPublishCtrl {
+  inVerify: string;
+  verifyed: boolean = false;
 
-  constructor(private authApi: AuthApi, private $mdSidenav: angular.material.ISidenavService) { }
+  constructor(private authApi: AuthApi, private $mdSidenav: angular.material.ISidenavService) {
+   if(typeof this.inVerify !== 'undefined') {
+     this.verifyed = true;
+   }
+  }
   
   signOut() {
     this.authApi.signOut('')
