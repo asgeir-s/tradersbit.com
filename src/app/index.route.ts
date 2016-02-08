@@ -110,7 +110,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
             cache: false
           });
         }
-                toggleMenu() {
+        toggleMenu() {
           return this.$mdSidenav('leftBig').open();
         }
       },
@@ -143,6 +143,18 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     .state('privacy', {
       url: '/privacy',
       templateUrl: 'app/comp-top/legal/privacy-policy.html',
+      controller:
+      class TbPublishCtrl {
+        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        toggleMenu() {
+          return this.$mdSidenav('leftBig').open();
+        }
+      },
+      controllerAs: "ctrl"
+    })
+    .state('release-notes', {
+      url: '/release-notes',
+      templateUrl: 'app/comp-top/release-notes/release-notes.html',
       controller:
       class TbPublishCtrl {
         constructor(private $mdSidenav: angular.material.ISidenavService) { }

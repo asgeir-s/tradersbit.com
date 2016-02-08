@@ -2,6 +2,10 @@ tb-side-nav-layout {
   .main-screen {
     //max-height: 100%!important;
   }
+  .release-notes-link {
+    color: lighten(#000, 30%);
+    text-decoration: none;
+  }
   
   .star {
     color: $secondary-color-dark;  
