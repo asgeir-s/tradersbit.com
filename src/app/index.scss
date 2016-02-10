@@ -120,6 +120,23 @@ footer {
   max-width: 800px;
   margin: auto;
 }
+
+@media (max-width: 600px) {
+  md-toolbar {
+    position: fixed;
+  }
+  .toolbar-mobile-space {
+    height: 55px;
+  }
+}
+
+md-backdrop {
+  position: fixed;
+}
+
+
+
+
 /**
  *  Do not remove the comment below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

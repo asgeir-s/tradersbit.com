@@ -37,7 +37,7 @@ export class StreamAttributes {
       jsonPath: "subscriptionPriceUSD",
       on: false,
       getIt: (stream: Stream) => {
-        return stream.subscriptionPriceUSD.toFixed(2) + '$';
+        return '$' + stream.subscriptionPriceUSD.toFixed(2);
       },
       getValue: (stream: Stream) => {
         return stream.subscriptionPriceUSD;
@@ -542,7 +542,7 @@ export class StreamAttributes {
       jsonPath: "stats.firstPrice",
       on: false,
       getIt: (stream: Stream) => {
-        return stream.stats.firstPrice.toFixed(2) + '$';
+        return '$' + stream.stats.firstPrice.toFixed(2);
       },
       getValue: (stream: Stream) => {
         return stream.stats.firstPrice;

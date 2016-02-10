@@ -7,14 +7,15 @@
     <span flex></span>
   </div>
 </md-toolbar>
+<div class="toolbar-mobile-space"></div>
 
-  <md-button class="md-fab fab-buttom-right" aria-label="indicators" ng-click="ctrl.toggleRightSidebar()">
-    <md-icon class="material-icons">filter_list</md-icon>
-    <md-tooltip md-direction="left">
-      Select indicators
-    </md-tooltip>
-  </md-button>
-  
+<md-button class="md-fab fab-buttom-right" aria-label="indicators" ng-click="ctrl.toggleRightSidebar()">
+  <md-icon class="material-icons">filter_list</md-icon>
+  <md-tooltip md-direction="left">
+    Select indicators
+  </md-tooltip>
+</md-button>
+
 <tb-streams-table flex in-streams="ctrl.inStreams()" in-attributes="ctrl.streamAttributes" in-sort-by="'NP'"></tb-streams-table>
 
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
