@@ -1,4 +1,4 @@
-/// <reference path="../../.tmp/typings/tsd.d.ts" />
+/// <reference path="../../typings/main.d.ts" />
 
 require('script!../assets/auth-api-sdk/lib/axios/dist/axios.standalone.js');
 require('script!../assets/auth-api-sdk/lib/CryptoJS/rollups/hmac-sha256.js');

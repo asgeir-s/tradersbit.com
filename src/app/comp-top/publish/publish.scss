@@ -18,18 +18,28 @@ tb-publish {
   
   .unsuported-browser {
     color: red;
+    display: none;
   }
   
-  @media screen and (-webkit-min-device-pixel-ratio:0) {
-    .unsuported-browser {
-     display: none;
-    }
-  }  
-
-  @media (max-width: 600px) {
-    .unsuported-browser {
-     display: none !important;
-    }
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+     /* IE10+ CSS styles go here */
+      .unsuported-browser {
+        display: inline !important;
+      }
   }
-    
+  
+  @media screen and (min-width:0\0) {
+         /* IE9 CSS styles go here */
+          .unsuported-browser {
+        display: inline !important;
+      }
+  }
+  
+  #diecinueve {
+         /* IE6, IE7, IE8, but also IE9 in some cases */
+      .unsuported-browser {
+        display: inline !important;
+      }
+  }
+
 }

@@ -67,7 +67,7 @@ export class AuthApi {
       secretKey: awstoken.SecretAccessKey,
       sessionToken: awstoken.SessionToken,
       region: 'us-east-1', // set to your region
-      defaultContentType: 'application/json; charset=UTF-8'
+      //defaultContentType: 'application/json; charset=UTF-8'
     });
   }
 
