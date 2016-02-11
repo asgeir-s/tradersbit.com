@@ -30,7 +30,7 @@ tb-home {
     background-size: cover;
 
     @media screen and (max-width: 600px) {
-      padding-top: 100px;
+      padding-top: 50px;
       padding-bottom: 100px;
     }
   }
@@ -268,5 +268,9 @@ tb-home {
   z-index: 0 !important;
 }
 
+.promo-btn {
+  width: 160px;
+  margin-top: 20px;
+}
 
 }

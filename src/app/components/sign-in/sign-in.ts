@@ -32,7 +32,7 @@ export class TbSignInCtrl {
       },
       dict: {
         signin: {
-          title: ' Sign in '
+          title: ' Sign In '
         }
       }
     }, (profile: any, token: string) => {
