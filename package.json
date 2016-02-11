@@ -44,7 +44,6 @@
     "ng-annotate-loader": "0.0.10",
     "phantomjs": "~1.9.18",
     "script-loader": "^0.6.1",
-    "tsd": "~0.6.5",
     "tslint-loader": "~1.0.2",
     "typescript": "~1.7.5",
     "uglify-save-license": "~0.4.1",

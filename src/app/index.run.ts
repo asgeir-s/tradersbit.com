@@ -8,7 +8,7 @@ export function runBlock($log: angular.ILogService, auth: any, $rootScope: any, 
   auth.hookEvents();
 
   $rootScope.$on('$locationChangeStart', function() {
-    var token = store.get('token');
+    let token = store.get('token');
     if (token) {
       if (!jwtHelper.isTokenExpired(token)) {
         if (!auth.isAuthenticated) {

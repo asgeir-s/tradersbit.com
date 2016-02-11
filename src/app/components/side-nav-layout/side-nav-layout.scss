@@ -72,7 +72,7 @@ tb-side-nav-layout {
   width: 100%;
   text-align: center;
   @media screen and (max-width: 600px) {
-  padding: 15px;
+  //padding: 15px;
   }
 
 }
@@ -81,7 +81,13 @@ tb-side-nav-layout {
     height: 30px;
     margin: auto;
     margin-top: 20px;
-    margin-bottom: 20px;
+  }
+  
+  .release-notes-link {
+    text-align: left;
+  }
+  .nav-top-logo {
+    padding-bottom: 10px;
   }
 
 

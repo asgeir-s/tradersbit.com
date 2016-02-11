@@ -57,6 +57,21 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       },
       controllerAs: "ctrl"
     })
+    .state("publish-dash", {
+      url: "/publish/dash",
+      template: '<tb-publish-dash my-streams="ctrl.streams"></tb-publish-dash>',
+      resolve: {
+        streams: (authApi: AuthApi) => authApi.getMyStreams()
+      },
+      controller:
+      class StateStream {
+        constructor(public streams: Array<Stream>) { }
+      },
+      controllerAs: "ctrl",
+      data: {
+        requiresLogin: true
+      }
+    })
     .state('publish', {
       url: '/publish/:verify',
       template: '<tb-publish in-verify="ctrl.verify"></tb-publish>',
@@ -67,23 +82,6 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
         constructor($stateParams) {
           this.verify = $stateParams.verify;
         }
-      }
-    })
-    .state("publish-dash", {
-      url: "/publish/dash",
-      template: '<tb-publish-dash my-streams="ctrl.streams"></tb-publish-dash>',
-      resolve: {
-        streams: (authApi: AuthApi) => authApi.getMyStreams()
-      },
-      controller:
-      class StateStream {
-        constructor(public streams: Array<Stream>) {
-          console.log('publish-dash!!!');
-        }
-      },
-      controllerAs: "ctrl",
-      data: {
-        requiresLogin: true
       }
     })
     .state('api', {

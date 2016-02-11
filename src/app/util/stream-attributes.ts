@@ -48,7 +48,7 @@ export class StreamAttributes {
       short: "EXC",
       description: '',
       jsonPath: "exchange",
-      on: true,
+      on: false,
       getIt: (stream: Stream) => {
         return stream.exchange;
       },
@@ -423,7 +423,7 @@ export class StreamAttributes {
       short: "MT",
       description: '',
       jsonPath: "",
-      on: true,
+      on: false,
       getIt: (stream: Stream) => {
         let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
         let secInMonth = 86400000 * 30;
