@@ -1,0 +1,71 @@
+tb-subscription-price-dialog {
+	max-width: 500px;
+	text-align: center;
+    
+  
+  @media screen and (max-width: 600px) {
+    max-width: 600px;
+  }
+  
+	md-toolbar {
+		color: $light-font-color !important;
+	}
+	
+		h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	small {
+		color: lighten($dark-font-color, 55%);
+	}
+	
+  input {
+      max-width: 200px;
+  }
+  
+	.recaptcha {
+		  align-self: center;
+			padding: 1em;
+	}
+  
+  .error-messagea {
+    max-width: 200px;
+  }
+	
+	.signals-to-email {
+		    margin-bottom: 0px;
+	}
+	
+	md-progress-circular {
+		align-self: center;
+        margin: auto;
+	}
+  
+  md-icon {
+    margin-left: 10px;
+    color: $dark-font-color !important;
+  }
+  
+        
+  md-toolbar {
+      md-icon {
+    color: $light-font-color !important;
+  }
+  }
+  
+  form {
+   
+   @media screen\0 {
+	margin-top: 40px;
+  }
+    
+}
+
+
+
+textarea {
+  height: 300px;
+  width: 400px;
+  max-width: 90%;
+}
+}

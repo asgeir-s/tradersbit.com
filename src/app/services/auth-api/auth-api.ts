@@ -163,6 +163,28 @@ export class AuthApi {
     return deferred.promise;
   }
 
+  updateSubscriptionPrice(streamId: string, newPriceUsd: number): angular.IPromise<string> {
+    _.remove(this.publicApi.streams, (stream: Stream) => stream.id === streamId);
+    this.publicApi.streamsDirty = true;
+
+    let deferred: angular.IDeferred<string> = this.$q.defer();
+
+    console.log('AuthApi - update subscription price');
+    this.apigClient.streamsStreamIdSubpricePatch({ "x-auth-token": this.store.get('token'), "streamId": streamId }, {
+      "priceUSD": newPriceUsd
+    }, {})
+      .then((res: SuccessRespondse<string>) => {
+        console.log("signal res: " + JSON.stringify(res));
+        deferred.resolve(res.data);
+      })
+      .catch((err: any) => {
+        this.signOut('Could not connect');
+        console.log('update subscription price error: ' + JSON.stringify(err));
+        deferred.reject('AuthApi - Could not update subscription price. Error: ' + err);
+      });
+    return deferred.promise;
+  }
+
   postStream(newStream: NewStream): angular.IPromise<string> {
     this.streams = undefined;
     this.publicApi.streams = undefined;

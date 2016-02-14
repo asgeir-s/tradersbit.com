@@ -44,6 +44,7 @@ import { tbPublisherStream } from './components/publisher-stream/publisher-strea
 import { tbStreamNewDialog } from './components/stream-new-dialog/stream-new-dialog';
 import { tbStreamPublisherRow } from './components/stream-publisher-row/stream-publisher-row'
 import { tbPublisherApikeyDialog } from './components/publisher-apikey-dialog/publisher-apikey-dialog';
+import { tbSubscriptionPriceDialog } from './components/publisher-sub-price-dialog/publisher-sub-price-dialog'
 
 // services
 import { PublicApi } from './services/public-api/public-api';
@@ -88,6 +89,7 @@ module tradersbitCom {
     .directive('tbStreamNewDialog', tbStreamNewDialog)
     .directive('tbStreamPublisherRow', tbStreamPublisherRow)
     .directive('tbPublisherApikeyDialog', tbPublisherApikeyDialog)
+    .directive('tbSubscriptionPriceDialog', tbSubscriptionPriceDialog)
 
   // services
     .service('publicApi', PublicApi)

@@ -68,6 +68,25 @@ export class TbPublisherStreamCtrl {
     })
   };
 
+  openSubscriptionPriceDialog(ev: any) {
+    this.$mdDialog.show({
+      template: '<md-dialog><tb-subscription-price-dialog in-stream="ctrl.stream" ></tb-subscription-price-dialog></md-dialog>',
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      fullscreen: this.$mdMedia('xs'),
+      locals: {
+        stream: this.inStream
+      },
+      controller: 
+      /** @ngInject */
+      class DialogCtrl2 {
+        constructor(public stream: Stream) {
+        }
+      },
+      controllerAs: 'ctrl'
+    })
+  }
+
 
   logoUrl(): string {
     if (this.inStream.exchange === 'bitstamp') {
