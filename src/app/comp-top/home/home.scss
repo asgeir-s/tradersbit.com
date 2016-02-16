@@ -54,6 +54,7 @@ tb-home {
     color: $light-font-color;
     md-icon {
       color: $light-font-color;
+      height: 90px;
     }
   }
   .home--features-row-inner {
@@ -62,6 +63,7 @@ tb-home {
     }
   }
   .home--features-row--item {
+    margin: 10px;
     @media screen and (max-width: 600px) {
       padding-left: 40px;
       padding-right: 40px;
@@ -272,6 +274,11 @@ tb-home {
 .promo-btn {
   width: 160px;
   margin-top: 20px;
+}
+
+#mc-email-lable {
+  color: rgba(255,255,255,1.0) !important;
+
 }
 
 }

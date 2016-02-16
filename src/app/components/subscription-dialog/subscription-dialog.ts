@@ -29,7 +29,7 @@ export class TbSubscriptionDialogCtrl {
   fullPriceUSD: number;
   subscribeAutoTrader: boolean = false;
   fullPriceBTC: number;
-  autoTraderPrice: number = 10;
+  autoTraderPrice: number = 15;
   showRecaptchaWarning: boolean = false;
   waitForResponds = false;
   gotPaymentInfo = false;
@@ -38,7 +38,7 @@ export class TbSubscriptionDialogCtrl {
 
 
   /* @ngInject */
-  constructor(private publicApi: PublicApi, private $sce: angular.ISCEService, private $mdDialog: angular.material.IDialogService) {
+  constructor(private publicApi: PublicApi, private $sce: angular.ISCEService, private $mdDialog: angular.material.IDialogService, private $mdSidenav: angular.material.ISidenavService, private $state: any) {
     this.subscriptionPriceUSD = this.inStream.subscriptionPriceUSD;
     this.updatePrice();
   }
