@@ -62,7 +62,9 @@ export class TbCompetitionCtrl {
   days = Math.floor((this.timeLeft / (1000 * 60 * 60 * 24)));
 
   constructor(private $mdSidenav: angular.material.ISidenavService, private _: any, $interval: any) {
-    this.top10Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) =>
+    this.top10Streams = this.inStreams()
+    .filter((stream: Stream) => stream.stats.numberOfClosedTrades >= 10)
+    .sort((stream1: Stream, stream2: Stream) =>
       this.attributes[1].getValue(stream2) - this.attributes[1].getValue(stream1)).slice(0, 10);
 
     $interval(() => {
