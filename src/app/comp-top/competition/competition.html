@@ -23,7 +23,7 @@
             <b>Prize:</b>&nbsp; 1 BTC and stream promotion
           </md-list-item>
           <md-list-item>
-            <b>End time:</b>&nbsp; 03 Mar 2016, 23:59 UTC
+            <b>End time:</b>&nbsp; {{ ctrl.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
             <b>Time left: </b>&nbsp; {{ctrl.days}} days {{ctrl.hours}} hours {{ctrl.minutes}} minutes {{ctrl.seconds}} seconds
