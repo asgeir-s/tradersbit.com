@@ -4,7 +4,7 @@
       <md-content class="center">
         <div class="nav-top-logo">
           <a class="logo-link" href="/"><img class="logo" src="/assets/logo/logo-text.svg" alt="TradesBit logo"></a>
-          <small><a class="release-notes-link" href="javascript:void(0)" ng-click="ctrl.chnageState('release-notes')">BETA 0.1.10 Release Notes</a></small>
+          <small><a class="release-notes-link" href="javascript:void(0)" ng-click="ctrl.chnageState('release-notes')">BETA 0.1.11 Release Notes</a></small>
         </div>
         <md-list>
           <md-list-item ng-class="{active: ctrl.stateIs('home')}" ng-click="ctrl.chnageState('home')">
@@ -39,7 +39,12 @@
             <md-icon class="material-icons">business</md-icon>
             <p>About</p>
           </md-list-item>
+          <md-list-item ng-class="{active: ctrl.stateIs('roadmap')}" ng-click="ctrl.chnageState('roadmap')">
+            <md-icon class="material-icons">beenhere</md-icon>
+            <p>Roadmap</p>
+          </md-list-item>
         </md-list>
+        <a href="https://twitter.com/TradersBit" class="twitter-follow-button" data-show-count="false" data-size="">Follow @TradersBit</a>
       </md-content>
     </md-sidenav>
   </div>
@@ -73,6 +78,9 @@
           </md-list-item>
           <md-list-item ng-class="{active: ctrl.stateIs('about')}" ng-click="ctrl.chnageState('about')">
             <md-icon class="material-icons">business</md-icon>
+          </md-list-item>
+          <md-list-item ng-class="{active: ctrl.stateIs('roadmap')}" ng-click="ctrl.chnageState('roadmap')">
+            <md-icon class="material-icons">beenhere</md-icon>
           </md-list-item>
         </md-list>
       </md-content>
