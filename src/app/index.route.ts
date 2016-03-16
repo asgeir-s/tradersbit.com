@@ -126,6 +126,19 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       },
       controllerAs: "ctrl"
     })
+    .state('roadmap', {
+      url: '/roadmap',
+      templateUrl: 'app/comp-top/roadmap/roadmap.html',
+      controller:
+      class Roadmap {
+        tab: string
+        constructor(private $mdSidenav: angular.material.ISidenavService) {}
+        toggleMenu() {
+          return this.$mdSidenav('leftBig').open();
+        }
+      },
+      controllerAs: "ctrl"
+    })
     .state('terms', {
       url: '/terms',
       templateUrl: 'app/comp-top/legal/terms-of-service.html',
