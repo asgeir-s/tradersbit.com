@@ -26,7 +26,7 @@
             <b>End time:</b>&nbsp; {{ ctrl.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
-            <b>Time left: </b>&nbsp; {{ctrl.days}} days {{ctrl.hours}} hours {{ctrl.minutes}} minutes {{ctrl.seconds}} seconds
+            <b>Time left: </b>&nbsp; finished
           </md-list-item>
           <md-list-item>
             <b>Minimum number of closed trades:</b>&nbsp; 10
@@ -44,14 +44,16 @@
       </md-card-content>
     </div>
 
-    <md-card flex>
+    <md-card flex style="cursor: pointer;" ng-click="ctrl.goToStream('deca79ea-6631-492b-ad51-4bc41b12dd05')">
       <md-card-title>
-        <md-card-title-text>
-          <span class="md-headline">Leaderboard</span>
-        </md-card-title-text>
       </md-card-title>
-      <md-card-content>
-        <tb-streams-table flex in-streams="ctrl.top10Streams" in-attributes="ctrl.attributes" in-sort-by="'Net Profit'"></tb-streams-table>
+      <md-card-content class="center">
+         <md-icon class="material-icons cake" style="font-size: 200px;">cake</md-icon>
+                 <h6 class="md-title" style="margin-bottom: 0px;">Winner:</h6>
+        <h3 class="md-display-2" style="margin-top: 0px;">ChronoTrading</h3>
+        <h6 class="md-title" style="margin-bottom: 0px;">Result:</h6>
+        <h4 class="md-display-1" style="margin-top: 0px;">13.62% Net Profit</h4>
+
       </md-card-content>
     </md-card>
 

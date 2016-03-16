@@ -221,18 +221,6 @@ export class TbHomeCtrl {
   constructor(private $state: ng.ui.IStateService, private $mdSidenav: angular.material.ISidenavService, private $mdToast: any) {
     this.top5Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) =>
       this.getValue(stream2) - this.getValue(stream1)).slice(0, 5);
-
-    $mdToast.show(
-      $mdToast.simple()
-        .action('Take a look')
-        .textContent('First trading competition has started!')
-        .position("top right")
-        .hideDelay(4000)
-    ).then((response) => {
-      if (response === 'ok') {
-        this.chnageState('competition');
-      }
-    });
   }
   getValue(stream: Stream) {
     return (stream.stats.allTimeValueIncl - 1) * 100;
