@@ -8,6 +8,8 @@
   </div>
 </md-toolbar>
 <div class="toolbar-mobile-space"></div>
+<md-progress-linear md-mode="indeterminate" ng-hide="!ctrl.waitForResponds"></md-progress-linear>
+
 <md-dialog-content>
   <div class="md-dialog-content">
 
@@ -21,8 +23,7 @@
     <div ng-hide="ctrl.gotPaymentInfo">
       <p>
         By subscribing to this stream, you will get new trading signals sent to your e-mail and/or automatically traded at
-        <span
-        style="text-transform: capitalize;">{{ctrl.inStream.exchange}}</span> on your behalf.
+        <span style="text-transform: capitalize;">{{ctrl.inStream.exchange}}</span> on your behalf.
       </p>
       <p>
         If you include your e-mail address, you will receive an e-mail giving you the option to continue the subscription seven days
@@ -37,38 +38,35 @@
       <div layout="column" layout-align="center">
         <md-input-container flex>
           <label for="email">Email</label>
-          <input ng-required='ctrl.subscription.signalsToEmail' type="email" ng-model="ctrl.subscription.email" id="email" value=""
-          />
-        </md-input-container>∆
+          <input required type="email" ng-model="ctrl.subscription.email" id="email" value="">
+        </md-input-container>
         <md-switch class="md-primary" ng-disabled="true" ng-model="ctrl.subscribeAutoTrader" aria-label="Switch 6" ng-change="ctrl.updatePrice()">
           Autotrader ({{ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{ctrl.autoTraderPrice / ctrl.inBtcRate | number:4}})
           <small>coming soon</small>
-        </md-switch>∆
+        </md-switch>
         <md-input-container flex ng-hide="!ctrl.subscribeAutoTrader">
           <label>API key for <span style="text-transform: capitalize;">{{ctrl.inStream.exchange}}</span></label>
-          <input name="apiKey" ng-required='ctrl.subscribeAutoTrader' ng-disabled="!ctrl.subscribeAutoTrader" type="text" ng-model="ctrl.subscription.apiKey"
+          <input name="apiKey" ng-required="ctrl.subscribeAutoTrader" ng-disabled="!ctrl.subscribeAutoTrader" type="text" ng-model="ctrl.subscription.apiKey"
           ng-minlength="5" />
         </md-input-container>
         <md-input-container flex ng-hide="!ctrl.subscribeAutoTrader">
           <label>API secret for <span style="text-transform: capitalize;">{{ctrl.inStream.exchange}}</span></label>
-          <input name="apiSecret" ng-required='ctrl.subscribeAutoTrader' ng-disabled="!ctrl.subscribeAutoTrader" type="text" ng-model="ctrl.subscription.apiSecret"
+          <input name="apiSecret" ng-required="ctrl.subscribeAutoTrader" ng-disabled="!ctrl.subscribeAutoTrader" type="text" ng-model="ctrl.subscription.apiSecret"
           ng-minlength="5" />
         </md-input-container>
 
         <div flex class="recaptcha" vc-recaptcha key="'6Lek2xETAAAAANo7-PKjcbAn8OuxJytZ4IQwLmFg'" on-success="ctrl.setReCaptchaResponds(response)"></div>
 
         <small ng-hide="ctrl.waitForResponds">By subscribing you are accepting our <a href="https://tradersbit.com/terms" target="_blank">Terms of Service</a></small>
-        <md-button flex ng-hide="ctrl.waitForResponds" ng-disabled="!ctrl.subscription.signalsToEmail && !ctrl.subscribeAutoTrader || !subscribeForm.$valid"
-        class="md-raised md-accent btc-pay-button" type="submit" ng-click="ctrl.postSubscriptionReturnButtonCode(ctrl.subscription)"
-        value="Submit" style="margin-left:0;margin-right:0;">Pay with Bitcoin</md-button>
+        <md-button flex ng-hide="ctrl.waitForResponds" ng-disabled="!subscribeForm.$valid" class="md-raised md-accent btc-pay-button"
+        type="submit" ng-click="ctrl.postSubscriptionReturnButtonCode(ctrl.subscription)" value="Submit" style="margin-left:0;margin-right:0;">Pay with Bitcoin</md-button>
 
       </div>
     </form>
 
-    <md-progress-circular class="waiting" md-mode="indeterminate" ng-hide="!ctrl.waitForResponds" md-diameter="100"></md-progress-circular>
-
-    <iframe ng-show="ctrl.gotPaymentInfo" id="coinbase_inline_iframe_{{ctrl.coinbaseEmbedCode}}" ng-src="{{ctrl.trustSrc('https://coinbase.com/checkouts/' + ctrl.coinbaseEmbedCode + '/inline')}}"
+    <iframe ng-if="ctrl.gotPaymentInfo" id="coinbase_inline_iframe_{{ctrl.coinbaseEmbedCode}}" ng-src="{{ctrl.trustSrc('https://coinbase.com/checkouts/' + ctrl.coinbaseEmbedCode + '/inline')}}"
     style="width: 100%; height: 450px; border: none;" allowtransparency="true" frameborder="0"></iframe>
+
 
   </div>
 </md-dialog-content>

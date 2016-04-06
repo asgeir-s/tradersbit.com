@@ -59,7 +59,7 @@ import { BitfinexSocket } from './services/bitfinex-socket/bitfinex-socket';
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt', 'ngWebSocket', "oc.lazyLoad"]) //  'angular-storage'
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt', 'ngWebSocket', "oc.lazyLoad", "ngOnload"]) //  'angular-storage'
     .constant('_', (<any>window)._)
     .constant('highcharts', (<any>window).Highcharts)
 

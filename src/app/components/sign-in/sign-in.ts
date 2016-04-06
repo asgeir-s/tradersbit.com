@@ -1,5 +1,4 @@
 
-
 import { TbFront } from "../../services/tb-front/tb-front"
 
 /** @ngInject */
@@ -22,7 +21,7 @@ export class TbSignInCtrl {
   mustVerifyEmail: boolean = false;
   wating: boolean = false;
 
-  constructor(private auth: any, tbFont: TbFront, private $state: ng.ui.IStateService) {
+  constructor(private auth: any, tbFront: TbFront, private $state: ng.ui.IStateService) {
     auth.config.auth0lib.$container = null; // auth0 lock fix
 
     auth.signin({
@@ -45,7 +44,7 @@ export class TbSignInCtrl {
         // success callback
         this.wating = true;
 
-        tbFont.signIn(profile, token)
+        tbFront.signIn(profile, token)
           .then(() => {
             this.$state.go('publish-dash');
           })

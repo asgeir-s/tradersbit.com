@@ -31,7 +31,7 @@ export class TbPublisherStreamCtrl {
 
   constructor(public $location: any, private $mdMedia: angular.material.IMedia, private $mdDialog: any,
     private $q: angular.IQService, private $http: angular.IHttpService, private $state: angular.ui.IStateService,
-    private tbFont: TbFront, private _: _.LoDashStatic, private $mdToast: any, bitfinexSocket: BitfinexSocket) {
+    private tbFront: TbFront, private _: _.LoDashStatic, private $mdToast: any, bitfinexSocket: BitfinexSocket) {
 
     if (this.inStream.exchange === 'bitfinex') {
       this.computeUnrealizedPL(this.inStream.lastSignal, bitfinexSocket.lastRate);
@@ -132,7 +132,7 @@ export class TbPublisherStreamCtrl {
 
   postSignal(streamId: string, signal: number) {
     this.waitingForSignalBack = true;
-    this.tbFont.postSignal(streamId, signal)
+    this.tbFront.postSignal(streamId, signal)
       .then((signals: Array<Signal>) => {
         this.inStream.lastSignal = _.max(signals, 'id');
         this.inStream.status = this.inStream.lastSignal.signal;

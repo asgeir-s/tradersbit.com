@@ -21,16 +21,16 @@ export function tbSubscriptionPriceDialog(): angular.IDirective {
 
 /** @ngInject */
 export class tbSubscriptionPriceDialogCtrl {
-  
+
   inStream: Stream
   subscriptionPrice: number
   apiKey: string
   wating: boolean = false;
   subscriptionPriceUpdated: boolean = false;
 
-  constructor(private tbFont: TbFront, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) {
+  constructor(private tbFront: TbFront, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) {
     this.subscriptionPrice = angular.copy(this.inStream.subscriptionPriceUSD)
-   }
+  }
 
   cancel() {
     this.$mdDialog.cancel();
@@ -38,14 +38,13 @@ export class tbSubscriptionPriceDialogCtrl {
 
   updateSubscriptionPrice(newSubscriptionPrice: number) {
     this.wating = true;
-    this.tbFont.updateSubscriptionPrice(this.inStream.id, newSubscriptionPrice).then((confirmation: string) => {
-      if(confirmation.indexOf('new price for subscribing to') > -1) {
+    this.tbFront.updateSubscriptionPrice(this.inStream.id, newSubscriptionPrice)
+      .then(confirmation => {
         this.subscriptionPriceUpdated = true;
-      }
-      this.wating = false;
-    })
+        this.wating = false;
+      })
   }
-  
+
   inputChnaged(): boolean {
     return this.subscriptionPrice !== this.inStream.subscriptionPriceUSD
   }

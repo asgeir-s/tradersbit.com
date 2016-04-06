@@ -82,10 +82,13 @@ export class TbStreamChartProfitCtrl {
   }
 
   private createChartSerie(signals: Signal[]): any {
+    if (signals.length === 0 || signals == null) {
+      return []
+    }
     let series = new Array<Array<number>>();
-    if(signals[signals.length-1].signal !== 0) {
-        series.push(Array(signals[signals.length-1].timestamp,
-          0))
+    if (signals[signals.length - 1].signal !== 0) {
+      series.push(Array(signals[signals.length - 1].timestamp,
+        0))
     }
     for (var i = signals.length - 1; i > 0; i--) {
       if (signals[i].signal === 0) {

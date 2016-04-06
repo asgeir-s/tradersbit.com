@@ -66,7 +66,8 @@ export class TbFront {
   }
 
   createApiClient(awstoken?: any) {
-    if (awstoken !== null) {
+    if (awstoken != null) {
+      console.log("returns private ApiClient")
       return this.$window.apigClientFactory.newClient({
         accessKey: awstoken.AccessKeyId,
         secretKey: awstoken.SecretAccessKey,
@@ -248,63 +249,100 @@ export class TbFront {
       return streamKeys.map((key: string) => valideUser.app_metadata[key])
     }
   }
-  
-  /** public */
 
+  /** public */
 
   publicGetAllStreams(): angular.IPromise<Array<Stream>> {
     const deferred: angular.IDeferred<Array<Stream>> = this.$q.defer()
 
-    this.apigClient.streamsGet({}, {}, {})
-      .then((res: SuccessRespondse<Array<Stream>>) => deferred.resolve(res.data))
-      .catch((err: any) => {
-        this.signOut("Could not connect")
-        console.log("error " + JSON.stringify(err))
-        deferred.reject("error " + JSON.stringify(err))
-      })
+    if (this.streams == null || this.streamsDirty) {
+      this.streamsDirty = false
+      console.log("PublicApiService - fatches streams")
+      this.apigClient.streamsGet({}, {}, {})
+        .then((res: SuccessRespondse<Array<Stream>>) => {
+          this.streams = res.data
+          deferred.resolve(this.streams)
+        })
+        .catch((err: any) => {
+          this.signOut("Could not connect")
+          console.log("error " + JSON.stringify(err))
+          deferred.reject("error " + JSON.stringify(err))
+        })
+    }
+    else {
+      // the variable is defined
+      console.log("PublicApiService - gets already fatched streams.")
+      deferred.resolve(this.streams)
+    }
     return deferred.promise
   }
 
 
+/**     this.apigClient.streamsStreamIdGet({ "streamId": streamId }, {}, {}) */
   publicGetStream(streamId: string): angular.IPromise<Stream> {
     const deferred: angular.IDeferred<Stream> = this.$q.defer()
+    if (typeof this.streams !== "undefined") {
+      // the variable is defined
+      console.log("PublicApiService - gets already fatched stream.")
+      const cachedStream = _.find(this.streams, (stream: Stream) => stream.id === streamId)
+      if (typeof cachedStream === "undefined") {
+        console.log("PublicApiService - the stream was not in already fatched streams. Get single stream.")
 
-    this.apigClient.streamsStreamIdGet({
-      "streamId": streamId
-    }, {}, {})
-      .then((res: SuccessRespondse<Stream>) => deferred.resolve(res.data))
-      .catch((err: any) => {
-        this.signOut("Could not connect")
-        console.log("error " + JSON.stringify(err))
-        deferred.reject("error " + JSON.stringify(err))
+        this.apigClient.streamsStreamIdGet({ "streamId": streamId }, {}, {})
+        .then((res: SuccessRespondse<Stream>) => {
+            // add the stream to the cash
+            this.streams.push(res.data)
+            // resolve
+            deferred.resolve(res.data)
+          },
+          (err: any) => {
+            console.error("PublicApiService - Could not get stream. Error: " + err)
+            deferred.reject("PublicApiService - Could not get stream. Error: " + err)
+          })
+      }
+      else {
+        deferred.resolve(cachedStream);
+      }
+    }
+    else {
+      this.publicGetAllStreams().then((streams: Array<Stream>) => {
+        deferred.resolve(_.find(this.streams, (stream: Stream) => stream.id === streamId))
       })
-    return deferred.promise
+    }
+    return deferred.promise;
   }
 
 
   publicGetSignals(streamId: string): angular.IPromise<Array<Signal>> {
     const deferred: angular.IDeferred<Array<Signal>> = this.$q.defer()
 
-    this.apigClient.streamsStreamIdSignalsGet({
-      "streamId": streamId
-    }, {}, {})
-      .then((res: SuccessRespondse<Array<Signal>>) => deferred.resolve(res.data))
-      .catch((err: any) => {
-        this.signOut("Could not connect")
-        console.log("error " + JSON.stringify(err))
-        deferred.reject("error " + JSON.stringify(err))
-      })
+    if (typeof this.signalsMap[streamId] !== "undefined") {
+      // the variable is defined
+      console.log("PublicApiService - gets already fatched signals.")
+      deferred.resolve(this.signalsMap[streamId])
+    }
+    else {
+      console.log("PublicApiService - fatches signals")
+      this.apigClient.streamsStreamIdSignalsGet({ "streamId": streamId }, {}, {})
+        .then((res: SuccessRespondse<Array<Signal>>) => {
+          this.signalsMap[streamId] = res.data
+          deferred.resolve(this.signalsMap[streamId])
+        },
+        (err: any) => {
+          console.error("PublicApiService - Could not get signals. Error: " + err)
+          deferred.reject("PublicApiService - Could not get signals. Error: " + err)
+        })
+    }
+
     return deferred.promise
   }
 
 
-  publisSubscribe(reCaptcha: string, subscription: SubscriptionRequest): angular.IPromise<any> {
-    const deferred: angular.IDeferred<any> = this.$q.defer()
+  publicSubscribeReturnPaymentCode(reCaptcha: string, subscription: SubscriptionRequest): angular.IPromise<string> {
+    const deferred: angular.IDeferred<string> = this.$q.defer()
 
-    this.apigClient.subscribePost({
-      "x-re-captcha": reCaptcha
-    }, subscription, {})
-      .then((res: SuccessRespondse<any>) => deferred.resolve(res.data))
+    this.apigClient.subscribePost({ "x-re-captcha": reCaptcha }, subscription, {})
+      .then((res: SuccessRespondse<any>) => deferred.resolve(res.data.paymentCode))
       .catch((err: any) => {
         this.signOut("Could not connect")
         console.log("error " + JSON.stringify(err))

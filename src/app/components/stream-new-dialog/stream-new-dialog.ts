@@ -30,15 +30,15 @@ export class TbStreamNewCtrl {
   wating: boolean = false;
   error: string;
 
-  constructor(private tbFont: TbFront, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) { }
+  constructor(private tbFront: TbFront, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) { }
 
   cancel() {
     this.$mdDialog.cancel();
   };
 
   createStream(newStream: NewStream) {
-    this.wating = true;
-    this.tbFont.postStream(newStream)
+    this.wating = true
+    this.tbFront.postStream(newStream)
       .then((streamId: string) => {
         this.$state.go(<string>this.$state.current, {}, { reload: true })
           .then(() => {

@@ -41,7 +41,7 @@ export class TbSubscriptionDialogCtrl {
   /* @ngInject */
   constructor(private tbFront: TbFront, private $sce: angular.ISCEService,
     private $mdDialog: angular.material.IDialogService,
-    private $mdSidenav: angular.material.ISidenavService, private $state: any) {
+    private $mdSidenav: angular.material.ISidenavService, private $state: any, private $timeout: any) {
 
     this.subscriptionPriceUSD = this.inStream.subscriptionPriceUSD
     this.updatePrice()
@@ -76,13 +76,13 @@ export class TbSubscriptionDialogCtrl {
     console.log("subscription:" + JSON.stringify(subscription))
     this.showRecaptchaWarning = false
 
-    this.tbFront.publisSubscribe(this.reCaptchaResponds, subscription)
-      .then((coinbaseEmbedCode: CoinbaseEmbedCode) => {
-        this.coinbaseEmbedCode = coinbaseEmbedCode.embed_code
+    this.tbFront.publicSubscribeReturnPaymentCode(this.reCaptchaResponds, subscription)
+      .then(coinbasePaymentCode => {
+        this.coinbaseEmbedCode = coinbasePaymentCode
         this.gotPaymentInfo = true
       })
       .catch((err: any) => console.log("Server error: " + err))
-      .finally(() => this.waitForResponds = false)
+      .finally(() => this.$timeout(() => this.waitForResponds = false, 2000))
   }
 
 }
