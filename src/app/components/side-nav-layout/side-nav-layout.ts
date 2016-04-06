@@ -1,3 +1,4 @@
+
 /** @ngInject */
 export function tbSideNavLayout(): angular.IDirective {
 

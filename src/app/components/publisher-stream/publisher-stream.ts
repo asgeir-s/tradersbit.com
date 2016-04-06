@@ -1,6 +1,8 @@
+
+
 import { PublisherStream, Stream } from '../../../app/typings/types';
 import { Signal } from '../../typings/types'
-import { AuthApi } from '../../services/auth-api/auth-api'
+import { TbFront } from "../../services/tb-front/tb-front"
 import { BitfinexSocket } from '../../services/bitfinex-socket/bitfinex-socket'
 
 /** @ngInject */
@@ -29,7 +31,7 @@ export class TbPublisherStreamCtrl {
 
   constructor(public $location: any, private $mdMedia: angular.material.IMedia, private $mdDialog: any,
     private $q: angular.IQService, private $http: angular.IHttpService, private $state: angular.ui.IStateService,
-    private authApi: AuthApi, private _: _.LoDashStatic, private $mdToast: any, bitfinexSocket: BitfinexSocket) {
+    private tbFont: TbFront, private _: _.LoDashStatic, private $mdToast: any, bitfinexSocket: BitfinexSocket) {
 
     if (this.inStream.exchange === 'bitfinex') {
       this.computeUnrealizedPL(this.inStream.lastSignal, bitfinexSocket.lastRate);
@@ -58,7 +60,7 @@ export class TbPublisherStreamCtrl {
       locals: {
         stream: this.inStream
       },
-      controller: 
+      controller:
       /** @ngInject */
       class DialogCtrl2 {
         constructor(public stream: Stream) {
@@ -77,7 +79,7 @@ export class TbPublisherStreamCtrl {
       locals: {
         stream: this.inStream
       },
-      controller: 
+      controller:
       /** @ngInject */
       class DialogCtrl2 {
         constructor(public stream: Stream) {
@@ -130,7 +132,7 @@ export class TbPublisherStreamCtrl {
 
   postSignal(streamId: string, signal: number) {
     this.waitingForSignalBack = true;
-    this.authApi.postSignal(streamId, signal)
+    this.tbFont.postSignal(streamId, signal)
       .then((signals: Array<Signal>) => {
         this.inStream.lastSignal = _.max(signals, 'id');
         this.inStream.status = this.inStream.lastSignal.signal;

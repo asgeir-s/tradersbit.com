@@ -1,4 +1,6 @@
-import { AuthApi } from '../../services/auth-api/auth-api'
+
+
+import { TbFront } from "../../services/tb-front/tb-front"
 
 /** @ngInject */
 export function tbPublish(): angular.IDirective {
@@ -21,16 +23,16 @@ export class TbPublishCtrl {
   inVerify: string;
   verifyed: boolean = false;
 
-  constructor(private authApi: AuthApi, private $mdSidenav: angular.material.ISidenavService) {
-   if(typeof this.inVerify !== 'undefined' && this.inVerify === 'verifyed' ) {
-     this.verifyed = true;
-   }
+  constructor(private tbFront: TbFront, private $mdSidenav: angular.material.ISidenavService) {
+    if (typeof this.inVerify !== 'undefined' && this.inVerify === 'verifyed') {
+      this.verifyed = true;
+    }
   }
-  
+
   signOut() {
-    this.authApi.signOut('')
+    this.tbFront.signOut('')
   }
-  
+
   toggleMenu() {
     return this.$mdSidenav('leftBig').open();
   }

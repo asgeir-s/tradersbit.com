@@ -9,22 +9,6 @@ export interface Trade {
   position: string;
 }
 
-export interface Stats {
-  timeOfLastSignal: number;
-  accumulatedLoss: number;
-  numberOfProfitableTrades: number;
-  numberOfLoosingTrades: number;
-  numberOfSignals: number;
-  allTimeValueExcl: number;
-  maxDrawDown: number;
-  firstPrice: number;
-  buyAndHoldChange: number;
-  accumulatedProfit: number;
-  timeOfFirstSignal: number;
-  allTimeValueIncl: number;
-  numberOfClosedTrades: number;
-}
-
 export interface PublisherStream {
   id: string;
   currencyPair: string;
@@ -33,15 +17,6 @@ export interface PublisherStream {
   stats: Stats;
   status: number;
   lastSignal: Signal;
-}
-
-export interface Stream {
-  id: string;
-  name: string;
-  currencyPair: string;
-  subscriptionPriceUSD: number;
-  exchange: string;
-  stats: Stats;
 }
 
 export interface NewStream {
@@ -68,13 +43,15 @@ export interface NewStreamResponds {
   apiKey: string;
 }
 
-export interface Subscription {
-  email: string;
-  apiKey: string;
-  apiSecret: string;
-  signalsToEmail: boolean;
+export interface SubscriptionRequest {
+  email: string
+  streamId: string
+  autoTrader?: boolean
+  apiKey?: string
+  apiSecret?: string
+  oldexpirationTime?: number
+  autoTraderData?: any
 }
-
 
 export interface StreamsAttribute {
   name: string;
@@ -86,4 +63,33 @@ export interface StreamsAttribute {
   getValue: any;
   good?: (stream: Stream) => boolean;
   bad?: (stream: Stream) => boolean;
+}
+
+export interface Stats {
+  timeOfLastSignal: number
+  accumulatedLoss: number
+  numberOfProfitableTrades: number
+  numberOfLoosingTrades: number
+  numberOfSignals: number
+  allTimeValueExcl: number
+  maxDrawDown: number
+  firstPrice: number
+  buyAndHoldChange: number
+  accumulatedProfit: number
+  timeOfFirstSignal: number
+  allTimeValueIncl: number
+  numberOfClosedTrades: number
+}
+
+
+export interface Stream {
+  currencyPair: string
+  name: string
+  stats: Stats
+  subscriptionPriceUSD: number
+  exchange: string
+  id: string
+  idOfLastSignal?: number
+  status?: number
+  lastSignal?: Signal
 }

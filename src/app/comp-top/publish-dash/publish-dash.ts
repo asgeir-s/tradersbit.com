@@ -1,6 +1,9 @@
+
+
 import { Stream, StreamsAttribute } from '../../typings/types'
-import { AuthApi } from '../../services/auth-api/auth-api'
 import { BitfinexSocket } from '../../services/bitfinex-socket/bitfinex-socket'
+import { TbFront } from "../../services/tb-front/tb-front"
+
 
 /** @ngInject */
 export function tbPublishDash(): angular.IDirective {
@@ -153,7 +156,7 @@ export class TbPublishDashCtrl {
     }
   ];
 
-  constructor(private authApi: AuthApi, private $mdDialog: any,
+  constructor(private tbFront: TbFront, private $mdDialog: any,
     private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService, bitfinexSocket: BitfinexSocket) {
     console.log('my streams: ' + JSON.stringify(this.myStreams()));
     this.noStreams = this.myStreams().length === 0;
@@ -176,7 +179,7 @@ export class TbPublishDashCtrl {
   }
 
   signOut() {
-    this.authApi.signOut('')
+    this.tbFront.signOut('')
   }
 
   openNewStreamDialog(ev: any) {

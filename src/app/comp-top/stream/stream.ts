@@ -1,7 +1,9 @@
+
+
 import { BitcoinaverageApi } from '../../services/bitcoinaverage-api/bitcoinaverage-api'
 import { Stream, StreamsAttribute, Signal, Trade } from '../../typings/types'
 import { StreamAttributes } from '../../util/stream-attributes'
-import { AuthApi } from '../../services/auth-api/auth-api'
+import { TbFront } from "../../services/tb-front/tb-front"
 
 /** @ngInject */
 export function tbStream(): angular.IDirective {
@@ -22,7 +24,7 @@ export function tbStream(): angular.IDirective {
 
 /** @ngInject */
 export class TbStreamCtrl {
-  
+
   // input:
   inStream: Stream;
   inSignals: Array<Signal>;
@@ -35,16 +37,16 @@ export class TbStreamCtrl {
 
   empety: boolean = true;
   amOwner: boolean = false;
-  
+
   showAllStats: boolean = false;
-  
+
   /* @ngInject */
-  constructor(private $timeout: angular.ITimeoutService, private $mdDialog: any, 
-  highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi, private authApi: AuthApi, 
-  private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService) {
+  constructor(private $timeout: angular.ITimeoutService, private $mdDialog: any,
+    highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi, private tbFront: TbFront,
+    private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService) {
     this.empety = this.inSignals.length <= 1;
-    if (typeof authApi.streamIds !== 'undefined') {
-      this.amOwner = authApi.streamIds.indexOf(this.inStream.id) >= 0;
+    if (typeof tbFront.streamIds !== 'undefined') {
+      this.amOwner = tbFront.streamIds.indexOf(this.inStream.id) >= 0;
     }
 
     if (!this.empety) {
@@ -99,7 +101,7 @@ export class TbStreamCtrl {
         stream: this.inStream,
         btcRate: this.btcRate
       },
-      controller: 
+      controller:
       /** @ngInject */
       class DialogCtrl {
         constructor(public stream: Stream, public btcRate: number) {
@@ -109,11 +111,11 @@ export class TbStreamCtrl {
     });
 
   }
-  
+
   toggleMenu() {
     return this.$mdSidenav('leftBig').open();
   }
-  
+
   togleAllInfo() {
     this.showAllStats = !this.showAllStats;
   }
@@ -127,5 +129,5 @@ export class TbStreamCtrl {
       return "CLOSE";
     }
   }
-  
+
 }

@@ -1,3 +1,5 @@
+
+
 /** @ngInject */
 export function tbAbout(): angular.IDirective {
 
@@ -31,6 +33,3 @@ export class TbAboutCtrl {
   }
 
 }
-
-
-

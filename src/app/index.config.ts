@@ -1,3 +1,5 @@
+
+
 /** @ngInject */
 export function config($logProvider: angular.ILogProvider, $locationProvider: angular.ILocationProvider, $mdThemingProvider: any, authProvider: any) {
   // enable log

@@ -1,4 +1,6 @@
-import { AuthApi } from '../../services/auth-api/auth-api'
+
+
+import { TbFront } from "../../services/tb-front/tb-front"
 
 /** @ngInject */
 export function tbSignIn(): angular.IDirective {
@@ -20,7 +22,7 @@ export class TbSignInCtrl {
   mustVerifyEmail: boolean = false;
   wating: boolean = false;
 
-  constructor(private auth: any, authApi: AuthApi, private $state: ng.ui.IStateService) {
+  constructor(private auth: any, tbFont: TbFront, private $state: ng.ui.IStateService) {
     auth.config.auth0lib.$container = null; // auth0 lock fix
 
     auth.signin({
@@ -43,7 +45,7 @@ export class TbSignInCtrl {
         // success callback
         this.wating = true;
 
-        authApi.signIn(profile, token)
+        tbFont.signIn(profile, token)
           .then(() => {
             this.$state.go('publish-dash');
           })

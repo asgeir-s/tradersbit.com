@@ -1,3 +1,5 @@
+
+
 /** @ngInject */
 export class BitfinexSocket {
 

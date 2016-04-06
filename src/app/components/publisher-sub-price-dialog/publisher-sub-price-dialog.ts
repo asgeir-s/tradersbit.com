@@ -1,4 +1,6 @@
-import { AuthApi } from '../../services/auth-api/auth-api';
+
+
+import { TbFront } from "../../services/tb-front/tb-front"
 import { Stream } from '../../../app/typings/types';
 
 /** @ngInject */
@@ -26,7 +28,7 @@ export class tbSubscriptionPriceDialogCtrl {
   wating: boolean = false;
   subscriptionPriceUpdated: boolean = false;
 
-  constructor(private authApi: AuthApi, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) {
+  constructor(private tbFont: TbFront, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) {
     this.subscriptionPrice = angular.copy(this.inStream.subscriptionPriceUSD)
    }
 
@@ -36,7 +38,7 @@ export class tbSubscriptionPriceDialogCtrl {
 
   updateSubscriptionPrice(newSubscriptionPrice: number) {
     this.wating = true;
-    this.authApi.updateSubscriptionPrice(this.inStream.id, newSubscriptionPrice).then((confirmation: string) => {
+    this.tbFont.updateSubscriptionPrice(this.inStream.id, newSubscriptionPrice).then((confirmation: string) => {
       if(confirmation.indexOf('new price for subscribing to') > -1) {
         this.subscriptionPriceUpdated = true;
       }

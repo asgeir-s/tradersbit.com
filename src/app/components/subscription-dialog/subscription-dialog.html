@@ -20,10 +20,13 @@
 
     <div ng-hide="ctrl.gotPaymentInfo">
       <p>
-        By subscribing to this stream, you will get new trading signals sent to your e-mail and/or automatically traded at <span style="text-transform: capitalize;">{{ctrl.inStream.exchange}}</span> on your behalf.
+        By subscribing to this stream, you will get new trading signals sent to your e-mail and/or automatically traded at
+        <span
+        style="text-transform: capitalize;">{{ctrl.inStream.exchange}}</span> on your behalf.
       </p>
       <p>
-        If you include your e-mail address, you will receive an e-mail giving you the option to continue the subscription seven days before it expires.
+        If you include your e-mail address, you will receive an e-mail giving you the option to continue the subscription seven days
+        before it expires.
       </p>
       <p>
         If you later want to change the e-mail or API keys, you have to buy a new subscription.
@@ -32,18 +35,15 @@
 
     <form novalidate name="subscribeForm" ng-hide="ctrl.gotPaymentInfo || ctrl.waitForResponds">
       <div layout="column" layout-align="center">
-        <md-switch class="md-primary signals-to-email" ng-model="ctrl.subscription.signalsToEmail" ng-disabled="true" aria-label="Subscribe with Email">
-          Send new signals to email
-        </md-switch>
         <md-input-container flex>
-          <label for="email">Email (optional if you use Autotrader)</label>
+          <label for="email">Email</label>
           <input ng-required='ctrl.subscription.signalsToEmail' type="email" ng-model="ctrl.subscription.email" id="email" value=""
           />
-        </md-input-container>
+        </md-input-container>∆
         <md-switch class="md-primary" ng-disabled="true" ng-model="ctrl.subscribeAutoTrader" aria-label="Switch 6" ng-change="ctrl.updatePrice()">
           Autotrader ({{ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{ctrl.autoTraderPrice / ctrl.inBtcRate | number:4}})
           <small>coming soon</small>
-        </md-switch>
+        </md-switch>∆
         <md-input-container flex ng-hide="!ctrl.subscribeAutoTrader">
           <label>API key for <span style="text-transform: capitalize;">{{ctrl.inStream.exchange}}</span></label>
           <input name="apiKey" ng-required='ctrl.subscribeAutoTrader' ng-disabled="!ctrl.subscribeAutoTrader" type="text" ng-model="ctrl.subscription.apiKey"

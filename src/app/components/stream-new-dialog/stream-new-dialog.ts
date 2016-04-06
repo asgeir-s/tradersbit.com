@@ -1,5 +1,7 @@
+
+
 import { NewStream } from '../../../app/typings/types';
-import { AuthApi } from '../../services/auth-api/auth-api'
+import { TbFront } from "../../services/tb-front/tb-front"
 
 /** @ngInject */
 export function tbStreamNewDialog(): angular.IDirective {
@@ -28,7 +30,7 @@ export class TbStreamNewCtrl {
   wating: boolean = false;
   error: string;
 
-  constructor(private authApi: AuthApi, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) { }
+  constructor(private tbFont: TbFront, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) { }
 
   cancel() {
     this.$mdDialog.cancel();
@@ -36,7 +38,7 @@ export class TbStreamNewCtrl {
 
   createStream(newStream: NewStream) {
     this.wating = true;
-    this.authApi.postStream(newStream)
+    this.tbFont.postStream(newStream)
       .then((streamId: string) => {
         this.$state.go(<string>this.$state.current, {}, { reload: true })
           .then(() => {

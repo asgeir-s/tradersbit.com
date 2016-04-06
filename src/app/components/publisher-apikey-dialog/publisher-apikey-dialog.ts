@@ -1,4 +1,6 @@
-import { AuthApi } from '../../services/auth-api/auth-api'
+
+
+import { TbFront } from "../../services/tb-front/tb-front"
 
 /** @ngInject */
 export function tbPublisherApikeyDialog(): angular.IDirective {
@@ -23,7 +25,7 @@ export class TbPublisherApikeyDialogCtrl {
   apiKey: string
   watingForKey: boolean = false
 
-  constructor(private authApi: AuthApi, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) { }
+  constructor(private tbFront: TbFront, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) { }
 
   cancel() {
     this.$mdDialog.cancel();
@@ -31,7 +33,7 @@ export class TbPublisherApikeyDialogCtrl {
 
   getApiKey() {
     this.watingForKey = true;
-    this.authApi.getApiKey(this.inStreamId).then((apiKey: string) => {
+    this.tbFront.getApiKey(this.inStreamId).then((apiKey: string) => {
       this.apiKey = apiKey
       this.watingForKey = false;
     })

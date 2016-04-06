@@ -1,17 +1,19 @@
 /// <reference path="../../typings/main.d.ts" />
 
-require('script!../assets/auth-api-sdk/lib/axios/dist/axios.standalone.js');
-require('script!../assets/auth-api-sdk/lib/CryptoJS/rollups/hmac-sha256.js');
-require('script!../assets/auth-api-sdk/lib/CryptoJS/rollups/sha256.js');
-require('script!../assets/auth-api-sdk/lib/CryptoJS/components/hmac.js');
-require('script!../assets/auth-api-sdk/lib/CryptoJS/components/enc-base64.js');
-require('script!../assets/auth-api-sdk/lib/moment/moment.js');
-require('script!../assets/auth-api-sdk/lib/url-template/url-template.js');
-require('script!../assets/auth-api-sdk/lib/apiGatewayCore/sigV4Client.js');
-require('script!../assets/auth-api-sdk/lib/apiGatewayCore/apiGatewayClient.js');
-require('script!../assets/auth-api-sdk/lib/apiGatewayCore/simpleHttpClient.js');
-require('script!../assets/auth-api-sdk/lib/apiGatewayCore/utils.js');
-require('script!../assets/auth-api-sdk/apigClient.js');
+declare const require: any
+
+require('script!../assets/tb-front-sdk/lib/axios/dist/axios.standalone.js');
+require('script!../assets/tb-front-sdk/lib/CryptoJS/rollups/hmac-sha256.js');
+require('script!../assets/tb-front-sdk/lib/CryptoJS/rollups/sha256.js');
+require('script!../assets/tb-front-sdk/lib/CryptoJS/components/hmac.js');
+require('script!../assets/tb-front-sdk/lib/CryptoJS/components/enc-base64.js');
+//require('script!../assets/tb-front-sdk/lib/moment/moment.js');
+require('script!../assets/tb-front-sdk/lib/url-template/url-template.js');
+require('script!../assets/tb-front-sdk/lib/apiGatewayCore/sigV4Client.js');
+require('script!../assets/tb-front-sdk/lib/apiGatewayCore/apiGatewayClient.js');
+require('script!../assets/tb-front-sdk/lib/apiGatewayCore/simpleHttpClient.js');
+require('script!../assets/tb-front-sdk/lib/apiGatewayCore/utils.js');
+require('script!../assets/tb-front-sdk/apigClient.js');
 
 require('script!../assets/highstock.js');
 
@@ -47,8 +49,9 @@ import { tbPublisherApikeyDialog } from './components/publisher-apikey-dialog/pu
 import { tbSubscriptionPriceDialog } from './components/publisher-sub-price-dialog/publisher-sub-price-dialog'
 
 // services
-import { PublicApi } from './services/public-api/public-api';
-import { AuthApi } from './services/auth-api/auth-api';
+//import { PublicApi } from './services/public-api/public-api';
+//import { AuthApi } from './services/auth-api/auth-api';
+import { TbFront } from './services/tb-front/tb-front'
 import { BitcoinaverageApi } from './services/bitcoinaverage-api/bitcoinaverage-api';
 import { BitfinexSocket } from './services/bitfinex-socket/bitfinex-socket';
 
@@ -56,15 +59,15 @@ import { BitfinexSocket } from './services/bitfinex-socket/bitfinex-socket';
 module tradersbitCom {
   'use strict';
 
-  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt', 'ngWebSocket', "oc.lazyLoad"]) // 'angular-storage'
-    .constant('_', (<any> window)._)
-    .constant('highcharts', (<any> window).Highcharts)
+  angular.module('tradersbitCom', ['ngSanitize', 'ui.router', 'ngMaterial', 'highcharts-ng', 'vcRecaptcha', 'auth0', 'angular-storage', 'angular-jwt', 'ngWebSocket', "oc.lazyLoad"]) //  'angular-storage'
+    .constant('_', (<any>window)._)
+    .constant('highcharts', (<any>window).Highcharts)
 
     .config(config)
     .config(routerConfig)
     .run(runBlock)
 
-  // top-components
+    // top-components
     .directive('tbHome', tbHome)
     .directive('tbStreams', tbStreams)
     .directive('tbStream', tbStream)
@@ -73,7 +76,7 @@ module tradersbitCom {
     .directive('tbAbout', tbAbout)
     .directive('tbCompetition', tbCompetition)
 
-  // components
+     //components
     .directive('tbSideNavLayout', tbSideNavLayout)
     .directive('tbStreamsTable', tbStreamsTable)
     .directive('tbInfoTable', tbInfoTable)
@@ -91,9 +94,10 @@ module tradersbitCom {
     .directive('tbPublisherApikeyDialog', tbPublisherApikeyDialog)
     .directive('tbSubscriptionPriceDialog', tbSubscriptionPriceDialog)
 
-  // services
-    .service('publicApi', PublicApi)
-    .service('authApi', AuthApi)
+     //services
+    //.service('publicApi', PublicApi)
+    //.service('authApi', AuthApi)
+    .service("tbFront", TbFront)
     .service('bitcoinaverageApi', BitcoinaverageApi)
     .service('bitfinexSocket', BitfinexSocket);
 

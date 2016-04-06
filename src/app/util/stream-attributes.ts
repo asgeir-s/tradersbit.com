@@ -439,7 +439,7 @@ export class StreamAttributes {
       name: "Time of Last Signal",
       short: "TLS",
       description: '',
-      jsonPath: "stats.timeOfLastSignal",
+      jsonPath: "timeOfLastSignal",
       on: true,
       bad: (stream: Stream) => {
         let secInMonth = 86400000 * 30;
