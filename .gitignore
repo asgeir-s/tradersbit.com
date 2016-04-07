@@ -4,7 +4,7 @@ coverage/
 .sass-cache/
 .idea/
 .tmp/
-dist/
+/dist/
 .DS_Store
 src/app/**/*.js
 /typings
