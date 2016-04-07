@@ -11,15 +11,19 @@ export class TbFront {
   myStreamIds: Array<string>
   myStreams: Array<Stream>
   mySignalsMap: { [streamId: string]: Array<Signal> } = {}
-  private apigClient: any
+  private privateApigClient: any
+  private publicApigClient: any
 
   /** @ngInject */
   constructor(private auth: any, private store: any, private $q: angular.IQService, private _: _.LoDashStatic,
     private $window: any, private $state: ng.ui.IStateService, private jwtHelper: any,
     private $timeout: angular.ITimeoutService, private $mdToast: any) {
 
-    this.apigClient = this.createApiClient(this.store.get("awstoken"))
+    this.publicApigClient = this.createApiClient()
+
     try {
+      const awstoken = this.store.get("awstoken")
+      this.privateApigClient = awstoken == null ? undefined : this.createApiClient(this.store.get("awstoken"))
       const token = this.store.get("token")
 
       if (typeof token !== "undefined") {
@@ -55,7 +59,7 @@ export class TbFront {
     this.auth.getToken(options)
       .then((delegation: any) => {
         this.store.set("awstoken", delegation.Credentials)  // add to local storage
-        this.apigClient = this.createApiClient(delegation.Credentials)
+        this.privateApigClient = this.createApiClient(delegation.Credentials)
         deferred.resolve(true)
       },
       (err: any) => {
@@ -86,7 +90,7 @@ export class TbFront {
   }
 
   signOut(reason: string) {
-    this.apigClient = this.createApiClient()
+    this.privateApigClient = undefined
     this.auth.signout()
     this.store.remove("profile")
     this.store.remove("token")
@@ -94,7 +98,6 @@ export class TbFront {
     this.mySignalsMap = {}
     this.myStreams = undefined
     this.myStreamIds = undefined
-    this.apigClient = undefined
     console.log("auth-api: signed out")
     this.$state.reload()
     if (reason !== "") {
@@ -125,7 +128,7 @@ export class TbFront {
     }
     else {
       console.log("Tb-Font - fatches streams")
-      this.apigClient.meStreamsGet({ "x-auth-token": this.store.get("token") }, {}, {})
+      this.privateApigClient.meStreamsGet({ "x-auth-token": this.store.get("token") }, {}, {})
         .then((streams: any) => {
 
           if (typeof streams.data === "undefined") {
@@ -158,7 +161,7 @@ export class TbFront {
     let deferred: angular.IDeferred<Array<Signal>> = this.$q.defer()
 
     console.log("Tb-Font - post signal")
-    this.apigClient.meStreamsStreamIdSignalPost({ "x-auth-token": this.store.get("token"), "streamId": streamId }, {
+    this.privateApigClient.meStreamsStreamIdSignalPost({ "x-auth-token": this.store.get("token"), "streamId": streamId }, {
       "signal": signal  }, {})
       .then((res: SuccessRespondse<Array<Signal>>) => deferred.resolve(res.data))
       .catch((err: any) => {
@@ -176,7 +179,7 @@ export class TbFront {
     let deferred: angular.IDeferred<string> = this.$q.defer()
 
     console.log("Tb-Font - update subscription price")
-    this.apigClient.meStreamsStreamIdSubscriptionPricePut({ "x-auth-token": this.store.get("token"), 
+    this.privateApigClient.meStreamsStreamIdSubscriptionPricePut({ "x-auth-token": this.store.get("token"), 
     "streamId": streamId }, { "priceUsd": newPriceUsd }, {})
       .then((res: SuccessRespondse<string>) => deferred.resolve(res.data))
       .catch((err: any) => {
@@ -193,7 +196,7 @@ export class TbFront {
     let deferred: angular.IDeferred<string> = this.$q.defer()
 
     console.log("Tb-Font - post new stream")
-    this.apigClient.meStreamsPost({ "x-auth-token": this.store.get("token") }, newStream, {})
+    this.privateApigClient.meStreamsPost({ "x-auth-token": this.store.get("token") }, newStream, {})
       .then((res: SuccessRespondse<any>) => {
         // this is where you would put a success callback
         if (typeof res.data.jwt !== "undefined") {
@@ -222,7 +225,7 @@ export class TbFront {
     const deferred: angular.IDeferred<string> = this.$q.defer()
     console.log("Tb-Font - get apiKey")
 
-    this.apigClient.meStreamsStreamIdApikeyGet({
+    this.privateApigClient.meStreamsStreamIdApikeyGet({
       "x-auth-token": this.store.get("token"),
       "streamId": streamId
     }, {}, {})
@@ -258,7 +261,7 @@ export class TbFront {
     if (this.streams == null || this.streamsDirty) {
       this.streamsDirty = false
       console.log("PublicApiService - fatches streams")
-      this.apigClient.streamsGet({}, {}, {})
+      this.publicApigClient.streamsGet({}, {}, {})
         .then((res: SuccessRespondse<Array<Stream>>) => {
           this.streams = res.data
           deferred.resolve(this.streams)
@@ -288,7 +291,7 @@ export class TbFront {
       if (typeof cachedStream === "undefined") {
         console.log("PublicApiService - the stream was not in already fatched streams. Get single stream.")
 
-        this.apigClient.streamsStreamIdGet({ "streamId": streamId }, {}, {})
+        this.publicApigClient.streamsStreamIdGet({ "streamId": streamId }, {}, {})
         .then((res: SuccessRespondse<Stream>) => {
             // add the stream to the cash
             this.streams.push(res.data)
@@ -323,7 +326,7 @@ export class TbFront {
     }
     else {
       console.log("PublicApiService - fatches signals")
-      this.apigClient.streamsStreamIdSignalsGet({ "streamId": streamId }, {}, {})
+      this.publicApigClient.streamsStreamIdSignalsGet({ "streamId": streamId }, {}, {})
         .then((res: SuccessRespondse<Array<Signal>>) => {
           this.signalsMap[streamId] = res.data
           deferred.resolve(this.signalsMap[streamId])
@@ -341,7 +344,7 @@ export class TbFront {
   publicSubscribeReturnPaymentCode(reCaptcha: string, subscription: SubscriptionRequest): angular.IPromise<string> {
     const deferred: angular.IDeferred<string> = this.$q.defer()
 
-    this.apigClient.subscribePost({ "x-re-captcha": reCaptcha }, subscription, {})
+    this.publicApigClient.subscribePost({ "x-re-captcha": reCaptcha }, subscription, {})
       .then((res: SuccessRespondse<any>) => deferred.resolve(res.data.paymentCode))
       .catch((err: any) => {
         this.signOut("Could not connect")

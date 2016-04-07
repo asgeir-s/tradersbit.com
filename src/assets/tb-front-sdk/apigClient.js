@@ -23,7 +23,7 @@ apigClientFactory.newClient = function (config) {
             sessionToken: '',
             region: '',
             apiKey: undefined,
-            defaultContentType: 'application/json',
+            defaultContentType: 'application/json; charset=UTF-8',
             defaultAcceptType: 'application/json'
         };
     }
@@ -42,9 +42,9 @@ apigClientFactory.newClient = function (config) {
     if(config.region === undefined) {
         config.region = 'us-east-1';
     }
-    //If defaultContentType is not defined then default to application/json
+    //If defaultContentType is not defined then default to application/json; charset=UTF-8
     if(config.defaultContentType === undefined) {
-        config.defaultContentType = 'application/json';
+        config.defaultContentType = 'application/json; charset=UTF-8';
     }
     //If defaultAcceptType is not defined then default to application/json
     if(config.defaultAcceptType === undefined) {
@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://syzny4n47i.execute-api.us-east-1.amazonaws.com/prod';
+    var invokeUrl = 'https://api.tradersbit.com';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
