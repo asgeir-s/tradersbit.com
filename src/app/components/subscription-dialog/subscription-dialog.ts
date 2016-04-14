@@ -72,6 +72,7 @@ export class TbSubscriptionDialogCtrl {
 
     subscription.autoTrader = this.subscribeAutoTrader
     subscription.streamId = this.inStream.id
+    subscription.autoTraderData.percentToTrade = subscription.autoTraderData.percentToTrade / 100
 
     console.log("subscription:" + JSON.stringify(subscription))
     this.showRecaptchaWarning = false

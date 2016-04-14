@@ -20,11 +20,11 @@ export interface PublisherStream {
 }
 
 export interface NewStream {
-    name: string;
-    exchange: string;
-    currencyPair: string;
-    payoutAddress: string;
-    subscriptionPriceUSD: number;
+  name: string;
+  exchange: string;
+  currencyPair: string;
+  payoutAddress: string;
+  subscriptionPriceUSD: number;
 }
 
 export interface Signal {
@@ -46,11 +46,13 @@ export interface NewStreamResponds {
 export interface SubscriptionRequest {
   email: string
   streamId: string
-  autoTrader?: boolean
+  autoTrader: boolean
   apiKey?: string
   apiSecret?: string
-  oldexpirationTime?: number
-  autoTraderData?: any
+  autoTraderData?: {
+    percentToTrade: number,
+    openPosition: string
+  }
 }
 
 export interface StreamsAttribute {
