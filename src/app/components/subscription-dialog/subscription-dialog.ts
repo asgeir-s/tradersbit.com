@@ -30,11 +30,12 @@ export class TbSubscriptionDialogCtrl {
   fullPriceUSD: number
   subscribeAutoTrader: boolean = false
   fullPriceBTC: number
-  autoTraderPrice: number = 15
+  autoTraderPrice: number = 12
   showRecaptchaWarning: boolean = false
   waitForResponds = false
   gotPaymentInfo = false
   coinbaseEmbedCode: string
+  percentToTrade = 100
   private reCaptchaResponds: string
 
 
@@ -72,12 +73,25 @@ export class TbSubscriptionDialogCtrl {
 
     subscription.autoTrader = this.subscribeAutoTrader
     subscription.streamId = this.inStream.id
-    subscription.autoTraderData.percentToTrade = subscription.autoTraderData.percentToTrade / 100
 
-    console.log("subscription:" + JSON.stringify(subscription))
+    let subscriptionRequest = {
+      "email": this.subscription.email,
+      "autoTrader": this.subscribeAutoTrader,
+      "streamId": this.inStream.id
+    }
+
+    if (this.subscribeAutoTrader) {
+      subscriptionRequest["apiKey"] = this.subscription.apiKey
+      subscriptionRequest["apiSecret"] = this.subscription.apiSecret
+      subscriptionRequest["autoTraderData"] = {
+        "percentToTrade": this.percentToTrade / 100
+      }
+    }
+
+    // console.log("subscriptionRequest:" + JSON.stringify(subscriptionRequest))
     this.showRecaptchaWarning = false
 
-    this.tbFront.publicSubscribeReturnPaymentCode(this.reCaptchaResponds, subscription)
+    this.tbFront.publicSubscribeReturnPaymentCode(this.reCaptchaResponds, subscriptionRequest)
       .then(coinbasePaymentCode => {
         this.coinbaseEmbedCode = coinbasePaymentCode
         this.gotPaymentInfo = true
