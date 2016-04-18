@@ -29,7 +29,7 @@
         You will receive an e-mail giving you the option to continue the subscription five days before it expires.
       </p>
       <p>
-        It is not possible to change this information later.
+        It is not possible to change the information entered here.
       </p>
     </div>
 
@@ -40,7 +40,7 @@
           <input required type="email" ng-model="ctrl.subscription.email" id="email" value="">
         </md-input-container>
         <md-switch class="md-primary" ng-model="ctrl.subscribeAutoTrader" aria-label="Switch 6" ng-change="ctrl.updatePrice()">
-          Autotrader ({{ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{ctrl.autoTraderPrice / ctrl.inBtcRate | number:4}})
+          Autotrader Beta ({{ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{ctrl.autoTraderPrice / ctrl.inBtcRate | number:4}})
         </md-switch>
         <p class="autotrader-read-about">Read about Autotrader in the <a href="/faq" ng-click="ctrl.cancel()">FAQ</a>.</p>
         <div class="api-key-info" flex ng-hide="!ctrl.subscribeAutoTrader">

@@ -26,23 +26,35 @@
       <div class="md-list-item-text" layout="column">
         <h4>How does Autotrader work?</h4>
         <p>
-          Autotrader will trade on the subscribers behalf on new signals in the stream. Autotrader does margin trading.
+          Autotrader will trade the stream's incoming signals, on the subscriber's behalf.
         </p>
         <p>
-          On the first signal, autotrader will first close any open btcusd margin position. Then it will exeute the incomming trading
-          signal. When executing a trade the amount autotrader will buy and sell is your spesifyed "Percentage to Trade"
-          of "Tradable Balance". If you specified 100% "Percentage to Trade", it will use 99.9% (to make sure you have the
-          founds to cover the trade).
+          For now, autotrader only does margin trading. Therefore, the money you want autotrader to trade with must be in your "Trading
+          Wallet" at Bitfinex.
         </p>
         <p>
-          All trades executed by Autotrader are market orders. A market order is a buy or sell order to be executed immediately at
-          current market prices. This means that you should not expect to get the excect same price as recorded in the trading
-          signal, also you will encounter slippage. <a href="http://www.investopedia.com/terms/s/slippage.asp"
+          All trades executed by Autotrader are market orders. A market order is a buy or a sell order to be executed immediately at
+          current market prices. This means that you should not expect to get the exact same price as recorded in the trading
+          signal, because of slippage, latency, etc. <a href="http://www.investopedia.com/terms/s/slippage.asp"
             target="_blank">Read about slippage on Investopedia.</a>
         </p>
         <p>
-          Their is also a average latencey of aproximatly 2 secounds from the signal is published by the publisher, until the trade
-          is executed at the exchange. Therefore, this should not be thought of as a high fequency trading sulution.
+          On the first signal, autotrader will close any open BTC/USD margin position before executing the signaled order. When executing
+          an order, the amount autotrader will use to buy or sell short is your specified "Percentage to Trade" of "Tradable
+          Balance" in your "Trading Wallet". If you specified 100% "Percentage to Trade", it will use 99.9%, this is done
+          to make sure you have the funds to cover the order at the order time.
+        </p>
+        <p>
+          There is an average latency of approximately 2 seconds from a signal is published by the publisher, until the order is executed
+          at the exchange. Therefore, this should not be thought of as a high-frequency trading solution.
+        </p>
+      </div>
+    </md-list-item>
+    <md-list-item>
+      <div class="md-list-item-text" layout="column">
+        <h4>How do I stop autotrader before the subscription e</h4>
+        <p>
+          Sign into Bitfinex, go to <a href="https://www.bitfinex.com/account/api" target="_blank">API key Management</a>, then revoke the API key you entered when subscribing with autotrader.
         </p>
       </div>
     </md-list-item>
