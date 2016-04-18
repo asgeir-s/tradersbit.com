@@ -55,26 +55,27 @@ export class TbCompetitionCtrl {
       }
     }
   ];
-  endTime: number = 1457222340000;
-  top10Streams: Array<Stream>;
-  timeLeft: number = this.endTime - new Date().getTime();
-  seconds = Math.floor((this.timeLeft / 1000) % 60);
-  minutes = Math.floor(((this.timeLeft / (1000 * 60)) % 60));
-  hours = Math.floor(((this.timeLeft / (1000 * 60 * 60)) % 24));
-  days = Math.floor((this.timeLeft / (1000 * 60 * 60 * 24)));
+  endTimeComp1 = 1457222340000
+  endTimeComp3: number = 1470052800000;
+  top10StreamsComp2: Array<Stream>;
+  timeLeftComp3: number = this.endTimeComp3 - new Date().getTime();
+  seconds = Math.floor((this.timeLeftComp3 / 1000) % 60);
+  minutes = Math.floor(((this.timeLeftComp3 / (1000 * 60)) % 60));
+  hours = Math.floor(((this.timeLeftComp3 / (1000 * 60 * 60)) % 24));
+  days = Math.floor((this.timeLeftComp3 / (1000 * 60 * 60 * 24)));
 
   constructor(private $mdSidenav: angular.material.ISidenavService, private _: any, $interval: any, private $state: any) {
-    this.top10Streams = this.inStreams()
-    .filter((stream: Stream) => stream.stats.numberOfClosedTrades >= 10)
+    this.top10StreamsComp2 = this.inStreams()
+    .filter((stream: Stream) => stream.stats.numberOfClosedTrades >= 20)
     .sort((stream1: Stream, stream2: Stream) =>
-      this.attributes[1].getValue(stream2) - this.attributes[1].getValue(stream1)).slice(0, 10);
+      this.attributes[1].getValue(stream2) - this.attributes[1].getValue(stream1)).slice(0, 10)
 
     $interval(() => {
-      this.timeLeft = this.endTime - new Date().getTime();
-      this.seconds = Math.floor((this.timeLeft / 1000) % 60);
-      this.minutes = Math.floor(((this.timeLeft / (1000 * 60)) % 60));
-      this.hours = Math.floor(((this.timeLeft / (1000 * 60 * 60)) % 24));
-      this.days = Math.floor((this.timeLeft / (1000 * 60 * 60 * 24)));
+      this.timeLeftComp3 = this.endTimeComp3 - new Date().getTime();
+      this.seconds = Math.floor((this.endTimeComp3 / 1000) % 60);
+      this.minutes = Math.floor(((this.endTimeComp3 / (1000 * 60)) % 60));
+      this.hours = Math.floor(((this.endTimeComp3 / (1000 * 60 * 60)) % 24));
+      this.days = Math.floor((this.endTimeComp3 / (1000 * 60 * 60 * 24)));
 
     }, 1000, 0);
 

@@ -10,6 +10,52 @@
 <div class="toolbar-mobile-space"></div>
 
 <md-content>
+
+  <h1>Ongoing</h1>
+  <md-card layout="row" layout-xs="column">
+    <div flex>
+      <md-card-title>
+        <md-card-title-text>
+          <h2 class="md-display-1">First Stream to Reach 60% Net Profit</h2>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <md-list>
+          <md-list-item>
+            <b>Prize:</b>&nbsp; 2 BTC and stream promotion
+          </md-list-item>
+          <md-list-item>
+            <b>End time:</b>&nbsp; When a stream's Net Profit hits 60%
+          </md-list-item>
+          <md-list-item>
+            <b>Minimum number of closed trades:</b>&nbsp; 20
+          </md-list-item>
+          <md-list-item>
+            <b>Each user should only have one account. But each account can have up to three streams.</b>
+          </md-list-item>
+        </md-list>
+        <p>
+          The first stream to make a net profit of 60% gets 2 BTC paid to the stream's payout address.
+        </p>
+        <p>
+          All new and existing streams are competing.
+        </p>
+        <p>
+          We will also promote the winning stream in our media campaign, thus exposing it to potential subscribers.
+        </p>
+      </md-card-content>
+    </div>
+
+    <md-card flex>
+      <md-card-title>
+      </md-card-title>
+      <md-card-content>
+        <tb-streams-table flex in-streams="ctrl.top10StreamsComp2" in-attributes="ctrl.attributes" in-sort-by="'Net Profit'"></tb-streams-table>
+      </md-card-content>
+    </md-card>
+  </md-card>
+
+  <h1>Starting Soon</h1>
   <md-card layout="row" layout-xs="column">
     <div flex>
       <md-card-title>
@@ -23,7 +69,53 @@
             <b>Prize:</b>&nbsp; 1 BTC and stream promotion
           </md-list-item>
           <md-list-item>
-            <b>End time:</b>&nbsp; {{ ctrl.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
+            <b>Start time:</b>&nbsp; 01 May 2016, 12:00 +0000/UTC
+          </md-list-item>
+          <md-list-item>
+            <b>End time:</b>&nbsp; {{ ctrl.endTimeComp3 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
+          </md-list-item>
+          <md-list-item>
+            <b>Minimum number of closed trades:</b>&nbsp; 20
+          </md-list-item>
+          <md-list-item>
+            <b>Each user should only have one account. But each account can have up to three streams.</b>
+          </md-list-item>
+        </md-list>
+        <p>
+          The stream with the highest Net Profit at {{ ctrl.endTimeComp3 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC gets 1 BTC paid to the stream's payout address.
+        </p>
+        <p>
+          We will also promote the winning stream in our media campaign, thus exposing it to potential subscribers.
+        </p>
+      </md-card-content>
+    </div>
+
+    <md-card flex>
+      <md-card-title>
+      </md-card-title>
+      <md-card-content>
+        <p>
+          Not started
+        </p>
+      </md-card-content>
+    </md-card>
+  </md-card>
+
+  <h1>Finished</h1>
+  <md-card layout="row" layout-xs="column">
+    <div flex>
+      <md-card-title>
+        <md-card-title-text>
+          <h2 class="md-display-1">Highest Net Profit</h2>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content>
+        <md-list>
+          <md-list-item>
+            <b>Prize:</b>&nbsp; 1 BTC and stream promotion
+          </md-list-item>
+          <md-list-item>
+            <b>End time:</b>&nbsp; {{ ctrl.endTimeComp1 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
             <b>Time left: </b>&nbsp; finished
@@ -48,15 +140,13 @@
       <md-card-title>
       </md-card-title>
       <md-card-content class="center">
-         <md-icon class="material-icons cake" style="font-size: 200px;">cake</md-icon>
-                 <h6 class="md-title" style="margin-bottom: 0px;">Winner:</h6>
+        <md-icon class="material-icons cake" style="font-size: 200px;">cake</md-icon>
+        <h6 class="md-title" style="margin-bottom: 0px;">Winner:</h6>
         <h3 class="md-display-2" style="margin-top: 0px;">ChronoTrading</h3>
         <h6 class="md-title" style="margin-bottom: 0px;">Result:</h6>
         <h4 class="md-display-1" style="margin-top: 0px;">13.62% Net Profit</h4>
 
       </md-card-content>
     </md-card>
-
-
   </md-card>
 </md-content>
