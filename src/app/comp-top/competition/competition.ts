@@ -52,18 +52,20 @@ export class TbCompetitionCtrl {
       }
     }
   ]
-  endTimeComp1 = 1457222340000
-  startTimeComp3 = 1462104000000
-  endTimeComp3: number = 1470052800000
+
+  comp3 = {
+    startTime: 1462104000000,
+    endTime: 1470052800000,
+    timeLeft: {
+      seconds: 0,
+      minutes: 0,
+      hours: 0,
+      days: 0
+    }
+  }
 
   top10StreamsComp2: Array<Stream>
   top10StreamsComp3: Array<Stream>
-
-  timeLeftComp3: number = this.endTimeComp3 - new Date().getTime()
-  seconds = Math.floor((this.timeLeftComp3 / 1000) % 60)
-  minutes = Math.floor(((this.timeLeftComp3 / (1000 * 60)) % 60))
-  hours = Math.floor(((this.timeLeftComp3 / (1000 * 60 * 60)) % 24))
-  days = Math.floor((this.timeLeftComp3 / (1000 * 60 * 60 * 24)))
 
   constructor(private $mdSidenav: angular.material.ISidenavService, private _: any,
     $interval: any, private $state: any) {
@@ -73,24 +75,29 @@ export class TbCompetitionCtrl {
         this.attributes[1].getValue(stream2) - this.attributes[1].getValue(stream1)).slice(0, 10)
 
     this.top10StreamsComp3 = this.inStreams()
-      .filter((stream: Stream) => stream.recordedState["1462104000000"] != null)
+      .filter((stream: Stream) => stream.recordedState[this.comp3.startTime.toString()] != null)
+      .filter((stream: Stream) =>
+        (stream.lastSignal.id - stream.recordedState[this.comp3.startTime.toString()].firstSignal.id) >= 20)
       .sort((stream1: Stream, stream2: Stream) => {
         const stream1Change =
-          stream1.lastSignal.changeInclFee - stream1.recordedState["1462104000000"].firstSignal.valueInclFee
+          stream1.lastSignal.changeInclFee -
+          stream1.recordedState[this.comp3.startTime.toString()].firstSignal.valueInclFee
+
         const stream2Change =
-          stream2.lastSignal.changeInclFee - stream2.recordedState["1462104000000"].firstSignal.valueInclFee
+          stream2.lastSignal.changeInclFee -
+          stream2.recordedState[this.comp3.startTime.toString()].firstSignal.valueInclFee
+
         return stream2Change - stream1Change
       })
 
     console.log("top10StreamsComp3: " + JSON.stringify(this.top10StreamsComp3))
 
     $interval(() => {
-      this.timeLeftComp3 = this.endTimeComp3 - new Date().getTime()
-      this.seconds = Math.floor((this.endTimeComp3 / 1000) % 60)
-      this.minutes = Math.floor(((this.endTimeComp3 / (1000 * 60)) % 60))
-      this.hours = Math.floor(((this.endTimeComp3 / (1000 * 60 * 60)) % 24))
-      this.days = Math.floor((this.endTimeComp3 / (1000 * 60 * 60 * 24)))
-
+      const timeLeftComp3 = this.comp3.endTime - new Date().getTime()
+      this.comp3.timeLeft.seconds = Math.floor((this.comp3.endTime / 1000) % 60)
+      this.comp3.timeLeft.minutes = Math.floor(((this.comp3.endTime / (1000 * 60)) % 60))
+      this.comp3.timeLeft.hours = Math.floor(((this.comp3.endTime / (1000 * 60 * 60)) % 24))
+      this.comp3.timeLeft.days = Math.floor((this.comp3.endTime / (1000 * 60 * 60 * 24)))
     }, 1000, 0)
 
   }

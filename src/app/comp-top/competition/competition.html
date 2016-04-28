@@ -69,10 +69,10 @@
             <b>Prize:</b>&nbsp; 1 BTC and stream promotion
           </md-list-item>
           <md-list-item>
-            <b>Start time:</b>&nbsp; {{ ctrl.startTimeComp3 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
+            <b>Start time:</b>&nbsp; {{ ctrl.comp3.startTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
-            <b>End time:</b>&nbsp; {{ ctrl.endTimeComp3 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
+            <b>End time:</b>&nbsp; {{ ctrl.comp3.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
             <b>Minimum number of closed trades (in competition):</b>&nbsp; 20
@@ -85,7 +85,7 @@
           </md-list-item>
         </md-list>
         <p>
-          The stream with the highest Net Profit at {{ ctrl.endTimeComp3 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC gets 1 BTC paid
+          The stream with the highest Net Profit at {{ ctrl.comp3.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC gets 1 BTC paid
           to the stream's payout address.
         </p>
         <p>
@@ -119,7 +119,7 @@
             <b>Prize:</b>&nbsp; 1 BTC and stream promotion
           </md-list-item>
           <md-list-item>
-            <b>End time:</b>&nbsp; {{ ctrl.endTimeComp1 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
+            <b>End time:</b>&nbsp; {{ 1457222340000 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
             <b>Time left: </b>&nbsp; finished
