@@ -1,17 +1,12 @@
-
-
- /** @ngInject */
+/** @ngInject */
 export class BitcoinaverageApi {
 
-    private apiURL: string = "https://api.bitcoinaverage.com/ticker/USD/last";
+  constructor(private $http: angular.IHttpService) { }
 
-    constructor(private $http: angular.IHttpService) {}
-
-    getPrice() {
-      return this.$http.get(this.apiURL)
-        .then((response: angular.IHttpPromiseCallbackArg<number>) => {
-          return response.data;
-        });
-    }
-
+  getPrice() {
+    return this.$http.get("https://api.bitcoinaverage.com/ticker/USD/last")
+      .then((response: angular.IHttpPromiseCallbackArg<number>) => {
+        return response.data
+      })
   }
+}

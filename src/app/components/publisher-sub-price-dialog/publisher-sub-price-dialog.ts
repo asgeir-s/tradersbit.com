@@ -1,47 +1,47 @@
-
-
 import { TbFront } from "../../services/tb-front/tb-front"
-import { Stream } from '../../../app/typings/types';
+import { Stream } from "../../../app/typings/types"
 
 /** @ngInject */
 export function tbSubscriptionPriceDialog(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/components/publisher-sub-price-dialog/publisher-sub-price-dialog.html',
+    templateUrl: "app/components/publisher-sub-price-dialog/publisher-sub-price-dialog.html",
     bindToController: {
       inStream: "="
     },
-    controller: tbSubscriptionPriceDialogCtrl,
-    controllerAs: 'ctrl'
-  };
-
+    controller: TbSubscriptionPriceDialogCtrl,
+    controllerAs: "ctrl"
+  }
 }
 
 /** @ngInject */
-export class tbSubscriptionPriceDialogCtrl {
+export class TbSubscriptionPriceDialogCtrl {
 
   inStream: Stream
   subscriptionPrice: number
   apiKey: string
-  wating: boolean = false;
-  subscriptionPriceUpdated: boolean = false;
+  wating: boolean = false
+  subscriptionPriceUpdated: boolean = false
 
-  constructor(private tbFront: TbFront, private $state: ng.ui.IStateService, private $mdDialog: angular.material.IDialogService) {
+  constructor(
+    private tbFront: TbFront,
+    private $state: ng.ui.IStateService,
+    private $mdDialog: angular.material.IDialogService) {
     this.subscriptionPrice = angular.copy(this.inStream.subscriptionPriceUSD)
   }
 
   cancel() {
-    this.$mdDialog.cancel();
-  };
+    this.$mdDialog.cancel()
+  }
 
   updateSubscriptionPrice(newSubscriptionPrice: number) {
-    this.wating = true;
+    this.wating = true
     this.tbFront.updateSubscriptionPrice(this.inStream.id, newSubscriptionPrice)
       .then(confirmation => {
-        this.subscriptionPriceUpdated = true;
-        this.wating = false;
+        this.subscriptionPriceUpdated = true
+        this.wating = false
       })
   }
 
@@ -50,8 +50,8 @@ export class tbSubscriptionPriceDialogCtrl {
   }
 
   chnageState(newState: string) {
-    this.$state.go(newState);
-    this.cancel();
+    this.$state.go(newState)
+    this.cancel()
   }
 
 }

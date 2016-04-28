@@ -1,57 +1,55 @@
-
 import { TbFront } from "../../services/tb-front/tb-front"
 
 /** @ngInject */
 export function tbSignIn(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/components/sign-in/sign-in.html',
+    templateUrl: "app/components/sign-in/sign-in.html",
     bindToController: {
     },
     controller: TbSignInCtrl,
-    controllerAs: 'ctrl'
-  };
-
+    controllerAs: "ctrl"
+  }
 }
 
 /** @ngInject */
 export class TbSignInCtrl {
-  mustVerifyEmail: boolean = false;
-  wating: boolean = false;
+  mustVerifyEmail: boolean = false
+  wating: boolean = false
 
   constructor(private auth: any, tbFront: TbFront, private $state: ng.ui.IStateService) {
-    auth.config.auth0lib.$container = null; // auth0 lock fix
+    auth.config.auth0lib.$container = null // auth0 lock fix
 
     auth.signin({
-      container: 'hiw-login-container',
-      icon: 'https://tradersbit.com/assets/logo/logo.png',
+      container: "hiw-login-container",
+      icon: "https://tradersbit.com/assets/logo/logo.png",
       loginAfterSignup: false,
       authParams: {
         scope: "user_id openid email app_metadata"
       },
       dict: {
         signin: {
-          title: ' Sign In '
+          title: " Sign In "
         }
       }
     }, (profile: any, token: string) => {
-      if (typeof profile === 'undefined' || typeof token === 'undefined') {
-        this.mustVerifyEmail = true;
+      if (typeof profile === "undefined" || typeof token === "undefined") {
+        this.mustVerifyEmail = true
       }
       else {
         // success callback
-        this.wating = true;
+        this.wating = true
 
         tbFront.signIn(profile, token)
           .then(() => {
-            this.$state.go('publish-dash');
+            this.$state.go("publish-dash")
           })
       }
     }, () => {
-      console.log('signin failed!');
-    });
+      console.log("signin failed!")
+    })
   }
 
 }

@@ -1,35 +1,31 @@
-
-
 /** @ngInject */
 export function tbAbout(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/comp-top/about/about.html',
+    templateUrl: "app/comp-top/about/about.html",
     controller: TbAboutCtrl,
-    controllerAs: 'ctrl',
+    controllerAs: "ctrl",
     bindToController: {
       inTab: "="
     }
-  };
-
+  }
 }
 
 /** @ngInject */
 export class TbAboutCtrl {
 
-  inTab: string;
-  tabIndex: number;
+  inTab: string
+  tabIndex: number
 
   constructor(private $mdSidenav: angular.material.ISidenavService) {
-    if (this.inTab === 'relese') {
-      this.tabIndex = 1;
+    if (this.inTab === "relese") {
+      this.tabIndex = 1
     }
   }
 
   toggleMenu() {
-    return this.$mdSidenav('leftBig').open();
+    return this.$mdSidenav("leftBig").open()
   }
-
 }

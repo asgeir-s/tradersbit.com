@@ -1,58 +1,55 @@
-
-
-import { Stream, StreamsAttribute } from '../../typings/types'
-import { BitfinexSocket } from '../../services/bitfinex-socket/bitfinex-socket'
+import { Stream, StreamsAttribute } from "../../typings/types"
+import { BitfinexSocket } from "../../services/bitfinex-socket/bitfinex-socket"
 import { TbFront } from "../../services/tb-front/tb-front"
-
 
 /** @ngInject */
 export function tbPublishDash(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/comp-top/publish-dash/publish-dash.html',
+    templateUrl: "app/comp-top/publish-dash/publish-dash.html",
     controller: TbPublishDashCtrl,
-    controllerAs: 'ctrl',
+    controllerAs: "ctrl",
     bindToController: {
-      myStreams: '&'
+      myStreams: "&"
     }
-  };
+  }
 
 }
 
 /** @ngInject */
 export class TbPublishDashCtrl {
-  btcRate: number;
-  up: boolean = false;
-  down: boolean = false;
-  myStreams: () => Array<Stream>;
-  noStreams = true;
+  btcRate: number
+  up: boolean = false
+  down: boolean = false
+  myStreams: () => Array<Stream>
+  noStreams = true
   attributes: Array<StreamsAttribute> = [
     {
       name: "Exchange",
       short: "EXC",
-      description: '',
+      description: "",
       jsonPath: "exchange",
       on: true,
       getIt: (stream: Stream) => {
-        return stream.exchange;
+        return stream.exchange
       },
       getValue: (stream: Stream) => {
-        return stream.exchange;
+        return stream.exchange
       }
     },
     {
       name: "Currency Pair",
       jsonPath: "currencyPair",
       short: "CP",
-      description: '',
+      description: "",
       on: false,
       getIt: (stream: Stream) => {
-        return stream.currencyPair;
+        return stream.currencyPair
       },
       getValue: (stream: Stream) => {
-        return stream.currencyPair;
+        return stream.currencyPair
       }
     },
     {
@@ -62,41 +59,41 @@ export class TbPublishDashCtrl {
       jsonPath: "",
       on: true,
       getIt: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
-        let secInMonth = 86400000 * 30;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        let secInMonth = 86400000 * 30
 
         let AMP = (((allProfit / duration)) * secInMonth) * 100
         if (isNaN(AMP)) {
-          return '0%';
+          return "0%"
         }
         else {
-          return AMP.toFixed(2) + '%';
+          return AMP.toFixed(2) + "%"
         }
       },
       getValue: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
-        let secInMonth = 86400000 * 30;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        let secInMonth = 86400000 * 30
         return (((allProfit / duration)) * secInMonth) * 100
       }
     },
     {
       name: "Profit Factor",
       short: "PF",
-      description: '',
+      description: "",
       jsonPath: "",
       on: false,
       getValue: (stream: Stream) => {
-        return (stream.stats.accumulatedProfit / stream.stats.accumulatedLoss);
+        return (stream.stats.accumulatedProfit / stream.stats.accumulatedLoss)
       },
       getIt: (stream: Stream) => {
-        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
+        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss
         if (isNaN(PF)) {
-          return '-'
+          return "-"
         }
         else {
-          return PF.toFixed(2);
+          return PF.toFixed(2)
         }
       }
     },
@@ -107,16 +104,16 @@ export class TbPublishDashCtrl {
       jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100;
+        let PWT = (stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades) * 100
         if (isNaN(PWT)) {
-          return '-';
+          return "-"
         }
         else {
-          return (PWT).toFixed(2) + '%';
+          return (PWT).toFixed(2) + "%"
         }
       },
       getValue: (stream: Stream) => {
-        return stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades * 100;
+        return stream.stats.numberOfProfitableTrades / stream.stats.numberOfClosedTrades * 100
       }
     },
     {
@@ -126,73 +123,78 @@ export class TbPublishDashCtrl {
       jsonPath: "",
       on: false,
       getIt: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100
         if (isNaN(AT)) {
-          return '-';
+          return "-"
         }
         else {
-          return (AT).toFixed(2) + '%';
+          return (AT).toFixed(2) + "%"
         }
 
       },
       getValue: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        return allProfit / stream.stats.numberOfClosedTrades * 100;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        return allProfit / stream.stats.numberOfClosedTrades * 100
       }
     },
     {
       name: "Number of Closed Trads",
       short: "NCT",
-      description: '',
+      description: "",
       jsonPath: "stats.numberOfClosedTrades",
       on: false,
       getIt: (stream: Stream) => {
-        return stream.stats.numberOfClosedTrades;
+        return stream.stats.numberOfClosedTrades
       },
       getValue: (stream: Stream) => {
-        return stream.stats.numberOfClosedTrades;
+        return stream.stats.numberOfClosedTrades
       }
     }
-  ];
+  ]
 
-  constructor(private tbFront: TbFront, private $mdDialog: any,
-    private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService, bitfinexSocket: BitfinexSocket) {
-    console.log('my streams: ' + JSON.stringify(this.myStreams()));
-    this.noStreams = this.myStreams().length === 0;
-    this.btcRate = bitfinexSocket.lastRate;
+  constructor(
+    private tbFront: TbFront,
+    private $mdDialog: any,
+    private $mdMedia: angular.material.IMedia,
+    private $mdSidenav: angular.material.ISidenavService,
+    bitfinexSocket: BitfinexSocket) {
+
+    console.log("my streams: " + JSON.stringify(this.myStreams()))
+    this.noStreams = this.myStreams().length === 0
+    this.btcRate = bitfinexSocket.lastRate
 
     bitfinexSocket.dataStream.onMessage((message: any) => {
       let tick: Array<number> = JSON.parse(message.data)
       if (tick.length > 8) {
-        this.down = false;
-        this.up = false;
-        if(tick[7] < this.btcRate) {
-          this.down = true;
+        this.down = false
+        this.up = false
+        if (tick[7] < this.btcRate) {
+          this.down = true
         }
-        else if(tick[7] > this.btcRate) {
-          this.up = true;
+        else if (tick[7] > this.btcRate) {
+          this.up = true
         }
-        this.btcRate = tick[7];
+        this.btcRate = tick[7]
       }
-    });
+    })
   }
 
   signOut() {
-    this.tbFront.signOut('')
+    this.tbFront.signOut("")
   }
 
   openNewStreamDialog(ev: any) {
     this.$mdDialog.show({
-      template: '<md-dialog><tb-stream-new-dialog></tb-stream-new-dialog></md-dialog>',
+      template: "<md-dialog><tb-stream-new-dialog></tb-stream-new-dialog></md-dialog>",
       targetEvent: ev,
       clickOutsideToClose: true,
-      fullscreen: this.$mdMedia('xs')
+      fullscreen: this.$mdMedia("xs")
     })
-  };
+  }
 
   toggleMenu() {
-    return this.$mdSidenav('leftBig').open();
+    return this.$mdSidenav("leftBig").open()
   }
 
 }

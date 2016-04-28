@@ -1,65 +1,62 @@
-
-
-import { Stream, StreamsAttribute } from '../../typings/types'
+import { Stream, StreamsAttribute } from "../../typings/types"
 
 /** @ngInject */
 export function tbHome(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/comp-top/home/home.html',
+    templateUrl: "app/comp-top/home/home.html",
     controller: TbHomeCtrl,
-    controllerAs: 'ctrl',
+    controllerAs: "ctrl",
     bindToController: {
-      inStreams: '&'
+      inStreams: "&"
     }
-  };
-
+  }
 }
 
 /** @ngInject */
 export class TbHomeCtrl {
-  inStreams: () => Array<Stream>;
-  top5Streams: Array<Stream>;
+  inStreams: () => Array<Stream>
+  top5Streams: Array<Stream>
   attributes: Array<StreamsAttribute> = [
     {
       name: "Name",
       jsonPath: "name",
       short: "Name",
-      description: '',
+      description: "",
       on: true,
       getIt: (stream: Stream) => {
-        return stream.name;
+        return stream.name
       },
       getValue: (stream: Stream) => {
-        return stream.name;
+        return stream.name
       }
     },
     {
       name: "Exchange",
       short: "EXC",
-      description: '',
+      description: "",
       jsonPath: "exchange",
       on: false,
       getIt: (stream: Stream) => {
-        return stream.exchange;
+        return stream.exchange
       },
       getValue: (stream: Stream) => {
-        return stream.exchange;
+        return stream.exchange
       }
     },
     {
       name: "Currency Pair",
       jsonPath: "currencyPair",
       short: "CP",
-      description: '',
+      description: "",
       on: false,
       getIt: (stream: Stream) => {
-        return stream.currencyPair;
+        return stream.currencyPair
       },
       getValue: (stream: Stream) => {
-        return stream.currencyPair;
+        return stream.currencyPair
       }
     },
     {
@@ -69,52 +66,52 @@ export class TbHomeCtrl {
       jsonPath: "",
       on: false,
       good: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
-        let secInMonth = 86400000 * 30;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        let secInMonth = 86400000 * 30
         let AMP = (((allProfit / duration)) * secInMonth) * 100
         if (isNaN(AMP)) {
-          return false;
+          return false
         }
         else {
-          return AMP > 0;
+          return AMP > 0
         }
       },
       bad: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
-        let secInMonth = 86400000 * 30;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        let secInMonth = 86400000 * 30
         let AMP = (((allProfit / duration)) * secInMonth) * 100
         if (isNaN(AMP)) {
-          return false;
+          return false
         }
         else {
-          return AMP < 0;
+          return AMP < 0
         }
       },
       getIt: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
-        let secInMonth = 86400000 * 30;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        let secInMonth = 86400000 * 30
 
         let AMP = (((allProfit / duration)) * secInMonth) * 100
         if (isNaN(AMP)) {
-          return '0%';
+          return "0%"
         }
         else {
-          return AMP.toFixed(2) + '%';
+          return AMP.toFixed(2) + "%"
         }
       },
       getValue: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
-        let secInMonth = 86400000 * 30;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        let secInMonth = 86400000 * 30
         let AMP = (((allProfit / duration)) * secInMonth) * 100
         if (isNaN(AMP)) {
-          return 0;
+          return 0
         }
         else {
-          return AMP;
+          return AMP
         }
       }
     },
@@ -125,49 +122,49 @@ export class TbHomeCtrl {
       jsonPath: "stats.allTimeValueIncl",
       on: true,
       bad: (stream: Stream) => {
-        return (stream.stats.allTimeValueIncl - 1) * 100 < 0;
+        return (stream.stats.allTimeValueIncl - 1) * 100 < 0
       },
       good: (stream: Stream) => {
-        return (stream.stats.allTimeValueIncl - 1) * 100 > 0;
+        return (stream.stats.allTimeValueIncl - 1) * 100 > 0
       },
       getIt: (stream: Stream) => {
-        return ((stream.stats.allTimeValueIncl - 1) * 100).toFixed(2) + '%';
+        return ((stream.stats.allTimeValueIncl - 1) * 100).toFixed(2) + "%"
       },
       getValue: (stream: Stream) => {
-        return (stream.stats.allTimeValueIncl - 1) * 100;
+        return (stream.stats.allTimeValueIncl - 1) * 100
       }
     },
     {
       name: "Profit Factor",
       short: "Profit Factor",
-      description: '',
+      description: "",
       jsonPath: "",
       on: true,
       good: (stream: Stream) => {
-        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
+        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss
         if (isNaN(PF) || PF === Number.POSITIVE_INFINITY) {
-          return false;
+          return false
         }
         else {
-          return PF > 2;
+          return PF > 2
         }
       },
       getValue: (stream: Stream) => {
-        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
+        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss
         if (isNaN(PF) || PF === Number.POSITIVE_INFINITY) {
-          return 0;
+          return 0
         }
         else {
-          return PF;
+          return PF
         }
       },
       getIt: (stream: Stream) => {
-        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss;
+        let PF = stream.stats.accumulatedProfit / stream.stats.accumulatedLoss
         if (isNaN(PF) || PF === Number.POSITIVE_INFINITY) {
-          return '-'
+          return "-"
         }
         else {
-          return PF.toFixed(2);
+          return PF.toFixed(2)
         }
       }
     },
@@ -178,86 +175,88 @@ export class TbHomeCtrl {
       jsonPath: "",
       on: true,
       bad: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100
         if (isNaN(AT)) {
-          return false;
+          return false
         }
         else {
-          return AT < 0;
+          return AT < 0
         }
       },
       good: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100
         if (isNaN(AT)) {
-          return false;
+          return false
         }
         else {
-          return AT > 0;
+          return AT > 0
         }
       },
       getIt: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100
         if (isNaN(AT)) {
-          return '-';
+          return "-"
         }
         else {
-          return (AT).toFixed(2) + '%';
+          return (AT).toFixed(2) + "%"
         }
       },
       getValue: (stream: Stream) => {
-        let allProfit = stream.stats.allTimeValueIncl - 1;
-        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100;
+        let allProfit = stream.stats.allTimeValueIncl - 1
+        let AT = (allProfit / stream.stats.numberOfClosedTrades) * 100
         if (isNaN(AT)) {
-          return 0;
+          return 0
         }
         else {
-          return AT;
+          return AT
         }
       }
     }
-  ];
+  ]
 
-  constructor(private $state: ng.ui.IStateService, private $mdSidenav: angular.material.ISidenavService, private $mdToast: any) {
+  constructor(
+    private $state: ng.ui.IStateService,
+    private $mdSidenav: angular.material.ISidenavService,
+    private $mdToast: any) {
+
     this.top5Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) =>
-      this.getValue(stream2) - this.getValue(stream1)).slice(0, 5);
+      this.getValue(stream2) - this.getValue(stream1)).slice(0, 5)
 
     $mdToast.show(
       $mdToast.simple()
-        .action('Take a look')
-        .textContent('New trading competitions!')
+        .action("Take a look")
+        .textContent("New trading competitions!")
         .position("top right")
         .hideDelay(4000)
     ).then((response) => {
-      if (response === 'ok') {
-        this.chnageState('competition');
+      if (response === "ok") {
+        this.chnageState("competition")
       }
-    });
+    })
   }
   getValue(stream: Stream) {
-    return (stream.stats.allTimeValueIncl - 1) * 100;
+    return (stream.stats.allTimeValueIncl - 1) * 100
   }
 
   goToApiHelp() {
-    this.$state.go('api');
+    this.$state.go("api")
   }
 
-
   chnageState(newState: string) {
-    this.$state.go(newState);
+    this.$state.go(newState)
   }
 
   toggleMenu() {
-    return this.$mdSidenav('leftBig').open();
+    return this.$mdSidenav("leftBig").open()
   }
 
   averageMonthlyProfitIncl(stream: Stream): number {
-    let allProfit = stream.stats.allTimeValueIncl - 1;
-    let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal;
-    let secInMonth = 86400000 * 30;
-    return ((((allProfit / duration)) * secInMonth) * 100);
+    let allProfit = stream.stats.allTimeValueIncl - 1
+    let duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+    let secInMonth = 86400000 * 30
+    return ((((allProfit / duration)) * secInMonth) * 100)
   }
-
 }

@@ -1,27 +1,25 @@
-
-
-import { Signal } from '../../../app/typings/types';
+import { Signal } from "../../../app/typings/types"
 
 /** @ngInject */
 export function tbStreamChartProfit(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/components/stream-chart-profit/stream-chart-profit.html',
+    templateUrl: "app/components/stream-chart-profit/stream-chart-profit.html",
     bindToController: {
-      inSignals: '='
+      inSignals: "="
     },
     controller: TbStreamChartProfitCtrl,
-    controllerAs: 'ctrl'
-  };
+    controllerAs: "ctrl"
+  }
 
 }
 
 /** @ngInject */
 export class TbStreamChartProfitCtrl {
-  inSignals: Array<Signal>;
-  profitChartConfig: any;
+  inSignals: Array<Signal>
+  profitChartConfig: any
 
   /* @ngInject */
   constructor(highcharts: any) {
@@ -31,7 +29,7 @@ export class TbStreamChartProfitCtrl {
         // this is the Main Highcharts chart config. Any Highchart options are valid here.
         // will be overriden by values specified below.
         chart: {
-          zoomType: 'x'
+          zoomType: "x"
         },
         rangeSelector: {
           enabled: true
@@ -46,10 +44,10 @@ export class TbStreamChartProfitCtrl {
           valueDecimals: 2
         },
         yAxis: {
-          type: 'linear'
+          type: "linear"
         },
         xAxis: {
-          type: 'datetime',
+          type: "datetime",
           ordinal: false
         },
         exporting: {
@@ -60,8 +58,8 @@ export class TbStreamChartProfitCtrl {
 
       // series object (optional) - a list of series using normal Highcharts series options.
       series: [{
-        type: 'area',
-        name: 'Change in value',
+        type: "area",
+        name: "Change in value",
         data: this.createChartSerie(this.inSignals),
         fillColor: {
           linearGradient: {
@@ -72,12 +70,12 @@ export class TbStreamChartProfitCtrl {
           },
           stops: [
             [0, highcharts.getOptions().colors[0]],
-            [1, highcharts.Color(highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+            [1, highcharts.Color(highcharts.getOptions().colors[0]).setOpacity(0).get("rgba")]
           ]
         }
       }],
       useHighStocks: true
-    };
+    }
 
   }
 
@@ -85,21 +83,17 @@ export class TbStreamChartProfitCtrl {
     if (signals.length === 0 || signals == null) {
       return []
     }
-    let series = new Array<Array<number>>();
+    let series = new Array<Array<number>>()
     if (signals[signals.length - 1].signal !== 0) {
       series.push(Array(signals[signals.length - 1].timestamp,
         0))
     }
-    for (var i = signals.length - 1; i > 0; i--) {
+    for (let i = signals.length - 1; i > 0; i--) {
       if (signals[i].signal === 0) {
         series.push(Array(signals[i].timestamp,
           (signals[i].valueInclFee - signals[signals.length - 1].value) * 100))
       }
     }
-    return series;
+    return series
   }
 }
-
-
-
-

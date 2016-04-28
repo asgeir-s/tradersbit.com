@@ -1,22 +1,17 @@
-
-
 /** @ngInject */
 export function tbTradesTable(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/components/trades-table/trades-table.html',
+    templateUrl: "app/components/trades-table/trades-table.html",
     bindToController: {
-      inTrades: '='
+      inTrades: "="
     },
     controller: TbTradesTableCtrl,
-    controllerAs: 'ctrl'
-  };
-
+    controllerAs: "ctrl"
+  }
 }
 
 /** @ngInject */
-export class TbTradesTableCtrl {
-
-}
+export class TbTradesTableCtrl { }

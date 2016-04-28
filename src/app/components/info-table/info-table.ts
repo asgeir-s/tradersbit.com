@@ -1,29 +1,25 @@
-
-
-import { Stream } from '../../../app/typings/types';
+import { Stream } from "../../../app/typings/types"
 
 /** @ngInject */
 export function tbInfoTable(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/components/info-table/info-table.html',
+    templateUrl: "app/components/info-table/info-table.html",
     bindToController: {
-      inStream: '=',
-      inAttributes: '=',
-      inName: '@'
+      inStream: "=",
+      inAttributes: "=",
+      inName: "@"
     },
     controller: TbInfoTableCtrl,
-    controllerAs: 'ctrl'
-  };
-
+    controllerAs: "ctrl"
+  }
 }
 
 /** @ngInject */
 export class TbInfoTableCtrl {
-  inStream: Stream;
-  inAttributes: number;
+  inStream: Stream
+  inAttributes: number
   inName: String
-
 }

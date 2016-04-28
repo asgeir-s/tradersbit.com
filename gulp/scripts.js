@@ -3,6 +3,7 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
+var tsLintConf = require('../tslint.json')
 
 var browserSync = require('browser-sync');
 var webpack = require('webpack-stream');
@@ -14,18 +15,21 @@ function webpackWrapper(watch, test, callback) {
     resolve: { extensions: ['', '.ts'] },
     watch: watch,
     module: {
-      preLoaders: [{ test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader'}],
-      loaders: [{ test: /\.ts$/, exclude: /node_modules/, loaders: ['ng-annotate', 'awesome-typescript-loader']}] //'script-loader'
+      preLoaders: [{ test: /\.ts$/, exclude: /node_modules/, loader: 'tslint-loader' }],
+      loaders: [{ test: /\.ts$/, exclude: /node_modules/, loaders: ['ng-annotate', 'awesome-typescript-loader'] }] //'script-loader'
+    },
+    tslint: {
+      configuration: tsLintConf,
     },
     output: { filename: 'index.module.js' }
   };
 
-  if(watch) {
+  if (watch) {
     webpackOptions.devtool = 'inline-source-map';
   }
 
-  var webpackChangeHandler = function(err, stats) {
-    if(err) {
+  var webpackChangeHandler = function (err, stats) {
+    if (err) {
       conf.errorHandler('Webpack')(err);
     }
     $.util.log(stats.toString({
@@ -35,13 +39,13 @@ function webpackWrapper(watch, test, callback) {
       version: false
     }));
     browserSync.reload();
-    if(watch) {
+    if (watch) {
       watch = false;
       callback();
     }
   };
 
-  var sources = [ path.join(conf.paths.src, '/app/index.module.ts') ];
+  var sources = [path.join(conf.paths.src, '/app/index.module.ts')];
   if (test) {
     sources.push(path.join(conf.paths.src, '/app/**/*.spec.ts'));
   }

@@ -1,6 +1,6 @@
 {
-  "name": "tradersbitCom",
-  "version": "0.2.0",
+  "name": "tradersbit.com",
+  "version": "0.2.1",
   "scripts": {
     "test": "gulp test"
   },
@@ -44,13 +44,14 @@
     "ng-annotate-loader": "0.0.10",
     "phantomjs": "~1.9.18",
     "script-loader": "^0.6.1",
-    "tslint-loader": "~1.0.2",
+    "tslint": "^3.8.1",
+    "tslint-loader": "~2.1.4",
     "typescript": "~1.7.5",
+    "typings": "^0.6.8",
     "uglify-save-license": "~0.4.1",
     "webpack-stream": "~3.1.0",
     "wiredep": "~3.0.0",
-    "wrench": "~1.5.8",
-    "typings": "^0.6.8"
+    "wrench": "~1.5.8"
   },
   "engines": {
     "node": ">=0.10.0"

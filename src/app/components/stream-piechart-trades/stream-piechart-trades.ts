@@ -1,60 +1,56 @@
-
-
-import { Stream } from '../../../app/typings/types';
+import { Stream } from "../../../app/typings/types"
 
 /** @ngInject */
 export function tbStreamPiechartTrades(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/components/stream-piechart-trades/stream-piechart-trades.html',
+    templateUrl: "app/components/stream-piechart-trades/stream-piechart-trades.html",
     bindToController: {
-      inStream: '='
+      inStream: "="
     },
     controller: TbStreamPiechartTradesCtrl,
-    controllerAs: 'ctrl'
-  };
-
+    controllerAs: "ctrl"
+  }
 }
 
 /** @ngInject */
 export class TbStreamPiechartTradesCtrl {
-  inStream: Stream;
-  tradsPiechartConfig: any;
+  inStream: Stream
+  tradsPiechartConfig: any
 
   /* @ngInject */
   constructor($timeout: angular.ITimeoutService, highcharts: any) {
     this.tradsPiechartConfig = {
       options: {
         chart: {
-          type: 'pie',
+          type: "pie",
           height: 250
         },
         title: {
-          text: 'Trades'
+          text: "Trades"
         },
         tooltip: {
-          pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+          pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>"
         },
         plotOptions: {
           pie: {
             allowPointSelect: true,
-            cursor: 'pointer',
+            cursor: "pointer",
             dataLabels: {
               enabled: true,
-              format: '<b>{point.name}</b>: {point.percentage:.1f} % ({point.y})',
+              format: "<b>{point.name}</b>: {point.percentage:.1f} % ({point.y})",
               style: {
-                color: (highcharts.theme && highcharts.theme.contrastTextColor) || 'black'
+                color: (highcharts.theme && highcharts.theme.contrastTextColor) || "black"
               }
             }
           }
         },
-        colors: ['#96D957', '#da5a58', '#f1d537'],
+        colors: ["#96D957", "#da5a58", "#f1d537"],
         exporting: {
           enabled: false
         }
-
       },
       // the below properties are watched separately for changes.
 
@@ -75,8 +71,6 @@ export class TbStreamPiechartTradesCtrl {
           }]
       }],
       useHighStocks: false
-    };
-
+    }
   }
-
 }

@@ -1,11 +1,8 @@
-
-
 import { TbFront } from "./services/tb-front/tb-front"
 import { Stream, Signal } from "./typings/types"
 
 /** @ngInject */
 export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
-
 
   $stateProvider
     .state("home", {
@@ -133,7 +130,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       controller:
       class Roadmap {
         tab: string
-        constructor(private $mdSidenav: angular.material.ISidenavService) {}
+        constructor(private $mdSidenav: angular.material.ISidenavService) { }
         toggleMenu() {
           return this.$mdSidenav("leftBig").open()
         }

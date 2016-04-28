@@ -69,20 +69,24 @@
             <b>Prize:</b>&nbsp; 1 BTC and stream promotion
           </md-list-item>
           <md-list-item>
-            <b>Start time:</b>&nbsp; 01 May 2016, 12:00 +0000/UTC
+            <b>Start time:</b>&nbsp; {{ ctrl.startTimeComp3 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
             <b>End time:</b>&nbsp; {{ ctrl.endTimeComp3 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
-            <b>Minimum number of closed trades:</b>&nbsp; 20
+            <b>Minimum number of closed trades (in competition):</b>&nbsp; 20
+          </md-list-item>
+          <md-list-item>
+            <b>Only positions that are opened and closed between the start- and end- time applies.</b>
           </md-list-item>
           <md-list-item>
             <b>Each user should only have one account. But each account can have up to three streams.</b>
           </md-list-item>
         </md-list>
         <p>
-          The stream with the highest Net Profit at {{ ctrl.endTimeComp3 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC gets 1 BTC paid to the stream's payout address.
+          The stream with the highest Net Profit at {{ ctrl.endTimeComp3 | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC gets 1 BTC paid
+          to the stream's payout address.
         </p>
         <p>
           We will also promote the winning stream in our media campaign, thus exposing it to potential subscribers.

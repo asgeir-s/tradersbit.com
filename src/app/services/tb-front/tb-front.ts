@@ -1,5 +1,3 @@
-
-
 import { NewStream, SubscriptionRequest, Stream, Signal } from "../../../app/typings/types"
 
 export class TbFront {
@@ -76,14 +74,12 @@ export class TbFront {
         accessKey: awstoken.AccessKeyId,
         secretKey: awstoken.SecretAccessKey,
         sessionToken: awstoken.SessionToken,
-        region: "us-east-1", // set to your region
-        //defaultContentType: "application/json charset=UTF-8"
+        region: "us-east-1" // set to your region
       })
     }
     else {
       return this.$window.apigClientFactory.newClient({
-        region: "us-east-1", // set to your region
-        //defaultContentType: "application/json charset=UTF-8"
+        region: "us-east-1" // set to your region
       })
     }
 
@@ -161,8 +157,10 @@ export class TbFront {
     let deferred: angular.IDeferred<Array<Signal>> = this.$q.defer()
 
     console.log("Tb-Font - post signal")
-    this.privateApigClient.meStreamsStreamIdSignalPost({ "x-auth-token": this.store.get("token"), "streamId": streamId }, {
-      "signal": signal  }, {})
+    this.privateApigClient.meStreamsStreamIdSignalPost({
+      "x-auth-token": this.store.get("token"),
+      "streamId": streamId
+    }, { "signal": signal }, {})
       .then((res: SuccessRespondse<Array<Signal>>) => deferred.resolve(res.data))
       .catch((err: any) => {
         this.signOut("Could not connect")
@@ -179,8 +177,10 @@ export class TbFront {
     let deferred: angular.IDeferred<string> = this.$q.defer()
 
     console.log("Tb-Font - update subscription price")
-    this.privateApigClient.meStreamsStreamIdSubscriptionPricePut({ "x-auth-token": this.store.get("token"), 
-    "streamId": streamId }, { "priceUsd": newPriceUsd }, {})
+    this.privateApigClient.meStreamsStreamIdSubscriptionPricePut({
+      "x-auth-token": this.store.get("token"),
+      "streamId": streamId
+    }, { "priceUsd": newPriceUsd }, {})
       .then((res: SuccessRespondse<string>) => deferred.resolve(res.data))
       .catch((err: any) => {
         this.signOut("Could not connect")
@@ -280,8 +280,7 @@ export class TbFront {
     return deferred.promise
   }
 
-
-/**     this.apigClient.streamsStreamIdGet({ "streamId": streamId }, {}, {}) */
+  /**     this.apigClient.streamsStreamIdGet({ "streamId": streamId }, {}, {}) */
   publicGetStream(streamId: string): angular.IPromise<Stream> {
     const deferred: angular.IDeferred<Stream> = this.$q.defer()
     if (typeof this.streams !== "undefined") {
@@ -292,7 +291,7 @@ export class TbFront {
         console.log("PublicApiService - the stream was not in already fatched streams. Get single stream.")
 
         this.publicApigClient.streamsStreamIdGet({ "streamId": streamId }, {}, {})
-        .then((res: SuccessRespondse<Stream>) => {
+          .then((res: SuccessRespondse<Stream>) => {
             // add the stream to the cash
             this.streams.push(res.data)
             // resolve
@@ -304,7 +303,7 @@ export class TbFront {
           })
       }
       else {
-        deferred.resolve(cachedStream);
+        deferred.resolve(cachedStream)
       }
     }
     else {
@@ -312,9 +311,8 @@ export class TbFront {
         deferred.resolve(_.find(this.streams, (stream: Stream) => stream.id === streamId))
       })
     }
-    return deferred.promise;
+    return deferred.promise
   }
-
 
   publicGetSignals(streamId: string): angular.IPromise<Array<Signal>> {
     const deferred: angular.IDeferred<Array<Signal>> = this.$q.defer()
@@ -339,7 +337,6 @@ export class TbFront {
 
     return deferred.promise
   }
-
 
   publicSubscribeReturnPaymentCode(reCaptcha: string, subscription: SubscriptionRequest): angular.IPromise<string> {
     const deferred: angular.IDeferred<string> = this.$q.defer()

@@ -1,5 +1,3 @@
-
-
 import { TbFront } from "./services/tb-front/tb-front"
 
 /** @ngInject */
@@ -10,7 +8,7 @@ export function runBlock($log: angular.ILogService, auth: any, $rootScope: any, 
   // auth0: This hooks al auth events to check everything as soon as the app starts
   auth.hookEvents()
 
-  $rootScope.$on("$locationChangeStart", function() {
+  $rootScope.$on("$locationChangeStart", function () {
     let token = store.get("token")
     if (token) {
       if (!jwtHelper.isTokenExpired(token)) {

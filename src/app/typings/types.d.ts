@@ -94,4 +94,5 @@ export interface Stream {
   idOfLastSignal?: number
   status?: number
   lastSignal?: Signal
+  recordedState?: any
 }

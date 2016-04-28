@@ -1,4 +1,3 @@
-
 import { Stream, SubscriptionRequest, CoinbaseEmbedCode } from "../../../app/typings/types"
 import { TbFront } from "../../services/tb-front/tb-front"
 
@@ -37,7 +36,6 @@ export class TbSubscriptionDialogCtrl {
   coinbaseEmbedCode: string
   percentToTrade = 100
   private reCaptchaResponds: string
-
 
   /* @ngInject */
   constructor(private tbFront: TbFront, private $sce: angular.ISCEService,

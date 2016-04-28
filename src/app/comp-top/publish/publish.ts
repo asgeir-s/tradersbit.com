@@ -1,39 +1,36 @@
-
-
 import { TbFront } from "../../services/tb-front/tb-front"
 
 /** @ngInject */
 export function tbPublish(): angular.IDirective {
 
   return {
-    restrict: 'E',
+    restrict: "E",
     scope: {},
-    templateUrl: 'app/comp-top/publish/publish.html',
+    templateUrl: "app/comp-top/publish/publish.html",
     controller: TbPublishCtrl,
-    controllerAs: 'ctrl',
+    controllerAs: "ctrl",
     bindToController: {
       inVerify: "="
     }
-  };
-
+  }
 }
 
 /** @ngInject */
 export class TbPublishCtrl {
-  inVerify: string;
-  verifyed: boolean = false;
+  inVerify: string
+  verifyed: boolean = false
 
   constructor(private tbFront: TbFront, private $mdSidenav: angular.material.ISidenavService) {
-    if (typeof this.inVerify !== 'undefined' && this.inVerify === 'verifyed') {
-      this.verifyed = true;
+    if (typeof this.inVerify !== "undefined" && this.inVerify === "verifyed") {
+      this.verifyed = true
     }
   }
 
   signOut() {
-    this.tbFront.signOut('')
+    this.tbFront.signOut("")
   }
 
   toggleMenu() {
-    return this.$mdSidenav('leftBig').open();
+    return this.$mdSidenav("leftBig").open()
   }
 }
