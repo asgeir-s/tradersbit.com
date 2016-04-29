@@ -2,10 +2,10 @@
   <table class="streams-table click-table">
     <thead>
       <tr>
-        <th ng-repeat="atribute in ctrl.inAttributes()" ng-if="atribute.on" ng-click="ctrl.order(atribute)" ng-class="{allignleft: atribute.name === 'Name' || atribute.short === 'EXC'}">
-          <span class="sortorder" ng-show="ctrl.predicate === atribute">
-            <i class="material-icons" ng-show="ctrl.reverse">arrow_drop_down</i>
-       	    <i class="material-icons" ng-hide="ctrl.reverse">arrow_drop_up</i>
+        <th ng-repeat="atribute in $ctrl.inAttributes" ng-if="atribute.on" ng-click="$ctrl.order(atribute)" ng-class="{allignleft: atribute.name === 'Name' || atribute.short === 'EXC'}">
+          <span class="sortorder" ng-show="$ctrl.predicate === atribute">
+            <i class="material-icons" ng-show="$ctrl.reverse">arrow_drop_down</i>
+       	    <i class="material-icons" ng-hide="$ctrl.reverse">arrow_drop_up</i>
           </span>
           <a class="md-subhead table-header md-body-2" href="">
 						{{atribute.short}}     
@@ -15,8 +15,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="stream in ctrl.inStreams() | orderBy:ctrl.predicate.getValue:ctrl.reverse" ng-click="ctrl.goToStream(stream.id)">
-        <td ng-repeat="atribute in ctrl.inAttributes()" style="cursor:pointer;" ng-if="atribute.on" ng-class="{allignleft: atribute.name === 'Name' || atribute.short === 'EXC', good: atribute.good(stream), bad: atribute.bad(stream)}">
+      <tr ng-repeat="stream in $ctrl.streams | orderBy:$ctrl.predicate.getValue:$ctrl.reverse" ng-click="$ctrl.goToStream(stream.id)">
+        <td ng-repeat="atribute in $ctrl.inAttributes" style="cursor:pointer;" ng-if="atribute.on" ng-class="{allignleft: atribute.name === 'Name' || atribute.short === 'EXC', good: atribute.good(stream), bad: atribute.bad(stream)}">
           {{atribute.getIt(stream)}}
         </td>
       </tr>

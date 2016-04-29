@@ -16,4 +16,18 @@ md-toolbar {
       color: $light-font-color !important;
     }
   }
+  
+  md-input-container {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    margin-bottom: 0px !important;
+  }
+  
+  .filters{
+      background-color: $third-color-light;
+      
+      label {
+        color: #D3D3D3;
+      }
+  }
 }

@@ -1,44 +1,73 @@
 import { StreamsAttribute, Stream} from "../../../app/typings/types"
 
-/** @ngInject */
-export function tbStreamsTable(): angular.IDirective {
+export class TbStreamsTable implements ng.IComponentOptions {
+    bindings: any
+    controller: any
+    templateUrl: string
 
-    return {
-        restrict: "E",
-        scope: {},
-        templateUrl: "app/components/streams-table/streams-table.html",
-        bindToController: {
-            inStreams: "&",
-            inAttributes: "&",
-            inSortBy: "="
-        },
-        controller: TbStreamsTableCtrl,
-        controllerAs: "ctrl"
+    constructor() {
+        this.bindings = {
+            inStreams: "<",
+            inAttributes: "<",
+            inSortBy: "@",
+            inMinNumTrades: "<",
+            inActiveLastDays: "<",
+            inMinNetProfit: "<"
+        }
+        this.controller = TbStreamsTableCtrl
+        this.templateUrl = "app/components/streams-table/streams-table.html"
     }
 }
 
-/** @ngInject */
-export class TbStreamsTableCtrl {
-    // inputs
-    inAttributes: () => Array<StreamsAttribute>
-    inStreams: () => Array<Stream>
+class TbStreamsTableCtrl {
+    inStreams: Array<Stream>
+    inAttributes: Array<StreamsAttribute>
     inSortBy: string
+    inMinNumTrades: number
+    inActiveLastDays: number
+    inMinNetProfit: number
 
-    reverse: Boolean = true
+    reverse: boolean
     predicate: StreamsAttribute
+    streams: Array<Stream>
 
-    /* @ngInject */
     constructor(private $state: any, private _: any) {
-        this.predicate = _.find(this.inAttributes(), (it: any) => it.short === this.inSortBy)
-        console.log(this.predicate.name)
+        "ngInject"
+        this.reverse = true
+        this.predicate = _.find(this.inAttributes, it => it.short === this.inSortBy)
+        this.updateFilters()
     }
 
-    order(predicate: StreamsAttribute) {
-        this.reverse = (this.predicate === predicate) ? !this.reverse : false
-        this.predicate = predicate
+    $onChanges(): void {
+        this.updateFilters()
     }
 
-    goToStream(streamID: string) {
+    updateFilters(): void {
+        this.streams = this.inStreams
+
+        if (this.inMinNumTrades != null) {
+            this.streams = this.streams.filter(stream =>
+                stream.stats.numberOfClosedTrades >= this.inMinNumTrades)
+        }
+
+        if (this.inActiveLastDays != null && !isNaN(this.inActiveLastDays)) {
+            const signalsAfter = new Date().getTime() - this.inActiveLastDays * 86400000
+            this.streams = this.streams.filter(stream =>
+                stream.stats.timeOfLastSignal >= signalsAfter)
+        }
+
+        if (this.inMinNetProfit != null) {
+            this.streams = this.streams.filter(stream =>
+                (stream.stats.allTimeValueIncl - 1) * 100 >= this.inMinNetProfit)
+        }
+    }
+
+    order(newPredicate: StreamsAttribute): void {
+        this.reverse = (this.predicate === newPredicate) ? !this.reverse : false
+        this.predicate = newPredicate
+    }
+
+    goToStream(streamID: string): void {
         this.$state.go("stream", { "streamId": streamID })
     }
 }

@@ -31,7 +31,7 @@ import { tbCompetition } from "./comp-top/competition/competition"
 
 // components
 import { tbSideNavLayout } from "./components/side-nav-layout/side-nav-layout"
-import { tbStreamsTable } from "./components/streams-table/streams-table"
+import { TbStreamsTable } from "./components/streams-table/streams-table"
 import { tbInfoTable } from "./components/info-table/info-table"
 import { tbTradesTable } from "./components/trades-table/trades-table"
 import { tbStreamInfoPromo } from "./components/stream-info-promo/stream-info-promo"
@@ -86,7 +86,7 @@ module tradersbitCom {
 
     // components
     .directive("tbSideNavLayout", tbSideNavLayout)
-    .directive("tbStreamsTable", tbStreamsTable)
+    .component("tbStreamsTable", new TbStreamsTable())
     .directive("tbInfoTable", tbInfoTable)
     .directive("tbTradesTable", tbTradesTable)
     .directive("tbStreamInfoPromo", tbStreamInfoPromo)

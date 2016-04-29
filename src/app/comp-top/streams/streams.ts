@@ -22,6 +22,7 @@ export class TbStreamsCtrl {
   streamAttributes: Array<StreamsAttribute> = StreamAttributes.allAtributes()
   windowWidth: number
   isMobile: boolean
+  showFilters: boolean
 
   constructor(private $mdSidenav: angular.material.ISidenavService, private $window: angular.IWindowService) {
     this.windowWidth = $window.innerWidth
@@ -33,6 +34,8 @@ export class TbStreamsCtrl {
     else if (this.windowWidth > 600) {
       this.isMobile = false
     }
+
+    this.showFilters = this.isMobile ? false : true
 
     angular.element($window).bind("resize", () => {
       this.windowWidth = $window.innerWidth
@@ -47,6 +50,10 @@ export class TbStreamsCtrl {
         this.isMobile = false
       }
     })
+  }
+
+  tiggleShowFilters(): void {
+    this.showFilters = !this.showFilters
   }
 
   showOnlyMobileAttr(): void {
