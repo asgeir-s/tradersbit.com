@@ -4,6 +4,7 @@ var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
 var tsLintConf = require('../tslint.json')
+var stripDebug = require('gulp-strip-debug');
 
 var browserSync = require('browser-sync');
 var webpack = require('webpack-stream');
@@ -52,6 +53,7 @@ function webpackWrapper(watch, test, callback) {
 
   return gulp.src(sources)
     .pipe(webpack(webpackOptions, null, webpackChangeHandler))
+    .pipe(stripDebug())
     .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')));
 }
 
