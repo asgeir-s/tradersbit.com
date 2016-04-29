@@ -51,10 +51,17 @@ function webpackWrapper(watch, test, callback) {
     sources.push(path.join(conf.paths.src, '/app/**/*.spec.ts'));
   }
 
-  return gulp.src(sources)
-    .pipe(webpack(webpackOptions, null, webpackChangeHandler))
-    .pipe(stripDebug())
-    .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')));
+  if (watch) {
+    return gulp.src(sources)
+      .pipe(webpack(webpackOptions, null, webpackChangeHandler))
+      .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')));
+  }
+  else {
+    return gulp.src(sources)
+      .pipe(webpack(webpackOptions, null, webpackChangeHandler))
+      .pipe(stripDebug())
+      .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')));
+  }
 }
 
 gulp.task('scripts', function () {
