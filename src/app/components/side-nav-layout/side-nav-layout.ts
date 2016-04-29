@@ -1,21 +1,19 @@
-/** @ngInject */
-export function tbSideNavLayout(): angular.IDirective {
+export class SideNavLayout implements ng.IComponentOptions {
+  controller: any
+  templateUrl: string
+  transclude: boolean
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/side-nav-layout/side-nav-layout.html",
-    transclude: true,
-    controller: TbSideNavLayoutCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.controller = SideNavLayoutCtrl
+    this.templateUrl = "app/components/side-nav-layout/side-nav-layout.html"
+    this.transclude = true
   }
 }
 
-/** @ngInject */
-export class TbSideNavLayoutCtrl {
-
-  /* @ngInject */
-  constructor(private $state: ng.ui.IStateService, private $mdSidenav: angular.material.ISidenavService) { }
+class SideNavLayoutCtrl {
+  constructor(private $state: ng.ui.IStateService, private $mdSidenav: angular.material.ISidenavService) {
+    "ngInject"
+  }
 
   chnageState(newState: string) {
     this.$state.go(newState)
@@ -29,5 +27,4 @@ export class TbSideNavLayoutCtrl {
   goToApiHelp() {
     this.$state.go("help", { "tab": "api" })
   }
-
 }

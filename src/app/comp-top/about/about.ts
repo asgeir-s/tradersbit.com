@@ -1,25 +1,23 @@
-/** @ngInject */
-export function tbAbout(): angular.IDirective {
+export class AboutView implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/comp-top/about/about.html",
-    controller: TbAboutCtrl,
-    controllerAs: "ctrl",
-    bindToController: {
-      inTab: "="
+  constructor() {
+    this.bindings = {
+      inTab: "<"
     }
+    this.controller = AboutViewCtrl
+    this.templateUrl = "app/comp-top/about/about.html"
   }
 }
 
-/** @ngInject */
-export class TbAboutCtrl {
-
+class AboutViewCtrl {
   inTab: string
   tabIndex: number
 
   constructor(private $mdSidenav: angular.material.ISidenavService) {
+    "ngInject"
     if (this.inTab === "relese") {
       this.tabIndex = 1
     }

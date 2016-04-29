@@ -1,6 +1,6 @@
 <md-toolbar hide-gt-xs>
   <div class="md-toolbar-tools">
-    <md-button ng-click="ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
+    <md-button ng-click="$ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
       <md-icon class="material-icons">menu</md-icon>
     </md-button>
     <span flex></span>
@@ -18,15 +18,15 @@
     <br> or publish your own trading signals, sell subscriptions and
     <br> win competitions.
   </p>
-  <md-button class="promo-btn md-raised md-accent" ng-click="ctrl.chnageState('publish-dash')">Sign Up to Publish</md-button>
-  <md-button class="promo-btn md-raised md-accent" ng-click="ctrl.chnageState('streams')">Browse Streams</md-button>
+  <md-button class="promo-btn md-raised md-accent" ng-click="$ctrl.chnageState('publish-dash')">Sign Up to Publish</md-button>
+  <md-button class="promo-btn md-raised md-accent" ng-click="$ctrl.chnageState('streams')">Browse Streams</md-button>
 </div>
 
 <div class="top-stream-outer" layout="row" layout-align="center">
   <md-content class="md-whiteframe-15dp top-stream-card" flex flex-gt-md="75">
     <md-subheader>
       <h6 class="md-title center">Top streams</h6></md-subheader>
-    <tb-streams-table in-streams="ctrl.top5Streams;" in-attributes="ctrl.attributes" in-sort-by="Net Profit"></tb-streams-table>
+    <tb-streams-table in-streams="$ctrl.top5Streams;" in-attributes="$ctrl.attributes" in-sort-by="Net Profit"></tb-streams-table>
   </md-content>
 </div>
 
@@ -107,7 +107,7 @@ layout-align-gt-md="center">
           <h3>Submit Signals</h3>
           <p>
             Click SHORT, CLOSE, or LONG to send signals. Or generate an API key for sending signals through our
-            <a href="" ng-click="ctrl.goToApiHelp()">API</a>.
+            <a href="" ng-click="$ctrl.goToApiHelp()">API</a>.
           </p>
         </div>
       </md-list-item>
@@ -126,7 +126,7 @@ layout-align-gt-md="center">
       </div>
       <div class="home--features-row--item" flex>
         <img src="/assets/images/robot16.svg" alt="Trading Robot" height="90px">
-        <p>Connect your trading bots through our <a href="" ng-click="ctrl.goToApiHelp()">API</a>.</p>
+        <p>Connect your trading bots through our <a href="" ng-click="$ctrl.goToApiHelp()">API</a>.</p>
       </div>
       <div class="home--features-row--item" flex>
         <md-icon class="material-icons">settings_input_antenna</md-icon>

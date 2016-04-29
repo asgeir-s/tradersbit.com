@@ -1,23 +1,21 @@
 import { TbFront } from "../../services/tb-front/tb-front"
 import { Stream } from "../../../app/typings/types"
 
-/** @ngInject */
-export function tbSubscriptionPriceDialog(): angular.IDirective {
+export class SubscriptionPriceDialog implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/publisher-sub-price-dialog/publisher-sub-price-dialog.html",
-    bindToController: {
-      inStream: "="
-    },
-    controller: TbSubscriptionPriceDialogCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.bindings = {
+      inStream: "<"
+    }
+    this.controller = SubscriptionPriceDialogCtrl
+    this.templateUrl = "app/components/publisher-sub-price-dialog/publisher-sub-price-dialog.html"
   }
 }
 
-/** @ngInject */
-export class TbSubscriptionPriceDialogCtrl {
+class SubscriptionPriceDialogCtrl {
 
   inStream: Stream
   subscriptionPrice: number
@@ -29,6 +27,7 @@ export class TbSubscriptionPriceDialogCtrl {
     private tbFront: TbFront,
     private $state: ng.ui.IStateService,
     private $mdDialog: angular.material.IDialogService) {
+    "ngInject"
     this.subscriptionPrice = angular.copy(this.inStream.subscriptionPriceUSD)
   }
 

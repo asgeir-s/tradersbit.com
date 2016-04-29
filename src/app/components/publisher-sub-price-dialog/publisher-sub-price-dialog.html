@@ -2,7 +2,7 @@
   <div class="md-toolbar-tools">
     <h2>Update Subscription Price</h2>
     <span flex></span>
-    <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+    <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
       <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
     </md-button>
   </div>
@@ -10,11 +10,11 @@
 <div class="toolbar-mobile-space"></div>
 <md-dialog-content>
   <div class="md-dialog-content">
-    <form name="subscriptionPriceForm" ng-hide="ctrl.subscriptionPriceUpdated || ctrl.wating">
+    <form name="subscriptionPriceForm" ng-hide="$ctrl.subscriptionPriceUpdated || $ctrl.wating">
       <md-input-container class="md-block">
         <label>Subscription Price (USD)</label>
         <md-icon class="material-icons">attach_money</md-icon>
-        <input required type="number" step="any" name="newPrice" ng-model="ctrl.subscriptionPrice" min="3" max="999999"/>
+        <input required type="number" step="any" name="newPrice" ng-model="$ctrl.subscriptionPrice" min="3" max="999999"/>
         <div class="error-messagea" ng-messages="subscriptionPriceForm.newPrice.$error">
           <div ng-show="subscriptionPriceForm.newPrice.$error.min">
             <small>You should charge at least $3 per month.</small>
@@ -24,12 +24,12 @@
           </div>
         </div>
       </md-input-container>
-      <md-button ng-click="ctrl.updateSubscriptionPrice(ctrl.subscriptionPrice)" class="md-raised" ng-disabled="!ctrl.subscriptionPrice || !subscriptionPriceForm.$valid || !ctrl.inputChnaged()">Confirm</md-button>
+      <md-button ng-click="$ctrl.updateSubscriptionPrice($ctrl.subscriptionPrice)" class="md-raised" ng-disabled="!$ctrl.subscriptionPrice || !subscriptionPriceForm.$valid || !$ctrl.inputChnaged()">Confirm</md-button>
     </form>
 
-    <md-progress-circular class="waiting center" md-mode="indeterminate" ng-hide="!ctrl.wating" md-diameter="100"></md-progress-circular>
-    <p ng-hide="!ctrl.subscriptionPriceUpdated">
-      Subscription price succesfully updated to ${{ctrl.subscriptionPrice}}
+    <md-progress-circular class="waiting center" md-mode="indeterminate" ng-hide="!$ctrl.wating" md-diameter="100"></md-progress-circular>
+    <p ng-hide="!$ctrl.subscriptionPriceUpdated">
+      Subscription price succesfully updated to ${{$ctrl.subscriptionPrice}}
     </p>
 
   </div>

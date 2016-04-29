@@ -1,23 +1,20 @@
 import { TbFront } from "../../services/tb-front/tb-front"
 
-/** @ngInject */
-export function tbPublisherApikeyDialog(): angular.IDirective {
+export class PublisherApikeyDialog implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/publisher-apikey-dialog/publisher-apikey-dialog.html",
-    bindToController: {
-      inStreamId: "="
-    },
-    controller: TbPublisherApikeyDialogCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.bindings = {
+      inStreamId: "@"
+    }
+    this.controller = PublisherApikeyDialogCtrl
+    this.templateUrl = "app/components/publisher-apikey-dialog/publisher-apikey-dialog.html"
   }
-
 }
 
-/** @ngInject */
-export class TbPublisherApikeyDialogCtrl {
+class PublisherApikeyDialogCtrl {
 
   inStreamId: string
   apiKey: string
@@ -26,7 +23,9 @@ export class TbPublisherApikeyDialogCtrl {
   constructor(
     private tbFront: TbFront,
     private $state: ng.ui.IStateService,
-    private $mdDialog: angular.material.IDialogService) { }
+    private $mdDialog: angular.material.IDialogService) {
+    "ngInject"
+  }
 
   cancel() {
     this.$mdDialog.cancel()

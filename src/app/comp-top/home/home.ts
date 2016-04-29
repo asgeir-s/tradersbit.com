@@ -1,23 +1,21 @@
 import { Stream, StreamsAttribute } from "../../typings/types"
 
-/** @ngInject */
-export function tbHome(): angular.IDirective {
+export class HomeView implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/comp-top/home/home.html",
-    controller: TbHomeCtrl,
-    controllerAs: "ctrl",
-    bindToController: {
-      inStreams: "&"
+  constructor() {
+    this.bindings = {
+      inStreams: "<"
     }
+    this.controller = HomeViewCtrl
+    this.templateUrl = "app/comp-top/home/home.html"
   }
 }
 
-/** @ngInject */
-export class TbHomeCtrl {
-  inStreams: () => Array<Stream>
+class HomeViewCtrl {
+  inStreams: Array<Stream>
   top5Streams: Array<Stream>
   attributes: Array<StreamsAttribute> = [
     {
@@ -221,8 +219,8 @@ export class TbHomeCtrl {
     private $state: ng.ui.IStateService,
     private $mdSidenav: angular.material.ISidenavService,
     private $mdToast: any) {
-
-    this.top5Streams = this.inStreams().sort((stream1: Stream, stream2: Stream) =>
+    "ngInject"
+    this.top5Streams = this.inStreams.sort((stream1: Stream, stream2: Stream) =>
       this.getValue(stream2) - this.getValue(stream1)).slice(0, 5)
 
     $mdToast.show(

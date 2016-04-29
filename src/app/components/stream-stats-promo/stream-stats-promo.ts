@@ -1,23 +1,20 @@
 import { Stream} from "../../../app/typings/types"
 
-/** @ngInject */
-export function tbStreamStatsPromo(): angular.IDirective {
+export class StreamStatsPromo implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/stream-stats-promo/stream-stats-promo.html",
-    bindToController: {
-      inStream: "="
-    },
-    controller: TbStreamStatsPromeCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.bindings = {
+      inStream: "<"
+    }
+    this.controller = StreamStatsPromeCtrl
+    this.templateUrl = "app/components/stream-stats-promo/stream-stats-promo.html"
   }
-
 }
 
-/** @ngInject */
-export class TbStreamStatsPromeCtrl {
+class StreamStatsPromeCtrl {
   inStream: Stream
   netProfit: number
   averageTrade: number
@@ -25,6 +22,7 @@ export class TbStreamStatsPromeCtrl {
   profitFactor: number
 
   constructor() {
+    "ngInject"
     this.netProfit = this.compNetProfit(this.inStream)
     this.averageTrade = this.compAverageTrade(this.inStream)
     this.partProfitableTrads = this.compPartProfitableTrads(this.inStream)

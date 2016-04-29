@@ -1,28 +1,25 @@
 import { Signal } from "../../../app/typings/types"
 
-/** @ngInject */
-export function tbStreamChartProfit(): angular.IDirective {
+export class StreamChartProfit implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/stream-chart-profit/stream-chart-profit.html",
-    bindToController: {
-      inSignals: "="
-    },
-    controller: TbStreamChartProfitCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.bindings = {
+      inSignals: "<"
+    }
+    this.controller = StreamChartProfitCtrl
+    this.templateUrl = "app/components/stream-chart-profit/stream-chart-profit.html"
   }
-
 }
 
-/** @ngInject */
-export class TbStreamChartProfitCtrl {
+class StreamChartProfitCtrl {
   inSignals: Array<Signal>
   profitChartConfig: any
 
-  /* @ngInject */
   constructor(highcharts: any) {
+    "ngInject"
 
     this.profitChartConfig = {
       options: {

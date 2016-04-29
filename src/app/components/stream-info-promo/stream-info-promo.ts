@@ -1,23 +1,21 @@
 import { Stream } from "../../../app/typings/types"
 
-/** @ngInject */
-export function tbStreamInfoPromo(): angular.IDirective {
+export class StreamInfoPromo implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-    return {
-        restrict: "E",
-        scope: {},
-        templateUrl: "app/components/stream-info-promo/stream-info-promo.html",
-        bindToController: {
-            inStream: "=",
-            inBtcRate: "="
-        },
-        controller: TbStreamInfoPromeCtrl,
-        controllerAs: "ctrl"
+  constructor() {
+    this.bindings = {
+      inStream: "<",
+      inBtcRate: "<"
     }
+    this.controller = StreamInfoPromeCtrl
+    this.templateUrl = "app/components/stream-info-promo/stream-info-promo.html"
+  }
 }
 
-/** @ngInject */
-export class TbStreamInfoPromeCtrl {
+class StreamInfoPromeCtrl {
     inStream: Stream
     inBtcRate: number
 
@@ -32,5 +30,4 @@ export class TbStreamInfoPromeCtrl {
             return ""
         }
     }
-
 }

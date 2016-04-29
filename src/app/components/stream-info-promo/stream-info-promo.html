@@ -1,7 +1,7 @@
 <div flex layout-gt-sm="row" layout="column" layout-fill layout-margin layout-padding layout-align-center-center layout-column flex>
 	<div flex>
 		<small>exchange</small> <br/>
-		<img ng-src="{{ctrl.logoUrl()}}" alt="exchange logo"/>
+		<img ng-src="{{$ctrl.logoUrl()}}" alt="exchange logo"/>
 	</div>
 	<div flex>
 		<small>currency pair</small> <br/>
@@ -9,7 +9,7 @@
 	</div>
 	<div flex>
 		<small>subsciption price</small> <br/>
-		<h3 class="md-display-1">{{ctrl.inStream.subscriptionPriceUSD | currency:"$"}}</h3>
-		<small> ≈ ฿{{ctrl.inStream.subscriptionPriceUSD / ctrl.inBtcRate | number:4}} </small>
+		<h3 class="md-display-1">{{$ctrl.inStream.subscriptionPriceUSD | currency:"$"}}</h3>
+		<small> ≈ ฿{{$ctrl.inStream.subscriptionPriceUSD / $ctrl.inBtcRate | number:4}} </small>
 	</div>
 </div>

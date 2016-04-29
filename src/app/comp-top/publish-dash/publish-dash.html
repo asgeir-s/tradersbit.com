@@ -1,7 +1,7 @@
 <div layout="column" layout-align="center">
   <md-toolbar flex>
     <div class="md-toolbar-tools">
-      <md-button hide-gt-xs ng-click="ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
+      <md-button hide-gt-xs ng-click="$ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
         <md-icon class="material-icons">menu</md-icon>
       </md-button>
       <h2>My Streams</h2>
@@ -10,24 +10,24 @@
       <small class="ticker">
           <span class="mini">Bitfinex</span>
           <br>
-          <span ng-class="{up: ctrl.up, down: ctrl.down}">${{ctrl.btcRate| number:2}}</span>
+          <span ng-class="{up: $ctrl.up, down: $ctrl.down}">${{$ctrl.btcRate| number:2}}</span>
        </small>
-      <md-button ng-click="ctrl.signOut()">
+      <md-button ng-click="$ctrl.signOut()">
         Sign Out
       </md-button>
     </div>
   </md-toolbar>
   <div class="toolbar-mobile-space"></div>
-  <p ng-if="ctrl.noStreams" class="center">
+  <p ng-if="$ctrl.noStreams" class="center">
     Click the "+" icon to create your first stream.
   </p>
 
-  <md-button class="md-fab fab-buttom-right" aria-label="add stream" ng-click="ctrl.openNewStreamDialog($event)">
+  <md-button class="md-fab fab-buttom-right" aria-label="add stream" ng-click="$ctrl.openNewStreamDialog($event)">
     <md-icon class="material-icons">add</md-icon>
-    <md-tooltip md-direction="left">
+    <md-tooltip md-direction="top" md-visible="true">
       Create Stream
     </md-tooltip>
   </md-button>
 
-  <tb-publisher-stream ng-repeat="stream in ctrl.myStreams() | orderBy : 'name'" in-stream="stream"></tb-publisher-stream>
+  <tb-publisher-stream ng-repeat="stream in $ctrl.myStreams | orderBy : 'name'" in-stream="stream"></tb-publisher-stream>
 </div>

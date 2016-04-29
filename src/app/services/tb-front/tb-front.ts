@@ -12,11 +12,17 @@ export class TbFront {
   private privateApigClient: any
   private publicApigClient: any
 
-  /** @ngInject */
-  constructor(private auth: any, private store: any, private $q: angular.IQService, private _: _.LoDashStatic,
-    private $window: any, private $state: ng.ui.IStateService, private jwtHelper: any,
-    private $timeout: angular.ITimeoutService, private $mdToast: any) {
-
+  constructor(
+    private auth: any,
+    private store: any,
+    private $q: angular.IQService,
+    private _: _.LoDashStatic,
+    private $window: any,
+    private $state: ng.ui.IStateService,
+    private jwtHelper: any,
+    private $timeout: angular.ITimeoutService,
+    private $mdToast: any) {
+    "ngInject"
     this.publicApigClient = this.createApiClient()
 
     try {
@@ -224,6 +230,10 @@ export class TbFront {
 
     const deferred: angular.IDeferred<string> = this.$q.defer()
     console.log("Tb-Font - get apiKey")
+    console.log("x-auth-token: " + this.store.get("token"))
+    console.log("streamId: " + streamId)
+    
+    
 
     this.privateApigClient.meStreamsStreamIdApikeyGet({
       "x-auth-token": this.store.get("token"),

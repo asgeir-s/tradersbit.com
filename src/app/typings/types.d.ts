@@ -9,7 +9,7 @@ export interface Trade {
   position: string
 }
 
-export interface PublisherStream {
+export interface PublishNewStream {
   id: string
   currencyPair: string
   subscriptionPriceUSD: number

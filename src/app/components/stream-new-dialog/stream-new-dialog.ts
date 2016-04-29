@@ -1,22 +1,17 @@
 import { NewStream } from "../../../app/typings/types"
 import { TbFront } from "../../services/tb-front/tb-front"
 
-/** @ngInject */
-export function tbStreamNewDialog(): angular.IDirective {
+export class StreamNewDialog implements ng.IComponentOptions {
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/stream-new-dialog/stream-new-dialog.html",
-    bindToController: {
-    },
-    controller: TbStreamNewCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.controller = StreamNewCtrl
+    this.templateUrl = "app/components/stream-new-dialog/stream-new-dialog.html"
   }
 }
 
-/** @ngInject */
-export class TbStreamNewCtrl {
+class StreamNewCtrl {
   stream: NewStream = {
     name: "",
     exchange: "",
@@ -30,7 +25,9 @@ export class TbStreamNewCtrl {
   constructor(
     private tbFront: TbFront,
     private $state: ng.ui.IStateService,
-    private $mdDialog: angular.material.IDialogService) { }
+    private $mdDialog: angular.material.IDialogService) {
+    "ngInject"
+  }
 
   cancel() {
     this.$mdDialog.cancel()

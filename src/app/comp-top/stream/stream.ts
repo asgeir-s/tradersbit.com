@@ -3,24 +3,22 @@ import { Stream, StreamsAttribute, Signal, Trade } from "../../typings/types"
 import { StreamAttributes } from "../../util/stream-attributes"
 import { TbFront } from "../../services/tb-front/tb-front"
 
-/** @ngInject */
-export function tbStream(): angular.IDirective {
+export class StreamView implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/comp-top/stream/stream.html",
-    controller: TbStreamCtrl,
-    controllerAs: "ctrl",
-    bindToController: {
-      inStream: "=",
-      inSignals: "="
+  constructor() {
+    this.bindings = {
+      inStream: "<",
+      inSignals: "<"
     }
+    this.controller = StreamViewCtrl
+    this.templateUrl = "app/comp-top/stream/stream.html"
   }
 }
 
-/** @ngInject */
-export class TbStreamCtrl {
+class StreamViewCtrl {
 
   // input:
   inStream: Stream
@@ -37,13 +35,17 @@ export class TbStreamCtrl {
 
   showAllStats: boolean = false
 
-  /* @ngInject */
-  constructor(private $timeout: angular.ITimeoutService, private $mdDialog: any,
-    highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi, private tbFront: TbFront,
-    private $mdMedia: angular.material.IMedia, private $mdSidenav: angular.material.ISidenavService) {
+  constructor(
+    private $timeout: angular.ITimeoutService,
+    private $mdDialog: any,
+    highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi,
+    private tbFront: TbFront,
+    private $mdMedia: angular.material.IMedia,
+    private $mdSidenav: angular.material.ISidenavService) {
+    "ngInject"
     this.empety = this.inSignals.length <= 1
-    if (typeof tbFront.streamIds !== "undefined") {
-      this.amOwner = tbFront.streamIds.indexOf(this.inStream.id) >= 0
+    if (tbFront.myStreamIds != null) {
+      this.amOwner = tbFront.myStreamIds.indexOf(this.inStream.id) >= 0
     }
 
     if (!this.empety) {

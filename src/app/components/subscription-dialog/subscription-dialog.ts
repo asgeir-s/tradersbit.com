@@ -1,25 +1,23 @@
 import { Stream, SubscriptionRequest, CoinbaseEmbedCode } from "../../../app/typings/types"
 import { TbFront } from "../../services/tb-front/tb-front"
 
-/** @ngInject */
-export function tbSubscriptionDialog(): angular.IDirective {
+export class SubscriptionDialog implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/subscription-dialog/subscription-dialog.html",
-    bindToController: {
-      inStream: "=",
-      inBtcRate: "="
-    },
-    controller: TbSubscriptionDialogCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.bindings = {
+      inStream: "<",
+      inBtcRate: "<"
+    }
+    this.controller = SubscriptionDialogCtrl
+    this.templateUrl = "app/components/subscription-dialog/subscription-dialog.html"
   }
-
 }
 
-/** @ngInject */
-export class TbSubscriptionDialogCtrl {
+
+class SubscriptionDialogCtrl {
   // inputs
   inStream: Stream
   inBtcRate: number
@@ -37,11 +35,15 @@ export class TbSubscriptionDialogCtrl {
   percentToTrade = 100
   private reCaptchaResponds: string
 
-  /* @ngInject */
-  constructor(private tbFront: TbFront, private $sce: angular.ISCEService,
-    private $mdDialog: angular.material.IDialogService,
-    private $mdSidenav: angular.material.ISidenavService, private $state: any, private $timeout: any) {
 
+  constructor(
+    private tbFront: TbFront,
+    private $sce: angular.ISCEService,
+    private $mdDialog: angular.material.IDialogService,
+    private $mdSidenav: angular.material.ISidenavService,
+    private $state: any,
+    private $timeout: any) {
+    "ngInject"
     this.subscriptionPriceUSD = this.inStream.subscriptionPriceUSD
     this.updatePrice()
   }

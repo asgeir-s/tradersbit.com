@@ -1,17 +1,9 @@
-/** @ngInject */
-export function tbTradesTable(): angular.IDirective {
+export class TradesTable implements ng.IComponentOptions {
+  bindings: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/trades-table/trades-table.html",
-    bindToController: {
-      inTrades: "="
-    },
-    controller: TbTradesTableCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.bindings = { inTrades: "<" }
+    this.templateUrl = "app/components/trades-table/trades-table.html"
   }
 }
-
-/** @ngInject */
-export class TbTradesTableCtrl { }

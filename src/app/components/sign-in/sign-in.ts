@@ -1,25 +1,21 @@
 import { TbFront } from "../../services/tb-front/tb-front"
 
-/** @ngInject */
-export function tbSignIn(): angular.IDirective {
+export class SignIn implements ng.IComponentOptions {
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/sign-in/sign-in.html",
-    bindToController: {
-    },
-    controller: TbSignInCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.controller = SignInCtrl
+    this.templateUrl = "app/components/sign-in/sign-in.html"
   }
 }
 
-/** @ngInject */
-export class TbSignInCtrl {
+class SignInCtrl {
   mustVerifyEmail: boolean = false
   wating: boolean = false
 
   constructor(private auth: any, tbFront: TbFront, private $state: ng.ui.IStateService) {
+    "ngInject"
     auth.config.auth0lib.$container = null // auth0 lock fix
 
     auth.signin({

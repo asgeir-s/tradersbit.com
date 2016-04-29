@@ -4,42 +4,42 @@
       <md-content class="center">
         <div class="nav-top-logo">
           <a class="logo-link" href="/"><img class="logo" src="/assets/logo/logo-text.svg" alt="TradesBit logo"></a>
-          <small><a class="release-notes-link" href="javascript:void(0)" ng-click="ctrl.chnageState('release-notes')">BETA 0.2.1 Release Notes</a></small>
+          <small><a class="release-notes-link" href="javascript:void(0)" ng-click="$ctrl.chnageState('release-notes')">BETA 0.2.1 Release Notes</a></small>
         </div>
         <md-list>
-          <md-list-item ng-class="{active: ctrl.stateIs('home')}" ng-click="ctrl.chnageState('home')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('home')}" ng-click="$ctrl.chnageState('home')">
             <md-icon class="material-icons">home</md-icon>
             <p>Home</p>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('streams')}" ng-click="ctrl.chnageState('streams')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('streams')}" ng-click="$ctrl.chnageState('streams')">
             <md-icon class="material-icons">insert_chart</md-icon>
             <p>Streams</p>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('publish-dash')}" ng-click="ctrl.chnageState('publish-dash')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('publish-dash')}" ng-click="$ctrl.chnageState('publish-dash')">
             <md-icon class="material-icons">settings_remote</md-icon>
             <p>Publish</p>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('competition')}" ng-click="ctrl.chnageState('competition')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('competition')}" ng-click="$ctrl.chnageState('competition')">
             <md-icon class="material-icons star">star</md-icon>
             <p>Competitions</p>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('faq')}" ng-click="ctrl.chnageState('faq')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('faq')}" ng-click="$ctrl.chnageState('faq')">
             <md-icon class="material-icons">help</md-icon>
             <p>FAQ</p>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('api')}" ng-click="ctrl.chnageState('api')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('api')}" ng-click="$ctrl.chnageState('api')">
             <md-icon class="material-icons">code</md-icon>
             <p>API</p>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('medium')}" ng-click="ctrl.chnageState('medium')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('medium')}" ng-click="$ctrl.chnageState('medium')">
             <md-icon class="material-icons">mode_edit</md-icon>
             <p>Medium</p>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('about')}" ng-click="ctrl.chnageState('about')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('about')}" ng-click="$ctrl.chnageState('about')">
             <md-icon class="material-icons">business</md-icon>
             <p>About</p>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('roadmap')}" ng-click="ctrl.chnageState('roadmap')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('roadmap')}" ng-click="$ctrl.chnageState('roadmap')">
             <md-icon class="material-icons">beenhere</md-icon>
             <p>Roadmap</p>
           </md-list-item>
@@ -55,31 +55,31 @@
       <a class="logo-link center" href="/"><img class="logo" src="/assets/logo/logo.svg" alt="TradesBit logo"></a>
       <md-content class="sidenav-icons">
         <md-list>
-          <md-list-item ng-class="{active: ctrl.stateIs('home')}" ng-click="ctrl.chnageState('home')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('home')}" ng-click="$ctrl.chnageState('home')">
             <md-icon class="material-icons">home</md-icon>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('streams')}" ng-click="ctrl.chnageState('streams')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('streams')}" ng-click="$ctrl.chnageState('streams')">
             <md-icon class="material-icons">insert_chart</md-icon>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('publish-dash')}" ng-click="ctrl.chnageState('publish-dash')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('publish-dash')}" ng-click="$ctrl.chnageState('publish-dash')">
             <md-icon class="material-icons">settings_remote</md-icon>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('competition')}" ng-click="ctrl.chnageState('competition')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('competition')}" ng-click="$ctrl.chnageState('competition')">
             <md-icon class="material-icons star">star</md-icon>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('faq')}" ng-click="ctrl.chnageState('faq')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('faq')}" ng-click="$ctrl.chnageState('faq')">
             <md-icon class="material-icons">help</md-icon>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('api')}" ng-click="ctrl.chnageState('api')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('api')}" ng-click="$ctrl.chnageState('api')">
             <md-icon class="material-icons">code</md-icon>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('medium')}" ng-click="ctrl.chnageState('medium')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('medium')}" ng-click="$ctrl.chnageState('medium')">
             <md-icon class="material-icons">mode_edit</md-icon>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('about')}" ng-click="ctrl.chnageState('about')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('about')}" ng-click="$ctrl.chnageState('about')">
             <md-icon class="material-icons">business</md-icon>
           </md-list-item>
-          <md-list-item ng-class="{active: ctrl.stateIs('roadmap')}" ng-click="ctrl.chnageState('roadmap')">
+          <md-list-item ng-class="{active: $ctrl.stateIs('roadmap')}" ng-click="$ctrl.chnageState('roadmap')">
             <md-icon class="material-icons">beenhere</md-icon>
           </md-list-item>
         </md-list>
@@ -104,8 +104,8 @@
           <li>
             <h3>Legal</h3>
           </li>
-          <li><a href="javascript:void(0)" ng-click="ctrl.chnageState('terms')">Terms of Service</a></li>
-          <li><a href="javascript:void(0)" ng-click="ctrl.chnageState('privacy')">Privacy Policy</a></li>
+          <li><a href="javascript:void(0)" ng-click="$ctrl.chnageState('terms')">Terms of Service</a></li>
+          <li><a href="javascript:void(0)" ng-click="$ctrl.chnageState('privacy')">Privacy Policy</a></li>
         </ul>
       </div>
       <div flex>

@@ -1,27 +1,25 @@
 import { Stream } from "../../../app/typings/types"
 
-/** @ngInject */
-export function tbStreamAverageTradeChart(): angular.IDirective {
+export class StreamAverageTradeChart implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/stream-average-trade-chart/stream-average-trade-chart.html",
-    bindToController: {
-      inStream: "="
-    },
-    controller: TbStreamAverageTradeChartCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.bindings = {
+      inStream: "<"
+    }
+    this.controller = StreamAverageTradeChartCtrl
+    this.templateUrl = "app/components/stream-average-trade-chart/stream-average-trade-chart.html"
   }
 }
 
-/** @ngInject */
-export class TbStreamAverageTradeChartCtrl {
+class StreamAverageTradeChartCtrl {
   inStream: Stream
   avrageTradeBarChartConfig: any
 
-  /* @ngInject */
   constructor() {
+    "ngInject"
     this.avrageTradeBarChartConfig = {
       options: {
         chart: {

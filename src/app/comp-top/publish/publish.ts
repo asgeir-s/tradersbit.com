@@ -1,26 +1,25 @@
 import { TbFront } from "../../services/tb-front/tb-front"
 
-/** @ngInject */
-export function tbPublish(): angular.IDirective {
+export class PublishView implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/comp-top/publish/publish.html",
-    controller: TbPublishCtrl,
-    controllerAs: "ctrl",
-    bindToController: {
-      inVerify: "="
+  constructor() {
+    this.bindings = {
+      inVerify: "<"
     }
+    this.controller = PublishViewCtrl
+    this.templateUrl = "app/comp-top/publish/publish.html"
   }
 }
 
-/** @ngInject */
-export class TbPublishCtrl {
+class PublishViewCtrl {
   inVerify: string
   verifyed: boolean = false
 
   constructor(private tbFront: TbFront, private $mdSidenav: angular.material.ISidenavService) {
+    "ngInject"
     if (typeof this.inVerify !== "undefined" && this.inVerify === "verifyed") {
       this.verifyed = true
     }

@@ -1,24 +1,22 @@
 import { Stream, StreamsAttribute } from "../../typings/types"
 import { StreamAttributes } from "../../util/stream-attributes"
 
-/** @ngInject */
-export function tbCompetition(): angular.IDirective {
+export class CompetitionView implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/comp-top/competition/competition.html",
-    controller: TbCompetitionCtrl,
-    controllerAs: "ctrl",
-    bindToController: {
-      inStreams: "&"
+  constructor() {
+    this.bindings = {
+      inStreams: "<"
     }
+    this.controller = CompetitionViewCtrl
+    this.templateUrl = "app/comp-top/competition/competition.html"
   }
 }
 
-/** @ngInject */
-export class TbCompetitionCtrl {
-  inStreams: () => Array<Stream>
+class CompetitionViewCtrl {
+  inStreams: Array<Stream>
   attributes: Array<StreamsAttribute> = [{
     name: "Name",
     jsonPath: "name",
@@ -67,14 +65,18 @@ export class TbCompetitionCtrl {
   top10StreamsComp2: Array<Stream>
   top10StreamsComp3: Array<Stream>
 
-  constructor(private $mdSidenav: angular.material.ISidenavService, private _: any,
-    $interval: any, private $state: any) {
-    this.top10StreamsComp2 = this.inStreams()
+  constructor(
+    private $mdSidenav: angular.material.ISidenavService,
+    private _: any,
+    $interval: any,
+    private $state: any) {
+    "ngInject"
+    this.top10StreamsComp2 = this.inStreams
       .filter((stream: Stream) => stream.stats.numberOfClosedTrades >= 20)
       .sort((stream1: Stream, stream2: Stream) =>
         this.attributes[1].getValue(stream2) - this.attributes[1].getValue(stream1)).slice(0, 10)
 
-    this.top10StreamsComp3 = this.inStreams()
+    this.top10StreamsComp3 = this.inStreams
       .filter((stream: Stream) => stream.recordedState[this.comp3.startTime.toString()] != null)
       .filter((stream: Stream) =>
         (stream.lastSignal.id - stream.recordedState[this.comp3.startTime.toString()].firstSignal.id) >= 20)

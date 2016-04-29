@@ -1,6 +1,6 @@
 <md-toolbar flex>
   <div class="md-toolbar-tools">
-    <md-button hide-gt-xs ng-click="ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
+    <md-button hide-gt-xs ng-click="$ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
       <md-icon class="material-icons">menu</md-icon>
     </md-button>
     <h2>Trading Competitions</h2>
@@ -50,7 +50,7 @@
       <md-card-title>
       </md-card-title>
       <md-card-content>
-        <tb-streams-table flex in-streams="ctrl.top10StreamsComp2" in-attributes="ctrl.attributes" in-sort-by="Net Profit"></tb-streams-table>
+        <tb-streams-table flex in-streams="$ctrl.top10StreamsComp2" in-attributes="$ctrl.attributes" in-sort-by="Net Profit"></tb-streams-table>
       </md-card-content>
     </md-card>
   </md-card>
@@ -69,10 +69,10 @@
             <b>Prize:</b>&nbsp; 1 BTC and stream promotion
           </md-list-item>
           <md-list-item>
-            <b>Start time:</b>&nbsp; {{ ctrl.comp3.startTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
+            <b>Start time:</b>&nbsp; {{ $ctrl.comp3.startTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
-            <b>End time:</b>&nbsp; {{ ctrl.comp3.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
+            <b>End time:</b>&nbsp; {{ $ctrl.comp3.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC
           </md-list-item>
           <md-list-item>
             <b>Minimum number of closed trades (in competition):</b>&nbsp; 20
@@ -85,7 +85,7 @@
           </md-list-item>
         </md-list>
         <p>
-          The stream with the highest Net Profit at {{ ctrl.comp3.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC gets 1 BTC paid
+          The stream with the highest Net Profit at {{ $ctrl.comp3.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC gets 1 BTC paid
           to the stream's payout address.
         </p>
         <p>
@@ -140,7 +140,7 @@
       </md-card-content>
     </div>
 
-    <md-card flex style="cursor: pointer;" ng-click="ctrl.goToStream('deca79ea-6631-492b-ad51-4bc41b12dd05')">
+    <md-card flex style="cursor: pointer;" ng-click="$ctrl.goToStream('deca79ea-6631-492b-ad51-4bc41b12dd05')">
       <md-card-title>
       </md-card-title>
       <md-card-content class="center">

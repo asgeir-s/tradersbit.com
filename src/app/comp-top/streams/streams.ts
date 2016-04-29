@@ -1,30 +1,29 @@
 import { Stream, StreamsAttribute } from "../../typings/types"
 import { StreamAttributes } from "../../util/stream-attributes"
 
-/** @ngInject */
-export function tbStreams(): angular.IDirective {
+export class StreamsView implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/comp-top/streams/streams.html",
-    controller: TbStreamsCtrl,
-    controllerAs: "ctrl",
-    bindToController: {
-      inStreams: "&"
+  constructor() {
+    this.bindings = {
+      inStreams: "<"
     }
+    this.controller = StreamsViewCtrl
+    this.templateUrl = "app/comp-top/streams/streams.html"
   }
 }
 
-/** @ngInject */
-export class TbStreamsCtrl {
-  inStreams: () => Array<Stream>
+class StreamsViewCtrl {
+  inStreams: Array<Stream>
   streamAttributes: Array<StreamsAttribute> = StreamAttributes.allAtributes()
   windowWidth: number
   isMobile: boolean
   showFilters: boolean
 
   constructor(private $mdSidenav: angular.material.ISidenavService, private $window: angular.IWindowService) {
+    "ngInject"
     this.windowWidth = $window.innerWidth
 
     if (!this.isMobile && this.windowWidth < 600) {

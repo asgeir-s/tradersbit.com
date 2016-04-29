@@ -1,34 +1,41 @@
-import { PublisherStream, Stream } from "../../../app/typings/types"
+import { PublishNewStream, Stream } from "../../../app/typings/types"
 import { Signal } from "../../typings/types"
 import { TbFront } from "../../services/tb-front/tb-front"
 import { BitfinexSocket } from "../../services/bitfinex-socket/bitfinex-socket"
 
-/** @ngInject */
-export function tbPublisherStream(): angular.IDirective {
+export class PublisherStream implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/publisher-stream/publisher-stream.html",
-    bindToController: {
-      inStream: "="
-    },
-    controller: TbPublisherStreamCtrl,
-    controllerAs: "ctrl"
+  constructor() {
+    this.bindings = {
+      inStream: "<"
+    }
+    this.controller = PublisherStreamCtrl
+    this.templateUrl = "app/components/publisher-stream/publisher-stream.html"
   }
 }
 
-/** @ngInject */
-export class TbPublisherStreamCtrl {
+class PublisherStreamCtrl {
   BITFINEX_FEE: number = 0.2
-  inStream: PublisherStream
+  inStream: PublishNewStream
   unrealizedPL: number
   waitingForSignalBack = false
   btcRate: number
 
-  constructor(public $location: any, private $mdMedia: angular.material.IMedia, private $mdDialog: any,
-    private $q: angular.IQService, private $http: angular.IHttpService, private $state: angular.ui.IStateService,
-    private tbFront: TbFront, private _: _.LoDashStatic, private $mdToast: any, bitfinexSocket: BitfinexSocket) {
+  constructor(
+    public $location: any,
+    private $mdMedia: angular.material.IMedia,
+    private $mdDialog: any,
+    private $q: angular.IQService,
+    private $http: angular.IHttpService,
+    private $state: angular.ui.IStateService,
+    private tbFront: TbFront,
+    private _: _.LoDashStatic,
+    private $mdToast: any,
+    bitfinexSocket: BitfinexSocket) {
+    "ngInject"
 
     if (this.inStream.exchange === "bitfinex") {
       this.computeUnrealizedPL(this.inStream.lastSignal, bitfinexSocket.lastRate)
@@ -51,7 +58,8 @@ export class TbPublisherStreamCtrl {
   openApiKeyDialog(ev: any) {
     this.$mdDialog.show({
       template:
-      '<md-dialog><tb-publisher-apikey-dialog in-stream-id="ctrl.stream.id"></tb-publisher-apikey-dialog></md-dialog>',
+      '<md-dialog><tb-publisher-apikey-dialog in-stream-id="{{ctrl.stream.id}}">' +
+      "</tb-publisher-apikey-dialog></md-dialog>",
       targetEvent: ev,
       clickOutsideToClose: true,
       fullscreen: this.$mdMedia("xs"),

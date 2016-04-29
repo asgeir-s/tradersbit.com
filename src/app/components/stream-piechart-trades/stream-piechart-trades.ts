@@ -1,27 +1,25 @@
 import { Stream } from "../../../app/typings/types"
 
-/** @ngInject */
-export function tbStreamPiechartTrades(): angular.IDirective {
+export class StreamPiechartTrades implements ng.IComponentOptions {
+    bindings: any
+    controller: any
+    templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/stream-piechart-trades/stream-piechart-trades.html",
-    bindToController: {
-      inStream: "="
-    },
-    controller: TbStreamPiechartTradesCtrl,
-    controllerAs: "ctrl"
-  }
+    constructor() {
+        this.bindings = {
+            inStream: "<"
+        }
+        this.controller = TtreamPiechartTradesCtrl
+        this.templateUrl = "app/components/stream-piechart-trades/stream-piechart-trades.html"
+    }
 }
 
-/** @ngInject */
-export class TbStreamPiechartTradesCtrl {
+class TtreamPiechartTradesCtrl {
   inStream: Stream
   tradsPiechartConfig: any
 
-  /* @ngInject */
   constructor($timeout: angular.ITimeoutService, highcharts: any) {
+    "ngInject"
     this.tradsPiechartConfig = {
       options: {
         chart: {

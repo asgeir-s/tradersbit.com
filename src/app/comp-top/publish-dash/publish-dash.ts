@@ -2,28 +2,25 @@ import { Stream, StreamsAttribute } from "../../typings/types"
 import { BitfinexSocket } from "../../services/bitfinex-socket/bitfinex-socket"
 import { TbFront } from "../../services/tb-front/tb-front"
 
-/** @ngInject */
-export function tbPublishDash(): angular.IDirective {
+export class PublishDashView implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/comp-top/publish-dash/publish-dash.html",
-    controller: TbPublishDashCtrl,
-    controllerAs: "ctrl",
-    bindToController: {
-      myStreams: "&"
+  constructor() {
+    this.bindings = {
+      myStreams: "<"
     }
+    this.controller = PublishDashViewCtrl
+    this.templateUrl = "app/comp-top/publish-dash/publish-dash.html"
   }
-
 }
 
-/** @ngInject */
-export class TbPublishDashCtrl {
+class PublishDashViewCtrl {
   btcRate: number
   up: boolean = false
   down: boolean = false
-  myStreams: () => Array<Stream>
+  myStreams: Array<Stream>
   noStreams = true
   attributes: Array<StreamsAttribute> = [
     {
@@ -159,9 +156,9 @@ export class TbPublishDashCtrl {
     private $mdMedia: angular.material.IMedia,
     private $mdSidenav: angular.material.ISidenavService,
     bitfinexSocket: BitfinexSocket) {
-
-    console.log("my streams: " + JSON.stringify(this.myStreams()))
-    this.noStreams = this.myStreams().length === 0
+    "ngInject"
+    console.log("my streams: " + JSON.stringify(this.myStreams))
+    this.noStreams = this.myStreams.length === 0
     this.btcRate = bitfinexSocket.lastRate
 
     bitfinexSocket.dataStream.onMessage((message: any) => {

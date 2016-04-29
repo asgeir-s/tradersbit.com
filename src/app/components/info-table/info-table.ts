@@ -1,24 +1,22 @@
 import { Stream } from "../../../app/typings/types"
 
-/** @ngInject */
-export function tbInfoTable(): angular.IDirective {
+export class InfoTable implements ng.IComponentOptions {
+  bindings: any
+  controller: any
+  templateUrl: string
 
-  return {
-    restrict: "E",
-    scope: {},
-    templateUrl: "app/components/info-table/info-table.html",
-    bindToController: {
-      inStream: "=",
-      inAttributes: "=",
+  constructor() {
+    this.bindings = {
+      inStream: "<",
+      inAttributes: "<",
       inName: "@"
-    },
-    controller: TbInfoTableCtrl,
-    controllerAs: "ctrl"
+    }
+    this.controller = InfoTableCtrl
+    this.templateUrl = "app/components/info-table/info-table.html"
   }
 }
 
-/** @ngInject */
-export class TbInfoTableCtrl {
+class InfoTableCtrl {
   inStream: Stream
   inAttributes: number
   inName: String

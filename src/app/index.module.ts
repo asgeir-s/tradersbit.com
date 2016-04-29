@@ -21,31 +21,31 @@ import { routerConfig } from "./index.route"
 import { runBlock } from "./index.run"
 
 // top-component
-import { tbHome } from "./comp-top/home/home"
-import { tbStreams } from "./comp-top/streams/streams"
-import { tbStream } from "./comp-top/stream/stream"
-import { tbPublish } from "./comp-top/publish/publish"
-import { tbPublishDash } from "./comp-top/publish-dash/publish-dash"
-import { tbAbout } from "./comp-top/about/about"
-import { tbCompetition } from "./comp-top/competition/competition"
+import { HomeView } from "./comp-top/home/home"
+import { StreamsView } from "./comp-top/streams/streams"
+import { StreamView } from "./comp-top/stream/stream"
+import { PublishView } from "./comp-top/publish/publish"
+import { PublishDashView } from "./comp-top/publish-dash/publish-dash"
+import { AboutView } from "./comp-top/about/about"
+import { CompetitionView } from "./comp-top/competition/competition"
 
 // components
-import { tbSideNavLayout } from "./components/side-nav-layout/side-nav-layout"
+import { SideNavLayout } from "./components/side-nav-layout/side-nav-layout"
 import { TbStreamsTable } from "./components/streams-table/streams-table"
-import { tbInfoTable } from "./components/info-table/info-table"
-import { tbTradesTable } from "./components/trades-table/trades-table"
-import { tbStreamInfoPromo } from "./components/stream-info-promo/stream-info-promo"
-import { tbStreamStatsPromo } from "./components/stream-stats-promo/stream-stats-promo"
-import { tbStreamChartProfit } from "./components/stream-chart-profit/stream-chart-profit"
-import { tbStreamPiechartTrades } from "./components/stream-piechart-trades/stream-piechart-trades"
-import { tbStreamAverageTradeChart } from "./components/stream-average-trade-chart/stream-average-trade-chart"
-import { tbSubscriptionDialog } from "./components/subscription-dialog/subscription-dialog"
-import { tbSignIn } from "./components/sign-in/sign-in"
-import { tbPublisherStream } from "./components/publisher-stream/publisher-stream"
-import { tbStreamNewDialog } from "./components/stream-new-dialog/stream-new-dialog"
-import { tbStreamPublisherRow } from "./components/stream-publisher-row/stream-publisher-row"
-import { tbPublisherApikeyDialog } from "./components/publisher-apikey-dialog/publisher-apikey-dialog"
-import { tbSubscriptionPriceDialog } from "./components/publisher-sub-price-dialog/publisher-sub-price-dialog"
+import { InfoTable } from "./components/info-table/info-table"
+import { TradesTable } from "./components/trades-table/trades-table"
+import { StreamInfoPromo } from "./components/stream-info-promo/stream-info-promo"
+import { StreamStatsPromo } from "./components/stream-stats-promo/stream-stats-promo"
+import { StreamChartProfit } from "./components/stream-chart-profit/stream-chart-profit"
+import { StreamPiechartTrades } from "./components/stream-piechart-trades/stream-piechart-trades"
+import { StreamAverageTradeChart } from "./components/stream-average-trade-chart/stream-average-trade-chart"
+import { SubscriptionDialog } from "./components/subscription-dialog/subscription-dialog"
+import { SignIn } from "./components/sign-in/sign-in"
+import { PublisherStream } from "./components/publisher-stream/publisher-stream"
+import { StreamNewDialog } from "./components/stream-new-dialog/stream-new-dialog"
+import { StreamPublisherRow } from "./components/stream-publisher-row/stream-publisher-row"
+import { PublisherApikeyDialog } from "./components/publisher-apikey-dialog/publisher-apikey-dialog"
+import { SubscriptionPriceDialog } from "./components/publisher-sub-price-dialog/publisher-sub-price-dialog"
 
 // services
 import { TbFront } from "./services/tb-front/tb-front"
@@ -76,35 +76,34 @@ module tradersbitCom {
     .run(runBlock)
 
     // top-components
-    .directive("tbHome", tbHome)
-    .directive("tbStreams", tbStreams)
-    .directive("tbStream", tbStream)
-    .directive("tbPublish", tbPublish)
-    .directive("tbPublishDash", tbPublishDash)
-    .directive("tbAbout", tbAbout)
-    .directive("tbCompetition", tbCompetition)
+    .component("tbHome", new HomeView)
+    .component("tbStreams", new StreamsView())
+    .component("tbStream", new StreamView())
+    .component("tbPublish", new PublishView())
+    .component("tbPublishDash", new PublishDashView())
+    .component("tbAbout", new AboutView())
+    .component("tbCompetition", new CompetitionView())
 
     // components
-    .directive("tbSideNavLayout", tbSideNavLayout)
+    .component("tbSideNavLayout", new SideNavLayout())
     .component("tbStreamsTable", new TbStreamsTable())
-    .directive("tbInfoTable", tbInfoTable)
-    .directive("tbTradesTable", tbTradesTable)
-    .directive("tbStreamInfoPromo", tbStreamInfoPromo)
-    .directive("tbStreamStatsPromo", tbStreamStatsPromo)
-    .directive("tbStreamChartProfit", tbStreamChartProfit)
-    .directive("tbStreamPiechartTrades", tbStreamPiechartTrades)
-    .directive("tbStreamAverageTradeChart", tbStreamAverageTradeChart)
-    .directive("tbSubscriptionDialog", tbSubscriptionDialog)
-    .directive("tbSignIn", tbSignIn)
-    .directive("tbPublisherStream", tbPublisherStream)
-    .directive("tbStreamNewDialog", tbStreamNewDialog)
-    .directive("tbStreamPublisherRow", tbStreamPublisherRow)
-    .directive("tbPublisherApikeyDialog", tbPublisherApikeyDialog)
-    .directive("tbSubscriptionPriceDialog", tbSubscriptionPriceDialog)
+    .component("tbInfoTable", new InfoTable())
+    .component("tbTradesTable", new TradesTable())
+    .component("tbStreamInfoPromo", new StreamInfoPromo())
+    .component("tbStreamStatsPromo", new StreamStatsPromo())
+    .component("tbStreamChartProfit", new StreamChartProfit())
+    .component("tbStreamPiechartTrades", new StreamPiechartTrades())
+    .component("tbStreamAverageTradeChart", new StreamAverageTradeChart())
+    .component("tbSubscriptionDialog", new SubscriptionDialog())
+    .component("tbSignIn", new SignIn())
+    .component("tbPublisherStream", new PublisherStream())
+    .component("tbStreamNewDialog", new StreamNewDialog())
+    .component("tbStreamPublisherRow", new StreamPublisherRow())
+    .component("tbPublisherApikeyDialog", new PublisherApikeyDialog())
+    .component("tbSubscriptionPriceDialog", new SubscriptionPriceDialog())
 
     // services
     .service("tbFront", TbFront)
     .service("bitcoinaverageApi", BitcoinaverageApi)
     .service("bitfinexSocket", BitfinexSocket)
-
 }

@@ -1,23 +1,19 @@
-/** @ngInject */
-export function tbStreamPublisherRow(): angular.IDirective {
 
-    return {
-        restrict: "E",
-        scope: {},
-        templateUrl: "app/components/stream-publisher-row/stream-publisher-row.html",
-        bindToController: {
-            inLastSignal: "=",
-            inBtcRate: "="
-        },
-        controller: TbStreamPublisherRowCtrl,
-        controllerAs: "ctrl"
+export class StreamPublisherRow implements ng.IComponentOptions {
+    controller: any
+    templateUrl: string
+
+    constructor() {
+        this.controller = StreamPublisherRowCtrl
+        this.templateUrl = "app/components/stream-publisher-row/stream-publisher-row.html"
     }
 }
 
-/** @ngInject */
-export class TbStreamPublisherRowCtrl {
-
-    constructor(private $state: angular.ui.IStateService) { }
+class StreamPublisherRowCtrl {
+    constructor(private $state: angular.ui.IStateService) {
+        "ngInject"
+        console.log("yp")
+    }
 
     goToPublish() {
         this.$state.go("publish-dash")
