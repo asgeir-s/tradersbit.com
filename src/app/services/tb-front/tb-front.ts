@@ -232,8 +232,6 @@ export class TbFront {
     console.log("Tb-Font - get apiKey")
     console.log("x-auth-token: " + this.store.get("token"))
     console.log("streamId: " + streamId)
-    
-    
 
     this.privateApigClient.meStreamsStreamIdApikeyGet({
       "x-auth-token": this.store.get("token"),

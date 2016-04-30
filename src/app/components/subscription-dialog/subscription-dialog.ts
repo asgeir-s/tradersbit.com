@@ -16,7 +16,6 @@ export class SubscriptionDialog implements ng.IComponentOptions {
   }
 }
 
-
 class SubscriptionDialogCtrl {
   // inputs
   inStream: Stream
@@ -34,7 +33,6 @@ class SubscriptionDialogCtrl {
   coinbaseEmbedCode: string
   percentToTrade = 100
   private reCaptchaResponds: string
-
 
   constructor(
     private tbFront: TbFront,
