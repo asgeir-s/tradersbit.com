@@ -50,12 +50,11 @@
       <md-card-title>
       </md-card-title>
       <md-card-content>
-        <tb-streams-table flex in-streams="$ctrl.top10StreamsComp2" in-attributes="$ctrl.attributes" in-sort-by="Net Profit"></tb-streams-table>
+        <tb-streams-table flex in-streams="$ctrl.top10StreamsComp2" in-attributes="$ctrl.attributesComp2" in-sort-by="Net Profit"></tb-streams-table>
       </md-card-content>
     </md-card>
   </md-card>
 
-  <h1>Starting Soon</h1>
   <md-card layout="row" layout-xs="column">
     <div flex>
       <md-card-title>
@@ -85,8 +84,8 @@
           </md-list-item>
         </md-list>
         <p>
-          The stream with the highest Net Profit at {{ $ctrl.comp3.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC gets 1 BTC paid
-          to the stream's payout address.
+          The stream with the highest Net Profit at {{ $ctrl.comp3.endTime | date: 'dd MMM yyyy, HH:mm Z' : 'UTC' }}/UTC gets 1 BTC
+          paid to the stream's payout address.
         </p>
         <p>
           We will also promote the winning stream in our media campaign, thus exposing it to potential subscribers.
@@ -98,12 +97,14 @@
       <md-card-title>
       </md-card-title>
       <md-card-content>
-        <p>
-          Not started
-        </p>
+        <tb-streams-table flex in-streams="$ctrl.top10StreamsComp3" in-attributes="$ctrl.attributesComp3" in-sort-by="Net Profit"></tb-streams-table>
+        <p ng-if="$ctrl.top10StreamsComp3.length == 0">There are no streams with 20 closed trades after 1 May</p>
       </md-card-content>
     </md-card>
   </md-card>
+
+  <h1>Starting Soon</h1>
+
 
   <h1>Finished</h1>
   <md-card layout="row" layout-xs="column">

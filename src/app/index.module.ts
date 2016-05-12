@@ -76,7 +76,7 @@ module tradersbitCom {
     .run(runBlock)
 
     // top-components
-    .component("tbHome", new HomeView)
+    .component("tbHome", new HomeView())
     .component("tbStreams", new StreamsView())
     .component("tbStream", new StreamView())
     .component("tbPublish", new PublishView())

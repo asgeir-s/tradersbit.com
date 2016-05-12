@@ -17,7 +17,7 @@ export class CompetitionView implements ng.IComponentOptions {
 
 class CompetitionViewCtrl {
   inStreams: Array<Stream>
-  attributes: Array<StreamsAttribute> = [{
+  attributesComp2: Array<StreamsAttribute> = [{
     name: "Name",
     jsonPath: "name",
     short: "Name",
@@ -37,16 +37,54 @@ class CompetitionViewCtrl {
       jsonPath: "stats.allTimeValueIncl",
       on: true,
       bad: (stream: Stream) => {
-        return (stream.stats.allTimeValueIncl - 1) * 100 < 0
+        return (stream.stats.allTimeValueIncl - 1) < 0
       },
       good: (stream: Stream) => {
-        return (stream.stats.allTimeValueIncl - 1) * 100 > 0
+        return (stream.stats.allTimeValueIncl - 1) > 0
       },
       getIt: (stream: Stream) => {
         return ((stream.stats.allTimeValueIncl - 1) * 100).toFixed(2) + "%"
       },
       getValue: (stream: Stream) => {
         return (stream.stats.allTimeValueIncl - 1) * 100
+      }
+    }
+  ]
+
+  attributesComp3: Array<StreamsAttribute> = [{
+    name: "Name",
+    jsonPath: "name",
+    short: "Name",
+    description: "",
+    on: true,
+    getIt: (stream: Stream) => {
+      return stream.name
+    },
+    getValue: (stream: Stream) => {
+      return stream.name
+    }
+  },
+    {
+      name: "Change sins 1 May",
+      short: "Change",
+      description: "Change sins 1 May.",
+      jsonPath: "",
+      on: true,
+      bad: (stream: Stream) => {
+        return (stream.stats.allTimeValueIncl -
+          stream.recordedState[this.comp3.startTime.toString()].firstSignal.valueInclFee) < 0
+      },
+      good: (stream: Stream) => {
+        return (stream.stats.allTimeValueIncl -
+          stream.recordedState[this.comp3.startTime.toString()].firstSignal.valueInclFee) > 0
+      },
+      getIt: (stream: Stream) => {
+        return ((stream.stats.allTimeValueIncl -
+          stream.recordedState[this.comp3.startTime.toString()].firstSignal.valueInclFee) * 100).toFixed(2) + "%"
+      },
+      getValue: (stream: Stream) => {
+        return (stream.stats.allTimeValueIncl -
+          stream.recordedState[this.comp3.startTime.toString()].firstSignal.valueInclFee) * 100
       }
     }
   ]
@@ -74,19 +112,19 @@ class CompetitionViewCtrl {
     this.top10StreamsComp2 = this.inStreams
       .filter((stream: Stream) => stream.stats.numberOfClosedTrades >= 20)
       .sort((stream1: Stream, stream2: Stream) =>
-        this.attributes[1].getValue(stream2) - this.attributes[1].getValue(stream1)).slice(0, 10)
+        this.attributesComp2[1].getValue(stream2) - this.attributesComp2[1].getValue(stream1)).slice(0, 10)
 
     this.top10StreamsComp3 = this.inStreams
       .filter((stream: Stream) => stream.recordedState[this.comp3.startTime.toString()] != null)
       .filter((stream: Stream) =>
-        (stream.lastSignal.id - stream.recordedState[this.comp3.startTime.toString()].firstSignal.id) >= 20)
+        (stream.stats.numberOfSignals - stream.recordedState[this.comp3.startTime.toString()].firstSignal.id) >= 20 * 2)
       .sort((stream1: Stream, stream2: Stream) => {
         const stream1Change =
-          stream1.lastSignal.changeInclFee -
+          stream1.stats.allTimeValueIncl -
           stream1.recordedState[this.comp3.startTime.toString()].firstSignal.valueInclFee
 
         const stream2Change =
-          stream2.lastSignal.changeInclFee -
+          stream2.stats.allTimeValueIncl -
           stream2.recordedState[this.comp3.startTime.toString()].firstSignal.valueInclFee
 
         return stream2Change - stream1Change

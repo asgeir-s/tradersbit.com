@@ -61,6 +61,9 @@
           <input name="apiSecret" ng-required="$ctrl.subscribeAutoTrader" ng-disabled="!$ctrl.subscribeAutoTrader" type="text" ng-model="$ctrl.subscription.apiSecret"
           ng-minlength="5" />
         </md-input-container>
+        <div ng-hide="!$ctrl.subscribeAutoTrader">
+          You should only have one Autotrader subscription per Bitfinex account (see the FAQ).
+        </div>
         <md-input-container flex ng-hide="!$ctrl.subscribeAutoTrader">
           <label>Percentage of avalible balance to trade</label>
           <input name="percentageToTrade" ng-model="$ctrl.percentToTrade" ng-value="100" type="number" min="1" max="100" />

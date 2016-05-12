@@ -22,6 +22,7 @@ class SignInCtrl {
       container: "hiw-login-container",
       icon: "https://tradersbit.com/assets/logo/logo.png",
       loginAfterSignup: false,
+      primaryColor: "#f9bb02",
       authParams: {
         scope: "user_id openid email app_metadata"
       },

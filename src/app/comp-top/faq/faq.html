@@ -41,18 +41,24 @@
         <p>
           On the first signal, autotrader will close any open BTC/USD margin position before executing the signaled order. When executing
           an order, the amount autotrader will use to buy or sell short is your specified "Percentage to Trade" of "Tradable
-          Balance" in your "Trading Wallet". If you specified 100% "Percentage to Trade", it will use 99.9%, this is done
-          to make sure you have the funds to cover the order at the order time.
+          Balance" in your "Trading Wallet". You can check your "Tradable Balance" by logging into Bitfinex, then on the right side panel 
+          select "Trading" (in the drop down menu), then you see your "Tradable Balance" under "On Pair BTCUSD". If you specified 100% "Percentage 
+          to Trade", it will use 99.9%, this is done to make sure you have the funds to cover the order at the order time.
         </p>
         <p>
           There is an average latency of approximately 2 seconds from a signal is published by the publisher, until the order is executed
           at the exchange. Therefore, this should not be thought of as a high-frequency trading solution.
         </p>
+        <p>
+          You need a separate Bitfinex account for each Autotrader subscription. This is because of how Bitfinex handles your positions. 
+          For instance, it is not possible to have a LONG and a SHORT position active at the same time. If you want more then one autotrader running, 
+          just open a new Bitfinex account.
+        </p>
       </div>
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>How do I stop autotrader before the subscription e</h4>
+        <h4>How do I stop autotrader before the subscription ends</h4>
         <p>
           Sign into Bitfinex, go to <a href="https://www.bitfinex.com/account/api" target="_blank">API key Management</a>, then revoke the API key you entered when subscribing with autotrader.
         </p>
