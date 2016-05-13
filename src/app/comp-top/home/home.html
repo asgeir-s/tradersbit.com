@@ -14,12 +14,13 @@
     The marketplace for Bitcoin trading signals.
   </p>
   <p>
-    Subscribe to statistically analyzed streams of trading signals,
-    <br> or publish your own trading signals, sell subscriptions and
+    Subscribe to streams of trading signals, or publish
+    <br> your own trading signals, sell subscriptions and
     <br> win competitions.
   </p>
-  <md-button class="promo-btn md-raised md-accent" ng-click="$ctrl.chnageState('publish-dash')">Sign Up to Publish</md-button>
   <md-button class="promo-btn md-raised md-accent" ng-click="$ctrl.chnageState('streams')">Browse Streams</md-button>
+  or
+  <md-button class="promo-btn md-raised md-accent" ng-click="$ctrl.chnageState('publish-dash')">Sign Up to Publish</md-button>
 </div>
 
 <div class="top-stream-outer" layout="row" layout-align="center">
@@ -31,7 +32,7 @@
 </div>
 
 <section class="steps" layout="row" layout-xs="column" layout-sm="column" layout-md="column" layout-align="center center"
-layout-align-gt-md="center">
+  layout-align-gt-md="center">
 
   <md-content flex flex="90" flex-md="40" flex-gt-md="35" class="subscribe md-whiteframe-15dp">
     <md-list>
@@ -55,8 +56,7 @@ layout-align-gt-md="center">
         <div class="md-list-item-text" layout="column">
           <h3>Fill in Subscription Informatin</h3>
           <p>
-            Click the subscribe button (bottom right corner). Fill in your email address for receiving trading signals, and if you want
-            to use the autotrader, fill in the API keys.
+            Click the subscribe button (bottom right corner).
           </p>
         </div>
       </md-list-item>
@@ -68,7 +68,7 @@ layout-align-gt-md="center">
           <h3>Pay</h3>
           <p>
             Pay with Bitcoin. After payment, you will receive trading signals by email, and/or have the trading signals automatically
-            traded for you. </p>
+            traded. </p>
         </div>
       </md-list-item>
     </md-list>
@@ -94,8 +94,7 @@ layout-align-gt-md="center">
         <div class="md-list-item-text" layout="column">
           <h3>Create a Stream</h3>
           <p>
-            After you have signed in, click the new stream button in the bottom right corner. Fill in a stream name and your Bitcoin
-            address for payouts to you (for subscriptions and contest winnings). Then select initial subscription price.
+            After you have signed in, click the new stream button in the bottom right corner.
           </p>
         </div>
       </md-list-item>
@@ -106,7 +105,8 @@ layout-align-gt-md="center">
         <div class="md-list-item-text" layout="column">
           <h3>Submit Signals</h3>
           <p>
-            Click SHORT, CLOSE, or LONG to send signals. Or generate an API key for sending signals through our
+            Click SHORT, CLOSE, or LONG to send signals, connect it to your Bitfinex account or generate an API key for sending signals
+            through our
             <a href="" ng-click="$ctrl.goToApiHelp()">API</a>.
           </p>
         </div>
@@ -122,7 +122,8 @@ layout-align-gt-md="center">
     <div class="home--features-row-inner" flex="90" flex-gt-md="75" flex-xs="100" layout="row" layout-xs="column" layout-align="center start">
       <div class="home--features-row--item" flex>
         <md-icon class="material-icons">settings_remote</md-icon>
-        <p>Publish streams and sell subscriptions to your streams. Send signals to your streams through our website.</p>
+        <p>Publish streams and sell subscriptions to your streams. Send signals to your streams through our website, API or
+          mirror your Bitfinex account.</p>
       </div>
       <div class="home--features-row--item" flex>
         <img src="/assets/images/robot16.svg" alt="Trading Robot" height="90px">
