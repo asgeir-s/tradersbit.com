@@ -1,0 +1,45 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2>Mirror Bitfinex Account</h2>
+    <span flex></span>
+    <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+      <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+<div class="toolbar-mobile-space"></div>
+<md-dialog-content>
+  <div class="md-dialog-content">
+    <p>Experimental feature. Free for now.</p>
+
+    <md-progress-circular class="waiting" md-mode="indeterminate" ng-hide="!$ctrl.watingForResponds" md-diameter="100"></md-progress-circular>
+
+    <p ng-hide="!$ctrl.gotResponds">{{$ctrl.responds}}</p>
+
+    <form novalidate name="mirrorForm" ng-hide="$ctrl.gotResponds || $ctrl.watingForResponds">
+      <div layout="column" layout-align="center">
+        <p>This will mirror the active BTCUSD margin position for the Bitfinex account.</p>
+        <div class="api-key-info" flex>
+          Go <a target="_blank" href="https://www.bitfinex.com/account/api">here</a> to create a new API key for Bitfinex.
+          The needed permisssions are:
+          <ul class="api-permissions">
+            <li>Account Info (read)</li>
+          </ul>
+        </div>
+        <md-input-container flex>
+          <label>API key for Bitfinex</label>
+          <input name="apiKey" type="text" ng-model="$ctrl.apiKey" ng-minlength="5" required />
+        </md-input-container>
+        <md-input-container flex>
+          <label>API secret for Bitfinex</label>
+          <input name="apiSecret" type="text" ng-model="$ctrl.apiSecret" ng-minlength="5" required/>
+        </md-input-container>
+      </div>
+      <div class="button" flex>
+        <md-button ng-click="$ctrl.postMirror()" class="md-raised" ng-disabled="!mirrorForm.$valid">Confirm</md-button>
+      </div>
+    </form>
+
+
+  </div>
+</md-dialog-content>

@@ -34,10 +34,11 @@
 
     <section class="button-section" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
       <md-button class="groupX left short-btn" flex ng-disabled="$ctrl.inStream.lastSignal.signal === -1 || $ctrl.waitingForSignalBack"
-      ng-click="$ctrl.postSignal($ctrl.inStream.id, -1)">SHORT</md-button>
-      <md-button class="groupX middle" flex ng-disabled="$ctrl.inStream.lastSignal.signal === 0 || $ctrl.waitingForSignalBack" ng-click="$ctrl.postSignal($ctrl.inStream.id, 0)">CLOSE</md-button>
+        ng-click="$ctrl.postSignal($ctrl.inStream.id, -1)">SHORT</md-button>
+      <md-button class="groupX middle" flex ng-disabled="$ctrl.inStream.lastSignal.signal === 0 || $ctrl.waitingForSignalBack"
+        ng-click="$ctrl.postSignal($ctrl.inStream.id, 0)">CLOSE</md-button>
       <md-button class="long-btn groupX right" flex ng-disabled="$ctrl.inStream.lastSignal.signal === 1 || $ctrl.waitingForSignalBack"
-      ng-click="$ctrl.postSignal($ctrl.inStream.id, 1)">LONG</md-button>
+        ng-click="$ctrl.postSignal($ctrl.inStream.id, 1)">LONG</md-button>
     </section>
     <md-menu>
       <!-- Trigger element is a md-button with an icon -->
@@ -49,7 +50,10 @@
           <md-button ng-click="$ctrl.openSubscriptionPriceDialog()">Update Subscription Price</md-button>
         </md-menu-item>
         <md-menu-item>
-          <md-button ng-click="$ctrl.openApiKeyDialog()">API Key</md-button>
+          <md-button ng-click="$ctrl.openApiKeyDialog()">Get API Key</md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button ng-click="$ctrl.openMirrorDialog()">Mirror Bitfinex Account</md-button>
         </md-menu-item>
         <md-menu-item>
           <md-button ng-href="https://bitcoinwisdom.com/markets/bitfinex/btcusd" target="_blank">Market Data</md-button>

@@ -46,6 +46,7 @@ import { StreamNewDialog } from "./components/stream-new-dialog/stream-new-dialo
 import { StreamPublisherRow } from "./components/stream-publisher-row/stream-publisher-row"
 import { PublisherApikeyDialog } from "./components/publisher-apikey-dialog/publisher-apikey-dialog"
 import { SubscriptionPriceDialog } from "./components/publisher-sub-price-dialog/publisher-sub-price-dialog"
+import { PublisherMirrorDialog } from "./components/publisher-mirror-dialog/publisher-mirror-dialog"
 
 // services
 import { TbFront } from "./services/tb-front/tb-front"
@@ -101,6 +102,7 @@ module tradersbitCom {
     .component("tbStreamPublisherRow", new StreamPublisherRow())
     .component("tbPublisherApikeyDialog", new PublisherApikeyDialog())
     .component("tbSubscriptionPriceDialog", new SubscriptionPriceDialog())
+    .component("tbPublisherMirrorDialog", new PublisherMirrorDialog())
 
     // services
     .service("tbFront", TbFront)

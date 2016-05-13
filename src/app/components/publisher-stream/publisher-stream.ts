@@ -76,6 +76,27 @@ class PublisherStreamCtrl {
     })
   }
 
+  openMirrorDialog(ev: any) {
+    this.$mdDialog.show({
+      template:
+      '<md-dialog><tb-publisher-mirror-dialog in-stream-id="{{ctrl.stream.id}}">' +
+      "</tb-publisher-mirror-dialog></md-dialog>",
+      targetEvent: ev,
+      clickOutsideToClose: true,
+      fullscreen: this.$mdMedia("xs"),
+      locals: {
+        stream: this.inStream
+      },
+      controller:
+      /** @ngInject */
+      class DialogCtrl2 {
+        constructor(public stream: Stream) {
+        }
+      },
+      controllerAs: "ctrl"
+    })
+  }
+
   openSubscriptionPriceDialog(ev: any) {
     this.$mdDialog.show({
       template:

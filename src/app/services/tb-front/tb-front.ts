@@ -246,6 +246,28 @@ export class TbFront {
     return deferred.promise
   }
 
+  postMirror(streamId: string, apiKey: string, apiSecret: string): angular.IPromise<string> {
+    const deferred: angular.IDeferred<string> = this.$q.defer()
+    console.log("Tb-Font - post mirror")
+    console.log("x-auth-token: " + this.store.get("token"))
+    console.log("streamId: " + streamId)
+
+    this.privateApigClient.meStreamsStreamIdMirrorPost({
+      "x-auth-token": this.store.get("token"),
+      "streamId": streamId
+    }, {
+      "apiKey": apiKey,
+      "apiSecret": apiSecret
+    }, {})
+      .then((res: SuccessRespondse<string>) => deferred.resolve(res.data))
+      .catch((err: any) => {
+        this.signOut("Could not connect")
+        console.log("get apiKey error: " + JSON.stringify(err))
+        deferred.reject("Tb-Font - Could not get new api key. Error: " + err)
+      })
+    return deferred.promise
+  }
+
   isStream(value: string) {
     let start = "stream-"
     return value.substring(0, start.length) === start
