@@ -39,7 +39,7 @@ class PublisherMirrorDialogCtrl {
     this.tbFront.postMirror(this.inStreamId, this.apiKey, this.apiSecret)
       .then((res: string) => {
         console.log("res: " + res)
-        
+
         this.responds = res
         this.gotResponds = true
         this.watingForResponds = false

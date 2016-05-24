@@ -21,6 +21,9 @@ class StreamsViewCtrl {
   windowWidth: number
   isMobile: boolean
   showFilters: boolean
+  activeLastDays: number = 30
+  minNumTrades: number = 5
+  minNetProfit: number = 5
 
   constructor(private $mdSidenav: angular.material.ISidenavService, private $window: angular.IWindowService) {
     "ngInject"

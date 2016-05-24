@@ -1,6 +1,6 @@
 {
   "name": "tradersbitCom",
-  "ambientDependencies": {
+  "globalDependencies": {
     "angular": "registry:dt/angular#1.5.0+20160412133217",
     "angular-material": "github:DefinitelyTyped/DefinitelyTyped/angular-material/angular-material.d.ts#bb051830df88f5a55dcf06b7fe85bf6b62cc97f2",
     "angular-mocks": "github:DefinitelyTyped/DefinitelyTyped/angularjs/angular-mocks.d.ts#bb051830df88f5a55dcf06b7fe85bf6b62cc97f2",

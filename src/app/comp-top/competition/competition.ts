@@ -65,9 +65,9 @@ class CompetitionViewCtrl {
     }
   },
     {
-      name: "Change sins 1 May",
-      short: "Change",
-      description: "Change sins 1 May.",
+      name: "Change since 1 May",
+      short: "Change since 1 May",
+      description: "Change since 1 May.",
       jsonPath: "",
       on: true,
       bad: (stream: Stream) => {
@@ -127,7 +127,7 @@ class CompetitionViewCtrl {
           stream2.stats.allTimeValueIncl -
           stream2.recordedState[this.comp3.startTime.toString()].firstSignal.valueInclFee
 
-        return stream2Change - stream1Change
+        return stream1Change - stream2Change
       })
 
     console.log("top10StreamsComp3: " + JSON.stringify(this.top10StreamsComp3))
