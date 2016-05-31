@@ -1,4 +1,4 @@
-import { Stream, StreamsAttribute } from "../../typings/types"
+import { Stream, StreamsAttribute } from "../../typings/types.d.ts"
 import { StreamAttributes } from "../../util/stream-attributes"
 
 export class StreamsView implements ng.IComponentOptions {

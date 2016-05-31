@@ -14,7 +14,9 @@ require("script!../assets/tb-front-sdk/lib/apiGatewayCore/simpleHttpClient.js")
 require("script!../assets/tb-front-sdk/lib/apiGatewayCore/utils.js")
 require("script!../assets/tb-front-sdk/apigClient.js")
 
-require("script!../assets/highstock.js")
+require("script!../assets/highchart/highstock.js")
+require("script!../assets/highchart/highcharts-more.js")
+require("script!../assets/highchart/solid-gauge.js")
 
 import { config } from "./index.config"
 import { routerConfig } from "./index.route"
@@ -47,6 +49,9 @@ import { StreamPublisherRow } from "./components/stream-publisher-row/stream-pub
 import { PublisherApikeyDialog } from "./components/publisher-apikey-dialog/publisher-apikey-dialog"
 import { SubscriptionPriceDialog } from "./components/publisher-sub-price-dialog/publisher-sub-price-dialog"
 import { PublisherMirrorDialog } from "./components/publisher-mirror-dialog/publisher-mirror-dialog"
+import { StreamListItem } from "./components/stream-list-item/stream-list-item"
+import { TopNav } from "./components/top-nav/top-nav"
+
 
 // services
 import { TbFront } from "./services/tb-front/tb-front"
@@ -103,6 +108,8 @@ module tradersbitCom {
     .component("tbPublisherApikeyDialog", new PublisherApikeyDialog())
     .component("tbSubscriptionPriceDialog", new SubscriptionPriceDialog())
     .component("tbPublisherMirrorDialog", new PublisherMirrorDialog())
+    .component("tbStreamListItem", new StreamListItem())
+    .component("tbTopNav", new TopNav())
 
     // services
     .service("tbFront", TbFront)

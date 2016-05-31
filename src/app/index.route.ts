@@ -1,5 +1,5 @@
 import { TbFront } from "./services/tb-front/tb-front"
-import { Stream, Signal } from "./typings/types"
+import { Stream, Signal } from "./typings/types.d.ts"
 
 /** @ngInject */
 export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {

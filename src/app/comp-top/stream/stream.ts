@@ -1,5 +1,5 @@
 import { BitcoinaverageApi } from "../../services/bitcoinaverage-api/bitcoinaverage-api"
-import { Stream, StreamsAttribute, Signal, Trade } from "../../typings/types"
+import { Stream, StreamsAttribute, Signal, Trade } from "../../typings/types.d.ts"
 import { StreamAttributes } from "../../util/stream-attributes"
 import { TbFront } from "../../services/tb-front/tb-front"
 

@@ -1,5 +1,5 @@
 import { TbFront } from "../../services/tb-front/tb-front"
-import { Stream } from "../../../app/typings/types"
+import { Stream } from "../../../app/typings/types.d.ts"
 
 export class SubscriptionPriceDialog implements ng.IComponentOptions {
   bindings: any

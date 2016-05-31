@@ -1,4 +1,4 @@
-import { Stream, StreamsAttribute } from "../../typings/types"
+import { Stream, StreamsAttribute } from "../../typings/types.d.ts"
 import { BitfinexSocket } from "../../services/bitfinex-socket/bitfinex-socket"
 import { TbFront } from "../../services/tb-front/tb-front"
 

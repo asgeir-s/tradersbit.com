@@ -1,5 +1,5 @@
 <div class="stream-stats">
-  <h4 class="md-headline center">{{$ctrl.inName}}</h4>
+  <h4 class="md-headline center" ng-if="$ctrl.inName">{{$ctrl.inName}}</h4>
   <table>
     <tr ng-repeat="attribute in $ctrl.inAttributes" ng-class="{good: attribute.good($ctrl.inStream), bad: attribute.bad($ctrl.inStream)}">
       <td>

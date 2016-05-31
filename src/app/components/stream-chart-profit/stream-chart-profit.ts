@@ -1,4 +1,4 @@
-import { Signal } from "../../../app/typings/types"
+import { Signal } from "../../../app/typings/types.d.ts"
 
 export class StreamChartProfit implements ng.IComponentOptions {
   bindings: any

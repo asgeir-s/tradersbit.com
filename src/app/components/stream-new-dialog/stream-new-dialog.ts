@@ -1,4 +1,4 @@
-import { NewStream } from "../../../app/typings/types"
+import { NewStream } from "../../../app/typings/types.d.ts"
 import { TbFront } from "../../services/tb-front/tb-front"
 
 export class StreamNewDialog implements ng.IComponentOptions {

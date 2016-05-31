@@ -1,13 +1,4 @@
-<md-toolbar>
-  <div class="md-toolbar-tools">
-    <h2>Subscribe to Stream</h2>
-    <span flex></span>
-    <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
-      <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
-    </md-button>
-  </div>
-</md-toolbar>
-<div class="toolbar-mobile-space"></div>
+
 <md-progress-linear md-mode="indeterminate" ng-hide="!$ctrl.waitForResponds"></md-progress-linear>
 
 <md-dialog-content>
@@ -21,16 +12,6 @@
     </div>
 
     <div ng-hide="$ctrl.gotPaymentInfo">
-      <p>
-        By subscribing to this stream, you will get new trading signals sent to your e-mail and/or automatically traded at
-        <span style="text-transform: capitalize;">{{$ctrl.inStream.exchange}}</span> on your behalf.
-      </p>
-      <p>
-        You will receive an e-mail giving you the option to continue the subscription five days before it expires.
-      </p>
-      <p>
-        It is not possible to change the information entered here.
-      </p>
     </div>
 
     <form novalidate name="subscribeForm" ng-hide="$ctrl.gotPaymentInfo || $ctrl.waitForResponds">
@@ -40,9 +21,9 @@
           <input required type="email" ng-model="$ctrl.subscription.email" id="email" value="">
         </md-input-container>
         <md-switch class="md-primary" ng-model="$ctrl.subscribeAutoTrader" aria-label="Switch 6" ng-change="$ctrl.updatePrice()">
-          Autotrader Beta ({{$ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{$ctrl.autoTraderPrice / $ctrl.inBtcRate | number:4}})
+          TradingBot ({{$ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{$ctrl.autoTraderPrice / $ctrl.inBtcRate | number:4}})
         </md-switch>
-        <p class="autotrader-read-about">Read about Autotrader in the <a href="/faq" ng-click="$ctrl.cancel()">FAQ</a>.</p>
+        <p class="autotrader-read-about">Read about TradingBot in the <a href="/faq" ng-click="$ctrl.cancel()">FAQ</a>.</p>
         <div class="api-key-info" flex ng-hide="!$ctrl.subscribeAutoTrader">
           Go <a target="_blank" href="https://www.bitfinex.com/account/api">here</a> to create a new API key for Bitfinex. The needed permisssions are: 
           <ul class="api-permissions">
@@ -62,7 +43,7 @@
           ng-minlength="5" />
         </md-input-container>
         <div ng-hide="!$ctrl.subscribeAutoTrader">
-          You should only have one Autotrader subscription per Bitfinex account (see the FAQ).
+          You should only have one TradingBot subscription per Bitfinex account.
         </div>
         <md-input-container flex ng-hide="!$ctrl.subscribeAutoTrader">
           <label>Percentage of avalible balance to trade</label>

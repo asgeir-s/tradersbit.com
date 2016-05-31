@@ -5,7 +5,7 @@
     "test": "gulp test"
   },
   "devDependencies": {
-    "awesome-typescript-loader": "~0.14.0",
+    "awesome-typescript-loader": "~0.18.0",
     "browser-sync": "~2.11.1",
     "browser-sync-spa": "~1.0.3",
     "chalk": "~1.1.1",
@@ -47,7 +47,7 @@
     "script-loader": "^0.6.1",
     "tslint": "^3.8.1",
     "tslint-loader": "~2.1.4",
-    "typescript": "~1.7.5",
+    "typescript": "~1.8.10",
     "typings": "^0.6.8",
     "uglify-save-license": "~0.4.1",
     "webpack-stream": "~3.1.0",

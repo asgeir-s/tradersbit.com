@@ -1,4 +1,4 @@
-import { Stream } from "../../../app/typings/types"
+import { Stream } from "../../../app/typings/types.d.ts"
 
 export class StreamAverageTradeChart implements ng.IComponentOptions {
   bindings: any

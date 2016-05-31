@@ -1,4 +1,4 @@
-import { Stream, SubscriptionRequest, CoinbaseEmbedCode } from "../../../app/typings/types"
+import { Stream, SubscriptionRequest, CoinbaseEmbedCode } from "../../../app/typings/types.d.ts"
 import { TbFront } from "../../services/tb-front/tb-front"
 
 export class SubscriptionDialog implements ng.IComponentOptions {

@@ -1,4 +1,4 @@
-import { Stream, StreamsAttribute} from "../typings/types"
+import { Stream, StreamsAttribute} from "../typings/types.d.ts"
 
 export class StreamAttributes {
 
@@ -591,7 +591,7 @@ export class StreamAttributes {
     return StreamAttributes.statsAttribute
   }
 
-  static formatDate(inn: number): string {
+  static formatDate(inn: number, hideTime?: boolean): string {
     const d = new Date(inn)
     const year = d.getFullYear()
     let hours: any = d.getHours()
@@ -612,7 +612,15 @@ export class StreamAttributes {
       date = "0" + date
     }
 
-    return date + " " + monthNames[d.getMonth()] + " " + year + ", " + hours + ":" + minutes
+    if (hideTime) {
+      return date + " " + monthNames[d.getMonth()] + " " + year
+
+    }
+    else {
+      return date + " " + monthNames[d.getMonth()] + " " + year + ", " + hours + ":" + minutes
+
+    }
+
   }
 
 }

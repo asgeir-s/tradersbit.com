@@ -1,5 +1,14 @@
 tb-stream {
 	
+	h2 {
+		font-variant: small-caps;
+	}
+	
+	md-content{
+		max-width: 1200px;
+    margin: auto;	
+	}
+
 	.google-chart-outer {
 		background-color: black;
 		width: 100%;
@@ -34,8 +43,5 @@ tb-stream {
     position: fixed;
     
   }
-  
-  md-toolbar.md-accent {
-      //background-color: #FEE496!important;
-  }
+	
 }

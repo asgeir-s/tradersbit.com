@@ -1,4 +1,4 @@
-import { NewStream, SubscriptionRequest, Stream, Signal } from "../../../app/typings/types"
+import { NewStream, SubscriptionRequest, Stream, Signal } from "../../../app/typings/types.d.ts"
 
 export class TbFront {
   streamIds: Array<string>

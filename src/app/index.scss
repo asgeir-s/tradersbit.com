@@ -46,6 +46,12 @@ $background-color-bad: #f3d7cd;
   }
 }
 
+@media screen and (min-width: 960px) {
+md-tooltip {
+    font-size: 14px; 
+}
+}
+
   md-toast {
     position: fixed !important;
   }

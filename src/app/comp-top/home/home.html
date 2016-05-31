@@ -1,189 +1,46 @@
-<md-toolbar hide-gt-xs>
-  <div class="md-toolbar-tools">
-    <md-button ng-click="$ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
-      <md-icon class="material-icons">menu</md-icon>
-    </md-button>
-    <span flex></span>
-  </div>
-</md-toolbar>
-<div class="toolbar-mobile-space"></div>
+<md-button class="md-fab fab-buttom-right" aria-label="indicators" ng-click="$ctrl.toggleRightSidebar()">
+  <md-icon class="material-icons">filter_list</md-icon>
+  <md-tooltip md-direction="top" md-visible="true">
+    Filter
+  </md-tooltip>
+</md-button>
 
-<div class="home--promo-top">
-  <img src="/assets/logo/full-logo-light.svg" alt="Bitcoin image" height="200">
-  <p>
-    The marketplace for Bitcoin trading signals.
-  </p>
-  <p>
-    Subscribe to streams of trading signals, or publish
-    <br> your own trading signals, sell subscriptions and
-    <br> win competitions.
-  </p>
-  <md-button class="promo-btn md-raised md-accent" ng-click="$ctrl.chnageState('streams')">Browse Streams</md-button>
-  or
-  <md-button class="promo-btn md-raised md-accent" ng-click="$ctrl.chnageState('publish-dash')">Sign Up to Publish</md-button>
-</div>
-
-<div class="top-stream-outer" layout="row" layout-align="center">
-  <md-content class="md-whiteframe-15dp top-stream-card" flex flex-gt-md="75">
-    <md-subheader>
-      <h6 class="md-title center">Top streams of trading signals</h6></md-subheader>
-    <tb-streams-table in-streams="$ctrl.top5Streams;" in-attributes="$ctrl.attributes" in-sort-by="Net Profit"></tb-streams-table>
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="home-right">
+  <md-toolbar class="md-theme-light">
+    <h1 class="md-toolbar-tools">Filter</h1>
+  </md-toolbar>
+  <md-content layout-padding>
+    <form name="projectForm" layout="column">
+      <md-input-container flex>
+        <label>Active in the last</label>
+        <md-select ng-model="$ctrl.activeLastDays" ng-change="$ctrl.updateFilters()">
+          <md-option value="30">
+            30 days
+          </md-option>
+          <md-option value="60">
+            60 days
+          </md-option>
+          <md-option value="90">
+            90 days
+          </md-option>
+          <md-option value="All time">
+            All time
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex class="md-block">
+        <label>Minimun nuber of trades</label>
+        <input type="number" name="minimum number of trades" ng-model="$ctrl.minNumTrades" min="0" ng-change="$ctrl.updateFilters()"
+        />
+      </md-input-container>
+      <md-input-container flex class="md-block">
+        <label>Minimun net profit</label>
+        <input type="number" name="minimum net profit" ng-model="$ctrl.minNetProfit" ng-change="$ctrl.updateFilters()" />
+      </md-input-container>
+    </form>
   </md-content>
-</div>
+</md-sidenav>
 
-<section class="steps" layout="row" layout-xs="column" layout-sm="column" layout-md="column" layout-align="center center"
-  layout-align-gt-md="center">
-
-  <md-content flex flex="90" flex-md="40" flex-gt-md="35" class="subscribe md-whiteframe-15dp">
-    <md-list>
-      <md-subheader class="md-no-sticky">
-        <h6 class="md-title">3 Steps to Subscribe</h6></md-subheader>
-      <md-list-item class="md-3-line">
-        <md-button class="md-fab number-logo" aria-label="Eat cake">
-          1
-        </md-button>
-        <div class="md-list-item-text" layout="column">
-          <h3>Find a stream</h3>
-          <p>
-            Browse filter and sort streams by checking statistics and previous trades.
-          </p>
-        </div>
-      </md-list-item>
-      <md-list-item class="md-3-line">
-        <md-button class="md-fab number-logo" aria-label="Eat cake">
-          2
-        </md-button>
-        <div class="md-list-item-text" layout="column">
-          <h3>Fill in Subscription Informatin</h3>
-          <p>
-            Click the subscribe button (bottom right corner).
-          </p>
-        </div>
-      </md-list-item>
-      <md-list-item class="md-3-line">
-        <md-button class="md-fab number-logo" aria-label="Eat cake">
-          3
-        </md-button>
-        <div class="md-list-item-text" layout="column">
-          <h3>Pay</h3>
-          <p>
-            Pay with Bitcoin. After payment, you will receive trading signals by email, and/or have the trading signals automatically
-            traded. </p>
-        </div>
-      </md-list-item>
-    </md-list>
-  </md-content>
-
-  <md-content flex flex-offset-gt-md="5" flex="90" flex-md="40" flex-gt-md="35" class="publish md-whiteframe-15dp">
-    <md-list>
-      <md-subheader class="md-no-sticky">
-        <h6 class="md-title">3 Steps to Publish</h6></md-subheader>
-      <md-list-item class="md-3-line">
-        <md-button class="md-fab number-logo" aria-label="Eat cake">
-          1
-        </md-button>
-        <div class="md-list-item-text" layout="column">
-          <h3>Sign Up as a Publisher</h3>
-          <p>Go to "Publish" and click "Sign Up".</p>
-        </div>
-      </md-list-item>
-      <md-list-item class="md-3-line">
-        <md-button class="md-fab number-logo" aria-label="Eat cake">
-          2
-        </md-button>
-        <div class="md-list-item-text" layout="column">
-          <h3>Create a Stream</h3>
-          <p>
-            After you have signed in, click the new stream button in the bottom right corner.
-          </p>
-        </div>
-      </md-list-item>
-      <md-list-item class="md-3-line">
-        <md-button class="md-fab number-logo" aria-label="Eat cake">
-          3
-        </md-button>
-        <div class="md-list-item-text" layout="column">
-          <h3>Submit Signals</h3>
-          <p>
-            Click SHORT, CLOSE, or LONG to send signals, connect it to your Bitfinex account or generate an API key for sending signals
-            through our
-            <a href="" ng-click="$ctrl.goToApiHelp()">API</a>.
-          </p>
-        </div>
-      </md-list-item>
-    </md-list>
-  </md-content>
-
-</section>
-
-
-<div class="home--features-outer">
-  <div layout="row" class="home--features-row" layout-align="center center">
-    <div class="home--features-row-inner" flex="90" flex-gt-md="75" flex-xs="100" layout="row" layout-xs="column" layout-align="center start">
-      <div class="home--features-row--item" flex>
-        <md-icon class="material-icons">settings_remote</md-icon>
-        <p>Publish streams and sell subscriptions to your streams. Send signals to your streams through our website, API or
-          mirror your Bitfinex account.</p>
-      </div>
-      <div class="home--features-row--item" flex>
-        <img src="/assets/images/robot16.svg" alt="Trading Robot" height="90px">
-        <p>Connect your trading bots through our <a href="" ng-click="$ctrl.goToApiHelp()">API</a>.</p>
-      </div>
-      <div class="home--features-row--item" flex>
-        <md-icon class="material-icons">settings_input_antenna</md-icon>
-        <p>Subscribe to streams. Get signals by email or use autotrader.</p>
-      </div>
-      <div class="home--features-row--item" flex>
-        <md-icon class="material-icons">trending_up</md-icon>
-        <p>Sort streams by net profit, average monthly return, and more. Statistics include trading fees.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<div layout="row" layout-align="center">
-  <div flex="60" flex-gt-md="50" flex-xs="100" layout="row">
-    <div flex class="how-it-works-text">
-      <h3 class="md-display-2 center">How it works</h3>
-      <p>
-        TradersBit is a marketplace for streams of Bitcoin trading signals.
-      </p>
-      <p>
-        Publishers create streams, send trading signals to streams, and sell subscriptions to streams. Publishing on TradersBit is
-        completely free. Signals can be published through our website, API or by connecting your Bitfinex account. If you connect your 
-        Bitfinex account your trades will be automaticly mirrored into your TradersBit signal stream. The API makes it possible to connect 
-        trading bots and other applications.
-      </p>
-      <p>
-        Statistics for each stream's performance are computed and displayed in the marketplace. Trading fees are incorporated in
-        the statistics.
-      </p>
-      <p>
-        Subscribers can browse, filter and sort streams based on average monthly profit, average trade, and other indicators. When subscribing
-        to a stream, users can receive signals via email or have the signaled trades automatically executed through their
-        own Bitfinex accounts.
-      </p>
-      <p>
-        The publishers of the streams will set the monthly subscription fee. Upon selling subscriptions, publishers will earn 70
-        percent of the subscription fees. We get the remaining 30 percent. TradersBit earns profits only when the publishers
-        make profits, so our respective interests are the same.
-      </p>
-      <p>
-        Upon the reception of a trading signal, we simulate the trade (including trading fees). As a result of this, there is no
-        way for the publishers to manipulate statistics.
-      </p>
-      <p>
-        There is no social interaction in this marketplace because the statistics and trading signals speak for themselves. This
-        way, subscribers will not be scammed easily. A subscriber should not need to know or care whether signals are sent
-        manually by a teenager, an MBA graduate or automatically generated by a trading bot. At TradersBit, the streams and statistics 
-        matter, not the people behind them.
-      </p>
-      <p>
-        TradersBit will also host trading competitions. For instance, most profitable streams last 30 days, etc., with rewards in
-        Bitcoins.
-      </p>
-    </div>
-
-  </div>
-</div>
+<md-content class="stream-list" layout="column">
+  <tb-stream-list-item flex ng-repeat="stream in $ctrl.streams | orderBy: $ctrl.allTimeValueIncl : true" in-stream="stream"></tb-stream-list-item>
+</md-content>

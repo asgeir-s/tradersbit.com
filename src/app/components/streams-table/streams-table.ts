@@ -1,4 +1,4 @@
-import { StreamsAttribute, Stream} from "../../../app/typings/types"
+import { StreamsAttribute, Stream} from "../../../app/typings/types.d.ts"
 
 export class TbStreamsTable implements ng.IComponentOptions {
     bindings: any

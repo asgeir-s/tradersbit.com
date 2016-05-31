@@ -1,5 +1,5 @@
-import { PublishNewStream, Stream } from "../../../app/typings/types"
-import { Signal } from "../../typings/types"
+import { PublishNewStream, Stream } from "../../../app/typings/types.d.ts"
+import { Signal } from "../../typings/types.d.ts"
 import { TbFront } from "../../services/tb-front/tb-front"
 import { BitfinexSocket } from "../../services/bitfinex-socket/bitfinex-socket"
 
