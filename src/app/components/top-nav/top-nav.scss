@@ -1,17 +1,18 @@
  tb-top-nav {
-  margin: 10px;
-  padding-bottom: 30px; 
 
+.nav-button-group {
+  margin: auto;
+}
 
     .top-nav {
  
     }
  
  .logo-link {
-       padding: 10px;
     text-decoration: none;
     color: $dark-font-color;
-
+    margin: 10px;
+    font-style: italic;
  }
  
   .logo {
