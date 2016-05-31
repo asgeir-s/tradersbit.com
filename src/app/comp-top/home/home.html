@@ -1,4 +1,4 @@
-<md-button class="md-fab fab-buttom-right" aria-label="indicators" ng-click="$ctrl.toggleRightSidebar()">
+<md-button class="md-fab fab-buttom-right animated bounce" aria-label="indicators" ng-click="$ctrl.toggleRightSidebar()">
   <md-icon class="material-icons">filter_list</md-icon>
   <md-tooltip md-direction="top" md-visible="true">
     Filter
@@ -6,7 +6,7 @@
 </md-button>
 
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="home-right">
-  <md-toolbar class="md-theme-light">
+  <md-toolbar>
     <h1 class="md-toolbar-tools">Filter</h1>
   </md-toolbar>
   <md-content layout-padding>
@@ -28,7 +28,7 @@
           </md-option>
         </md-select>
       </md-input-container>
-      <md-input-container flex class="md-block">
+      <md-input-container flex class="md-block" style="margin-bottom: 0;">
         <label>Minimun nuber of trades</label>
         <input type="number" name="minimum number of trades" ng-model="$ctrl.minNumTrades" min="0" ng-change="$ctrl.updateFilters()"
         />
@@ -40,6 +40,29 @@
     </form>
   </md-content>
 </md-sidenav>
+
+<div class="home--features-outer">
+  <div layout="row" class="home--features-row" layout-align="center center">
+    <div class="home--features-row-inner" flex layout="row" layout-xs="column" layout-align="center start">
+      <div class="home--features-row--item" flex>
+        <img src="/assets/images/bitcoin83.svg" alt="Trading Robot" height="90px">
+        <p>Sort, filter and comapre to find the trading signals that right for you</p>
+      </div>
+      <div class="home--features-row--item" flex>
+        <img src="/assets/images/robot16.svg" alt="Trading Robot" height="90px">
+        <p>We execute your trades with our trading bots</p>
+      </div>
+      <div class="home--features-row--item" flex>
+        <img src="/assets/images/bitcoin82.svg" alt="Trading Robot" height="90px">
+        <p>Publish trading signals and sell subscriptions</p>
+      </div>
+      <div class="home--features-row--item" flex>
+        <md-icon class="material-icons">code</md-icon>
+        <p>Connect your trading bots to our API</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <md-content class="stream-list" layout="column">
   <tb-stream-list-item flex ng-repeat="stream in $ctrl.streams | orderBy: $ctrl.allTimeValueIncl : true" in-stream="stream"></tb-stream-list-item>

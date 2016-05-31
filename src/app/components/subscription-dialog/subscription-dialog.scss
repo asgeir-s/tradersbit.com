@@ -9,11 +9,6 @@ tb-subscription-dialog {
     @media screen and (min-width: 600px) {
           min-width: 450px;
   }
-
-	
-	md-toolbar {
-		color: $light-font-color !important;
-	}
 	
 		h3 {
 		margin-top: 0px;
@@ -25,7 +20,8 @@ tb-subscription-dialog {
 	
 	.recaptcha {
 		  align-self: center;
-			padding: 1em;
+			padding-top: 30px;
+			padding-bottom: 10px;
       min-height: 110px;
 	}
 	
@@ -37,10 +33,6 @@ tb-subscription-dialog {
 		align-self: center;
     margin: auto;
 	}
-  
-  md-icon {
-    color: $light-font-color !important;
-  }
   
     a {
     color: $dark-link-color;

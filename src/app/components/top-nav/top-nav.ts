@@ -25,7 +25,7 @@ class TopNavCtrl {
     this.watingPanelConfig = {
       attachTo: angular.element(document.body),
       disableParentScroll: true,
-      template: '<md-progress-circular md-mode="indeterminate"></md-progress-circular>',
+      template: '<md-progress-circular md-mode="indeterminate" md-diameter="100"></md-progress-circular>',
       hasBackdrop: true,
       panelClass: 'demo-dialog-example',
       position: this.$mdPanel.newPanelPosition()
@@ -33,8 +33,8 @@ class TopNavCtrl {
         .center(),
       trapFocus: true,
       zIndex: 150,
-      clickOutsideToClose: true,
-      escapeToClose: true,
+      clickOutsideToClose: false,
+      escapeToClose: false,
       focusOnOpen: true
     }
 

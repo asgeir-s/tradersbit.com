@@ -1,10 +1,42 @@
 tb-home {
- 
+
+  .home--features-outer {
+    background-color: $third-color-light; //$third-color-light; //dsfdsfds
+    color: $light-font-color;
+    md-icon {
+      color: $light-font-color;
+      height: 90px;
+    }
+  }
+  .home--features-row-inner {
+    @media screen and (max-width: 600px) {
+      display: block !important;
+    }
+  }
+  .home--features-row--item {
+    margin: 10px;
+    @media screen and (max-width: 600px) {
+      padding: 30px;
+    }
+  }
+  
+    .home--features-row {
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-bottom: 0;
+    max-width: 1200px;
+    margin: auto;
+    md-icon {
+      font-size: 4em;
+    }
+  }
 
   
   .stream-list {
     max-width: 1200px;
     margin: auto;
+    padding-top: 20px;
   }
   
    .fab-buttom-right {

@@ -117,18 +117,6 @@ class PublisherStreamCtrl {
     })
   }
 
-  logoUrl(): string {
-    if (this.inStream.exchange === "bitstamp") {
-      return "assets/images/bitstamp_logo.png"
-    }
-    else if (this.inStream.exchange === "bitfinex") {
-      return "assets/images/bitfinex_logo.png"
-    }
-    else {
-      return ""
-    }
-  }
-
   positionString(): string {
     if (this.inStream.status === -1) {
       return "SHORT"

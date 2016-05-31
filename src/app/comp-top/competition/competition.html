@@ -1,15 +1,5 @@
-<md-toolbar flex>
-  <div class="md-toolbar-tools">
-    <md-button hide-gt-xs ng-click="$ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
-      <md-icon class="material-icons">menu</md-icon>
-    </md-button>
-    <h2>Trading Competitions</h2>
-    <span flex></span>
-  </div>
-</md-toolbar>
-<div class="toolbar-mobile-space"></div>
-
 <md-content>
+  <h3 class="md-display-2 center">Trading Competitions</h3>
 
   <h1>Ongoing</h1>
   <md-card layout="row" layout-xs="column">
@@ -46,13 +36,9 @@
       </md-card-content>
     </div>
 
-    <md-card flex>
-      <md-card-title>
-      </md-card-title>
-      <md-card-content>
+    <div flex>
         <tb-streams-table flex in-streams="$ctrl.top10StreamsComp2" in-attributes="$ctrl.attributesComp2" in-sort-by="Net Profit"></tb-streams-table>
-      </md-card-content>
-    </md-card>
+    </div>
   </md-card>
 
   <md-card layout="row" layout-xs="column">
@@ -93,18 +79,11 @@
       </md-card-content>
     </div>
 
-    <md-card flex>
-      <md-card-title>
-      </md-card-title>
-      <md-card-content>
+   <div flex>
         <tb-streams-table flex in-streams="$ctrl.top10StreamsComp3" in-attributes="$ctrl.attributesComp3" in-sort-by="Net Profit"></tb-streams-table>
         <p ng-if="$ctrl.top10StreamsComp3.length == 0">There are no streams with 20 closed trades after 1 May</p>
-      </md-card-content>
-    </md-card>
+    </div>
   </md-card>
-
-  <h1>Starting Soon</h1>
-
 
   <h1>Finished</h1>
   <md-card layout="row" layout-xs="column">
@@ -141,17 +120,15 @@
       </md-card-content>
     </div>
 
-    <md-card flex style="cursor: pointer;" ng-click="$ctrl.goToStream('deca79ea-6631-492b-ad51-4bc41b12dd05')">
-      <md-card-title>
-      </md-card-title>
-      <md-card-content class="center">
+    <div class="competition-winnner" flex style="cursor: pointer;" ng-click="$ctrl.goToStream('deca79ea-6631-492b-ad51-4bc41b12dd05')">
+      <div class="center">
         <md-icon class="material-icons cake" style="font-size: 200px;">cake</md-icon>
         <h6 class="md-title" style="margin-bottom: 0px;">Winner:</h6>
         <h3 class="md-display-2" style="margin-top: 0px;">ChronoTrading</h3>
         <h6 class="md-title" style="margin-bottom: 0px;">Result:</h6>
         <h4 class="md-display-1" style="margin-top: 0px;">13.62% Net Profit</h4>
 
-      </md-card-content>
-    </md-card>
+      </div>
+    </div>
   </md-card>
 </md-content>

@@ -52,6 +52,23 @@ md-tooltip {
 }
 }
 
+h1, h2, h3, h4, h5, h6, {
+  font-variant: small-caps;
+}
+
+md-toolbar {
+  background-color: white!important;
+  color: $dark-font-color!important;
+  
+  .md-button {
+    color: $dark-font-color!important;
+  }
+  
+  md-icon {
+      color: $dark-font-color!important;
+  }
+}
+
   md-toast {
     position: fixed !important;
   }

@@ -4,13 +4,11 @@
 
     <div class="id-row" flex layout="row" layout-align="center center" ng-click="$ctrl.goToStream($ctrl.inStream.id)" style="cursor:pointer">
       <div class="exchange-logo" flex="20">
-        <img ng-src="{{$ctrl.logoUrl()}}" alt="exchange logo" />
+        <img ng-src="assets/images/{{$ctrl.inStream.exchange}}_logo.svg" alt="exchange logo" />
       </div>
 
       <div flex>
-        <span class="md-title">{{$ctrl.inStream.name}}</span>
-        <br>
-        <small>{{$ctrl.inStream.id}}</small>
+        <span class="md-title stream-name">{{$ctrl.inStream.name}}</span>
       </div>
     </div>
 

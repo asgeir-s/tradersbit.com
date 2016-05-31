@@ -17,8 +17,8 @@ export class HomeView implements ng.IComponentOptions {
 class HomeViewCtrl {
   inStreams: Array<Stream>
   activeLastDays: number = 30
-  minNumTrades: number = 5
-  minNetProfit: number = 5
+  minNumTrades: number = 10
+  minNetProfit: number = 10
   streams: Array<Stream>
 
   constructor(private $state: any, private $mdSidenav: any) {

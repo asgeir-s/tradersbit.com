@@ -223,11 +223,11 @@ class StreamListItemCtrl {
           "series": {
             "stacking": ""
           },
-          pie: {
-            allowPointSelect: true,
-            cursor: "pointer",
-            dataLabels: {
-              enabled: false
+          "pie": {
+            "allowPointSelect": true,
+            "cursor": "pointer",
+            "dataLabels": {
+              "enabled": false
             }
           }
         }
@@ -237,16 +237,15 @@ class StreamListItemCtrl {
           "name": "Trades",
           "data": [
             {
-              name: "Loosing",
-              y: this.inStream.stats.numberOfLoosingTrades
+              "name": "Loosing",
+              "y": this.inStream.stats.numberOfLoosingTrades
             },
             {
-              name: "Winning",
-              y: this.inStream.stats.numberOfProfitableTrades,
-              sliced: true,
-              selected: true
+              "name": "Winning",
+              "y": this.inStream.stats.numberOfProfitableTrades,
+              "sliced": true,
+              "selected": true
             }
-
 
           ],
           "id": "winning-loosing-trades"
@@ -255,9 +254,9 @@ class StreamListItemCtrl {
       "title": {
         "text": "Trades",
         "margin": 0,
-        style: {
-          color: "#8c8c8c",
-          fontSize: "13px"
+        "style": {
+          "color": "#8c8c8c",
+          "fontSize": "13px"
         }
       },
       "credits": {
@@ -266,13 +265,13 @@ class StreamListItemCtrl {
       "loading": false,
       "size": {}
     }
-  }
+}
 
   goToStream(streamID: string): void {
     this.$state.go("stream", { "streamId": streamID })
   }
-  
-    openSubscriptionDialog(ev: any): void {
+
+  openSubscriptionDialog(ev: any): void {
 
     this.$mdDialog.show({
       template: `

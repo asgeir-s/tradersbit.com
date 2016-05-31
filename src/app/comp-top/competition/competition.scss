@@ -5,12 +5,18 @@ tb-competition {
     color: $secondary-color-dark
   }
   
-  md-content {
-
-  } 
+ 	md-content{
+		max-width: 1200px;
+    margin: auto;	
+	}
   
   h1 {
     padding-left: 20px;
     margin-top: 60px;
   }
+  
+  .competition-winnner {
+    padding: 40px;
+  }
+
 }

@@ -1,11 +1,21 @@
  tb-top-nav {
   margin: 10px;
   padding-bottom: 30px; 
+
+
+    .top-nav {
  
+    }
+ 
+ .logo-link {
+       padding: 10px;
+    text-decoration: none;
+    color: $dark-font-color;
+
+ }
  
   .logo {
     height: 30px;
-    padding: 10px;
   }
   
   .active {
@@ -13,3 +23,13 @@
   }
  }
  
+     .demo-dialog-example {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+      0 13px 19px 2px rgba(0, 0, 0, 0.14),
+      0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  width: 100px;
+  height: 100px;
+  
+}

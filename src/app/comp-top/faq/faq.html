@@ -1,13 +1,3 @@
-<md-toolbar flex>
-  <div class="md-toolbar-tools">
-    <md-button hide-gt-xs ng-click="ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
-      <md-icon class="material-icons">menu</md-icon>
-    </md-button>
-    <h2>FAQ</h2>
-    <span flex></span>
-  </div>
-</md-toolbar>
-<div class="toolbar-mobile-space"></div>
 <md-content>
   <h3 class="md-display-2 center">FAQ</h3>
   <p class="text-content">
@@ -24,23 +14,23 @@
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>How does Autotrader work?</h4>
+        <h4>How does the TradingBots work?</h4>
         <p>
-          Autotrader will trade the stream's incoming signals, on the subscriber's behalf.
+          A TradingBot will trade the stream's incoming signals, on the subscriber's behalf.
         </p>
         <p>
-          For now, autotrader only does margin trading. Therefore, the money you want autotrader to trade with must be in your "Trading
+          For now, the TradingBots only does margin trading. Therefore, the money you want your TradingBot to trade with must be in your "Trading
           Wallet" at Bitfinex.
         </p>
         <p>
-          All trades executed by Autotrader are market orders. A market order is a buy or a sell order to be executed immediately at
+          All trades executed by TradingBots are market orders. A market order is a buy or a sell order to be executed immediately at
           current market prices. This means that you should not expect to get the exact same price as recorded in the trading
           signal, because of slippage, latency, etc. <a href="http://www.investopedia.com/terms/s/slippage.asp"
             target="_blank">Read about slippage on Investopedia.</a>
         </p>
         <p>
-          On the first signal, autotrader will close any open BTC/USD margin position before executing the signaled order. When executing
-          an order, the amount autotrader will use to buy or sell short is your specified "Percentage to Trade" of "Tradable
+          On the first signal, the TradingBot will close any open BTC/USD margin position before executing the signaled order. When executing
+          an order, the amount the TradingBot will use to buy or sell short is your specified "Percentage to Trade" of "Tradable
           Balance" in your "Trading Wallet". You can check your "Tradable Balance" by logging into Bitfinex, then on the right side panel 
           select "Trading" (in the drop down menu), then you see your "Tradable Balance" under "On Pair BTCUSD". If you specified 100% "Percentage 
           to Trade", it will use 99.9%, this is done to make sure you have the funds to cover the order at the order time.
@@ -50,17 +40,17 @@
           at the exchange. Therefore, this should not be thought of as a high-frequency trading solution.
         </p>
         <p>
-          You need a separate Bitfinex account for each Autotrader subscription. This is because of how Bitfinex handles your positions. 
-          For instance, it is not possible to have a LONG and a SHORT position active at the same time. If you want more then one autotrader running, 
+          You need a separate Bitfinex account for each TradingBot. This is because of how Bitfinex handles your positions. 
+          For instance, it is not possible to have a LONG and a SHORT position active at the same time. If you want more then one TradingBot running, 
           just open a new Bitfinex account.
         </p>
       </div>
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>How do I stop autotrader before the subscription ends</h4>
+        <h4>How do I stop the TradingBot before the subscription ends</h4>
         <p>
-          Sign into Bitfinex, go to <a href="https://www.bitfinex.com/account/api" target="_blank">API key Management</a>, then revoke the API key you entered when subscribing with autotrader.
+          Sign into Bitfinex, go to <a href="https://www.bitfinex.com/account/api" target="_blank">API key Management</a>, then revoke the API key you entered when subscribing with TradingBot.
         </p>
       </div>
     </md-list-item>

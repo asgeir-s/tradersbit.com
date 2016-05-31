@@ -85,6 +85,18 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
         }
       },
     })
+    .state("how-it-works", {
+      url: "/how-it-works",
+      templateUrl: "app/comp-top/how-it-works/how-it-works.html",
+      controllerAs: "ctrl",
+      controller:
+      class TbhowItWorksCtrl {
+        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        toggleMenu() {
+          return this.$mdSidenav("leftBig").open()
+        }
+      },
+    })
     .state("medium", {
       url: "/medium",
       templateUrl: "app/comp-top/medium/medium.html",
