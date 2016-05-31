@@ -55,31 +55,22 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       },
       controllerAs: "ctrl"
     })
-    .state("publish-dash", {
-      url: "/publish/dash",
-      template: '<tb-publish-dash my-streams="ctrl.streams"></tb-publish-dash>',
+    .state("publish", {
+      url: "/publish/:verify",
+      template: '<tb-publish my-streams="ctrl.streams"></tb-publish>',
       resolve: {
         streams: (tbFront: TbFront) => tbFront.getMyStreams()
       },
       controller:
-      class StateStream {
-        constructor(public streams: Array<Stream>) { }
+      class Publish {
+        verify: string
+        constructor(public streams: Array<Stream>, $stateParams: any) {
+          this.verify = $stateParams.verify
+        }
       },
       controllerAs: "ctrl",
       data: {
         requiresLogin: true
-      }
-    })
-    .state("publish", {
-      url: "/publish/:verify",
-      template: '<tb-publish in-verify="ctrl.verify"></tb-publish>',
-      controllerAs: "ctrl",
-      controller:
-      class Publish {
-        verify: string
-        constructor($stateParams) {
-          this.verify = $stateParams.verify
-        }
       }
     })
     .state("api", {

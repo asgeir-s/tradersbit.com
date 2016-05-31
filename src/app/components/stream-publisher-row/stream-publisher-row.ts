@@ -16,6 +16,6 @@ class StreamPublisherRowCtrl {
     }
 
     goToPublish() {
-        this.$state.go("publish-dash")
+        this.$state.go("publish")
     }
 }

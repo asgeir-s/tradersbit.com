@@ -3,7 +3,7 @@
     <img class="logo" src="/assets/logo/logo-text.svg" alt="TradesBit logo">
   </a>
   <div flex></div>
-  <md-button ng-click="$ctrl.chnageState('home')">Home</md-button>
-  <md-button ng-click="$ctrl.chnageState('streams')">Detail View</md-button>
-  <md-button ng-click="$ctrl.chnageState('publish')" class="md-primary">+ Publish</md-button>
+  <md-button ng-click="$ctrl.chnageState('home')" ng-class="{active: $ctrl.$state.is('home')}">Home</md-button>
+  <md-button ng-click="$ctrl.chnageState('streams')" ng-class="{active: $ctrl.$state.is('streams')}">Detail View</md-button>
+  <md-button ng-click="$ctrl.clickPublish()" class="md-primary" ng-class="{active: $ctrl.$state.is('publish')}">+ Publish</md-button>
 </div>

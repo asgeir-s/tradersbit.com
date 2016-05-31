@@ -5,6 +5,10 @@ export function runBlock($log: angular.ILogService, auth: any, $rootScope: any, 
   tbFront: TbFront) {
   $log.debug("runBlock end")
 
+  $rootScope.$on('$stateChangeSuccess', function () {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  });
+
   // auth0: This hooks al auth events to check everything as soon as the app starts
   auth.hookEvents()
 

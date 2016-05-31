@@ -1,6 +1,6 @@
 <md-card>
   <md-card-header>
-    <span class="md-headline stream-name">{{$ctrl.inStream.name}}</span>
+    <span class="md-headline stream-name" ng-click="$ctrl.goToStream($ctrl.inStream.id)">{{$ctrl.inStream.name}}</span>
     <div flex></div>
     <img class="exchnage-logo" ng-src="assets/images/{{$ctrl.inStream.exchange}}_logo.svg" alt="exchange logo" />
   </md-card-header>

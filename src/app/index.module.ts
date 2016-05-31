@@ -27,12 +27,11 @@ import { HomeView } from "./comp-top/home/home"
 import { StreamsView } from "./comp-top/streams/streams"
 import { StreamView } from "./comp-top/stream/stream"
 import { PublishView } from "./comp-top/publish/publish"
-import { PublishDashView } from "./comp-top/publish-dash/publish-dash"
 import { AboutView } from "./comp-top/about/about"
 import { CompetitionView } from "./comp-top/competition/competition"
 
 // components
-import { SideNavLayout } from "./components/side-nav-layout/side-nav-layout"
+import { Footer } from "./components/footer/footer"
 import { TbStreamsTable } from "./components/streams-table/streams-table"
 import { InfoTable } from "./components/info-table/info-table"
 import { TradesTable } from "./components/trades-table/trades-table"
@@ -42,7 +41,6 @@ import { StreamChartProfit } from "./components/stream-chart-profit/stream-chart
 import { StreamPiechartTrades } from "./components/stream-piechart-trades/stream-piechart-trades"
 import { StreamAverageTradeChart } from "./components/stream-average-trade-chart/stream-average-trade-chart"
 import { SubscriptionDialog } from "./components/subscription-dialog/subscription-dialog"
-import { SignIn } from "./components/sign-in/sign-in"
 import { PublisherStream } from "./components/publisher-stream/publisher-stream"
 import { StreamNewDialog } from "./components/stream-new-dialog/stream-new-dialog"
 import { StreamPublisherRow } from "./components/stream-publisher-row/stream-publisher-row"
@@ -86,12 +84,10 @@ module tradersbitCom {
     .component("tbStreams", new StreamsView())
     .component("tbStream", new StreamView())
     .component("tbPublish", new PublishView())
-    .component("tbPublishDash", new PublishDashView())
     .component("tbAbout", new AboutView())
     .component("tbCompetition", new CompetitionView())
 
     // components
-    .component("tbSideNavLayout", new SideNavLayout())
     .component("tbStreamsTable", new TbStreamsTable())
     .component("tbInfoTable", new InfoTable())
     .component("tbTradesTable", new TradesTable())
@@ -101,7 +97,6 @@ module tradersbitCom {
     .component("tbStreamPiechartTrades", new StreamPiechartTrades())
     .component("tbStreamAverageTradeChart", new StreamAverageTradeChart())
     .component("tbSubscriptionDialog", new SubscriptionDialog())
-    .component("tbSignIn", new SignIn())
     .component("tbPublisherStream", new PublisherStream())
     .component("tbStreamNewDialog", new StreamNewDialog())
     .component("tbStreamPublisherRow", new StreamPublisherRow())
@@ -110,6 +105,7 @@ module tradersbitCom {
     .component("tbPublisherMirrorDialog", new PublisherMirrorDialog())
     .component("tbStreamListItem", new StreamListItem())
     .component("tbTopNav", new TopNav())
+    .component("tbFooter", new Footer())
 
     // services
     .service("tbFront", TbFront)

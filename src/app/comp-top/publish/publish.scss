@@ -1,45 +1,50 @@
 tb-publish {
-	.signin-widget {
-    margin-top: 4em; 
-    margin-bottom: 4em;
-  }
-  md-toolbar {
-    md-icon {
-      color: $light-font-color !important;
+	md-dialog {
+        width: 500px;
     }
-  }
-  
-  .md-headline {
-    background-color: $background-color-good; 
-    padding: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  
-  .unsuported-browser {
-    color: red;
-    display: none;
-  }
-  
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-     /* IE10+ CSS styles go here */
-      .unsuported-browser {
-        display: inline !important;
-      }
-  }
-  
-  @media screen and (min-width:0\0) {
-         /* IE9 CSS styles go here */
-          .unsuported-browser {
-        display: inline !important;
-      }
-  }
-  
-  #diecinueve {
-         /* IE6, IE7, IE8, but also IE9 in some cases */
-      .unsuported-browser {
-        display: inline !important;
-      }
+    
+    .ticker {
+      padding-top: 7px;
+      padding-left: 3px;
+      padding-right: 3px;
+      height: 100%;
+      background-color: $third-color;
+      text-align: center;
+          font-size: 15px;
+    }
+    
+    .mini {
+    font-size: 12px;
+    color: darken(white, 25%)
   }
 
+  
+   .fab-buttom-right {
+    top: auto;
+    right: 20px;
+    bottom: 20px;
+    left: auto;
+    position: fixed;
+  }
+  
+  @keyframes upAnim {
+    from {color: lightgreen;}
+    to {color: white;}
+}
+
+  @keyframes downAnim {
+    from {color: #EE9090;}
+    to {color: white;}
+}
+
+.up {
+    animation-name: upAnim;
+    animation-duration: 3s;
+}
+
+.down {
+    animation-name: downAnim;
+    animation-duration: 3s;
+}
+  
 }

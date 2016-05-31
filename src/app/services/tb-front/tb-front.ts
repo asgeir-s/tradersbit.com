@@ -101,7 +101,7 @@ export class TbFront {
     this.myStreams = undefined
     this.myStreamIds = undefined
     console.log("auth-api: signed out")
-    this.$state.reload()
+    this.$state.go("home")
     if (reason !== "") {
       this.$mdToast
       console.log("reason: " + reason)

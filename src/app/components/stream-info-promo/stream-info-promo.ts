@@ -18,16 +18,4 @@ export class StreamInfoPromo implements ng.IComponentOptions {
 class StreamInfoPromeCtrl {
     inStream: Stream
     inBtcRate: number
-
-    logoUrl(): string {
-        if (this.inStream.exchange === "bitstamp") {
-            return "assets/images/bitstamp_logo.png"
-        }
-        else if (this.inStream.exchange === "bitfinex") {
-            return "assets/images/bitfinex_logo.png"
-        }
-        else {
-            return ""
-        }
-    }
 }

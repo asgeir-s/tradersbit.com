@@ -1,39 +1,33 @@
-<md-toolbar flex>
-  <div class="md-toolbar-tools">
-    <md-button hide-gt-xs ng-click="$ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
-      <md-icon class="material-icons">menu</md-icon>
-    </md-button>
-    <h2>Publish</h2>
-    <span flex></span>
-  </div>
-</md-toolbar>
-<div class="toolbar-mobile-space"></div>
-<div class="center">
-  <p>
-    Make money by selling subscriptions to you trading signals.
-  </p>
-  <p>
-    Win Bitcoins by participating in trading contests.
+<div layout="column" layout-align="center">
+  <md-toolbar flex>
+    <div class="md-toolbar-tools">
+      <md-button hide-gt-xs ng-click="$ctrl.toggleMenu()" class="md-icon-button" aria-label="Favorite">
+        <md-icon class="material-icons">menu</md-icon>
+      </md-button>
+      <h2>My Streams</h2>
+      <span flex></span>
+
+      <small class="ticker">
+          <span class="mini">Bitfinex</span>
+          <br>
+          <span ng-class="{up: $ctrl.up, down: $ctrl.down}">${{$ctrl.btcRate| number:2}}</span>
+       </small>
+      <md-button ng-click="$ctrl.signOut()">
+        Sign Out
+      </md-button>
+    </div>
+  </md-toolbar>
+  <div class="toolbar-mobile-space"></div>
+  <p ng-if="$ctrl.noStreams" class="center">
+    Click the "+" icon to create your first stream.
   </p>
 
-  <p class="unsuported-browser">
-    <b>WARNING: your browser (Internet Explorer) might not be supported for publishing at this time.</b></br>
-    You could install <a href="https://www.google.com/chrome/" target="_blank">Chrome</a> or <a href="https://firefox.com" target="_blank">Firefox</a>
-  </p>
-  
-  <h5 class="md-headline center" ng-show="$ctrl.verifyed">Verification complete!</h5>
+  <md-button class="md-fab fab-buttom-right" aria-label="add stream" ng-click="$ctrl.openNewStreamDialog($event)">
+    <md-icon class="material-icons">add</md-icon>
+    <md-tooltip md-direction="top" md-visible="true">
+      Create Stream
+    </md-tooltip>
+  </md-button>
 
-</div>
-<div class="signin-widget" flex layout="row" layout-align="center center">
-  <tb-sign-in></tb-sign-in>
-</div>
-
-<div class="center">
-  <p>
-    <b>Users should only have one account. Users with multiple accounts will be disqualifyed from all compititions.</b>
-  </p>
-  <p>
-    Publishers keep 70% of all subscription fees earned through the sale of subscriptions.
-  </p>
-  
+  <tb-publisher-stream ng-repeat="stream in $ctrl.myStreams | orderBy : 'name'" in-stream="stream"></tb-publisher-stream>
 </div>
