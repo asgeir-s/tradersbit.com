@@ -1,71 +1,73 @@
-<md-content>
-  <h3 class="md-display-2 center">FAQ</h3>
-  <p class="text-content">
+<md-content class="text-content">
+  <h4 class="md-display-1 page-header">FAQ</h4>
+  <p class="md-body-1">
     If you do not find you answer here, please contact us in the chat or at tradersbit(at)cluda.com.
   </p>
-  <md-list class="text-content">
+  <md-list>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>Is publishing free?</h4>
-        <p>
+        <h6 class="md-title">Is publishing free?</h6>
+        <p class="md-body-1">
           Yes!
         </p>
       </div>
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>How does the TradingBots work?</h4>
-        <p>
+        <h6 class="md-title">How does the TradingBots work?</h6>
+        <p class="md-body-1">
           A TradingBot will trade the stream's incoming signals, on the subscriber's behalf.
         </p>
-        <p>
-          For now, the TradingBots only does margin trading. Therefore, the money you want your TradingBot to trade with must be in your "Trading
-          Wallet" at Bitfinex.
+        <p class="md-body-1">
+          For now, the TradingBots only does margin trading. Therefore, the money you want your TradingBot to trade with must be in
+          your "Trading Wallet" at Bitfinex.
         </p>
-        <p>
-          All trades executed by TradingBots are market orders. A market order is a buy or a sell order to be executed immediately at
-          current market prices. This means that you should not expect to get the exact same price as recorded in the trading
-          signal, because of slippage, latency, etc. <a href="http://www.investopedia.com/terms/s/slippage.asp"
+        <p class="md-body-1">
+          All trades executed by TradingBots are market orders. A market order is a buy or a sell order to be executed immediately
+          at current market prices. This means that you should not expect to get the exact same price as recorded in the
+          trading signal, because of slippage, latency, etc. <a href="http://www.investopedia.com/terms/s/slippage.asp"
             target="_blank">Read about slippage on Investopedia.</a>
         </p>
-        <p>
-          On the first signal, the TradingBot will close any open BTC/USD margin position before executing the signaled order. When executing
-          an order, the amount the TradingBot will use to buy or sell short is your specified "Percentage to Trade" of "Tradable
-          Balance" in your "Trading Wallet". You can check your "Tradable Balance" by logging into Bitfinex, then on the right side panel 
-          select "Trading" (in the drop down menu), then you see your "Tradable Balance" under "On Pair BTCUSD". If you specified 100% "Percentage 
-          to Trade", it will use 99.9%, this is done to make sure you have the funds to cover the order at the order time.
+        <p class="md-body-1">
+          On the first signal, the TradingBot will close any open BTC/USD margin position before executing the signaled order. When
+          executing an order, the amount the TradingBot will use to buy or sell short is your specified "Percentage to Trade"
+          of "Tradable Balance" in your "Trading Wallet". You can check your "Tradable Balance" by logging into Bitfinex,
+          then on the right side panel select "Trading" (in the drop down menu), then you see your "Tradable Balance" under
+          "On Pair BTCUSD". If you specified 100% "Percentage to Trade", it will use 99.9%, this is done to make sure you
+          have the funds to cover the order at the order time.
         </p>
-        <p>
+        <p class="md-body-1">
           There is an average latency of approximately 2 seconds from a signal is published by the publisher, until the order is executed
           at the exchange. Therefore, this should not be thought of as a high-frequency trading solution.
         </p>
-        <p>
-          You need a separate Bitfinex account for each TradingBot. This is because of how Bitfinex handles your positions. 
-          For instance, it is not possible to have a LONG and a SHORT position active at the same time. If you want more then one TradingBot running, 
-          just open a new Bitfinex account.
+        <p class="md-body-1">
+          You need a separate Bitfinex account for each TradingBot. This is because of how Bitfinex handles your positions. For instance,
+          it is not possible to have a LONG and a SHORT position active at the same time. If you want more then one TradingBot
+          running, just open a new Bitfinex account.
         </p>
       </div>
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>How do I stop the TradingBot before the subscription ends</h4>
-        <p>
-          Sign into Bitfinex, go to <a href="https://www.bitfinex.com/account/api" target="_blank">API key Management</a>, then revoke the API key you entered when subscribing with TradingBot.
+        <h6 class="md-title">How do I stop the TradingBot before the subscription ends?</h6>
+        <p class="md-body-1">
+          Sign into Bitfinex, go to <a href="https://www.bitfinex.com/account/api" target="_blank">API key Management</a>,
+          then revoke the API key you entered when subscribing with TradingBot.
         </p>
       </div>
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>How do I add my stream to the competition?</h4>
-        <p>
+        <h6 class="md-title">How do I add my stream to the competition?</h6>
+        <p class="md-body-1">
           All streams are automatically participating in all competitions.
         </p>
       </div>
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>How do TradersBit simulate trades?</h4>
-        <p>
+        <h6 class="md-title">How do TradersBit simulate trades?</h6>
+        <p class="md-body-1">
           When simulating trades (LONG, SHORT, CLOSE), we use the last price and 0.02% fee (takers fee). Each signal will simulate
           a trade using all assets available.
         </p>
@@ -73,30 +75,30 @@
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>What does LONG, SHORT and CLOSE mean?</h4>
-        <p>
+        <h6 class="md-title">What does LONG, SHORT and CLOSE mean?</h6>
+        <p class="md-body-1">
           SHORT, LONG, and CLOSE are the signalks you can send to your streams. A SHORT or LONG signal is always followed by a CLOSE
           signal. If you go directly from SHORT to LONG or LONG to SHORT, a CLOSE signal is automatically generated for you.
         </p>
-        <p>
+        <p class="md-body-1">
           If you send a LONG signal, you will make a profit if the price of the Bitcoin goes up. You profit if the price of the Bitcoin
           is higher when you CLOSE your trade than it was when you sent the LONG signal. <a href="http://www.investopedia.com/terms/l/long.asp"
             target="_blank">Read about LONGING on Investopedia.</a>
         </p>
-        <p>
+        <p class="md-body-1">
           If you send a SHORT signal, you will make a profit if the price of the Bitcoin goes down. You profit if the price of the
           Bitcoin is lower when you CLOSE your trade than it was when you sent the SHORT signal. <a href="http://www.investopedia.com/terms/s/shortselling.asp"
             target="_blank">Read about SHORTING on Investopedia.</a>.
         </p>
-        <p>
+        <p class="md-body-1">
           A CLOSE signal closes your current position.
         </p>
       </div>
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>How will TradersBit make money?</h4>
-        <p>
+        <h6 class="md-title">How will TradersBit make money?</h6>
+        <p class="md-body-1">
           TradersBit gets 30% of the subscription fee when subscribers buy subscriptions to streams. The publisher of the stream gets
           70%. We make money if the publisher makes money.
         </p>
@@ -104,35 +106,35 @@
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>Will TradersBit host more competitions?</h4>
-        <p>
+        <h6 class="md-title">Will TradersBit host more competitions?</h6>
+        <p class="md-body-1">
           Yes, we are planning to host competitions at least until publishers start earning money by selling subscriptions.
         </p>
       </div>
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>What does BETA mean?</h4>
-        <p>
+        <h6 class="md-title">What does BETA mean?</h6>
+        <p class="md-body-1">
           TradersBit is currently in BETA. By this, we mean we are in the early stages, under heavy development and TradersBit not
           thoroughly tested yet. Therefore, there might be unforeseen events like parts of the service might not work as
           intended, there might be downtime, and there are not all essential features are implemented yet.
         </p>
-        <p>
+        <p class="md-body-1">
           This should not have any impact on who wins the competition because all users should have the same experience.
         </p>
-        <p>
+        <p class="md-body-1">
           We released in BETA because we wanted to release a version as fast as possible to let publisher start building statistics.
         </p>
       </div>
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>How many streams can I have?</h4>
-        <p>
+        <h6 class="md-title">How many streams can I have?</h6>
+        <p class="md-body-1">
           For now, each user can have three streams each.
         </p>
-        <p>
+        <p class="md-body-1">
           There should be one account per user. Users with multiple accounts might be banned and disqualified from all competitions.
 
         </p>
@@ -140,8 +142,8 @@
     </md-list-item>
     <md-list-item>
       <div class="md-list-item-text" layout="column">
-        <h4>Who is the creator of TradersBit?</h4>
-        <p>
+        <h6 class="md-title">Who is the creator of TradersBit?</h6>
+        <p class="md-body-1">
           TradersBit is created by <a href="http://cluda.com" target="_blank">Cluda AS</a>. Cluda is located in Nesbyen,
           Norway.
         </p>

@@ -36,9 +36,9 @@ class SubscriptionDialogCtrl {
 
   constructor(
     private tbFront: TbFront,
-    private $sce: angular.ISCEService,
-    private $mdDialog: angular.material.IDialogService,
-    private $mdSidenav: angular.material.ISidenavService,
+    private $sce: ng.ISCEService,
+    private $mdDialog: ng.material.IDialogService,
+    private $mdSidenav: ng.material.ISidenavService,
     private $state: any,
     private $timeout: any) {
     "ngInject"

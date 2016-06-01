@@ -20,7 +20,7 @@ tb-stream-list-item {
 		margin-bottom: 0px;
 	}
 	small {
-		color: lighten($dark-font-color, 55%);
+		color: rgba(0, 0, 0, 0.54);
 	}
 	.good {
 		background-color: $background-color-good;
@@ -28,14 +28,6 @@ tb-stream-list-item {
 	
 	.bad {
 		background-color: $background-color-bad;
-	}
-	
-	.promo-item {
-		text-align: center;
-		margin-top: 2em;
-		margin-bottom: 2em;
-		margin-left: 1em;
-		margin-right: 1em;
 	}
 	
 	md-card-title {

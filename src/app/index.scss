@@ -3,20 +3,20 @@ $primary-color: #3893C6 !default; //color("materialize-red", "lighten-2") !defau
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 $background-color-content: #fff;
-$secondary-color: #FEE496 !default; //#F5DEB3 rgb(255,171,64)   #FEE496
+$secondary-color: #FFC107 !default; //#F5DEB3 rgb(255,171,64)   #FEE496 ffbf00
 $secondary-color-light: lighten($secondary-color, 15%) !default;
-$secondary-color-dark: darken($secondary-color, 30%) !default; //color("teal", "lighten-1") !default;
+$secondary-color-dark: darken($secondary-color, 15%) !default; //color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
 $third-color: #313236!default; // #313236
 $third-color-light: lighten($third-color, 15%) !default;
 $third-color-dark: darken($third-color, 15%) !default;
-$dark-font-color: #000;
-$light-font-color: #fff;
+$dark-font-color: rgba(0, 0, 0, 0.87);
+$light-font-color: rgba(255, 255, 255, 0.70);
 $light-link-color: darken($light-font-color, 15%);
 $dark-link-color: darken($light-link-color, 20%);
 $active-color: darken($light-font-color, 15%);
-$background-color-good: #c7f3cb;
-$background-color-bad: #f3d7cd;
+$background-color-good: #B9F6CA;
+$background-color-bad: #FF8A80;
 /**
  *  Do not remove the comment below. It's the markers used by wiredep to inject
  *  sass dependencies when defined in the bower.json of your dependencies
@@ -56,6 +56,16 @@ h1, h2, h3, h4, h5, h6, {
   font-variant: small-caps;
 }
 
+	.page-header {
+		font-variant: small-caps;
+		    text-align: center;
+				padding: 20px;
+	}
+
+.md-caption {
+  color: rgba(0,0,0,0.54);
+}
+
 md-toolbar {
   background-color: white!important;
   color: $dark-font-color!important;
@@ -73,12 +83,6 @@ md-toolbar {
     position: fixed !important;
   }
   
-.md-button.md-fab {
-  background: $secondary-color-dark;
-  md-icon {
-    color: $light-font-color !important;
-  }
-}
 #footer {
   flex: 0 1 auto !important;
   -ms-flex: 0 1 auto !important;
@@ -100,6 +104,16 @@ md-toolbar {
 tb-side-nav-layout {
   overflow-x: hidden;
 }
+
+.thin-lage-number {
+			font-weight: 300;
+			font-size: 35px;
+}
+
+md-input-container.md-dark-theme label, md-input-container.md-dark-theme .md-placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -139,26 +153,44 @@ footer {
 .center {
   text-align: center;
 }
-.legal {
+.text-content {
   padding: 1em;
   max-width: 800px;
   margin: auto;
-}
-
-@media (max-width: 600px) {
-  md-toolbar {
-    position: fixed;
-  }
-  .toolbar-mobile-space {
-    height: 55px;
-  }
 }
 
 md-backdrop {
   position: fixed;
 }
 
-
+	.promo-item {
+		text-align: center;
+		margin-top: 2em;
+		margin-bottom: 2em;
+		margin-left: 1em;
+		margin-right: 1em;
+		
+		h5 {
+			margin-top: 0px;
+			padding: 3px;
+			margin-top: 4px;
+		}
+		
+		.good {
+				background-color: #4CAF50;
+		}
+		
+		.bad {
+			background-color: #F44336;
+		}
+		
+		hr {
+			margin-top: 2px;
+			border-width: 0px;
+    	height: 1px;
+		}
+		
+	}
 
 
 /**

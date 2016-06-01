@@ -1,7 +1,7 @@
 import { TbFront } from "./services/tb-front/tb-front"
 
 /** @ngInject */
-export function runBlock($log: angular.ILogService, auth: any, $rootScope: any, store: any, jwtHelper: any,
+export function runBlock($log: ng.ILogService, auth: any, $rootScope: any, store: any, jwtHelper: any,
   tbFront: TbFront) {
   $log.debug("runBlock end")
 

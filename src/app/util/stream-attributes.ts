@@ -56,7 +56,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Currency Pair",
+      name: "Currency pair",
       jsonPath: "currencyPair",
       short: "CP",
       description: "",
@@ -72,7 +72,7 @@ export class StreamAttributes {
 
   private static statsAttribute: Array<StreamsAttribute> = [
     {
-      name: "Average Monthly Profit",
+      name: "Average monthly profit",
       short: "AMP",
       description: "The average profit per month calculated from first to last signal.",
       jsonPath: "",
@@ -128,7 +128,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Profit Factor",
+      name: "Profit factor",
       short: "PF",
       description: "",
       jsonPath: "",
@@ -162,7 +162,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Number of Unprofitable Trades",
+      name: "Number of unprofitable trades",
       short: "NUT",
       description: "Number of trads with profit equal or smaller then 0",
       jsonPath: "stats.numberOfLoosingTrades",
@@ -175,7 +175,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Average Profitable Trade",
+      name: "Average profitable trade",
       short: "APT",
       description: "Average profit on trades with profit larger then 0",
       jsonPath: "",
@@ -200,7 +200,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Number of Profitable Trades",
+      name: "Number of profitable trades",
       short: "NPT",
       description: "Number of closed trades with profit larger then 0",
       jsonPath: "stats.numberOfProfitableTrades",
@@ -213,7 +213,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Average Unprofitable Trade",
+      name: "Average unprofitable trade",
       short: "ALT",
       description: "Average loss on unprofitable trades.",
       jsonPath: "",
@@ -238,7 +238,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Part Profitable Trades",
+      name: "Part profitable trades",
       short: "PPT",
       description: "Percent closed trades with profit larger then 0",
       jsonPath: "",
@@ -281,7 +281,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Part Unprofitable Trades",
+      name: "Part unprofitable trades",
       short: "PLT",
       description: "Percent closed trades with profit smaller or equal to 0",
       jsonPath: "",
@@ -325,7 +325,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Average Trade",
+      name: "Average trade",
       short: "AT",
       description: "Average profit on trades",
       jsonPath: "",
@@ -372,7 +372,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Max Draw Down",
+      name: "Max draw down",
       short: "MDD",
       description: "largest loss before a new high",
       jsonPath: "stats.maxDrawDown",
@@ -385,7 +385,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Net Profit",
+      name: "Net profit",
       short: "NP",
       description: "All-time profit for this stream.",
       jsonPath: "stats.allTimeValueIncl",
@@ -404,7 +404,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Number of Closed Trades",
+      name: "Number of closed trades",
       short: "NCT",
       description: "",
       jsonPath: "stats.numberOfClosedTrades",
@@ -417,7 +417,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Months of Trading",
+      name: "Months of trading",
       short: "MT",
       description: "",
       jsonPath: "",
@@ -434,7 +434,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Time of Last Signal",
+      name: "Time of last signal",
       short: "TLS",
       description: "",
       jsonPath: "timeOfLastSignal",
@@ -456,7 +456,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Average Monthly Profit Excl",
+      name: "Average monthly profit excl",
       short: "AMPx",
       description: "The average profit per month calculated from first to last signal. Excluding trading fees.",
       jsonPath: "",
@@ -515,7 +515,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Net Profit Excl",
+      name: "Net profit excl",
       short: "NPx",
       description: "All-time profit for this stream. Excluding trading fees.",
       jsonPath: "stats.allTimeValueExcl",
@@ -534,7 +534,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Price on First Trade",
+      name: "Price on first trade",
       short: "PFT",
       description: "",
       jsonPath: "stats.firstPrice",
@@ -547,7 +547,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Buy and Hold Change (first to last trade)",
+      name: "Buy and hold change (first to last trade)",
       short: "BHC",
       description: "Profit if buying on first signal and selling on last signal",
       jsonPath: "stats.buyAndHoldChange",
@@ -560,7 +560,7 @@ export class StreamAttributes {
       }
     },
     {
-      name: "Time of First Signal",
+      name: "Time of first signal",
       short: "TFS",
       description: "",
       jsonPath: "stats.timeOfFirstSignal",

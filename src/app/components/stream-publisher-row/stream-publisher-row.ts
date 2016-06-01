@@ -10,9 +10,8 @@ export class StreamPublisherRow implements ng.IComponentOptions {
 }
 
 class StreamPublisherRowCtrl {
-    constructor(private $state: angular.ui.IStateService) {
+    constructor(private $state: ng.ui.IStateService) {
         "ngInject"
-        console.log("yp")
     }
 
     goToPublish() {

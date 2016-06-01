@@ -4,8 +4,9 @@ tb-home {
     background-color: $third-color-light; //$third-color-light; //dsfdsfds
     color: $light-font-color;
     md-icon {
-      color: $light-font-color;
+      color: $secondary-color!important;
       height: 90px;
+      line-height: 1.3333;
     }
   }
   .home--features-row-inner {
@@ -29,6 +30,7 @@ tb-home {
     margin: auto;
     md-icon {
       font-size: 4em;
+      color: white;
     }
   }
 
@@ -45,9 +47,5 @@ tb-home {
     bottom: 20px;
     left: auto;
     position: fixed;
-    
-    md-icon {
-      color: $light-font-color !important;
-    }
   }
 }

@@ -23,7 +23,7 @@ class PublisherApikeyDialogCtrl {
   constructor(
     private tbFront: TbFront,
     private $state: ng.ui.IStateService,
-    private $mdDialog: angular.material.IDialogService) {
+    private $mdDialog: ng.material.IDialogService) {
     "ngInject"
   }
 

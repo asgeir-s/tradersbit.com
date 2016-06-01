@@ -1,6 +1,6 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <h2>Mirror Bitfinex Account</h2>
+    <h2>Mirror bitfinex account</h2>
     <span flex></span>
     <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
       <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
@@ -10,7 +10,7 @@
 <div class="toolbar-mobile-space"></div>
 <md-dialog-content>
   <div class="md-dialog-content">
-    <p>Experimental feature. Free for now.</p>
+    <p class="md-body-1">Experimental feature. Free for now.</p>
 
     <md-progress-circular class="waiting" md-mode="indeterminate" ng-hide="!$ctrl.watingForResponds" md-diameter="100"></md-progress-circular>
 
@@ -18,8 +18,8 @@
 
     <form novalidate name="mirrorForm" ng-hide="$ctrl.gotResponds || $ctrl.watingForResponds">
       <div layout="column" layout-align="center">
-        <p>This will mirror the active BTCUSD margin position for the Bitfinex account.</p>
-        <div class="api-key-info" flex>
+        <p class="md-body-1">This will mirror the active BTCUSD margin position for the Bitfinex account.</p>
+        <div class="api-key-info md-body-1" flex>
           Go <a target="_blank" href="https://www.bitfinex.com/account/api">here</a> to create a new API key for Bitfinex.
           The needed permisssions are:
           <ul class="api-permissions">

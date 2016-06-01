@@ -15,12 +15,12 @@ export class TbFront {
   constructor(
     private auth: any,
     private store: any,
-    private $q: angular.IQService,
+    private $q: ng.IQService,
     private _: _.LoDashStatic,
     private $window: any,
     private $state: ng.ui.IStateService,
     private jwtHelper: any,
-    private $timeout: angular.ITimeoutService,
+    private $timeout: ng.ITimeoutService,
     private $mdToast: any) {
     "ngInject"
     this.publicApigClient = this.createApiClient()
@@ -44,12 +44,12 @@ export class TbFront {
     this.$timeout(() => this.signOut("User session timeout"), ((jwtDecoded.exp * 1000) - Date.now()))
   }
 
-  signIn(profile: string, token: string): angular.IPromise<boolean> {
+  signIn(profile: string, token: string): ng.IPromise<boolean> {
     const jwtDecoded = this.jwtHelper.decodeToken(token)
     this.setSignoutTimeout(jwtDecoded)
     this.myStreamIds = this.getStreamIdsFromJWT(jwtDecoded)
 
-    const deferred: angular.IDeferred<boolean> = this.$q.defer()
+    const deferred: ng.IDeferred<boolean> = this.$q.defer()
 
     this.store.set("profile", profile)
     this.store.set("token", token)
@@ -120,8 +120,8 @@ export class TbFront {
     return this.auth.isAuthenticated
   }
 
-  getMyStreams(): angular.IPromise<Array<Stream>> {
-    let deferred: angular.IDeferred<Array<Stream>> = this.$q.defer()
+  getMyStreams(): ng.IPromise<Array<Stream>> {
+    let deferred: ng.IDeferred<Array<Stream>> = this.$q.defer()
 
     if (typeof this.myStreams !== "undefined") {
       // the letiable is defined
@@ -155,12 +155,12 @@ export class TbFront {
     return deferred.promise
   }
 
-  postSignal(streamId: string, signal: number): angular.IPromise<Array<Signal>> {
+  postSignal(streamId: string, signal: number): ng.IPromise<Array<Signal>> {
     delete this.mySignalsMap[streamId]
     _.remove(this.streams, (stream: Stream) => stream.id === streamId)
     this.streamsDirty = true
 
-    let deferred: angular.IDeferred<Array<Signal>> = this.$q.defer()
+    let deferred: ng.IDeferred<Array<Signal>> = this.$q.defer()
 
     console.log("Tb-Font - post signal")
     this.privateApigClient.meStreamsStreamIdSignalPost({
@@ -176,11 +176,11 @@ export class TbFront {
     return deferred.promise
   }
 
-  updateSubscriptionPrice(streamId: string, newPriceUsd: number): angular.IPromise<string> {
+  updateSubscriptionPrice(streamId: string, newPriceUsd: number): ng.IPromise<string> {
     _.remove(this.streams, (stream: Stream) => stream.id === streamId)
     this.streamsDirty = true
 
-    let deferred: angular.IDeferred<string> = this.$q.defer()
+    let deferred: ng.IDeferred<string> = this.$q.defer()
 
     console.log("Tb-Font - update subscription price")
     this.privateApigClient.meStreamsStreamIdSubscriptionPricePut({
@@ -196,10 +196,10 @@ export class TbFront {
     return deferred.promise
   }
 
-  postStream(newStream: NewStream): angular.IPromise<string> {
+  postStream(newStream: NewStream): ng.IPromise<string> {
     this.myStreams = undefined
     this.streams = undefined
-    let deferred: angular.IDeferred<string> = this.$q.defer()
+    let deferred: ng.IDeferred<string> = this.$q.defer()
 
     console.log("Tb-Font - post new stream")
     this.privateApigClient.meStreamsPost({ "x-auth-token": this.store.get("token") }, newStream, {})
@@ -226,9 +226,9 @@ export class TbFront {
     return deferred.promise
   }
 
-  getApiKey(streamId: string): angular.IPromise<string> {
+  getApiKey(streamId: string): ng.IPromise<string> {
 
-    const deferred: angular.IDeferred<string> = this.$q.defer()
+    const deferred: ng.IDeferred<string> = this.$q.defer()
     console.log("Tb-Font - get apiKey")
     console.log("x-auth-token: " + this.store.get("token"))
     console.log("streamId: " + streamId)
@@ -246,8 +246,8 @@ export class TbFront {
     return deferred.promise
   }
 
-  postMirror(streamId: string, apiKey: string, apiSecret: string): angular.IPromise<string> {
-    const deferred: angular.IDeferred<string> = this.$q.defer()
+  postMirror(streamId: string, apiKey: string, apiSecret: string): ng.IPromise<string> {
+    const deferred: ng.IDeferred<string> = this.$q.defer()
     console.log("Tb-Font - post mirror")
     console.log("x-auth-token: " + this.store.get("token"))
     console.log("streamId: " + streamId)
@@ -285,8 +285,8 @@ export class TbFront {
 
   /** public */
 
-  publicGetAllStreams(): angular.IPromise<Array<Stream>> {
-    const deferred: angular.IDeferred<Array<Stream>> = this.$q.defer()
+  publicGetAllStreams(): ng.IPromise<Array<Stream>> {
+    const deferred: ng.IDeferred<Array<Stream>> = this.$q.defer()
 
     if (this.streams == null || this.streamsDirty) {
       this.streamsDirty = false
@@ -311,8 +311,8 @@ export class TbFront {
   }
 
   /**     this.apigClient.streamsStreamIdGet({ "streamId": streamId }, {}, {}) */
-  publicGetStream(streamId: string): angular.IPromise<Stream> {
-    const deferred: angular.IDeferred<Stream> = this.$q.defer()
+  publicGetStream(streamId: string): ng.IPromise<Stream> {
+    const deferred: ng.IDeferred<Stream> = this.$q.defer()
     if (typeof this.streams !== "undefined") {
       // the variable is defined
       console.log("PublicApiService - gets already fatched stream.")
@@ -344,8 +344,8 @@ export class TbFront {
     return deferred.promise
   }
 
-  publicGetSignals(streamId: string): angular.IPromise<Array<Signal>> {
-    const deferred: angular.IDeferred<Array<Signal>> = this.$q.defer()
+  publicGetSignals(streamId: string): ng.IPromise<Array<Signal>> {
+    const deferred: ng.IDeferred<Array<Signal>> = this.$q.defer()
 
     if (typeof this.signalsMap[streamId] !== "undefined") {
       // the variable is defined
@@ -368,8 +368,8 @@ export class TbFront {
     return deferred.promise
   }
 
-  publicSubscribeReturnPaymentCode(reCaptcha: string, subscription: SubscriptionRequest): angular.IPromise<string> {
-    const deferred: angular.IDeferred<string> = this.$q.defer()
+  publicSubscribeReturnPaymentCode(reCaptcha: string, subscription: SubscriptionRequest): ng.IPromise<string> {
+    const deferred: ng.IDeferred<string> = this.$q.defer()
 
     this.publicApigClient.subscribePost({ "x-re-captcha": reCaptcha }, subscription, {})
       .then((res: SuccessRespondse<any>) => deferred.resolve(res.data.paymentCode))

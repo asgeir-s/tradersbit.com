@@ -6,8 +6,8 @@
 </md-button>
 
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="home-right">
-  <md-toolbar>
-    <h1 class="md-toolbar-tools">Filter</h1>
+    <md-toolbar class="md-theme-light md-accent md-hue-2">
+    <h1 class="md-toolbar-tools">Filters</h1>
   </md-toolbar>
   <md-content layout-padding>
     <form name="projectForm" layout="column">
@@ -46,24 +46,23 @@
     <div class="home--features-row-inner" flex layout="row" layout-xs="column" layout-align="center start">
       <div class="home--features-row--item" flex>
         <img src="/assets/images/bitcoin83.svg" alt="Trading Robot" height="90px">
-        <p>Sort, filter and comapre to find the trading signals that right for you</p>
+        <p class="md-body-1">Sort, filter and comapre to find trading signals that are right for you</p>
       </div>
       <div class="home--features-row--item" flex>
         <img src="/assets/images/robot16.svg" alt="Trading Robot" height="90px">
-        <p>We execute your trades with our trading bots</p>
+        <p class="md-body-1">Run trading bots</p>
       </div>
       <div class="home--features-row--item" flex>
         <img src="/assets/images/bitcoin82.svg" alt="Trading Robot" height="90px">
-        <p>Publish trading signals and sell subscriptions</p>
+        <p class="md-body-1">Publish trading signals and sell subscriptions</p>
       </div>
       <div class="home--features-row--item" flex>
         <md-icon class="material-icons">code</md-icon>
-        <p>Connect your trading bots to our API</p>
+        <p class="md-body-1">Connect your trading bots to the API</p>
       </div>
     </div>
   </div>
 </div>
-
 <md-content class="stream-list" layout="column">
-  <tb-stream-list-item flex ng-repeat="stream in $ctrl.streams | orderBy: $ctrl.allTimeValueIncl : true" in-stream="stream"></tb-stream-list-item>
+  <tb-stream-list-item flex ng-repeat="stream in $ctrl.streams | orderBy: $ctrl.allTimeValueIncl : true" in-stream="stream" in-btc-rate="$ctrl.btcRate" ></tb-stream-list-item>
 </md-content>

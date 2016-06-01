@@ -27,7 +27,6 @@ import { HomeView } from "./comp-top/home/home"
 import { StreamsView } from "./comp-top/streams/streams"
 import { StreamView } from "./comp-top/stream/stream"
 import { PublishView } from "./comp-top/publish/publish"
-import { AboutView } from "./comp-top/about/about"
 import { CompetitionView } from "./comp-top/competition/competition"
 
 // components
@@ -84,7 +83,6 @@ module tradersbitCom {
     .component("tbStreams", new StreamsView())
     .component("tbStream", new StreamView())
     .component("tbPublish", new PublishView())
-    .component("tbAbout", new AboutView())
     .component("tbCompetition", new CompetitionView())
 
     // components

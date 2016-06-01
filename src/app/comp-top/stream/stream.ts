@@ -36,12 +36,12 @@ class StreamViewCtrl {
   showAllStats: boolean = false
 
   constructor(
-    private $timeout: angular.ITimeoutService,
+    private $timeout: ng.ITimeoutService,
     private $mdDialog: any,
     highchartsNG: any, bitcoinaverageApi: BitcoinaverageApi,
     private tbFront: TbFront,
-    private $mdMedia: angular.material.IMedia,
-    private $mdSidenav: angular.material.ISidenavService) {
+    private $mdMedia: ng.material.IMedia,
+    private $mdSidenav: ng.material.ISidenavService) {
     "ngInject"
     this.empety = this.inSignals.length <= 1
     if (tbFront.myStreamIds != null) {

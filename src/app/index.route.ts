@@ -79,7 +79,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       controllerAs: "ctrl",
       controller:
       class TbAPICtrl {
-        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        constructor(private $mdSidenav: ng.material.ISidenavService) { }
         toggleMenu() {
           return this.$mdSidenav("leftBig").open()
         }
@@ -91,7 +91,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       controllerAs: "ctrl",
       controller:
       class TbhowItWorksCtrl {
-        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        constructor(private $mdSidenav: ng.material.ISidenavService) { }
         toggleMenu() {
           return this.$mdSidenav("leftBig").open()
         }
@@ -103,7 +103,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       controller:
       class Medium {
         tab: string
-        constructor($ocLazyLoad: any, private $mdSidenav: angular.material.ISidenavService) {
+        constructor($ocLazyLoad: any, private $mdSidenav: ng.material.ISidenavService) {
           $ocLazyLoad.load({
             files: ["https://static.medium.com/embed.js"],
             cache: false
@@ -117,7 +117,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     })
     .state("about", {
       url: "/about?tab",
-      template: '<tb-about in-tab="ctrl.tab"></tb-about>',
+      templateUrl: 'app/comp-top/about/about.html',
       controller:
       class About {
         tab: string
@@ -133,7 +133,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       controller:
       class Roadmap {
         tab: string
-        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        constructor(private $mdSidenav: ng.material.ISidenavService) { }
         toggleMenu() {
           return this.$mdSidenav("leftBig").open()
         }
@@ -145,7 +145,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       templateUrl: "app/comp-top/legal/terms-of-service.html",
       controller:
       class TbPublishCtrl {
-        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        constructor(private $mdSidenav: ng.material.ISidenavService) { }
         toggleMenu() {
           return this.$mdSidenav("leftBig").open()
         }
@@ -157,7 +157,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       templateUrl: "app/comp-top/legal/privacy-policy.html",
       controller:
       class TbPublishCtrl {
-        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        constructor(private $mdSidenav: ng.material.ISidenavService) { }
         toggleMenu() {
           return this.$mdSidenav("leftBig").open()
         }
@@ -169,7 +169,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       templateUrl: "app/comp-top/release-notes/release-notes.html",
       controller:
       class TbPublishCtrl {
-        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        constructor(private $mdSidenav: ng.material.ISidenavService) { }
         toggleMenu() {
           return this.$mdSidenav("leftBig").open()
         }
@@ -181,7 +181,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       templateUrl: "app/comp-top/faq/faq.html",
       controller:
       class TbPublishCtrl {
-        constructor(private $mdSidenav: angular.material.ISidenavService) { }
+        constructor(private $mdSidenav: ng.material.ISidenavService) { }
         toggleMenu() {
           return this.$mdSidenav("leftBig").open()
         }

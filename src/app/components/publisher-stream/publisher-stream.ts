@@ -23,19 +23,76 @@ class PublisherStreamCtrl {
   unrealizedPL: number
   waitingForSignalBack = false
   btcRate: number
+  partOfTradesConfig: any
 
   constructor(
     public $location: any,
-    private $mdMedia: angular.material.IMedia,
+    private $mdMedia: ng.material.IMedia,
     private $mdDialog: any,
-    private $q: angular.IQService,
-    private $http: angular.IHttpService,
-    private $state: angular.ui.IStateService,
+    private $q: ng.IQService,
+    private $http: ng.IHttpService,
+    private $state: ng.ui.IStateService,
     private tbFront: TbFront,
     private _: _.LoDashStatic,
     private $mdToast: any,
-    bitfinexSocket: BitfinexSocket) {
+    bitfinexSocket: BitfinexSocket,
+    highcharts: any) {
     "ngInject"
+
+    this.partOfTradesConfig = {
+      "options": {
+        "colors": ["#E57373", "#81C784", "#DDDF00"],
+
+        "chart": {
+          "type": "pie"
+        },
+        "plotOptions": {
+          "series": {
+            "stacking": ""
+          },
+          "pie": {
+            "allowPointSelect": true,
+            "cursor": "pointer",
+            "dataLabels": {
+              "enabled": false
+            }
+          }
+        }
+      },
+      "series": [
+        {
+          "name": "Trades",
+          "data": [
+            {
+              "name": "Loosing",
+              "y": this.inStream.stats.numberOfLoosingTrades
+            },
+            {
+              "name": "Winning",
+              "y": this.inStream.stats.numberOfProfitableTrades,
+              "sliced": true,
+              "selected": true
+            }
+
+          ],
+          "id": "winning-loosing-trades"
+        }
+      ],
+      "title": {
+        "text": "Trades",
+        "margin": 0,
+        "style": {
+          "color": "rgba(0,0,0,0.87)",
+          "fontSize": "12px",
+          "letter-spacing": "0.01em"
+        }
+      },
+      "credits": {
+        "enabled": false
+      },
+      "loading": false,
+      "size": {}
+    }
 
     if (this.inStream.exchange === "bitfinex") {
       this.computeUnrealizedPL(this.inStream.lastSignal, bitfinexSocket.lastRate)

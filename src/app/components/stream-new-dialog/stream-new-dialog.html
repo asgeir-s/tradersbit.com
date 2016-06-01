@@ -38,13 +38,6 @@
             <md-option value="bitfinex">Bitfinex</md-option>
           </md-select>
         </md-input-container>
-
-        <md-input-container flex>
-          <label for="currencyPair">Currency pair:</label>
-          <md-select id="currencyPair" ng-model="$ctrl.stream.currencyPair" ng-init="$ctrl.stream.currencyPair='btcUSD'">
-            <md-option value="btcUSD">BTC/USD</md-option>
-          </md-select>
-        </md-input-container>
       </div>
 
       <md-button flex ng-hide="$ctrl.waitForResponds" ng-disabled="!subscribeForm.$valid" class="md-raised md-accent btc-pay-button" type="submit" ng-click="$ctrl.createStream($ctrl.stream)" value="Submit" style="margin:0">create stream</md-button>

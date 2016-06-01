@@ -153,8 +153,8 @@ class PublishViewCtrl {
   constructor(
     private tbFront: TbFront,
     private $mdDialog: any,
-    private $mdMedia: angular.material.IMedia,
-    private $mdSidenav: angular.material.ISidenavService,
+    private $mdMedia: ng.material.IMedia,
+    private $mdSidenav: ng.material.ISidenavService,
     bitfinexSocket: BitfinexSocket) {
     "ngInject"
     console.log("my streams: " + JSON.stringify(this.myStreams))

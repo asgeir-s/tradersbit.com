@@ -8,7 +8,8 @@ export class StreamListItem implements ng.IComponentOptions {
 
   constructor() {
     this.bindings = {
-      inStream: "<"
+      inStream: "<",
+      inBtcRate: "<"
     }
     this.controller = StreamListItemCtrl
     this.templateUrl = "app/components/stream-list-item/stream-list-item.html"
@@ -18,7 +19,7 @@ export class StreamListItem implements ng.IComponentOptions {
 class StreamListItemCtrl {
   inStream: Stream
   partOfTradesConfig: any
-
+  inBtcRate: number
 
   statsAtributes = {
     "netProfit": {
@@ -214,7 +215,7 @@ class StreamListItemCtrl {
 
     this.partOfTradesConfig = {
       "options": {
-        "colors": ["#ED561B", "#50B432", "#DDDF00"],
+        "colors": ["#E57373", "#81C784", "#DDDF00"],
 
         "chart": {
           "type": "pie"
@@ -255,8 +256,9 @@ class StreamListItemCtrl {
         "text": "Trades",
         "margin": 0,
         "style": {
-          "color": "#8c8c8c",
-          "fontSize": "13px"
+          "color": "rgba(0,0,0,0.87)",
+          "fontSize": "12px",
+          "letter-spacing": "0.01em"
         }
       },
       "credits": {
@@ -265,7 +267,7 @@ class StreamListItemCtrl {
       "loading": false,
       "size": {}
     }
-}
+  }
 
   goToStream(streamID: string): void {
     this.$state.go("stream", { "streamId": streamID })
@@ -284,7 +286,7 @@ class StreamListItemCtrl {
       fullscreen: this.$mdMedia("xs"),
       locals: {
         stream: this.inStream,
-        btcRate: 540
+        btcRate: this.inBtcRate
       },
       controller:
       /** @ngInject */

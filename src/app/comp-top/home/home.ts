@@ -1,4 +1,6 @@
 import { Stream, StreamsAttribute } from "../../typings/types.d.ts"
+import { BitcoinaverageApi } from "../../services/bitcoinaverage-api/bitcoinaverage-api"
+
 
 export class HomeView implements ng.IComponentOptions {
   bindings: any
@@ -20,10 +22,16 @@ class HomeViewCtrl {
   minNumTrades: number = 10
   minNetProfit: number = 10
   streams: Array<Stream>
+  btcRate: number
 
-  constructor(private $state: any, private $mdSidenav: any) {
+  constructor(private $state: any, private $mdSidenav: any, bitcoinaverageApi: BitcoinaverageApi) {
     "ngInject"
     this.updateFilters()
+
+    bitcoinaverageApi.getPrice().then(
+      (btcPrice: number) => {
+        this.btcRate = btcPrice
+      })
   }
 
   chnageState(newState: string) {

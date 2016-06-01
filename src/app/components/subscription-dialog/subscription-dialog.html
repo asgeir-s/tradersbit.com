@@ -14,10 +14,10 @@
   <div class="md-dialog-content">
 
     <div ng-hide="$ctrl.gotPaymentInfo">
-      <small>price for 30 days subscription</small>
+      <span class="md-caption">Price for 30 days subscription</span>
       <br/>
-      <h3 class="md-display-1">{{$ctrl.fullPriceUSD | currency:"$"}}</h3>
-      <small>≈ ฿{{$ctrl.fullPriceUSD / $ctrl.inBtcRate | number:4}}</small>
+      <h3 class="thin-lage-number">{{$ctrl.fullPriceUSD | currency:"$"}}</h3>
+      <span class="md-caption">≈ ฿{{$ctrl.fullPriceUSD / $ctrl.inBtcRate | number:4}}</span>
     </div>
 
     <div ng-hide="$ctrl.gotPaymentInfo">
@@ -32,7 +32,7 @@
         <md-switch class="md-primary" ng-model="$ctrl.subscribeAutoTrader" aria-label="Switch 6" ng-change="$ctrl.updatePrice()">
           TradingBot ({{$ctrl.autoTraderPrice | currency:"$"}} ≈ ฿{{$ctrl.autoTraderPrice / $ctrl.inBtcRate | number:4}})
         </md-switch>
-        <div flex ng-if="$ctrl.subscribeAutoTrader">
+        <div flex class="md-body-1" ng-if="$ctrl.subscribeAutoTrader">
           <div layout="column" layout-align="center" class="animated fadeIn">
           <p class="autotrader-read-about">Read about TradingBot in the <a href="/faq" ng-click="$ctrl.cancel()">FAQ</a>.</p>
           <div class="api-key-info" flex>

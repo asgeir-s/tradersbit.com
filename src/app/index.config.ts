@@ -1,35 +1,31 @@
 /** @ngInject */
 export function config(
-  $logProvider: angular.ILogProvider,
-  $locationProvider: angular.ILocationProvider,
+  $logProvider: ng.ILogProvider,
+  $locationProvider: ng.ILocationProvider,
   $mdThemingProvider: any,
   authProvider: any) {
   // enable log
   $locationProvider.html5Mode(true)
-
-  $logProvider.debugEnabled(true)
 
   // extend the red theme with a few different colors
   let customBlue = $mdThemingProvider.extendPalette("blue", {
     "500": "3893C6",
     "contrastDefaultColor": "light"
   })
-  let customAmber = $mdThemingProvider.extendPalette("amber", {
-    "A100": "FEE496",
-    "A400": "FEE496",
-    "contrastDefaultColor": "dark"
-  })
   // register the new color palette map with the name <code>neonRed</code>
-  $mdThemingProvider.definePalette("customCyan", customBlue)
-  $mdThemingProvider.definePalette("customOrange", customAmber)
+  $mdThemingProvider.definePalette("customBlue", customBlue)
   // use that theme for the primary intentions
   $mdThemingProvider.theme("default")
-    .primaryPalette("customCyan")
-    .accentPalette("customOrange")
+    .primaryPalette("customBlue")
+    .accentPalette("amber")
 
-  $mdThemingProvider.theme("docs-dark")
-    .primaryPalette("yellow")
+  $mdThemingProvider.theme("dark", "default")
+    .primaryPalette("amber")
     .dark()
+
+  $mdThemingProvider.theme("trading")
+    .primaryPalette("green")
+    .accentPalette("red")
 
   authProvider.init({
     domain: "cluda.auth0.com",

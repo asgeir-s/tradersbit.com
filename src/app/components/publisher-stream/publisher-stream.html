@@ -1,64 +1,85 @@
-<md-card>
+<md-content>
+  <md-card>
+    <md-card-header>
+      <span class="md-headline stream-name" ng-click="$ctrl.goToStream($ctrl.inStream.id)">{{$ctrl.inStream.name}}</span>
+      <div flex></div>
+      <img class="exchnage-logo" ng-src="assets/images/{{$ctrl.inStream.exchange}}_logo.svg" alt="exchange logo" />
+      <md-menu>
+        <!-- Trigger element is a md-button with an icon -->
+        <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open sample menu">
+          <md-icon class="material-icons">more_vert</md-icon>
+        </md-button>
+        <md-menu-content>
+          <md-menu-item>
+            <md-button ng-click="$ctrl.openSubscriptionPriceDialog()">Update Subscription Price</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="$ctrl.openApiKeyDialog()">Get API Key</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-click="$ctrl.openMirrorDialog()">Mirror Bitfinex Account</md-button>
+          </md-menu-item>
+          <md-menu-item>
+            <md-button ng-href="https://bitcoinwisdom.com/markets/bitfinex/btcusd" target="_blank">Market Data</md-button>
+          </md-menu-item>
+        </md-menu-content>
+      </md-menu>
+    </md-card-header>
+    <md-card-content>
+      <div layout="column" layout-gt-sm="row">
+        <div style="margin: auto;">
+          <highchart id="partOfTradesChart" style="width: 300px; height: 160px; float: left" config="$ctrl.partOfTradesConfig"></highchart>
+        </div>
+        <div flex layout="row" layout-xs="column">
+          <div flex layout="row">
+            <div flex class="promo-item">
+              <div>
+                <span class="md-caption">Instrument</span>
+                <br/>
+                <div class="thin-lage-number">BTC/USD
+                  <hr style="background-color:white;">
+                </div>
+              </div>
+            </div>
+            <div flex class="promo-item">
+              <span class="md-caption">Number of trades</span>
+              <br/>
+              <div class="thin-lage-number">{{$ctrl.inStream.stats.numberOfClosedTrades}}
+                <hr style="background-color:white;">
+              </div>
+            </div>
+          </div>
+          <div flex layout="row">
 
-  <div class="outer" layout="row" layout-xs="column" layout-sm="column">
-
-    <div class="id-row" flex layout="row" layout-align="center center" ng-click="$ctrl.goToStream($ctrl.inStream.id)" style="cursor:pointer">
-      <div class="exchange-logo" flex="20">
-        <img ng-src="assets/images/{{$ctrl.inStream.exchange}}_logo.svg" alt="exchange logo" />
+            <div flex class="promo-item">
+              <span class="md-caption">Active position</span>
+              <br/>
+              <div class="thin-lage-number">{{$ctrl.positionString()}}
+                <hrstyle="background-color:white;">
+              </div>
+            </div>
+            <div flex class="promo-item">
+              <span class="md-caption">Unrealized P/L</span>
+              <br/>
+              <div class="thin-lage-number">{{$ctrl.unrealizedPL | number:2}}%
+                <hr ng-class="{good: $ctrl.unrealizedPL > 0, bad: $ctrl.unrealizedPL < 0}">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+    </md-card-content>
+    <md-card-actions layout="row">
 
-      <div flex>
-        <span class="md-title stream-name">{{$ctrl.inStream.name}}</span>
-      </div>
-    </div>
-
-    <div class="stats" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
-      <div flex>
-        <small>instrument</small>
-        <br/>
-        <h6 class="md-title">BTC/USD</h6>
-      </div>
-      <div flex>
-        <small>active position</small>
-        <br/>
-        <h6 class="md-title">{{$ctrl.positionString()}}</h6>
-      </div>
-      <div flex>
-        <small>unrealized P/L</small>
-        <br/>
-        <h6 class="md-title">{{$ctrl.unrealizedPL | number:2}}%</h6>
-      </div>
-    </div>
-
-    <section class="button-section" flex="30" flex-xs="100" flex-sm="100" layout="row" layout-align="center center">
-      <md-button class="groupX left short-btn" flex ng-disabled="$ctrl.inStream.lastSignal.signal === -1 || $ctrl.waitingForSignalBack"
-        ng-click="$ctrl.postSignal($ctrl.inStream.id, -1)">SHORT</md-button>
-      <md-button class="groupX middle" flex ng-disabled="$ctrl.inStream.lastSignal.signal === 0 || $ctrl.waitingForSignalBack"
-        ng-click="$ctrl.postSignal($ctrl.inStream.id, 0)">CLOSE</md-button>
-      <md-button class="long-btn groupX right" flex ng-disabled="$ctrl.inStream.lastSignal.signal === 1 || $ctrl.waitingForSignalBack"
-        ng-click="$ctrl.postSignal($ctrl.inStream.id, 1)">LONG</md-button>
-    </section>
-    <md-menu>
-      <!-- Trigger element is a md-button with an icon -->
-      <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open sample menu">
-        <md-icon class="material-icons">more_vert</md-icon>
-      </md-button>
-      <md-menu-content>
-        <md-menu-item>
-          <md-button ng-click="$ctrl.openSubscriptionPriceDialog()">Update Subscription Price</md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button ng-click="$ctrl.openApiKeyDialog()">Get API Key</md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button ng-click="$ctrl.openMirrorDialog()">Mirror Bitfinex Account</md-button>
-        </md-menu-item>
-        <md-menu-item>
-          <md-button ng-href="https://bitcoinwisdom.com/markets/bitfinex/btcusd" target="_blank">Market Data</md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
-
-  </div>
-  <md-progress-linear ng-show="$ctrl.waitingForSignalBack" md-mode="indeterminate"></md-progress-linear>
-</md-card>
+      <section flex layout="row" layout-align="center center">
+        <md-button flex md-theme="trading" class="md-raised md-accent short-button" ng-disabled="$ctrl.inStream.lastSignal.signal === -1 || $ctrl.waitingForSignalBack"
+          ng-click="$ctrl.postSignal($ctrl.inStream.id, -1)">Short</md-button>
+        <md-button flex md-theme="trading" class="md-raised close-button" ng-disabled="$ctrl.inStream.lastSignal.signal === 0 || $ctrl.waitingForSignalBack"
+          ng-click="$ctrl.postSignal($ctrl.inStream.id, 0)">Close</md-button>
+        <md-button flex md-theme="trading" class="md-raised md-primary long-button" ng-disabled="$ctrl.inStream.lastSignal.signal === 1 || $ctrl.waitingForSignalBack"
+          ng-click="$ctrl.postSignal($ctrl.inStream.id, 1)">Long</md-button>
+      </section>
+    </md-card-actions>
+    <md-progress-linear ng-show="$ctrl.waitingForSignalBack" md-mode="indeterminate"></md-progress-linear>
+  </md-card>
+</md-content>

@@ -1,30 +1,28 @@
-<div flex layout-gt-sm="row" layout="column" layout-fill layout-column flex>
-	<div flex ng-class="{good: $ctrl.netProfit > 0, bad: $ctrl.netProfit < 0}">
-		<div class="promo-item">
-			<small>Net Profit</small>
+<div layout-gt-sm="row" layout="column">
+	<div flex layout="row">
+		<div flex class="promo-item">
+			<div>
+				<span class="md-caption">Net profit</span>
+				<br/>
+				<h5 class="thin-lage-number">{{$ctrl.statsAtributes.netProfit.getIt($ctrl.inStream)}}<hr ng-class="{good: $ctrl.statsAtributes.netProfit.good($ctrl.inStream), bad: $ctrl.statsAtributes.netProfit.bad($ctrl.inStream)}"></h5>
+			</div>
+		</div>
+		<div flex class="promo-item">
+			<span class="md-caption">Average trade</span>
 			<br/>
-			<h3 class="md-display-1">{{$ctrl.netProfit | number:2}} %</h3>
+			<h5 class="thin-lage-number">{{$ctrl.statsAtributes.avarageTrade.getIt($ctrl.inStream)}}<hr ng-class="{good: $ctrl.statsAtributes.avarageTrade.good($ctrl.inStream), bad: $ctrl.statsAtributes.avarageTrade.bad($ctrl.inStream)}"></h5>
 		</div>
 	</div>
-	<div flex ng-class="{good: $ctrl.averageTrade > 0, bad: $ctrl.averageTrade < 0}">
-		<div class="promo-item">
-			<small>Average Trade</small>
+	<div flex layout="row">
+		<div flex class="promo-item">
+			<span class="md-caption">Profit factor</span>
 			<br/>
-			<h3 class="md-display-1">{{$ctrl.averageTrade | number:2}} %</h3>
+			<h5 class="thin-lage-number">{{$ctrl.statsAtributes.profitFactor.getIt($ctrl.inStream)}}<hr ng-class="{good: $ctrl.statsAtributes.profitFactor.good($ctrl.inStream), bad: $ctrl.statsAtributes.profitFactor.bad($ctrl.inStream)}"></h5>
 		</div>
-	</div>
-	<div flex ng-class="{good: $ctrl.partProfitableTrads > 50, bad: $ctrl.partProfitableTrads < 50}">
-		<div class="promo-item">
-			<small>Profitable Trades</small>
+		<div flex class="promo-item">
+			<span class="md-caption">Profitable trades</span>
 			<br/>
-			<h3 class="md-display-1">{{$ctrl.partProfitableTrads | number:2}} %</h3>
-		</div>
-	</div>
-	<div flex ng-class="{good: $ctrl.profitFactor > 1, bad: $ctrl.profitFactor < 1}">
-		<div class="promo-item">
-			<small>Profit Factor</small>
-			<br/>
-			<h3 class="md-display-1">{{$ctrl.profitFactor | number:2}}</h3>
+			<h5 class="thin-lage-number">{{$ctrl.statsAtributes.partProfitableTrades.getIt($ctrl.inStream)}}<hr ng-class="{good: $ctrl.statsAtributes.partProfitableTrades.good($ctrl.inStream), bad: $ctrl.statsAtributes.partProfitableTrades.bad($ctrl.inStream)}"></h5>
 		</div>
 	</div>
 </div>

@@ -15,11 +15,35 @@ tb-stream-stats-promo {
 		background-color: $background-color-bad;
 	}
 	
-	.promo-item {
+
+	
+		.promo-item {
+		text-align: center;
 		margin-top: 2em;
 		margin-bottom: 2em;
 		margin-left: 1em;
 		margin-right: 1em;
+		
+		h5 {
+			margin-top: 0px;
+			padding: 3px;
+			margin-top: 4px;
+		}
+		
+		.good {
+				background-color: #4CAF50;
+		}
+		
+		.bad {
+			background-color: #F44336;
+		}
+		
+		hr {
+			margin-top: 2px;
+			border-width: 0px;
+    	height: 1px;
+		}
+		
 	}
 	
 }

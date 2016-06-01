@@ -1,14 +1,27 @@
-<div flex layout-gt-sm="row" layout="column" layout-fill layout-margin layout-padding layout-align-center-center layout-column flex>
-	<div flex>
-		<small>exchange</small> <br/>
-<img class="exchnage-logo" ng-src="assets/images/{{$ctrl.inStream.exchange}}_logo.svg" alt="exchange logo" />	</div>
-	<div flex>
-		<small>currency pair</small> <br/>
-		<h3 class="md-display-1">BTC/USD</h3>
+<div layout-gt-sm="row" layout="column">
+	<div flex layout="row">
+	<div flex class="promo-item">
+		<span class="md-caption">Exchange</span>
+		<br/>
+		<img class="exchnage-logo" ng-src="assets/images/{{$ctrl.inStream.exchange}}_logo.svg" alt="exchange logo" />
 	</div>
-	<div flex>
-		<small>subsciption price</small> <br/>
-		<h3 class="md-display-1">{{$ctrl.inStream.subscriptionPriceUSD | currency:"$"}}</h3>
-		<small> ≈ ฿{{$ctrl.inStream.subscriptionPriceUSD / $ctrl.inBtcRate | number:4}} </small>
+	<div flex class="promo-item">
+		<span class="md-caption">Currency pair</span>
+		<br/>
+		<h5 class="thin-lage-number">BTC/USD</h5>
+	</div>
+	</div>
+	<div flex layout="row">
+	<div flex class="promo-item">
+		<span class="md-caption">Number of trades</span>
+		<br/>
+		<h5 class="thin-lage-number">{{$ctrl.inStream.stats.numberOfClosedTrades}}</h5>
+	</div>
+	<div flex class="promo-item">
+		<span class="md-caption">Subsciption pric</span>
+		<br/>
+		<h5 class="thin-lage-number" style="margin-bottom: 0px;">{{$ctrl.inStream.subscriptionPriceUSD | currency:"$"}}</h5>
+		<span class="md-caption"> ≈ ฿{{$ctrl.inStream.subscriptionPriceUSD / $ctrl.inBtcRate | number:4}} </span>
+	</div>
 	</div>
 </div>

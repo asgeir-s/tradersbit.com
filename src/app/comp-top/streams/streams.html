@@ -1,6 +1,3 @@
-
-<div class="toolbar-mobile-space"></div>
-
 <md-button class="md-fab fab-buttom-right animated bounce" aria-label="indicators" ng-click="$ctrl.toggleRightSidebar()">
   <md-icon class="material-icons">filter_list</md-icon>
   <md-tooltip md-direction="top" md-visible="true">
@@ -8,9 +5,23 @@
   </md-tooltip>
 </md-button>
 
-<md-content class="filters" md-theme="" ng-if="$ctrl.showFilters">
+<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
+  <md-toolbar class="md-theme-light md-accent md-hue-2">
+    <h1 class="md-toolbar-tools">Indicators</h1>
+  </md-toolbar>
+  <md-content layout-padding>
+    <md-list>
+      <md-list-item ng-repeat="atribute in $ctrl.streamAttributes">
+        <p>{{ atribute.name }}</p>
+        <md-checkbox class="md-secondary" ng-model="atribute.on"></md-checkbox>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</md-sidenav>
+
+<md-content class="filters" md-theme="dark">
   <form name="projectForm" layout="row" layout-xs="column">
-    <md-input-container flex>
+    <md-input-container class="active-last" flex>
       <label>Active in the last</label>
       <md-select ng-model="$ctrl.activeLastDays">
         <md-option value="30">
@@ -40,18 +51,3 @@
 
 <tb-streams-table flex in-streams="$ctrl.inStreams" in-attributes="$ctrl.streamAttributes" in-sort-by="NP" in-min-num-trades="$ctrl.minNumTrades"
   in-active-last-days="$ctrl.activeLastDays" , in-min-net-profit="$ctrl.minNetProfit"></tb-streams-table>
-
-<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
-  <md-toolbar class="md-theme-light md-accent md-hue-2">
-    <h1 class="md-toolbar-tools">Indicators</h1>
-  </md-toolbar>
-  <md-content layout-padding>
-
-    <md-list>
-      <md-list-item ng-repeat="atribute in $ctrl.streamAttributes">
-        <p>{{ atribute.name }}</p>
-        <md-checkbox class="md-secondary" ng-model="atribute.on"></md-checkbox>
-      </md-list-item>
-    </md-list>
-  </md-content>
-</md-sidenav>

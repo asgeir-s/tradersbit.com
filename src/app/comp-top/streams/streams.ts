@@ -25,7 +25,7 @@ class StreamsViewCtrl {
   minNumTrades: number = 5
   minNetProfit: number = 5
 
-  constructor(private $mdSidenav: angular.material.ISidenavService, private $window: angular.IWindowService) {
+  constructor(private $mdSidenav: ng.material.ISidenavService, private $window: ng.IWindowService) {
     "ngInject"
     this.windowWidth = $window.innerWidth
 

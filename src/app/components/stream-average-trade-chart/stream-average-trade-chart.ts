@@ -27,12 +27,12 @@ class StreamAverageTradeChartCtrl {
           height: 250
         },
         title: {
-          text: "Average Trades"
+          text: "Average trades"
         },
         credits: {
           enabled: false
         },
-        colors: ["#96D957", "#da5a58", "#f1d537"],
+        colors: ["#81C784", "#E57373", "#FFF176"],
         tooltip: {
           valueSuffix: "%",
           valueDecimals: 2
@@ -45,15 +45,15 @@ class StreamAverageTradeChartCtrl {
 
       // series object (optional) - a list of series using normal Highcharts series options.
       series: [{
-        name: "Average Profitable Trade",
+        name: "Average profitable trade",
         data: [this.averageWinningTrade(this.inStream)]
       },
         {
-          name: "Average Unprofitable Trade",
+          name: "Average unprofitable trade",
           data: [this.averageLoosingTrade(this.inStream)]
         },
         {
-          name: "Average Trade",
+          name: "Average trade",
           data: [this.averageTrade(this.inStream)]
         }],
       useHighStocks: false

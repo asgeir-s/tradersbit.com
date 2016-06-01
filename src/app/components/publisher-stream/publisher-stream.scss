@@ -1,68 +1,13 @@
 tb-publisher-stream {
-	.stream-name {
-		font-variant: small-caps;
-	}
 	
-	.id-row {
-		background-color: $secondary-color;
-	}
-	
-	.exchange-logo {
-		margin: 12px;
-	}
-	h6 {
-		margin-top: 0px;
-		margin-bottom: 0px;
-	}
-	small {
-		color: lighten($dark-font-color, 55%);
-	}
-	
-	.long-btn {
-
+	.long-button {
     	background-color: $background-color-good;
+		color: white!important;
 	}
 	
-	.short-btn {
-
+	.short-button {
     	background-color: $background-color-bad;
 	}
-	
-	.groupX {
-    font-size: 16px;
-    margin: 0px 0;
-    padding: 3px 15px 3px 15px;
-
-    text-transform: none;
-    font-weight: 400;
-    min-width:100px;
-}
-.md-button.left {
-    border-radius: 10px 0 0 10px;
-}
-.md-button.middle {
-    border-radius: 0;
-    border-left: 1px solid rgba(230, 230, 230, 0.96);
-    border-right: 1px solid rgba(230, 230, 230, 0.96);
-}
-.md-button.right {
-    border-radius: 0 10px 10px 0;
-}
-.md-button:not([disabled]):hover {
-    background-color: rgba(193, 193, 193, 0.96);
-    color: rgba(44, 65, 164, 0.96);
-    transition: 0.3s;
-}
-
-.button-section {
-	margin-left: 10px;
-	margin-right: 10px;
-}
-.stats {
-	text-align: center;
-	    margin-top: 1em;
-    margin-bottom: 1em;
-}
 
 md-card {
    @media screen and (max-width: 600px) {
@@ -80,5 +25,67 @@ md-icon {
       padding-top: 10px;
     padding-bottom: 10px;
 }
+	
+	
+	md-card-actions {
+		padding: 20px;
+	}
+	
+	md-menu {
+		padding: 0px;
+	}
+	
+	.md-button.md-icon-button {
+		padding: 0px;	
+	}
+
+
+.stream-name {
+	font-variant: small-caps;
+	cursor: pointer;
+}
+
+.subscription-price {
+	padding-left: 16px;
+}
+
+  .exchnage-logo {
+    width: 120px;
+    height: 44px;
+  }
+  
+	h3 {
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	small {
+		color: rgba(0, 0, 0, 0.54);
+	}
+	.good {
+		background-color: $background-color-good;
+	}
+	
+	.bad {
+		background-color: $background-color-bad;
+	}
+	
+	md-card-title {
+		    padding-top: 0px;
+				padding-bottom: 0px;
+	}
+	
+	md-card-content {
+				    padding-top: 0px;
+				padding-bottom: 0px;
+	}
+	
+
+	
+	md-content {
+		    max-width: 1200px;
+    margin: auto;
+    padding-top: 20px;
+	}
+	
 	
 }

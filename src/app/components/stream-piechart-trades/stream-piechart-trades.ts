@@ -18,7 +18,7 @@ class TtreamPiechartTradesCtrl {
   inStream: Stream
   tradsPiechartConfig: any
 
-  constructor($timeout: angular.ITimeoutService, highcharts: any) {
+  constructor($timeout: ng.ITimeoutService, highcharts: any) {
     "ngInject"
     this.tradsPiechartConfig = {
       options: {
@@ -45,7 +45,7 @@ class TtreamPiechartTradesCtrl {
             }
           }
         },
-        colors: ["#96D957", "#da5a58", "#f1d537"],
+        colors: ["#81C784", "#E57373", "#f1d537"],
         exporting: {
           enabled: false
         }

@@ -31,8 +31,8 @@ class CompetitionViewCtrl {
     }
   },
     {
-      name: "Net Profit",
-      short: "Net Profit",
+      name: "Net profit",
+      short: "Net profit",
       description: "All-time profit for this stream.",
       jsonPath: "stats.allTimeValueIncl",
       on: true,
@@ -104,7 +104,7 @@ class CompetitionViewCtrl {
   top10StreamsComp3: Array<Stream>
 
   constructor(
-    private $mdSidenav: angular.material.ISidenavService,
+    private $mdSidenav: ng.material.ISidenavService,
     private _: any,
     $interval: any,
     private $state: any) {
