@@ -1,7 +1,6 @@
 import { Stream, StreamsAttribute } from "../../typings/types.d.ts"
 import { BitcoinaverageApi } from "../../services/bitcoinaverage-api/bitcoinaverage-api"
 
-
 export class HomeView implements ng.IComponentOptions {
   bindings: any
   controller: any

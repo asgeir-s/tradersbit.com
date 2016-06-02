@@ -117,7 +117,7 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
     })
     .state("about", {
       url: "/about?tab",
-      templateUrl: 'app/comp-top/about/about.html',
+      templateUrl: "app/comp-top/about/about.html",
       controller:
       class About {
         tab: string

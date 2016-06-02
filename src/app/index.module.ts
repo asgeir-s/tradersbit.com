@@ -49,7 +49,6 @@ import { PublisherMirrorDialog } from "./components/publisher-mirror-dialog/publ
 import { StreamListItem } from "./components/stream-list-item/stream-list-item"
 import { TopNav } from "./components/top-nav/top-nav"
 
-
 // services
 import { TbFront } from "./services/tb-front/tb-front"
 import { BitcoinaverageApi } from "./services/bitcoinaverage-api/bitcoinaverage-api"
