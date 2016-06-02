@@ -1,6 +1,10 @@
-<md-content>
-  <h4 class="md-display-1 page-header">Trading competitions</h4>
+<md-toolbar class="dark-toolbar">
+  <div class="md-toolbar-tools">
+    <span flex class="center"><h4 class="md-display-1 page-header">Trading competitions</h4></span>
+  </div>
+</md-toolbar>
 
+<md-content>
   <h1>Ongoing</h1>
   <md-card layout="row" layout-xs="column">
     <div flex>
@@ -37,7 +41,7 @@
     </div>
 
     <div flex>
-        <tb-streams-table flex in-streams="$ctrl.top10StreamsComp2" in-attributes="$ctrl.attributesComp2" in-sort-by="Net profit"></tb-streams-table>
+      <tb-streams-table flex in-streams="$ctrl.top10StreamsComp2" in-attributes="$ctrl.attributesComp2" in-sort-by="Net profit"></tb-streams-table>
     </div>
   </md-card>
 
@@ -79,9 +83,9 @@
       </md-card-content>
     </div>
 
-   <div flex>
-        <tb-streams-table flex in-streams="$ctrl.top10StreamsComp3" in-attributes="$ctrl.attributesComp3" in-sort-by="Net profit"></tb-streams-table>
-        <p ng-if="$ctrl.top10StreamsComp3.length == 0">There are no streams with 20 closed trades after 1 May</p>
+    <div flex>
+      <tb-streams-table flex in-streams="$ctrl.top10StreamsComp3" in-attributes="$ctrl.attributesComp3" in-sort-by="Net profit"></tb-streams-table>
+      <p ng-if="$ctrl.top10StreamsComp3.length == 0">There are no streams with 20 closed trades after 1 May</p>
     </div>
   </md-card>
 

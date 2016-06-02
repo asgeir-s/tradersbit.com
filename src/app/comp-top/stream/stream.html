@@ -1,6 +1,9 @@
+<md-toolbar class="dark-toolbar">
+  <div class="md-toolbar-tools">
+    <span flex class="center"><h4 class="md-display-1 page-header">{{$ctrl.inStream.name}}</h4></span>
+  </div>
+</md-toolbar>
 <md-content>
-    <h4 class="md-display-1 page-header">{{$ctrl.inStream.name}}</h4>
-
   <md-toolbar ng-hide="!$ctrl.empety" class="md-accent md-hue-1">
     <h2 class="md-toolbar-tools">
         <span>no closed trades in this stream yet</span>

@@ -27,7 +27,7 @@ class TopNavCtrl {
       disableParentScroll: true,
       template: '<md-progress-circular md-mode="indeterminate" md-diameter="100"></md-progress-circular>',
       hasBackdrop: true,
-      panelClass: 'demo-dialog-example',
+      panelClass: "demo-dialog-example",
       position: this.$mdPanel.newPanelPosition()
         .absolute()
         .center(),
@@ -63,8 +63,7 @@ class TopNavCtrl {
         }
         else {
           // success callback
-
-          let panelRef = this.$mdPanel.create(this.watingPanelConfig)
+          const panelRef = this.$mdPanel.create(this.watingPanelConfig)
           panelRef.open()
           this.tbFront.signIn(profile, token)
             .then(() => {

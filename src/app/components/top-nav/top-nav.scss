@@ -1,19 +1,26 @@
  tb-top-nav {
 
+.top-nav {
+  background-color: $third-color;
+  color: white!important;
+  padding-bottom: 10px;
+}
 .nav-button-group {
   margin: auto;
   text-align: right;
 }
 
-    .top-nav {
- 
-    }
+.promo-caption {
+  font-size: 12px;
+}
  
  .logo-link {
     text-decoration: none;
     color: $dark-font-color;
     margin: 10px;
     font-style: italic;
+      color: white!important;
+
  }
  
   .logo {
@@ -35,3 +42,8 @@
   height: 100px;
   
 }
+
+  
+  #promo-caption {
+    color: white!important;
+  }

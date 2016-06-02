@@ -1,5 +1,5 @@
 /*** Colors ***/
-$primary-color: #3893C6 !default; //color("materialize-red", "lighten-2") !default; #00acc1
+$primary-color: hsl(202, 56%, 56%) !default; //color("materialize-red", "lighten-2") !default; #00acc1
 $primary-color-light: lighten($primary-color, 15%) !default;
 $primary-color-dark: darken($primary-color, 15%) !default;
 $background-color-content: #fff;
@@ -7,7 +7,7 @@ $secondary-color: #FFC107 !default; //#F5DEB3 rgb(255,171,64)   #FEE496 ffbf00
 $secondary-color-light: lighten($secondary-color, 15%) !default;
 $secondary-color-dark: darken($secondary-color, 15%) !default; //color("teal", "lighten-1") !default;
 $success-color: color("green", "base") !default;
-$third-color: #313236!default; // #313236
+$third-color: hsl(227, 3%, 31%)!default; // #313236
 $third-color-light: lighten($third-color, 15%) !default;
 $third-color-dark: darken($third-color, 15%) !default;
 $dark-font-color: rgba(0, 0, 0, 0.87);
@@ -59,8 +59,17 @@ h1, h2, h3, h4, h5, h6, {
 	.page-header {
 		font-variant: small-caps;
 		    text-align: center;
-				padding: 20px;
 	}
+  
+      .dark-toolbar {
+            background-color: $third-color!important; //$third-color-light; //dsfdsfds
+            color: white!important;
+            
+            .md-button {
+                color:  $secondary-color!important;
+            }
+
+    }
 
 .md-caption {
   color: rgba(0,0,0,0.54);
@@ -137,7 +146,7 @@ md-input-container.md-dark-theme label, md-input-container.md-dark-theme .md-pla
   font-feature-settings: 'liga';
 }
 footer {
-  background-color: $third-color-light;
+  background-color: $third-color;
   color: $light-font-color;
   ul {
     list-style: none;
