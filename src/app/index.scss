@@ -79,6 +79,9 @@ md-toolbar {
   background-color: white!important;
   color: $dark-font-color!important;
   
+  h1, h2, h3, h4, h5, h6, {
+  margin: 0px;
+}
   .md-button {
     color: $dark-font-color!important;
   }
