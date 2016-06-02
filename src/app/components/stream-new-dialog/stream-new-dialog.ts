@@ -15,7 +15,7 @@ class StreamNewCtrl {
   stream: NewStream = {
     name: "",
     exchange: "",
-    currencyPair: "",
+    currencyPair: "btcUSD",
     payoutAddress: "",
     subscriptionPriceUSD: 5
   }

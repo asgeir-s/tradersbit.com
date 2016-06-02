@@ -188,6 +188,10 @@ export function routerConfig($stateProvider: ng.ui.IStateProvider, $urlRouterPro
       },
       controllerAs: "ctrl"
     })
+    .state("verify-email", {
+      url: "/verify-email",
+      templateUrl: "app/comp-top/verify-email/verify-email.html"
+    })
 
   $urlRouterProvider.otherwise("/")
 }
