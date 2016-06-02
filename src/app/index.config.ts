@@ -8,11 +8,11 @@ export function config(
   $locationProvider.html5Mode(true)
 
   // extend the red theme with a few different colors
-  let customBlue = $mdThemingProvider.extendPalette("blue", {
+  const customBlue = $mdThemingProvider.extendPalette("blue", {
     "500": "3893C6",
     "contrastDefaultColor": "light"
   })
-  // register the new color palette map with the name <code>neonRed</code>
+  // register the new color paconstte map with the name <code>neonRed</code>
   $mdThemingProvider.definePalette("customBlue", customBlue)
   // use that theme for the primary intentions
   $mdThemingProvider.theme("default")
@@ -23,9 +23,23 @@ export function config(
     .primaryPalette("amber")
     .dark()
 
+  let customGreen = $mdThemingProvider.extendPalette("green", {
+    "A100": "c8f0d3",
+    "A200": "81C784",
+    "contrastDefaultColor": "light"
+  })
+
+  let customRed = $mdThemingProvider.extendPalette("red", {
+    "A200": "E57373",
+    "contrastDefaultColor": "light"
+  })
+
+  $mdThemingProvider.definePalette("customGreen", customGreen)
+  $mdThemingProvider.definePalette("customRed", customRed)
+
   $mdThemingProvider.theme("trading")
-    .primaryPalette("green")
-    .accentPalette("red")
+    .primaryPalette("customGreen")
+    .accentPalette("customRed")
 
   authProvider.init({
     domain: "cluda.auth0.com",

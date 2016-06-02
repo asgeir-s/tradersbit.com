@@ -33,16 +33,16 @@
       <tb-stream-piechart-trades in-stream="$ctrl.inStream"></tb-stream-piechart-trades>
     </div>
   </div>
-.
-  <md-tabs md-dynamic-height md-border-bottom>
+  .
+  <md-tabs md-dynamic-height md-border-bottom ng-cloak>
     <md-tab label="Stats">
       <md-content class="md-padding">
-            <tb-info-table in-stream="$ctrl.inStream" in-attributes="$ctrl.allAttributes" in-name=""></tb-info-table>
+        <tb-info-table in-stream="$ctrl.inStream" in-attributes="$ctrl.allAttributes" in-name=""></tb-info-table>
       </md-content>
     </md-tab>
     <md-tab label="Closed Trades">
       <md-content class="md-padding">
-    <tb-trades-table flex ng-hide="$ctrl.empety" in-trades="$ctrl.trades"></tb-trades-table>
+        <tb-trades-table flex ng-hide="$ctrl.empety" in-trades="$ctrl.trades"></tb-trades-table>
       </md-content>
     </md-tab>
   </md-tabs>

@@ -6,6 +6,14 @@
 ##Run commands
 	gulp serve
 	gulp serve:dist
+    
+##Design
+
+main: Blue/Amber/Gray: hsl(202, 56%, 56%)/FFC107/hsl(227, 3%, 31%)
+
+trading: Green/Red/Amber: "#81C784"/"#E57373"/"#FFD54F"
+
+good/bad: #c8f0d3/#f0c8c8
 	
 #Troubleshout
 If 'gulp serve:dist' don't work: remove all (generted) js files in the /app folder.

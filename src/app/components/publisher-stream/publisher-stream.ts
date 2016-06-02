@@ -213,15 +213,15 @@ class PublisherStreamCtrl {
         let text: string
         if (signals.length === 1) {
           if (signals[0].signal === 0) {
-            text = "New " + this.positionString() + " signal @ " + signals[0].price + "$. P/L: " +
+            text = this.positionString() + " signal at " + signals[0].price + "$. Result " +
               ((signals[0].changeInclFee * 100) - this.BITFINEX_FEE).toFixed(2) + "%."
           }
           else {
-            text = "New " + this.positionString() + " signal @ " + signals[0].price + "$"
+            text = this.positionString() + " signal at " + signals[0].price + "$"
           }
         }
         else {
-          text = "Position closed @ " + signals[0].price + "$. P/L: " +
+          text = "Position closed at " + signals[0].price + "$. Result " +
             ((signals[0].changeInclFee * 100) - this.BITFINEX_FEE).toFixed(2) + "%.\n New " +
             this.positionString() + " position opened."
         }

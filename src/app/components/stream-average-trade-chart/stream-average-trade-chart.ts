@@ -32,7 +32,7 @@ class StreamAverageTradeChartCtrl {
         credits: {
           enabled: false
         },
-        colors: ["#81C784", "#E57373", "#FFF176"],
+        colors: ["#81C784", "#E57373", "#FFD54F"],
         tooltip: {
           valueSuffix: "%",
           valueDecimals: 2
