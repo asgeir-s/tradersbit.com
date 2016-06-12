@@ -10,45 +10,6 @@
     <div flex>
       <md-card-title>
         <md-card-title-text>
-          <h2 class="md-display-1">First stream to reach 60% net profit</h2>
-        </md-card-title-text>
-      </md-card-title>
-      <md-card-content class="md-body-1">
-        <md-list>
-          <md-list-item>
-            <b>Prize:</b>&nbsp; 2 BTC and stream promotion
-          </md-list-item>
-          <md-list-item>
-            <b>End time:</b>&nbsp; When a stream's Net Profit hits 60%
-          </md-list-item>
-          <md-list-item>
-            <b>Minimum number of closed trades:</b>&nbsp; 20
-          </md-list-item>
-          <md-list-item>
-            <b>Each user should only have one account. But each account can have up to three streams.</b>
-          </md-list-item>
-        </md-list>
-        <p>
-          The first stream to make a net profit of 60% gets 2 BTC paid to the stream's payout address.
-        </p>
-        <p>
-          All new and existing streams are competing.
-        </p>
-        <p>
-          We will also promote the winning stream in our media campaign, thus exposing it to potential subscribers.
-        </p>
-      </md-card-content>
-    </div>
-
-    <div flex>
-      <tb-streams-table flex in-streams="$ctrl.top10StreamsComp2" in-attributes="$ctrl.attributesComp2" in-sort-by="Net profit"></tb-streams-table>
-    </div>
-  </md-card>
-
-  <md-card layout="row" layout-xs="column">
-    <div flex>
-      <md-card-title>
-        <md-card-title-text>
           <h2 class="md-display-1">Highest net profit</h2>
         </md-card-title-text>
       </md-card-title>
@@ -90,6 +51,49 @@
   </md-card>
 
   <h1>Finished</h1>
+  <md-card layout="row" layout-xs="column">
+    <div flex>
+      <md-card-title>
+        <md-card-title-text>
+          <h2 class="md-display-1">First stream to reach 60% net profit</h2>
+        </md-card-title-text>
+      </md-card-title>
+      <md-card-content class="md-body-1">
+        <md-list>
+          <md-list-item>
+            <b>Prize:</b>&nbsp; 2 BTC and stream promotion
+          </md-list-item>
+          <md-list-item>
+            <b>End time:</b>&nbsp; When a stream's Net Profit hits 60%
+          </md-list-item>
+          <md-list-item>
+            <b>Minimum number of closed trades:</b>&nbsp; 20
+          </md-list-item>
+          <md-list-item>
+            <b>Each user should only have one account. But each account can have up to three streams.</b>
+          </md-list-item>
+        </md-list>
+        <p>
+          The first stream to make a net profit of 60% gets 2 BTC paid to the stream's payout address.
+        </p>
+        <p>
+          All new and existing streams are competing.
+        </p>
+        <p>
+          We will also promote the winning stream in our media campaign, thus exposing it to potential subscribers.
+        </p>
+      </md-card-content>
+    </div>
+
+    <div class="competition-winnner" flex style="cursor: pointer;" ng-click="$ctrl.goToStream('196b668d-2b30-4ec4-9042-d1c83659f83e')">
+      <div class="center">
+        <md-icon class="material-icons cake" style="font-size: 200px;">cake</md-icon>
+        <h6 class="md-title" style="margin-bottom: 0px;">Winner:</h6>
+        <h3 class="md-display-2" style="margin-top: 0px;">AnonymousTrader</h3>
+
+      </div>
+    </div>
+  </md-card>
   <md-card layout="row" layout-xs="column">
     <div flex>
       <md-card-title>
