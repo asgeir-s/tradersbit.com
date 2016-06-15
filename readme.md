@@ -19,6 +19,9 @@ good/bad: #c8f0d3/#f0c8c8
 If 'gulp serve:dist' don't work: remove all (generted) js files in the /app folder.
 Also, remember, the order in bower.json mathers
 
+    cd src/app
+    find . -name "*.js" -type f|xargs rm -f
+
 ###Get the apiclient generated from AWS API Gateway
 
 set 
