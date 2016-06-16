@@ -19,7 +19,7 @@ export class HomeView implements ng.IComponentOptions {
 class HomeViewCtrl {
   inStreams: Array<Stream>
   activeLastDays: number = 30
-  minNumTrades: number = 10
+  minNumTrades: number = 20
   minNetProfit: number = 10
   streams: Array<Stream>
   btcRate: number
@@ -27,7 +27,13 @@ class HomeViewCtrl {
   wating: boolean = false
   watingPanelConfig: any
 
-  constructor(private tbFront: TbFront, private $mdPanel: any, private $state: any, private auth: any, private $mdSidenav: any, bitcoinaverageApi: BitcoinaverageApi) {
+  constructor(
+    private tbFront: TbFront,
+    private $mdPanel: any,
+    private $state: any,
+    private auth: any,
+    private $mdSidenav: any,
+    bitcoinaverageApi: BitcoinaverageApi) {
     "ngInject"
     this.updateFilters()
 

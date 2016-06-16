@@ -1,9 +1,40 @@
 
 tb-stream-list-item {
 
+				.breake-line-on-small {
+							display: none;
+						}
+
+
+	.promo-item {
+		margin-top: 0px;
+				margin-bottom: 0px;
+				padding-left: 10px;
+				padding-right: 10px;
+	}
+
+					@media (max-width: 790px) {
+					.thin-lage-number {
+    				font-size: 19px !important;
+
+						.hr {
+							margin: 0px;
+							padding: 0px;
+							}
+						}
+		.breake-line-on-small {
+							display: block;
+						}
+					}
+
+
 .stream-name {
 	font-variant: small-caps;
 	cursor: pointer;
+}
+
+.stream-period {
+	    padding-left: 10px;
 }
 
 .subscription-price {

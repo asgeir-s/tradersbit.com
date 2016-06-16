@@ -22,6 +22,62 @@ class StreamListItemCtrl {
   inBtcRate: number
 
   statsAtributes = {
+      "amp":  {
+      name: "Average monthly profit",
+      short: "AMP",
+      description: "The average profit per month calculated from first to last signal.",
+      jsonPath: "",
+      on: true,
+      good: (stream: Stream) => {
+        const allProfit = stream.stats.allTimeValueIncl - 1
+        const duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        const secInMonth = 86400000 * 30
+        const AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return false
+        }
+        else {
+          return AMP > 0
+        }
+      },
+      bad: (stream: Stream) => {
+        const allProfit = stream.stats.allTimeValueIncl - 1
+        const duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        const secInMonth = 86400000 * 30
+        const AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return false
+        }
+        else {
+          return AMP < 0
+        }
+      },
+      getIt: (stream: Stream) => {
+        const allProfit = stream.stats.allTimeValueIncl - 1
+        const duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        const secInMonth = 86400000 * 30
+
+        const AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return "0%"
+        }
+        else {
+          return AMP.toFixed(2) + "%"
+        }
+      },
+      getValue: (stream: Stream) => {
+        const allProfit = stream.stats.allTimeValueIncl - 1
+        const duration = stream.stats.timeOfLastSignal - stream.stats.timeOfFirstSignal
+        const secInMonth = 86400000 * 30
+        const AMP = (((allProfit / duration)) * secInMonth) * 100
+        if (isNaN(AMP)) {
+          return 0
+        }
+        else {
+          return AMP
+        }
+      }
+    },
     "netProfit": {
       name: "Net Profit",
       short: "NP",
