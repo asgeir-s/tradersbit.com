@@ -6,7 +6,7 @@
 </md-button>
 
 <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="home-right">
-    <md-toolbar class="md-theme-light md-accent md-hue-2">
+  <md-toolbar class="md-theme-light md-accent md-hue-2">
     <h1 class="md-toolbar-tools">Filters</h1>
   </md-toolbar>
   <md-content layout-padding>
@@ -41,20 +41,22 @@
   </md-content>
 </md-sidenav>
 
-<div layout="row" class="home--features-outer"   layout-align="center center">
+<div layout="column" class="home--features-outer" layout-align="center center">
+  <h4 class="center super-promo"><b>Automated Bitcoin trading platform and trading signal marketplace</b></h4>
+
   <div flex layout="row" class="home--features-row" layout-align="center center">
     <div class="home--features-row-inner" flex layout="row" layout-xs="column" layout-align="center start">
       <div class="home--features-row--item" ng-click="$ctrl.chnageState('streams')" flex>
         <img class="img" src="/assets/images/bitcoin83.svg" alt="Trading Robot" height="90px">
-        <p class="md-body-1">Sort, filter and comapre to find trading signals that are right for you</p>
+        <p class="md-body-1">Sort, filter and comapre to find Bitcoin trading signals that are right for you</p>
       </div>
       <div class="home--features-row--item" flex ng-click="$ctrl.chnageState('faq')">
         <img class="img" src="/assets/images/robot16.svg" alt="Trading Robot" height="90px">
-        <p class="md-body-1">Run trading bots</p>
+        <p class="md-body-1">Run Bitcoin trading bots /<br/>Automated trading</p>
       </div>
-      <div class="home--features-row--item" flex ng-click="$ctrl.clickPublish()" >
+      <div class="home--features-row--item" flex ng-click="$ctrl.clickPublish()">
         <img class="img" src="/assets/images/bitcoin82.svg" alt="Trading Bitcoin" height="90px">
-        <p class="md-body-1">Publish trading signals and sell subscriptions</p>
+        <p class="md-body-1">Publish Bitcoin trading signals for free and <b>earn Bitcoin</b> by selling subscriptions</p>
       </div>
       <div class="home--features-row--item" flex ng-click="$ctrl.chnageState('api')">
         <md-icon class="material-icons img">code</md-icon>
@@ -64,5 +66,6 @@
   </div>
 </div>
 <md-content class="stream-list" layout="column">
-  <tb-stream-list-item flex ng-repeat="stream in $ctrl.streams | orderBy: $ctrl.allTimeValueIncl : true" in-stream="stream" in-btc-rate="$ctrl.btcRate" ></tb-stream-list-item>
+  <tb-stream-list-item flex ng-repeat="stream in $ctrl.streams | orderBy: $ctrl.allTimeValueIncl : true" in-stream="stream"
+    in-btc-rate="$ctrl.btcRate"></tb-stream-list-item>
 </md-content>
