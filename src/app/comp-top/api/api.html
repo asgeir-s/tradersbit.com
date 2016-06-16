@@ -5,59 +5,67 @@
 </md-toolbar>
 <md-content>
   <div class="text-content">
-    <p>This API can be used to publish trading signals to an already created stream.</p>
+    <p>This API can be used to publish trading signals and get a streams current staus (last signal).</p>
+    <p>Api keys can be generated in the "my streams" view (under +Publish). Click on the gear icon on one of you streams.</p>
+
+    <h4 class="md-display-1">Post signal</h4>
+
 
     <h6 class="md-title">Endpoint</h6>
-    <pre>
-              <code>
+    <pre class="code">
+      <code>
 
 https://api.tradersbit.com/api/streams/<i>'stream id'</i>/signal
               </code>
-              </pre>
-              
-                  <h6 class="md-title">Method</h6>
-    <pre>
-              <code>
+    </pre>
+
+    <h6 class="md-title">Method</h6>
+    <pre class="code">
+      <code>
+
 POST
-              </code>
-              </pre>
+</code>
+    </pre>
     <h6 class="md-title">Headers</h6>
-    <ul>
-      <li> <code>Content-Type: application/json</code></li>
-      <li><code>x-authorization: apikey <i>'streams apikey'</i></code></li>
-    </ul>
-    Api keys can be generated in the My Streams view (under Publisher). Click on the three-dot icon on one of you streams (icon
-    on the far right of you streams on the My Streams page).
+    <pre class="code">
+      <code>
+
+Content-Type: application/json
+x-authorization: apikey <i>'streams apikey'</i>
+      </code>
+    </pre>
     <h6 class="md-title">Body</h6> The body of the request should be <code>-1</code> (SHORT), <code>0</code> (CLOSE) or <code>1</code> (LONG).
-    </p>
 
     <p>
       <h5 class="md-headline">Example</h5>
-      <small>
-                <pre>
+            <b>Request</b>
+
+                <pre class="code">
                 <code>
+
 POST:
 https://api.tradersbit.com/api/streams/4b0c2989-ca71-46c5-a138-c4777a41e13e/signal
                 </code>
                 </pre>
-               <b>Headers:</b>
-               <pre>
+               Headers
+               <pre class="code">
                 <code>
+                  
 Content-Type: application/json
 x-authorization: apikey eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJteUJhbmtQaW4iOjg...
                 </code>
                 </pre>
 
 
-              <b>Body:</b>
-              <pre><code>1</code></pre>
-              </small>
+              Body
+              <pre class="code"><code>
+1
+                </code></pre>
     </p>
 
     <p>
-      <h5 class="md-headline">Response</h5>
-      <small>
-              <pre>
+      <b>Response</b>
+              <pre class="code">
               <code>
 [
   {
@@ -73,7 +81,76 @@ x-authorization: apikey eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJteUJhbmtQaW4iOjg
 ]
               </code>
                 </pre>
-                </small>
+    </p>
+
+
+      <h4 class="md-display-1">Get status</h4>
+
+
+    <h6 class="md-title">Endpoint</h6>
+    <pre class="code">
+      <code>
+
+https://api.tradersbit.com/api/streams/<i>'stream id'</i>/status
+              </code>
+    </pre>
+
+    <h6 class="md-title">Method</h6>
+    <pre class="code">
+      <code>
+
+GET
+</code>
+    </pre>
+    <h6 class="md-title">Headers</h6>
+    <pre class="code">
+      <code>
+
+Content-Type: application/json
+x-authorization: apikey <i>'streams apikey'</i>
+</code>
+    </pre>
+
+    <p>
+      <h5 class="md-headline">Example</h5>
+            <b>Request</b>
+
+                <pre class="code">
+                <code>
+
+GET:
+https://api.tradersbit.com/api/streams/4b0c2989-ca71-46c5-a138-c4777a41e13e/status
+                </code>
+                </pre>
+               Headers
+               <pre class="code">
+                <code>
+
+Content-Type: application/json
+x-authorization: apikey eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJteUJhbmtQaW4iOjg...
+                </code>
+                </pre>
+
+    </p>
+
+    <p>
+      <b>Response</b>
+              <pre class="code">
+              <code>
+[
+  {
+    "timestamp": 1452764561408,
+    "price": 429.49,
+    "change": 0.0052428321,
+    "id": 25,
+    "valueInclFee": 0.9749317064,
+    "changeInclFee": 0.0032428321,
+    "value": 0.9735364263,
+    "signal": 0
+  }
+]
+              </code>
+                </pre>
     </p>
   </div>
 </md-content>

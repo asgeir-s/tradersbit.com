@@ -44,20 +44,20 @@
 <div layout="row" class="home--features-outer"   layout-align="center center">
   <div flex layout="row" class="home--features-row" layout-align="center center">
     <div class="home--features-row-inner" flex layout="row" layout-xs="column" layout-align="center start">
-      <div class="home--features-row--item" flex>
-        <img src="/assets/images/bitcoin83.svg" alt="Trading Robot" height="90px">
+      <div class="home--features-row--item" ng-click="$ctrl.chnageState('streams')" flex>
+        <img class="img" src="/assets/images/bitcoin83.svg" alt="Trading Robot" height="90px">
         <p class="md-body-1">Sort, filter and comapre to find trading signals that are right for you</p>
       </div>
-      <div class="home--features-row--item" flex>
-        <img src="/assets/images/robot16.svg" alt="Trading Robot" height="90px">
+      <div class="home--features-row--item" flex ng-click="$ctrl.chnageState('faq')">
+        <img class="img" src="/assets/images/robot16.svg" alt="Trading Robot" height="90px">
         <p class="md-body-1">Run trading bots</p>
       </div>
-      <div class="home--features-row--item" flex>
-        <img src="/assets/images/bitcoin82.svg" alt="Trading Robot" height="90px">
+      <div class="home--features-row--item" flex ng-click="$ctrl.clickPublish()" >
+        <img class="img" src="/assets/images/bitcoin82.svg" alt="Trading Bitcoin" height="90px">
         <p class="md-body-1">Publish trading signals and sell subscriptions</p>
       </div>
-      <div class="home--features-row--item" flex>
-        <md-icon class="material-icons">code</md-icon>
+      <div class="home--features-row--item" flex ng-click="$ctrl.chnageState('api')">
+        <md-icon class="material-icons img">code</md-icon>
         <p class="md-body-1">Connect your trading bots to the API</p>
       </div>
     </div>

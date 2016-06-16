@@ -17,8 +17,13 @@ tb-home {
   }
   .home--features-row--item {
     margin: 10px;
+    cursor: pointer;
     @media screen and (max-width: 600px) {
       padding: 30px;
+    }
+    .img:hover {
+      -webkit-animation: pulse 1s;
+      animation: pulse 1s;
     }
   }
   
@@ -29,9 +34,8 @@ tb-home {
     margin-bottom: 0;
     max-width: 1200px;
     //margin: auto;
-    md-icon {
+        md-icon {
       font-size: 4em;
-      color: white;
     }
   }
 

@@ -1,3 +1,14 @@
 h6.md-title{
       margin-bottom: 0px;
 }
+
+pre {
+      background-color: $third-color;
+      color: $light-font-color;
+      padding-left: 20px;
+      padding-right: 20px;
+}
+
+.code {
+      overflow-x: scroll!important;
+}
