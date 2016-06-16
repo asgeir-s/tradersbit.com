@@ -1,4 +1,5 @@
 import { StreamsAttribute, Stream} from "../../../app/typings/types.d.ts"
+import { TbSession } from "../../services/session/session"
 
 export class TbStreamsTable implements ng.IComponentOptions {
     bindings: any
@@ -26,15 +27,16 @@ class TbStreamsTableCtrl {
     inMinNumTrades: number
     inActiveLastDays: number
     inMinNetProfit: number
-
-    reverse: boolean
-    predicate: StreamsAttribute
     streams: Array<Stream>
 
-    constructor(private $state: any, private _: any) {
+    constructor(private $state: any, private _: any, public tbSession: TbSession) {
         "ngInject"
-        this.reverse = true
-        this.predicate = _.find(this.inAttributes, it => it.short === this.inSortBy)
+        if (tbSession.streamsTable.sortBy == null) {
+            tbSession.streamsTable.sortBy = this.inSortBy
+        }
+        if (tbSession.streamsTable.predicate == null) {
+            tbSession.streamsTable.predicate = _.find(this.inAttributes, it => it.short === this.inSortBy)
+        }
         this.updateFilters()
     }
 
@@ -63,8 +65,12 @@ class TbStreamsTableCtrl {
     }
 
     order(newPredicate: StreamsAttribute): void {
-        this.reverse = (this.predicate === newPredicate) ? !this.reverse : false
-        this.predicate = newPredicate
+        this.tbSession.streamsTable.reverse =
+            (this.tbSession.streamsTable.predicate === newPredicate) ?
+                !this.tbSession.streamsTable.reverse :
+                false
+
+        this.tbSession.streamsTable.predicate = newPredicate
     }
 
     goToStream(streamID: string): void {

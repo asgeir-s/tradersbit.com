@@ -53,6 +53,7 @@ import { TopNav } from "./components/top-nav/top-nav"
 import { TbFront } from "./services/tb-front/tb-front"
 import { BitcoinaverageApi } from "./services/bitcoinaverage-api/bitcoinaverage-api"
 import { BitfinexSocket } from "./services/bitfinex-socket/bitfinex-socket"
+import { TbSession } from "./services/session/session"
 
 module tradersbitCom {
   "use strict"
@@ -108,4 +109,5 @@ module tradersbitCom {
     .service("tbFront", TbFront)
     .service("bitcoinaverageApi", BitcoinaverageApi)
     .service("bitfinexSocket", BitfinexSocket)
+    .service("tbSession", TbSession)
 }

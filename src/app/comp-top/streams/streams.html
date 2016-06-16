@@ -11,7 +11,7 @@
   </md-toolbar>
   <md-content layout-padding>
     <md-list>
-      <md-list-item ng-repeat="atribute in $ctrl.streamAttributes">
+      <md-list-item ng-repeat="atribute in $ctrl.tbSession.streams.streamAttributes">
         <p>{{ atribute.name }}</p>
         <md-checkbox class="md-secondary" ng-model="atribute.on"></md-checkbox>
       </md-list-item>
@@ -23,7 +23,7 @@
   <form name="projectForm" layout="row" layout-xs="column">
     <md-input-container class="active-last" flex>
       <label>Active in the last</label>
-      <md-select ng-model="$ctrl.activeLastDays">
+      <md-select ng-model="$ctrl.tbSession.streams.activeLastDays">
         <md-option value="30">
           30 days
         </md-option>
@@ -40,14 +40,14 @@
     </md-input-container>
     <md-input-container flex class="md-block">
       <label>Minimun nuber of trades</label>
-      <input type="number" name="minimum number of trades" ng-model="$ctrl.minNumTrades" min="0"/>
+      <input type="number" name="minimum number of trades" ng-model="$ctrl.tbSession.streams.minNumTrades" min="0"/>
     </md-input-container>
     <md-input-container flex class="md-block">
       <label>Minimun net profit</label>
-      <input type="number" name="minimum net profit" ng-model="$ctrl.minNetProfit" />
+      <input type="number" name="minimum net profit" ng-model="$ctrl.tbSession.streams.minNetProfit" />
     </md-input-container>
   </form>
 </md-content>
 
-<tb-streams-table flex in-streams="$ctrl.inStreams" in-attributes="$ctrl.streamAttributes" in-sort-by="NP" in-min-num-trades="$ctrl.minNumTrades"
-  in-active-last-days="$ctrl.activeLastDays" , in-min-net-profit="$ctrl.minNetProfit"></tb-streams-table>
+<tb-streams-table flex in-streams="$ctrl.inStreams" in-attributes="$ctrl.tbSession.streams.streamAttributes" in-sort-by="NP" in-min-num-trades="$ctrl.tbSession.streams.minNumTrades"
+  in-active-last-days="$ctrl.tbSession.streams.activeLastDays" , in-min-net-profit="$ctrl.tbSession.streams.minNetProfit"></tb-streams-table>

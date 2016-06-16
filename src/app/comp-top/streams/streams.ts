@@ -1,5 +1,5 @@
-import { Stream, StreamsAttribute } from "../../typings/types.d.ts"
-import { StreamAttributes } from "../../util/stream-attributes"
+import { Stream } from "../../typings/types.d.ts"
+import { TbSession } from "../../services/session/session"
 
 export class StreamsView implements ng.IComponentOptions {
   bindings: any
@@ -17,15 +17,14 @@ export class StreamsView implements ng.IComponentOptions {
 
 class StreamsViewCtrl {
   inStreams: Array<Stream>
-  streamAttributes: Array<StreamsAttribute> = StreamAttributes.allAtributes()
   windowWidth: number
   isMobile: boolean
   showFilters: boolean
-  activeLastDays: number = 30
-  minNumTrades: number = 5
-  minNetProfit: number = 5
 
-  constructor(private $mdSidenav: ng.material.ISidenavService, private $window: ng.IWindowService) {
+  constructor(
+    private $mdSidenav: ng.material.ISidenavService,
+    private $window: ng.IWindowService,
+    public tbSession: TbSession) {
     "ngInject"
     this.windowWidth = $window.innerWidth
 
@@ -59,7 +58,7 @@ class StreamsViewCtrl {
   }
 
   showOnlyMobileAttr(): void {
-    this.streamAttributes.forEach((attr: StreamsAttribute) => {
+    this.tbSession.streams.streamAttributes.forEach(attr => {
       if (attr.short === "NP" || attr.short === "Name") {
         attr.on = true
       }
