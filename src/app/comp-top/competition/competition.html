@@ -44,9 +44,13 @@
       </md-card-content>
     </div>
 
-    <div flex>
-      <tb-streams-table flex in-streams="$ctrl.top10StreamsComp3" in-attributes="$ctrl.attributesComp3" in-sort-by="Net profit"></tb-streams-table>
-      <p ng-if="$ctrl.top10StreamsComp3.length == 0">There are no streams with 20 closed trades after 1 May</p>
+       <div class="competition-winnner" flex style="cursor: pointer;" ng-click="$ctrl.goToStream('196b668d-2b30-4ec4-9042-d1c83659f83e')">
+      <div class="center">
+        <md-icon class="material-icons cake" style="font-size: 200px;">cake</md-icon>
+        <h6 class="md-title" style="margin-bottom: 0px;">Winner:</h6>
+        <h3 class="md-display-2" style="margin-top: 0px;">AnonymousTrader</h3>
+
+      </div>
     </div>
   </md-card>
 
