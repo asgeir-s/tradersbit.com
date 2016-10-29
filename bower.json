@@ -17,7 +17,7 @@
     "angular-jwt": "~0.0.9",
     "angular-websocket": "~1.0.14",
     "oclazyload": "~1.0.9",
-    "ng-onload": "^0.2.1"
+    "ng-onload": "~0.5.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.2"
