@@ -21,7 +21,6 @@ class HomeViewCtrl {
   activeLastDays: number = 30
   minNumTrades: number = 20
   minNetProfit: number = 10
-  streams: Array<Stream>
   btcRate: number
   mustVerifyEmail: boolean = false
   wating: boolean = false
@@ -35,7 +34,6 @@ class HomeViewCtrl {
     private $mdSidenav: any,
     bitcoinaverageApi: BitcoinaverageApi) {
     "ngInject"
-    this.updateFilters()
 
     bitcoinaverageApi.getPrice().then(
       (btcPrice: number) => {
@@ -101,27 +99,6 @@ class HomeViewCtrl {
 
   toggleRightSidebar(): void {
     this.$mdSidenav("home-right").toggle()
-  }
-
-  updateFilters(): void {
-    let streams = this.inStreams
-
-    if (this.minNumTrades != null) {
-      streams = streams.filter(stream =>
-        stream.stats.numberOfClosedTrades >= this.minNumTrades)
-    }
-
-    if (this.activeLastDays != null && !isNaN(this.activeLastDays)) {
-      const signalsAfter = new Date().getTime() - this.activeLastDays * 86400000
-      streams = streams.filter(stream =>
-        stream.stats.timeOfLastSignal >= signalsAfter)
-    }
-
-    if (this.minNetProfit != null) {
-      streams = streams.filter(stream =>
-        (stream.stats.allTimeValueIncl - 1) * 100 >= this.minNetProfit)
-    }
-    this.streams = streams
   }
 
   allTimeValueIncl(stream) {

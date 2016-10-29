@@ -440,8 +440,9 @@ export class StreamAttributes {
       jsonPath: "timeOfLastSignal",
       on: true,
       bad: (stream: Stream) => {
-        const secInMonth = 86400000 * 30
-        return stream.stats.timeOfLastSignal < Date.now() - secInMonth
+        //const secInMonth = 86400000 * 30
+        //return stream.stats.timeOfLastSignal < Date.now() - secInMonth
+        return false;
       },
       getIt: (stream: Stream) => {
         if (stream.stats.timeOfLastSignal === 0) {

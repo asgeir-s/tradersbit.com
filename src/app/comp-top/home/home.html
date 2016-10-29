@@ -1,45 +1,3 @@
-<md-button class="md-fab fab-buttom-right animated bounce" aria-label="indicators" ng-click="$ctrl.toggleRightSidebar()">
-  <md-icon class="material-icons">filter_list</md-icon>
-  <md-tooltip md-direction="top" md-visible="true">
-    Filter
-  </md-tooltip>
-</md-button>
-
-<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="home-right">
-  <md-toolbar class="md-theme-light md-accent md-hue-2">
-    <h1 class="md-toolbar-tools">Filters</h1>
-  </md-toolbar>
-  <md-content layout-padding>
-    <form name="projectForm" layout="column">
-      <md-input-container flex>
-        <label>Active in the last</label>
-        <md-select ng-model="$ctrl.activeLastDays" ng-change="$ctrl.updateFilters()">
-          <md-option value="30">
-            30 days
-          </md-option>
-          <md-option value="60">
-            60 days
-          </md-option>
-          <md-option value="90">
-            90 days
-          </md-option>
-          <md-option value="All time">
-            All time
-          </md-option>
-        </md-select>
-      </md-input-container>
-      <md-input-container flex class="md-block" style="margin-bottom: 0;">
-        <label>Minimun number of trades</label>
-        <input type="number" name="minimum number of trades" ng-model="$ctrl.minNumTrades" min="0" ng-change="$ctrl.updateFilters()"
-        />
-      </md-input-container>
-      <md-input-container flex class="md-block">
-        <label>Minimun net profit</label>
-        <input type="number" name="minimum net profit" ng-model="$ctrl.minNetProfit" ng-change="$ctrl.updateFilters()" />
-      </md-input-container>
-    </form>
-  </md-content>
-</md-sidenav>
 
 <div layout="column" class="home--features-outer" layout-align="center center">
   <h4 class="center super-promo"><b>Automated Bitcoin trading platform and trading signal marketplace</b></h4>
@@ -65,7 +23,4 @@
     </div>
   </div>
 </div>
-<md-content class="stream-list" layout="column">
-  <tb-stream-list-item flex ng-repeat="stream in $ctrl.streams | orderBy: $ctrl.allTimeValueIncl : true" in-stream="stream"
-    in-btc-rate="$ctrl.btcRate"></tb-stream-list-item>
-</md-content>
+<tb-streams in-streams="$ctrl.inStreams"></tb-streams>

@@ -3,7 +3,7 @@ import { StreamAttributes } from "../../util/stream-attributes"
 
 export class TbSession {
   streams: {
-    activeLastDays: number
+    activeLastDays: number | string
     minNumTrades: number
     minNetProfit: number
     streamAttributes: Array<StreamsAttribute>
@@ -19,9 +19,9 @@ export class TbSession {
     "ngInject"
 
     this.streams = {
-      "activeLastDays": 30,
-      "minNumTrades": 5,
-      "minNetProfit": 5,
+      "activeLastDays": "All time",
+      "minNumTrades": null,
+      "minNetProfit": null,
       "streamAttributes": StreamAttributes.allAtributes()
     }
 
