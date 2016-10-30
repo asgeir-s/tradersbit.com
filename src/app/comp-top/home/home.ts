@@ -21,7 +21,6 @@ class HomeViewCtrl {
   activeLastDays: number = 30
   minNumTrades: number = 20
   minNetProfit: number = 10
-  btcRate: number
   mustVerifyEmail: boolean = false
   wating: boolean = false
   watingPanelConfig: any
@@ -34,11 +33,6 @@ class HomeViewCtrl {
     private $mdSidenav: any,
     bitcoinaverageApi: BitcoinaverageApi) {
     "ngInject"
-
-    bitcoinaverageApi.getPrice()
-      .then((btcPrice: number) => {
-        this.btcRate = btcPrice
-      })
 
     this.watingPanelConfig = {
       attachTo: angular.element(document.body),
