@@ -3,7 +3,7 @@ import { Promise } from 'es6-promise';
 /** @ngInject */
 export class BitcoinaverageApi {
   updated: number
-  updateIntervall: number = 15000
+  updateIntervall: number = 600000
   rate: number = 0
   constructor(private $http: ng.IHttpService) { }
 
