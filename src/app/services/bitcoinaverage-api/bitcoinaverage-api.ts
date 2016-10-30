@@ -1,13 +1,15 @@
+import { Promise } from 'es6-promise';
+
 /** @ngInject */
 export class BitcoinaverageApi {
   updated: number
   updateIntervall: number = 15000
   rate: number = 0
-  constructor(private $http: ng.IHttpService, private $q: ng.IQService) { }
+  constructor(private $http: ng.IHttpService) { }
 
-  getPrice(): ng.IPromise<number> {
+  getPrice() {
     const timeNow = new Date().getTime()
-    return this.$q((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       if (timeNow <= (this.updated + this.updateIntervall)) {
         resolve(this.rate)
       }
