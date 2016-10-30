@@ -52,8 +52,8 @@ class StreamViewCtrl {
       // highcharts.setOptions(HighChartThemes.darkTheme)        
       this.trades = this.signalsToTrades(this.inSignals)
 
-      bitcoinaverageApi.getPrice().then(
-        (btcPrice: number) => {
+      bitcoinaverageApi.getPrice()
+        .then((btcPrice: number) => {
           this.btcRate = btcPrice
         })
     }

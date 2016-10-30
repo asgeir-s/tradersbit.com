@@ -35,8 +35,8 @@ class HomeViewCtrl {
     bitcoinaverageApi: BitcoinaverageApi) {
     "ngInject"
 
-    bitcoinaverageApi.getPrice().then(
-      (btcPrice: number) => {
+    bitcoinaverageApi.getPrice()
+      .then((btcPrice: number) => {
         this.btcRate = btcPrice
       })
 
