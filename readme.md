@@ -33,11 +33,6 @@ set
 1.  Give invoke permissions to the role auth0-api-role
 2.  Check correct region in  tradersbit.com: createApiClient
 
-https://puy4mxygp6.execute-api.us-east-1.amazonaws.com/prod/lolllolololo/jsgeysmnejsge/gbdb57?scuset=74v54j4veid5392j3b3d76812672154ghFGDGFSDxs55d0
-
-https://8ou6rpduh7.execute-api.us-east-1.amazonaws.com/prod/notifications/coinbase/oiu3289t7234jhvnb234jhkg23rguydahjkl?scuset=74v54j4veid5392j3b3d76812672154ghFGDGFSDxs55d0
-
-
 #tb-front-sdk
 ## Prerequisites
 For the JavaScript SDK to work your APIs need to support CORS. The Amazon API Gateway developer guide explains how to [setup CORS for an endpoint]().
